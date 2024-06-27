@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3590.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>.NET宝藏API之：OutputFormatter，格式化输出对象 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">.NET宝藏API之：OutputFormatter，格式化输出对象</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>相信大家在项目中都用过统一响应参数模板。</p> <p>先声明一个响应模板类：</p> <pre><code>public class ResponseDto {     public int code { get; set; }     public string msg { get; set; }     public object data { get; set; } }</code></pre> <p>再定义返回成功和失败的方法：</p> <pre><code>public IActionResult Success(object data) { 	return ...... } public IActionResult Fail(string msg) { 	return ...... }</code></pre> <p>在接口返回时统一调用：</p> <pre><code>[HttpGet] public IActionResult Get() { 	var data = new WeatherForecast() { Date = DateTime.Now }; 	return Success(data); }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ae25d378608b29680dbbe77f48da306b.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>当然了，这篇文章所讲的<code>OutputFormatter</code>和上面的统一模板不冲突哈，存在共通之处，都是格式化响应参数嘛，拿来做个引子。</p> <h3 id="outputformatter">OutputFormatter</h3> <p><code>OutputFormatter</code>是所有格式化输出的基类，有唯一的子类：<code>TextOutputFormatter</code>，同时<code>TextOutputFormatter</code>又有一大堆子类：</p> <pre><code>JsonOutputFormatter NewtonsoftJsonOutputFormatter StringOutputFormatter SystemTextJsonOutputFormatter XmlDataContractSerializerOutputFormatter XmlSerializerOutputFormatter</code></pre> <p>如果不配置任何响应参数输出格式，<code>asp.net core api</code>响应参数默认的输出格式就是<code>json</code>。</p> <p>猴：这个接口给我返回<code>xml</code>，我不要<code>json</code>。</p> <p>我：你是不是脑子有毛病？好好的<code>json</code>不用用<code>xml</code>。</p> <p>得，前端大佬得要求还是得满足不是，这时候有些同学是不是已经去百度：<code>.Net怎么将对象转换成xml？</code></p> <p><code>No</code><code>No</code><code>No</code>，这时候就轮到<code>OutputFormatter</code>的孙子<code>XmlDataContractSerializerOutputFormatter</code> 出场了。</p> <p>只需要简单给接口配置一个属性就搞定啦。</p> <pre><code>[Produces("application/xml")] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }</code></pre> <p>我们来运行看一看：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3cde0b75c6769f27bac3151c5dbc16d6.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p><code>wtf</code>，怎么会<code>406</code>。</p> <p><strong>406：表示客户端无法解析服务端返回的内容。说白了就是后台的返回结果前台无法解析就报406错误。</strong></p> <p>哦，原来是忘了在<code>Startup</code>中配置我们的孙子<code>XmlDataContractSerializerOutputFormatter</code>。</p> <pre><code>services.AddControllers((c) =&gt; { 	c.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()); });</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/b3ef9d8b4c94ccff6c305a987d686b56.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>注意：不只是没有在<code>Startup</code>中会出现<code>406</code>哦，以下情况也会出现：</p> <ul> <li>contentType不存在</li> <li>contentType与响应参数不匹配</li> </ul> <h3 id="outputformatter扩展">OutputFormatter扩展</h3> <p>上面介绍了内置<code>OutputFormatter</code>的使用，那如果我们想自定义呢？当然也是可以的。</p> <p>下面我们就用自定义的<code>OutputFormatter</code>实现顶部响应模板的效果：</p> <pre><code>public class ObjectOutputFormatter : TextOutputFormatter { 	public ObjectOutputFormatter() 	{ 		SupportedEncodings.Add(Encoding.UTF8); 		SupportedEncodings.Add(Encoding.Unicode); 		// 这就是我们自定义contentType的名称 		SupportedMediaTypes.Add("text/object"); 	}  	public override async Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding) 	{ 		if (context == null) 		{ 			throw new ArgumentNullException(nameof(context)); 		} 		if (selectedEncoding == null) 		{ 			throw new ArgumentNullException(nameof(selectedEncoding)); 		} 		string text = JsonConvert.SerializeObject(new ResponseDto() 		{ 			msg = "成功，自定义的哦", 			code = 200, 			data = context.Object 		}); 		var response = context.HttpContext.Response; 		await response.WriteAsync(text, selectedEncoding); 	} }  [Produces("text/object")] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }  public void ConfigureServices(IServiceCollection services) { 	services.AddControllers((c) =&gt; 	{ 		c.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()); 		// 我们自定义的输出格式 		c.OutputFormatters.Add(new ObjectOutputFormatter()); 	}); }</code></pre> <p>搞定，我们来看看效果：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4b54e8c7cfedbff6f62041387bc0d928.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <h3 id="actionfilterattribute">ActionFilterAttribute</h3> <p>有些同学可能会想到过滤器，是的，上面的效果过滤器也能实现：</p> <pre><code>public class ResultFilter : ActionFilterAttribute {     public override void OnResultExecuting(ResultExecutingContext context)     {         ResponseDto result = new ResponseDto();         result.code = 200;         result.msg = "成功，ResultFilter";         var properties = context.Result.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);         result.data = properties.FirstOrDefault(c =&gt; c.Name == "Value").GetValue(context.Result);         context.Result = new JsonResult(result);         base.OnResultExecuting(context);     } }  [TypeFilter(typeof(ResultFilter))] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/29433177d235950b197a91c9a0b93bcc.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>猴：有了过滤器为什么还搞个<code>OutputFormatter</code>呢？</p> <p>我：不能因为过滤器可以实现同样的功能就认为<code>OutputFormatter</code>多余了，很显然过滤器的操作对象是请求/响应上下文，而<code>OutputFormatter</code>的操作对象则是响应参数。再说了，<code>ActionFilterAttribute</code>过滤器只是众多过滤器的一种。</p> <p>猴：那过滤器和自定义<code>OutputFormatter</code>一起用会是什么效果呢？是不是像下面这样？</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a207274c355e1f8b4e5c79da7cbf8cd4.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>我：不是，过滤器和自定义<code>OutputFormatter</code>同时使用，生效的只有过滤器，不信可以打断点试一下哦。</p> <pre><code>[Produces("text/object")] [TypeFilter(typeof(ResultFilter))] [HttpGet] public WeatherForecast Get() { 	return new WeatherForecast() { Date = DateTime.Now }; }</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6effa886e8c8815f0cc2ece0a4863021.jpg" alt=".NET宝藏API之：OutputFormatter，格式化输出对象"></p> <p>具体原因在这里就不细说了，等后面再分享（其实我也还没弄清楚，逼着自己去了解）</p> <p>好了，这期的宝藏<code>API</code>就到这了，下期再见哦，如果有下期的话。</p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3589.htm">unity 编辑器扩展简单入门</a></p>
+                                                <p>下一个：<a href="/html/category/article-3591.htm">SpringBoot测试失败并报错: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
+                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
+                        <li class="py-2"><a href="/html/category/article-3689.htm" title="Spring（六）&#8212;-Spring AOP概述及底层实现原理">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3698.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

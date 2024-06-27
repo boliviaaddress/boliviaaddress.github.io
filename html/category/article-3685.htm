@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3685.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ForkJoin详解及应用 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">ForkJoin详解及应用</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>ForkJoin是由JDK1.7后提供多线并发处理框架。主要用于并行计算中，和 MapReduce 原理类似，都是把大的计算任务拆分成多个小任务并行计算。</p> <div class="mermaid"></div> <h2><a id="_12" rel="nofollow"></a>应用场景</h2> <p>计算1~10的和，每组计算3个，代码如下：</p> <pre><code>public class ForkJoinExample extends RecursiveTask&lt;Integer&gt; {      private final int threshold = 3;     private int first;     private int last;      public ForkJoinExample(int first, int last) {         this.first = first;         this.last = last;     }      @Override     protected Integer compute() {         int result = 0;         if (last - first &lt;= threshold) {             // 任务足够小则直接计算             for (int i = first; i &lt;= last; i++) {                 result += i;             }             System.out.println(Thread.currentThread().getName() + "：∑(" + first + "," + last + ") = " + result);         } else {             // 拆分成小任务             int middle = first + (last - first) / 2;             ForkJoinExample leftTask = new ForkJoinExample(first, middle);             ForkJoinExample rightTask = new ForkJoinExample(middle + 1, last);             leftTask.fork();             rightTask.fork();             result = leftTask.join() + rightTask.join();             System.out.println(Thread.currentThread().getName() + "："                     + "∑(" + first + "," + last + ") = "                     + "∑(" + first + "," + middle + ") + "                     + "∑(" + (middle + 1) + "," + last + ") = "                     + result);         }         return result;     }      public static void main(String[] args) throws ExecutionException, InterruptedException {         ForkJoinExample example = new ForkJoinExample(1, 10);         ForkJoinPool forkJoinPool = new ForkJoinPool();         Future result = forkJoinPool.submit(example);         System.out.println("result = " + result.get());     } }</code></pre> <pre><code>ForkJoinPool-1-worker-2：∑(1,3) = 6 ForkJoinPool-1-worker-1：∑(4,5) = 9 ForkJoinPool-1-worker-2：∑(1,5) = ∑(1,3) + ∑(4,5) = 15 ForkJoinPool-1-worker-2：∑(9,10) = 19 ForkJoinPool-1-worker-3：∑(6,8) = 21 ForkJoinPool-1-worker-3：∑(6,10) = ∑(6,8) + ∑(9,10) = 40 ForkJoinPool-1-worker-1：∑(1,10) = ∑(1,5) + ∑(6,10) = 55 result = 55</code></pre> <p>ForkJoin 使用 ForkJoinPool 来启动，它是一个特殊的线程池，线程数量取决于 CPU 核数。</p> <p>ForkJoinPool 实现了工作窃取算法来提高 CPU 的利用率。每个线程都维护了一个双端队列，用来存储需要执行的任务。工作窃取算法允许空闲的线程从其它线程的双端队列中窃取一个任务来执行。窃取的任务必须是最晚的任务，避免和队列所属线程发生竞争。</p> <h1><a id="RecursiveTaskRecursiveAction_75" rel="nofollow"></a>RecursiveTask和RecursiveAction区别</h1> <blockquote> <p>ForkJoinTask是RecursiveAction与RecursiveTask的父类， ForkJoinTask中使用了模板模式进行设计<br /> ,将ForkJoinTask的执行相关的代码进行隐藏，通过提供抽象类暴露用户的实际业务处理。</p> </blockquote> <h2><a id="RecursiveTask_78" rel="nofollow"></a>RecursiveTask</h2> <p>通过源码的查看我们可以发现RecursiveTask在进行exec之后会使用一个result的变量进行接受返回的结果。而result返回结果类型是通过泛型进行传入。也就是说RecursiveTask执行后是有返回结果。</p> <h2><a id="RecursiveAction_80" rel="nofollow"></a>RecursiveAction</h2> <p>RecursiveAction在exec后是不会保存返回结果，因此RecursiveAction与RecursiveTask区别在与RecursiveTask是有返回结果而RecursiveAction是没有返回结果。</p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3684.htm">Pycharm中pyenv和virtualenv使用详解</a></p>
+                                                <p>下一个：<a href="/html/category/article-3686.htm">Springboot之请求映射</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3679.htm" title="Vuex大全">Vuex大全</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3708.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

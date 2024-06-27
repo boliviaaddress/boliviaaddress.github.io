@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3631.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>数组模拟队列进阶版本——环形队列（真正意义上的排队） - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">数组模拟队列进阶版本——环形队列（真正意义上的排队）</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<h1 id="数组模拟环形队列真正意义上的排队">数组模拟环形队列（真正意义上的排队）</h1> <h4 id="昨天我们做了数组模拟队列的基本情景可以进行排队和取出数据最早的人离开队列但是我们发现取出的地方不能重复利用让我们的队列成为了一次性队列今天我们来看如何将我们的队列改进称数组模拟环形队列实现已释放位置的重复利用">昨天我们做了数组模拟队列的基本情景。可以进行排队和取出数据（最早的人离开队列)，但是我们发现，取出的地方不能重复利用。让我们的队列成为了一次性队列。今天我们来看如何将我们的队列改进称数组模拟环形队列。实现已释放位置的重复利用</h4> <h2 id="基本原理">基本原理：</h2> <p>要知道我们实现队列的基本是头和尾。rear和front。这两个的指向决定了队列的头尾。也就是队列本身。这个具体指向头部本身索引或者前一个后一个不是固定的。是根据具体算法而定的。这次我们规定头和尾默认指向0索引。</p> <p>对前面的数组模拟队列的优化，充分利用数组. 因此将数组看做是一个环形的。(通过取模的方式式来实现即可)</p> <h2 id="分析说明">分析说明：</h2> <h3 id="1尾索引的下一个为头索引时表示队列满即将队列容量空出一个作为约定这个在做判断队列满的时候需要注意-rear--1--maxsize--front-满">1：尾索引的下一个为头索引时表示队列满，即将队列容量空出一个作为约定,这个在做判断队列满的时候需要注意 (rear + 1) % maxSize == front 满]</h3> <h3 id="2rear--front-空">2：rear == front [空]</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c35be991f7600d8ab4b35b8dd740df70.jpg" alt="数组模拟队列进阶版本——环形队列（真正意义上的排队）"></p> <p>代码如下：</p> <pre><code class="language-java">package com.joseph.sparseArray;  import java.util.Map; import java.util.Scanner;  public class CircularQueue {     public static void main(String[] args) {              CQueue cQueue = new CQueue(5);             Scanner sc = new Scanner(System.in);         int i;             while(true) {                 System.out.println("---------------排队系统--------------");                 System.out.println("---------------1：排队咨询--------------");                 System.out.println("---------------2：结束排队(最早成功的人)--------------");                 System.out.println("-------------- 3：查看当前排队详情--------------");                 System.out.println("---------------88:SHOW REAR AND FRONT");                 System.out.println("---------------4：退出--------------");                 i = sc.nextInt();                 switch (i) {                      case 1:                         System.out.println("请输入你的电话");                         int tel = sc.nextInt();                         cQueue.add(tel);                         if(cQueue.rear == 0){                             if(cQueue.arr[cQueue.MaxSize-1] == tel) {                                 System.out.println("排队成功！");                                 System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize - 1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             }                         }else if (cQueue.arr[cQueue.rear - 1] == tel) {                             System.out.println("排队成功！");                             System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize -1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             break;                         } else {                             System.out.println("排队失败！");                             System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize -1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             break;                         }                     case 2:                         int oldFront = cQueue.front;                         cQueue.get();                         if (cQueue.front != oldFront) {                             System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize -1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             break;                         }                         System.out.println("结束失败");                         break;                     case 3:                         cQueue.List();                         break;                     case 4:                         System.out.println("谢谢使用！");                         break;                     case 88:                         System.out.println("front:" + cQueue.front);                         System.out.println("rear:"+cQueue.rear);                 }             }     } } class CQueue{     int MaxSize ;//数组最大容量，因为我们的REAR(尾部)指向的是最后一个数据索引的后一个。这也就是说我们的真实存储长度要比MaxSize小一个。因为总要空出一个由rear指向。这是一个约定。前面有说到。     int rear ;//尾部。指向队列最后一个数据的后一个位置     int front ;//头部。直接指向第一个数据索引下标     int arr[] ;//数组     public CQueue(int MaxSize){//基本没变。rear和front初始值和上次不一样。不懂得先看上次数组模拟队列基础版         this.MaxSize = MaxSize ;         arr = new int[MaxSize];         this.rear = 0;         this.front = 0;     }     public boolean isFull(){         return (rear+1)%MaxSize == front ;//由于环形队列，其实队列满的状态。是他们两个差"一个"，因为rear指向的是数据的后一个。而front指向的第一个数据。因为是环形，0和4要联系起来只差一个就需要取模。利用rear+1和MaxSize取模。等于front就代表满了。这个需要好好理解。比较有难度     }     public boolean isEmpty(){//判断为空。当他们两个相等。不管在什么位置。就代表没有数据。         return rear == front ;     }      public void add(int key){//添加数据         if(isFull()){             System.out.println("QUEUE IS FULL,CAN'T ADD ANYTHING");             return ;         }         arr[rear] = key ;//直接将rear的下标赋值。         rear = (rear+1)%MaxSize ;//这里不能再自增了。因为是环形的。需要利用+1后取模实现周期性。否则会下标越界     }     public int get(){         if(isEmpty()){             throw new RuntimeException("QUEUE IS EMPTY,NO THINGS BE GETED");         }         int temp = arr[front] ;//这里先把头部数据拿出来。放到temp         front = (front+1)%MaxSize ;//给front移位。当数据取出。就往后+1作为初始第一个数据。但是是环形的。继续利用+1后取模实现周期性+1.不然会下标越界         return temp ;     }     public void List(){         //判断         if(isEmpty()){             System.out.println("QUEUE IS EMPTY!");             return ;         }         for(int i = front ; i &lt; (rear - front + MaxSize)%MaxSize +front ;i++){//这里不能用传统思维去输出了。要从front开始输出。也就是队列的开头             //而i的范围。不再是队列长度。而是队列的有效数据个数+front。前面有算出是（rear-front+MaxSize)%MaxSize,其实rear是最后一个数据的后一个，而front就是第一个。我认为rear-front就是有效数据个数。而由于环形。往往出现负数。所以继续取模达到绝对值的效果。由于我们是环形的。front初始位置会由于用户取出导致变化。所以必须再加上front。因为front才是开始的位置。再加上有效数据个数。就是i的范围             System.out.printf("队伍第[%d]号 ： %d\n",i%MaxSize,arr[i%MaxSize]);//这里输出用printf方法做一个格式化。不能用i，要取模。否则会越界         }     } } /**  * @author JosephWang  * @date 2021/8/10 11:58  */</code></pre> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3630.htm">模拟器 教你如何用python制作随机点名器</a></p>
+                                                <p>下一个：<a href="/html/category/article-3632.htm">C语言之分支语句</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3674.htm" title="node.js &#8211; 包、express">node.js &#8211; 包、express</a></li>
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3672.htm" title="安卓夜间模式开发【深色主题适配】">安卓夜间模式开发【深色主题适配】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3722.htm" title="MyBatis:SQL语句中的foreach标签的详细介绍">MyBatis:SQL语句中的foreach标签的详细介绍</a></li>
+                        <li class="py-2"><a href="/html/category/article-3698.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3683.htm" title="C语言实现BMP格式转RGB格式、YUV格式">C语言实现BMP格式转RGB格式、YUV格式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

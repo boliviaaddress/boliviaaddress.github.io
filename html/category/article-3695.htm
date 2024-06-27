@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3695.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>时间与日期——瞬时（Instant） - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">时间与日期——瞬时（Instant）</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1><a id="JAVAInstant_0" rel="nofollow"></a>JAVA中的时间与日期——瞬时（Instant）</h1> <h2><a id="Instant_2" rel="nofollow"></a>瞬时（Instant）：</h2> <p>Instant：时间线上的一个瞬时点。 这可能被用来记录应用程序中的事件时间戳。</p> <p>在处理时间和日期的时候，我们通常会想到年,月,日,时,分,秒。然而，这只是时间的一个模型，是面向人类的。第二种通用模型是面向机器的，或者说是连续的。在此模型中，时间线中的一个点表示为一个很大的数，这有利于计算机处理。在UNIX中，这个数从1970年开始，以秒为的单位；同样的，在Java中，也是从1970年开始，但以毫秒为单位。</p> <p>java.time包通过值类型Instant提供机器视图，不提供处理人类意义上的时间单位。Instant表示时间线上的一点，而不需要任何上下文信息，例如，时区。概念上讲，它只是简单的表示自1970年1月1日0时0分0秒（UTC）开始的秒数。因为java.time包是基于纳秒计算的，所以Instant的精度可以达到纳秒级。</p> <p>(1 ns = 10-9 s) 1秒 = 1000毫秒 =10<sup>6微秒=10</sup>9纳秒</p> <h2><a id="_11" rel="nofollow"></a>常用方法介绍</h2> <p>①<code>now()</code> 静态方法，返回默认UTC时区的Instant类的对象<br /> ②<code>ofEpochMilli(long epochMilli)</code> 静态方法，返回在1970-01-01 00:00:00基础上加上指定毫秒数之后的Instant类的对象<br /> ③<code>atOffset(ZoneOffset offset)</code> 结合即时的偏移来创建一个 OffsetDateTime<br /> ④<code>toEpochMilli()</code> 返回1970-01-01 00:00:00到当前时间的毫秒数，即为时间戳</p> <p><mark>时间戳是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。</mark></p> <h2><a id="_19" rel="nofollow"></a>代码分步解析</h2> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">InstantTest</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Test</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         Instant instant<span class="token operator">=</span> Instant<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取本初子午线时间</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instant<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>运行结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/24d11774f606c53cd470e3ab89570509.jpg" alt="时间与日期——瞬时（Instant）"><br /> 如果想获取北京时间怎么办呢？则需用另一个方法<code>atOffset(ZoneOffset offset)</code>添加一个时间偏移量</p> <pre><code class="prism language-java"><span class="token comment">//结合即时的偏移来创建一个 OffsetDateTime；添加时间偏移量</span>         OffsetDateTime offsetDateTime<span class="token operator">=</span> instant<span class="token punctuation">.</span><span class="token function">atOffset</span><span class="token punctuation">(</span>ZoneOffset<span class="token punctuation">.</span><span class="token function">ofHours</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>offsetDateTime<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>运行结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/d2d26cea30358603d7ca7234fcee63ea.jpg" alt="时间与日期——瞬时（Instant）"><br /> 为啥偏移量是8小时呢，请看下图，因为北京所处的时区在东八区，所以加了8小时。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/2611490da9adde72db8cae5e8d41e734.jpg" alt="时间与日期——瞬时（Instant）"><br /> 前面有提到，在处理时间和日期的时候，在Java中，是从1970年开始，以毫秒为单位。如何获取1970-01-01 00:00:00到当前时间的毫秒数？请用<code>toEpochMilli()</code>方法。</p> <pre><code class="prism language-java"><span class="token comment">//获取1970-01-01 00:00:00到当前时间的毫秒数，即为时间戳</span><span class="token keyword">long</span> milli<span class="token operator">=</span> instant<span class="token punctuation">.</span><span class="token function">toEpochMilli</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>milli<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>运行结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/728a71e52302b7f0717c85353e7eef26.jpg" alt="时间与日期——瞬时（Instant）"><br /> 最后一个常用方法：<code>ofEpochMilli(long epochMilli)</code> 静态方法，返回在1970-01-01 00:00:00基础上加上指定毫秒数之后的Instant类的对象</p> <pre><code class="prism language-java"><span class="token comment">//给定特定的毫秒数，获取Instant实例</span>         Instant instant1<span class="token operator">=</span> Instant<span class="token punctuation">.</span><span class="token function">ofEpochMilli</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1617760900204</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instant1<span class="token punctuation">)</span><span class="token punctuation">;</span>         OffsetDateTime offsetDateTime1<span class="token operator">=</span> instant<span class="token punctuation">.</span><span class="token function">atOffset</span><span class="token punctuation">(</span>ZoneOffset<span class="token punctuation">.</span><span class="token function">ofHours</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>offsetDateTime1<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>运行结果：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/6064e5712c2ee3b4d2e0d3e206f8ca9a.jpg" alt="时间与日期——瞬时（Instant）"><br /> 也要通过加时间偏移量来获取北京时间。</p> <h2><a id="_65" rel="nofollow"></a>完整代码：</h2> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">InstantTest</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Test</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         Instant instant<span class="token operator">=</span> Instant<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取本初子午线时间</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instant<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//结合即时的偏移来创建一个 OffsetDateTime；添加时间偏移量</span>         OffsetDateTime offsetDateTime<span class="token operator">=</span> instant<span class="token punctuation">.</span><span class="token function">atOffset</span><span class="token punctuation">(</span>ZoneOffset<span class="token punctuation">.</span><span class="token function">ofHours</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>offsetDateTime<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取1970-01-01 00:00:00到当前时间的毫秒数，即为时间戳</span><span class="token keyword">long</span> milli<span class="token operator">=</span> instant<span class="token punctuation">.</span><span class="token function">toEpochMilli</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>milli<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//给定特定的毫秒数，获取Instant实例</span>         Instant instant1<span class="token operator">=</span> Instant<span class="token punctuation">.</span><span class="token function">ofEpochMilli</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1617760900204</span>L<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instant1<span class="token punctuation">)</span><span class="token punctuation">;</span>         OffsetDateTime offsetDateTime1<span class="token operator">=</span> instant<span class="token punctuation">.</span><span class="token function">atOffset</span><span class="token punctuation">(</span>ZoneOffset<span class="token punctuation">.</span><span class="token function">ofHours</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>offsetDateTime1<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//给定特定的秒数，获取Instant实例</span>         Instant instant2<span class="token operator">=</span> Instant<span class="token punctuation">.</span><span class="token function">ofEpochSecond</span><span class="token punctuation">(</span>instant<span class="token punctuation">.</span><span class="token function">getEpochSecond</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instant2<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>运行结果图：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/78e825a8598d8581225919ef291649aa.jpg" alt="时间与日期——瞬时（Instant）"></p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3694.htm">Vue el-table实现右键菜单功能_vue.js_</a></p>
+                                                <p>下一个：<a href="/html/category/article-3696.htm">UML——顺序图</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

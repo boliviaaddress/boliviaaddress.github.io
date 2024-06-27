@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3704.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器 转载地址：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/guduyishuai/article/details/81364456"  title="springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器_guduyishuai的博客-CSDN博客" rel="nofollow">springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器_guduyishuai的博客-CSDN博客</a></p> <p>我们在开发分布式系统的时候，经常会要排查问题，但是分布式服务比较恶心的就是，服务比较多，请求比较多，日志刷新比较快，如果没有关键字，那么从最原始的请求开始到后续的服务，我们根本无法追踪到一条完整的线路。如何在分布式环境中进行日志的链路追踪呢？</p> <p>下面说一下springcloud中openfeign进行开发的时候，进行链路追踪的设置。</p> <p>1.首先定义interceptor定义一个拦截器，过滤所有请求，并设置logback中的triceId</p> <p><img fetchpriority="high" decoding="async" alt="" height="529" src="http://img.555519.xyz/uploads/20221105/3ee67c9c241ffd781850300fe0753f3c.jpg">2.然后配置拦截器<img decoding="async" alt="" height="601" src="http://img.555519.xyz/uploads/20221105/051399596467ec11986d3afcf1c71bdf.jpg"></p> <p>3. 接着进行openfeign的配置<img decoding="async" alt="" height="449" src="http://img.555519.xyz/uploads/20221105/9d21da9e8fd429be5eeda645543fd184.jpg"></p> <p>&nbsp;然后进行feignInterceptor的bean实例化，以让spring进行管理<img loading="lazy" decoding="async" alt="" height="405" src="http://img.555519.xyz/uploads/20221105/30a567d4e8acc0e3ef2383d53c7983cb.jpg"></p> <p>FeignInterceptor是import feign.RequestInterceptor;引自feign-core包</p> <p>最后在被带调用方获取调用方传过来的triceId<img loading="lazy" decoding="async" alt="" height="546" src="http://img.555519.xyz/uploads/20221105/c2768aa01e62aa015e2a7ac9f9677278.jpg"></p> <p>&nbsp;如图就可以完成分布式服务的日志追踪了！</p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3703.htm">Git回退代码到某次commit</a></p>
+                                                <p>下一个：<a href="/html/category/article-3705.htm">Water 2.6.1 发布，一站式服务治理平台</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3722.htm" title="MyBatis:SQL语句中的foreach标签的详细介绍">MyBatis:SQL语句中的foreach标签的详细介绍</a></li>
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
+                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3716.htm" title="Java和matlab混合编程时Java代码参数不一致的问题">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
+                        <li class="py-2"><a href="/html/category/article-3691.htm" title="中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal">中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

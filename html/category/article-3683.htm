@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3683.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>C语言实现BMP格式转RGB格式、YUV格式 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">C语言实现BMP格式转RGB格式、YUV格式</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1> <a id="1_0" rel="nofollow"></a>1、前言</h1> <blockquote> <p>此代码的功能是传入BMP格式的数据，传出提取的RGB数据。BMP图像支持8bit、16bit、24bit、32bit的格式，得到的都是24bit的RGB格式图像，如果想得到YUV格式的图像，可以将得到RGB再转为YUV格式。RGB转YUV格式参考博客<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/weixin_42031299/article/details/115267037"  rel="nofollow">《C语言实现RGB packet格式转YUV(NV21)格式》</a>。</p> </blockquote> <h1> <a id="2_2" rel="nofollow"></a>2、示例代码</h1> <pre><code class="prism language-c"><span class="token comment">//BMP图片的压缩方式</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BI_RGB</span>          <span class="token expression"><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BI_BITFIELDS</span>         <span class="token expression"><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span></span></span>  <span class="token comment">//RGB555的掩码</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RGB555_RED_MASK</span>        <span class="token expression"><span class="token punctuation">(</span><span class="token number">31744</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RGB555_GREEN_MASK</span>       <span class="token expression"><span class="token punctuation">(</span><span class="token number">992</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RGB555_BLUE_MASK</span>       <span class="token expression"><span class="token punctuation">(</span><span class="token number">31</span><span class="token punctuation">)</span></span></span>  <span class="token comment">//RGB565的掩码</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RGB565_RED_MASK</span>        <span class="token expression"><span class="token punctuation">(</span><span class="token number">63488</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RGB565_GREEN_MASK</span>       <span class="token expression"><span class="token punctuation">(</span><span class="token number">2016</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">RGB565_BLUE_MASK</span>       <span class="token expression"><span class="token punctuation">(</span><span class="token number">31</span><span class="token punctuation">)</span></span></span>  <span class="token comment">//BMP图片的像素位数</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_8_BIT</span>          <span class="token expression"><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_16_BIT</span>         <span class="token expression"><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_24_BIT</span>         <span class="token expression"><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_32_BIT</span>         <span class="token expression"><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span></span></span>  <span class="token comment">//16位BMP图片从文件头到图像数据的偏移量</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_16_BIT_BI_BITFIELDS_OFFSET</span>    <span class="token expression"><span class="token punctuation">(</span><span class="token number">66</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_16_BIT_BI_RGB_OFFSET</span>     <span class="token expression"><span class="token punctuation">(</span><span class="token number">54</span><span class="token punctuation">)</span></span></span>  <span class="token comment">//8位BMP图片调色板的大小</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_8_BIT_OFFSET</span>       <span class="token expression"><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span></span></span>  <span class="token comment">//BMP图片的文件头，固定14字节</span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">BMP_FILE_HEADER_LENGTH</span>       <span class="token expression"><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span></span></span>  <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">isNull</span><span class="token expression"><span class="token punctuation">(</span>ptr<span class="token punctuation">)</span>        	<span class="token punctuation">(</span><span class="token constant">NULL</span> <span class="token operator">==</span> <span class="token punctuation">(</span>ptr<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span> <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">isNotNull</span><span class="token expression"><span class="token punctuation">(</span>ptr<span class="token punctuation">)</span>        <span class="token punctuation">(</span><span class="token constant">NULL</span> <span class="token operator">!=</span> <span class="token punctuation">(</span>ptr<span class="token punctuation">)</span><span class="token punctuation">)</span></span></span>  <span class="token comment">// BMP 文件头</span> <span class="token keyword">typedef</span> <span class="token keyword">struct</span>   <span class="token punctuation">{<!-- --></span>     <span class="token comment">//unsigned short    	bfType;  			// 2</span>     <span class="token keyword">unsigned</span> <span class="token keyword">long</span>    	bfSize<span class="token punctuation">;</span> 			<span class="token comment">// 4 </span>     <span class="token keyword">unsigned</span> <span class="token keyword">short</span>    	bfReserved1<span class="token punctuation">;</span>       <span class="token keyword">unsigned</span> <span class="token keyword">short</span>    	bfReserved2<span class="token punctuation">;</span>       <span class="token keyword">unsigned</span> <span class="token keyword">long</span>    	bfOffBits<span class="token punctuation">;</span>   <span class="token punctuation">}</span> ClBitMapFileHeader<span class="token punctuation">;</span>  <span class="token comment">//BMP图片的信息头</span> <span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">InfoHeader</span> <span class="token punctuation">{<!-- --></span>  <span class="token keyword">unsigned</span> <span class="token keyword">int</span> 		bisize<span class="token punctuation">;</span>				<span class="token comment">//信息头的大小，一般是40</span>  <span class="token keyword">int</span> 				biWidth<span class="token punctuation">;</span>			<span class="token comment">//位图的宽</span>  <span class="token keyword">int</span> 				biHeight<span class="token punctuation">;</span>			<span class="token comment">//位图的高</span>  <span class="token keyword">unsigned</span> <span class="token keyword">short</span> 	biPlanes<span class="token punctuation">;</span>			<span class="token comment">//固定值1</span>  <span class="token keyword">unsigned</span> <span class="token keyword">short</span> 	biBitCount<span class="token punctuation">;</span>			<span class="token comment">//每个像素的位数</span>  <span class="token keyword">unsigned</span> <span class="token keyword">int</span> 		biCompression<span class="token punctuation">;</span>		<span class="token comment">//压缩方式,BI_RGB(0)为不压缩, BI_BITFIELDS(3)用于16位、32位位图  </span>  <span class="token keyword">unsigned</span> <span class="token keyword">int</span> 		biSizeImage<span class="token punctuation">;</span>		<span class="token comment">//位图全部像素占用的字节</span>  <span class="token keyword">int</span> 				biXpelsPerMeter<span class="token punctuation">;</span>	<span class="token comment">//水平分辨率</span>  <span class="token keyword">int</span> 				biYPelsPerMeter<span class="token punctuation">;</span>	<span class="token comment">//垂直分辨率</span>  <span class="token keyword">unsigned</span> <span class="token keyword">int</span> 		biClrUsed<span class="token punctuation">;</span>			<span class="token comment">//位图使用的颜色数。0代表颜色数为2的biBitCount次方</span>  <span class="token keyword">unsigned</span> <span class="token keyword">int</span> 		biClrImportant<span class="token punctuation">;</span>		<span class="token comment">//重要的颜色数，0代表所有颜色都重要</span>   <span class="token punctuation">}</span>BmpInfoHeader<span class="token punctuation">;</span>  <span class="token comment">/* *函数功能：将bmp图片传入，输出BGR图像，图像方向是正的 *传参：	pSrcData(in)	——输入bmp图像数据 *		pDstData(out)	——输出BGR图像 *		pWidth(out)		——bmp图像的宽 *		pHeight	(out)	——bmp图像的高 * *返回值：成功返回0，失败返回-1 */</span> <span class="token keyword">int</span> <span class="token function">BMPExtractBGR</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span> pSrcData<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> pDstData<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>pWidth<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token operator">*</span>pHeight<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	 BmpInfoHeader BmpInfoHeader<span class="token punctuation">;</span> 	 <span class="token keyword">unsigned</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> height<span class="token punctuation">;</span> 	 <span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">;</span> 	 <span class="token keyword">int</span> offSet<span class="token punctuation">;</span> 	 <span class="token keyword">int</span> RGB24 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	 <span class="token keyword">unsigned</span> <span class="token keyword">short</span> RGB16 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>   	 <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	 ClBitMapFileHeader fHeader<span class="token punctuation">;</span> 	  	 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isNull</span><span class="token punctuation">(</span>pSrcData<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isNull</span><span class="token punctuation">(</span>pDstData<span class="token punctuation">)</span><span class="token punctuation">)</span> 	 <span class="token punctuation">{<!-- --></span> 	  	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"input parameter invalid\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	  	<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 	 <span class="token punctuation">}</span>  	<span class="token comment">//根据前两个字节，判断是不是BMP图片</span> 	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>pSrcData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token char">'B'</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>pSrcData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token char">'M'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token function">printf</span><span class="token punctuation">(</span> <span class="token string">"not a bmp picture.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span>  	<span class="token comment">//获取文件头，要跳过前两个字节</span> 	<span class="token function">memcpy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>fHeader<span class="token punctuation">,</span> pSrcData <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>ClBitMapFileHeader<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	 	 	<span class="token comment">//获取信息头</span> 	<span class="token function">memcpy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>BmpInfoHeader<span class="token punctuation">,</span> pSrcData <span class="token operator">+</span> BMP_FILE_HEADER_LENGTH<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>BmpInfoHeader<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   	width  <span class="token operator">=</span> BmpInfoHeader<span class="token punctuation">.</span>biWidth<span class="token punctuation">;</span> 	height <span class="token operator">=</span> BmpInfoHeader<span class="token punctuation">.</span>biHeight<span class="token punctuation">;</span>  	<span class="token comment">//将宽高信息传递出去</span> 	<span class="token operator">*</span>pWidth <span class="token operator">=</span> width<span class="token punctuation">;</span> 	<span class="token operator">*</span>pHeight <span class="token operator">=</span> height<span class="token punctuation">;</span>  	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"biBitCount = %d, bisize = %d, wxh=%dx%d, bfOffBits=%d, bfSize=%d\n"</span><span class="token punctuation">,</span> \ 				BmpInfoHeader<span class="token punctuation">.</span>biBitCount<span class="token punctuation">,</span> BmpInfoHeader<span class="token punctuation">.</span>bisize<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> fHeader<span class="token punctuation">.</span>bfOffBits<span class="token punctuation">,</span> fHeader<span class="token punctuation">.</span>bfSize<span class="token punctuation">)</span><span class="token punctuation">;</span>  	<span class="token comment">//判断BMP图片像素的位数</span> 	<span class="token keyword">if</span><span class="token punctuation">(</span>BmpInfoHeader<span class="token punctuation">.</span>biBitCount <span class="token operator">==</span> BMP_24_BIT<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span>  		offSet <span class="token operator">=</span> fHeader<span class="token punctuation">.</span>bfOffBits<span class="token punctuation">;</span><span class="token comment">//文件头到BGR数据的偏移量</span> 		 	j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 	<span class="token comment">//读取文件的BRG数据</span> 	<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> height <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span> <span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 			<span class="token function">memcpy</span><span class="token punctuation">(</span>pDstData <span class="token operator">+</span> j <span class="token operator">*</span> width <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> pSrcData <span class="token operator">+</span> offSet <span class="token operator">+</span> i <span class="token operator">*</span> width <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> width <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 			j<span class="token operator">++</span><span class="token punctuation">;</span> 		<span class="token punctuation">}</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>BmpInfoHeader<span class="token punctuation">.</span>biBitCount <span class="token operator">==</span> BMP_8_BIT<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span>  		offSet <span class="token operator">=</span> BMP_FILE_HEADER_LENGTH <span class="token operator">+</span> BmpInfoHeader<span class="token punctuation">.</span>bisize <span class="token operator">+</span> BMP_8_BIT_OFFSET<span class="token punctuation">;</span> 		<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> height <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">--</span><span class="token punctuation">)</span> 		<span class="token punctuation">{<!-- --></span> 		   	<span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> width<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> 		   	<span class="token punctuation">{<!-- --></span>  		    	<span class="token function">memcpy</span><span class="token punctuation">(</span>pDstData <span class="token operator">+</span> count <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> pSrcData <span class="token operator">+</span> BMP_FILE_HEADER_LENGTH <span class="token operator">+</span> BmpInfoHeader<span class="token punctuation">.</span>bisize <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>pSrcData<span class="token punctuation">[</span>offSet <span class="token operator">+</span> i <span class="token operator">*</span> width <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		    	count<span class="token operator">++</span><span class="token punctuation">;</span> 		    <span class="token punctuation">}</span> 		<span class="token punctuation">}</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>BmpInfoHeader<span class="token punctuation">.</span>biBitCount <span class="token operator">==</span> BMP_16_BIT<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span>  	  	<span class="token keyword">if</span><span class="token punctuation">(</span>BmpInfoHeader<span class="token punctuation">.</span>biCompression <span class="token operator">==</span> BI_BITFIELDS<span class="token punctuation">)</span> 	  	<span class="token punctuation">{<!-- --></span>  		   	<span class="token comment">//根据掩码判断是RGB555</span> 		   	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> <span class="token number">54</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> RGB555_RED_MASK<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> <span class="token number">58</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> RGB555_GREEN_MASK<span class="token punctuation">)</span> \ 		    	<span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> <span class="token number">62</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> RGB555_BLUE_MASK<span class="token punctuation">)</span><span class="token punctuation">)</span> 		   	<span class="token punctuation">{<!-- --></span> 		    	<span class="token comment">//提取BGR数据</span> 		    	<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> height <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> 		    	<span class="token punctuation">{<!-- --></span> 			     	<span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> width<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> 			     	<span class="token punctuation">{<!-- --></span> 				      	RGB24 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 				      	RGB16 <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">short</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> BMP_16_BIT_BI_BITFIELDS_OFFSET <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i <span class="token operator">*</span> width <span class="token operator">+</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 				      	RGB24 <span class="token operator">|=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB555_RED_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB555_GREEN_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB555_BLUE_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 				      	<span class="token function">memcpy</span><span class="token punctuation">(</span>pDstData <span class="token operator">+</span> count <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>RGB24<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 				      	count<span class="token operator">++</span><span class="token punctuation">;</span> 			     	<span class="token punctuation">}</span> 		    	<span class="token punctuation">}</span>    			<span class="token punctuation">}</span> 	   		<span class="token comment">//根据掩码判断是RGB565</span> 			<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> <span class="token number">54</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> RGB565_RED_MASK<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> <span class="token number">58</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> RGB565_GREEN_MASK<span class="token punctuation">)</span> \ 			<span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> <span class="token number">62</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> RGB565_BLUE_MASK<span class="token punctuation">)</span><span class="token punctuation">)</span> 			<span class="token punctuation">{<!-- --></span> 				<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> height <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> 				<span class="token punctuation">{<!-- --></span> 					 <span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> width<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> 					 <span class="token punctuation">{<!-- --></span> 					  	RGB24 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 					  	RGB16 <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">short</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> BMP_16_BIT_BI_BITFIELDS_OFFSET <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i <span class="token operator">*</span> width <span class="token operator">+</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 					  	RGB24 <span class="token operator">|=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB565_RED_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB565_GREEN_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB565_BLUE_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 					  	<span class="token function">memcpy</span><span class="token punctuation">(</span>pDstData <span class="token operator">+</span> count <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>RGB24<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 					  	count<span class="token operator">++</span><span class="token punctuation">;</span> 					 <span class="token punctuation">}</span> 				<span class="token punctuation">}</span> 			<span class="token punctuation">}</span>   		<span class="token punctuation">}</span> 		<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>BmpInfoHeader<span class="token punctuation">.</span>biCompression <span class="token operator">==</span> BI_RGB<span class="token punctuation">)</span> 		<span class="token punctuation">{<!-- --></span> 			<span class="token comment">//提取BGR数据</span> 			<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> height <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> 			<span class="token punctuation">{<!-- --></span> 				<span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> width<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> 				<span class="token punctuation">{<!-- --></span> 					RGB24 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 					RGB16 <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">short</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>pSrcData <span class="token operator">+</span> BMP_16_BIT_BI_RGB_OFFSET <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i <span class="token operator">*</span> width <span class="token operator">+</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 					RGB24 <span class="token operator">|=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB555_RED_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB555_GREEN_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>RGB16 <span class="token operator">&amp;</span> RGB555_BLUE_MASK<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 					<span class="token function">memcpy</span><span class="token punctuation">(</span>pDstData <span class="token operator">+</span> count <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>RGB24<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 					count<span class="token operator">++</span><span class="token punctuation">;</span> 				<span class="token punctuation">}</span> 			<span class="token punctuation">}</span> 		<span class="token punctuation">}</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>BmpInfoHeader<span class="token punctuation">.</span>biBitCount <span class="token operator">==</span> BMP_32_BIT<span class="token punctuation">)</span> 	<span class="token punctuation">{<!-- --></span> 		offSet <span class="token operator">=</span> BMP_FILE_HEADER_LENGTH <span class="token operator">+</span> BmpInfoHeader<span class="token punctuation">.</span>bisize<span class="token punctuation">;</span><span class="token comment">//文件头到BGR数据的偏移量</span> 		count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 		<span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> height <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> 		<span class="token punctuation">{<!-- --></span> 			<span class="token keyword">for</span><span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> width<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> 			<span class="token punctuation">{<!-- --></span> 				<span class="token function">memcpy</span><span class="token punctuation">(</span>pDstData <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span>count<span class="token punctuation">,</span> pSrcData <span class="token operator">+</span> offSet <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span><span class="token punctuation">(</span>i <span class="token operator">*</span> width <span class="token operator">+</span> j<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 				count<span class="token operator">++</span><span class="token punctuation">;</span> 			<span class="token punctuation">}</span>   		<span class="token punctuation">}</span> 	<span class="token punctuation">}</span> 	<span class="token keyword">else</span> 	<span class="token punctuation">{<!-- --></span> 		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"not support bmp format\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 	<span class="token punctuation">}</span> 	  	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  </code></pre> <h1> <a id="3_215" rel="nofollow"></a>3、代码说明</h1> <blockquote> <p>(1)BMPExtractBGR()函数功能是从BMP图像中提取出BGR数据，并将图像旋转180度，具体参数含义见注释；<br /> (2)BMPExtractBGR()函数支持8bit、16bit、24bit、32bit的BMP图像格式；<br /> (3)<code>想要能直接编译成可执行程序的源码，可在我的资源里下载，该源码可直接将bmp格式转换成bgr格式</code>；<br /> (3)需要完善的地方：上面的BMPExtractBGR()函数代码太多，可以将8bit、16bit、24bit、32bit的BMP格式分别拆分成单个函数，我不想花时间再调试，如果是要移植到公司的项目中，切记要拆分，不然函数代码这么长会被批斗的。</p> </blockquote> <h1> <a id="4_221" rel="nofollow"></a>4、代码的易错点</h1> <blockquote> <p>(1)在BMP的文件头中前两个字节是’BM’，是BMP图片的特征值，本来在文件头ClBitMapFileHeader结构体中应该用short变量去表示这两个字节，但实际在文件头结构体中将bfType变量注释掉，因为2个字节是没有对齐的，如果不注释掉则会因为结构体的变量对齐导致数据错位；<br /> (2)文件头ClBitMapFileHeader结构体中使用了long型变量，long在32位机器中是4字节，在64位机器中是8字节，上面的代码只能在32位的机器上运行，在64位机器上运行会出错；</p> </blockquote></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3682.htm">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></p>
+                                                <p>下一个：<a href="/html/category/article-3684.htm">Pycharm中pyenv和virtualenv使用详解</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3693.htm" title="@Order的使用与Aop多切面的执行顺序">@Order的使用与Aop多切面的执行顺序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3694.htm" title="Vue el-table实现右键菜单功能_vue.js_">Vue el-table实现右键菜单功能_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3685.htm" title="ForkJoin详解及应用">ForkJoin详解及应用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3716.htm" title="Java和matlab混合编程时Java代码参数不一致的问题">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

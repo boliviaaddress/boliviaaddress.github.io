@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3688.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>设计模式学习笔记装饰器模式及其应用详解 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">设计模式学习笔记装饰器模式及其应用详解</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>装饰器（Decorator）模式：指不改变现有对象结构的情况下，动态地给该对象增加额外功能。</p> <h2 id="一装饰器模式介绍">一、装饰器模式介绍</h2> <p>装饰器模式允许向一个现有的对象添加新的功能，同时不改变其结果。比如Java 中的IO框架中，<code>FileInputStream</code>（处理文件）、<code>ByteArrayInputStream</code>（处理字节数组）、<code>BufferedInputStream</code>（带缓存的处理类）等就是对<code>InputStream</code>进行的功能扩展，这就是装饰器模式的典型应用。比如下面就是以缓存方式读取输入流：</p> <pre><code class="language-java">InputStream inputStream = new BufferedInputStream(new FileInputStream("test.txt")); byte[] data = new byte[128]; while(inputStream.read(data) != -1){     //... }</code></pre> <h3 id="11-装饰器模式结构">1.1 装饰器模式结构</h3> <p>装饰器主要使用组合关系来创建一个装饰对象，用于包裹真实对象，并在保持真实对象的类结构不变的前提下为其提供额外的功能。具体的基本结构如下所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/16f634c1d272c2f78720f8b02dc865d4.jpg" alt="设计模式学习笔记装饰器模式及其应用详解"></p> <ul> <li><code>Component</code>：抽象构件，定义一个抽象接口以规范准备接收附加责任的对象</li> <li><code>ComponentA</code>：具体构件，实现抽象构件，通过装饰角色为其添加一些职责</li> <li><code>Decorator</code>：抽象装饰构件，并包含具体构件的实例</li> <li><code>DecoratorA、DecoratorB</code>：实现抽象装饰构件的具体装饰构件，包含实现抽象装饰的相关方法</li> <li><code>Client</code>：客户端</li> </ul> <h3 id="12-装饰器模式实现">1.2 装饰器模式实现</h3> <p>根据上面的类图可以实现如下代码：</p> <pre><code class="language-java">/**  * @description: 抽象构件角色  * @author: wjw  * @date: 2022/3/31  */ public interface Component {      public void operation(); }  /**  * @description:具体构件角色  * @author: wjw  * @date: 2022/3/31  */ public class ComponentA implements Component{      public ComponentA() {         System.out.println("创建具体构件componentA");     }      @Override     public void operation() {         System.out.println("我是具体构件A的operation方法");     } }  /**  * @description: 抽象装饰  * @author: wjw  * @date: 2022/3/31  */ public class Decorator implements Component{      private Component component;      public Decorator(Component component) {         this.component = component;     }      @Override     public void operation() {         component.operation();     } }  /**  * @description: 具体装饰角色A  * @author: wjw  * @date: 2022/3/31  */ public class DecoratorA extends Decorator{      public DecoratorA(Component component) {         super(component);     }      @Override     public void operation() {         super.operation();         addedFunction();     }      /**      * 增加的额外功能      */     public void addedFunction() {         System.out.println("我是为具体装饰角色A增加额外功能方法addedFunction");     } }  /**  * @description: 具体装饰角色B  * @author: wjw  * @date: 2022/3/31  */ public class DecoratorB extends Decorator{      public DecoratorB(Component component) {         super(component);     }      @Override     public void operation() {         super.operation();         addedFunction();     }      private void addedFunction() {         System.out.println("为具体装饰角色增加额外的功能B");     } }  /**  * @description: 客户端  * @author: wjw  * @date: 2022/3/31  */ public class DecoratiorClient {      public static void main(String[] args) {         Component componentA = new ComponentA();         componentA.operation();         Decorator decoratorA = new DecoratorA(componentA);         decoratorA.operation();     } }</code></pre> <h2 id="二装饰器模式应用场景">二、装饰器模式应用场景</h2> <h3 id="21-java-io-类中的应用">2.1 Java IO 类中的应用</h3> <p>在开始介绍中提到，IO中有很多装饰器的应用：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/040f51929fdfdad40acbd738e44de053.jpg" alt="设计模式学习笔记装饰器模式及其应用详解"></p> <p>如上图所示，比如<code>InputStream</code>后面的若干装饰器类都是对其的功能扩展。</p> <h3 id="22-mybatis-中-cache的应用">2.2 MyBatis 中 Cache的应用</h3> <p>Cache 中除了有数据存储和缓存的基本功能外还有其他附加的 Cache 类，比如有 FifoCache（先进先出）、LruCache（最近最少使用LRU）、SychronizedCache（防止多线程并发访问）的众多附加功能的缓存类。都是装饰器的应用：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/cc20d96d7aea856e638014c7e88036dd.jpg" alt="设计模式学习笔记装饰器模式及其应用详解"></p> <h2 id="参考资料">参考资料</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s/hDJs6iG_YPww7yeiPxmZLw"  target="_blank" rel="nofollow">https://mp.weixin.qq.com/s/hDJs6iG_YPww7yeiPxmZLw</a>?</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://c.biancheng.net/view/1366.html"  target="_blank" rel="nofollow">http://c.biancheng.net/view/1366.html</a></p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3687.htm">Pandas大数据量内存优化</a></p>
+                                                <p>下一个：<a href="/html/category/article-3689.htm">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
+                        <li class="py-2"><a href="/html/category/article-3683.htm" title="C语言实现BMP格式转RGB格式、YUV格式">C语言实现BMP格式转RGB格式、YUV格式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3685.htm" title="ForkJoin详解及应用">ForkJoin详解及应用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

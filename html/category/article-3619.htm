@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3619.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Pandas之数据读取与储存 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Pandas之数据读取与储存</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <h1 id="%E4%B8%80.pandas%E4%B9%8B%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><strong><span style="color:#fe2c24;">一.pandas之读取文件</span></strong></h1> <p>使用Pandas做数据分析时，首先要读取数据。Pandas常用的读取文件有：</p> <ul> <li><span style="color:#fe2c24;">pd.read_csv() 用于读取csv格式文件</span></li> <li><span style="color:#fe2c24;">pd.read_excel() 用于读取xls和xlsx格式文件</span></li> <li><span style="color:#fe2c24;">pd.read_json() 用于读取json格式文件</span></li> <li><span style="color:#fe2c24;">pd.read_table() 用于读取txt格式文件</span></li> </ul> <h2><span style="color:#fe2c24;"><strong>CSV文件读取</strong></span></h2> <pre><code>import pandas as pd  df = pd.read_csv("D:/pandas/TOP250.xlsx")#某csv文件</code></pre> <p>首先，调用pandas模块，通过.read_csv()括号内加文件路径读取文件，展示部分结果图，如下：</p> <p><img fetchpriority="high" decoding="async" alt="" height="497" src="http://img.555519.xyz/uploads/20221229/e1a9630ec7d2988edc04c41fcc44816e.jpg"></p> <p>&nbsp;有时，我们并不会读取所有列或所有行，而是有条件的筛选。这时，我们可以在读取时通过增加代码进行筛选。</p> <h3><strong><span style="color:#fe2c24;">一：指定行列</span></strong></h3> <p><span style="color:#fe2c24;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>norws=n 表示读取前n行</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",nrows=5)</code></pre> <p>上述代码表示读取csv文件的前5行，得到的结果如下图：</p> <p><img decoding="async" alt="" height="398" src="http://img.555519.xyz/uploads/20221229/a2bcbe4abc66e664489cd3a14426c4f2.jpg"></p> <p><strong><span style="color:#fe2c24;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skiprows = n,n可以是数值也可以是列表，表示跳过某些行</span></strong></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",skiprows=3) #表示跳过第三行，读取除了第三行以外的行  df = pd.read_csv("D:/pandas/TOP250.xlsx",skiprows=[i for i in range(1,11)]) #表示跳过前10行  df = pd.read_csv("D:/pandas/TOP250.xlsx",skiprows=lambda x: x % 2) #表示跳过偶数行，读取奇数行</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fe2c24;">&nbsp;&nbsp;<strong>usecols = n,n可以是数值、列表，列表中可以是数值也可以是字段名，表示想要读取的列</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",usecols=[0,2,4]) #上述代码表示读取第一、第三和第五列  #假设第一、第三、第五列的列表名分别为： a,b,c。那么也可以如下代码表达： df = pd.read_csv("D:/pandas/TOP250.xlsx",usecols=['a','b','c'])</code></pre> <p><span style="color:#fe2c24;">&nbsp;&nbsp;&nbsp;<strong>index_col = n,可以是数值、列表，列表中可以是数值也可以是字段名，表示将n中字段设置为索引列</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",index_col=0) #将第一列作为索引列  df = pd.read_csv("D:/pandas/TOP250.xlsx",index_col='a') #若第一列列名为a，也可以表达为上述代码</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="color:#fe2c24;">dtype = {'a':'b',":"},dtype表示字段格式，其中a表示字段名，b表示字段类型</span></strong></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",dtype={'test1':'str','test2':'int'}) #将test1列设置成字符串格式，将test2列设置成int格式</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fe2c24;"><strong>parse_data = ['','',...],parse_data表示将字段转化成日期格式</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",parse_dates=['date_1']) #表示将date_1的格式转化成日期格式 print(df.dtypes) #结果中有：date_1     datetime64[ns] #说明date_1是日期格式</code></pre> <h2><strong><span style="color:#fe2c24;">二.读取指定文件夹下的文件</span></strong></h2> <p>例如：<span style="color:#fe2c24;">在我的test文件夹中有n个相同类型的xlsx文件，我想将其合并，有如下两种方法</span></p> <p><span style="color:#fe2c24;">方法一：</span></p> <pre><code>import pandas as pd import os  path = 'D:/pandas/test/'  #path文件夹具体位置,文件夹下有你所需的多个xlsx文件  filenames = os.listdir(path) #filename为path下所有的文件的文件名，以列表形式输出  filenames = [i for i in filenames if i.lower().endswith('.xlsx)] #这行代码是为了得到以.xlsx为结尾的文件名，并形成列表  lis = []#创建一个新列表，用于放数据  for i in filenames:     lis.append(pd.read_excel(path + filename)) #遍历文件，通过pd.read_excel读取xlsx文件并通过append合并  df1 = pd.concat(lis) #将列表lis合并生成一个文件  df1.to_excel(存放地址,index=False) #保存文件 </code></pre> <p><span style="color:#fe2c24;">方法二：</span></p> <pre><code>import glob import pandas as pd import os  paths = glob.glob("D:/pandas/test/*.xlsx") #表示读取test文件下所有的.xlsx文件，生成列表  data1 = pd.DataFrame() #创建一个新的DataFrame框架  for path in paths:     data = pd.read_excel(path)     data1 = pd.concat([data1,data]) #遍历文件读取并合并，放入data1中，生成一个新的合并后的文件  df.to_excel(存放地址,index=False)</code></pre> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3618.htm">GAIA-IR: GraphScope 上的并行化图查询引擎</a></p>
+                                                <p>下一个：<a href="/html/category/article-3620.htm">java连接mysql8.0.28数据库实例</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3704.htm" title="微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪">微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

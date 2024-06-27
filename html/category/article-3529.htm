@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3529.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Spring Boot框架下实现Excel服务端导入导出 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Spring Boot框架下实现Excel服务端导入导出</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。今天我们就使用纯前对按表格控件带大家了解，如何在Spring Boot框架下实现Excel服务端导入导出。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/d0d2b6a908934cd07b9aadf4a8868bd2.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <h2> <a id="1IDEASpringBoot_4" rel="nofollow"></a><strong>1.IDEA创建SpringBoot项目</strong><br /> </h2> <h3> <a id="11_Spring_Initializr_5" rel="nofollow"></a><strong>1.1 Spring Initializr</strong><br /> </h3> <p>想要在IDEA下快速搭建一个SpringBoot项目，可以使用Spring Initializr工具作为脚手架。</p> <p>进入IDEA后，在左侧菜单中可以找到Plugins，点击后，在上方的搜索框中输入Spring Initializr。</p> <p>之后点击右上角的绿色Install按钮进行安装。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/5b18348cf3c6efc8682730b3e0a0ef37.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>安装完毕后，在New Project 的时候就会多一个Spring Initializr的选项。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/15b7c02795310e580d370c8d2ec9f094.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <h3> <a id="12_SpringBoot__18" rel="nofollow"></a><strong>1.2 SpringBoot 项目的创建</strong><br /> </h3> <p>Project SDK：根据实际应用情况选择用于配置项目所依赖的Java SDK。</p> <p>Choose Spring Initializr Server：选择一个Spring Initializr服务器，一般来说都选择默认的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/09fc5f4e3b84da2b5cbe52722dbb8310.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>GroupId：一般分为多个段，第一段为域，第二段为公司名称。例如：org.apache，com.grapecity。</p> <p>ArtifactId：是项目的唯一标识符，在实际开发中一般对应项目的名称，就是项目根目录的名称。</p> <p>Group Id，Artfact Id是保证项目唯一性的标识，一般来说如果项目打包上传至maven这样的包管理仓库中。在搜索你的项目时，Group Id，Artfact Id是必要的条件。</p> <p>Version：版本号，默认0.0.1-SNAPSHOT。SNAPSHOT代表不稳定的版本，与之相对的有RELEASE。</p> <p>Project type：工程的类型，maven工程还是gradle工程。</p> <p>Language：语言（Java，Kotlin，Groovy）。</p> <p>Packaging：Jar包还是War包。</p> <p>Java version：语法版本，与Project SDK不同，Project SDK是实际用到的JDK。Java version指的是语法版本。一般来说语言特性不能比SDK高。比如SDK版本是11，语法选择8。那么实际项目中只能使用java 8的语法。反之SDK版本是8，语法选11就有问题了。一般情况下都会与SDK保持一致。</p> <p>Project name：项目名称</p> <p>Project description：项目描述</p> <p>Package name：包名</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b9257b620c92ffd3ab7509846dd0cf46.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/a491070f5c4d41bf5277f99056b63179.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>第三部分根据项目的实际需求去配置。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/ee02a63c61205256d42357b3f7397d2f.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>第四部分：</p> <p>设置项目名称与路径。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/c381c0396420b3ab0fd864ff4fd63b3b.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <h2> <a id="2_63" rel="nofollow"></a><strong>2.前端配置</strong><br /> </h2> <p>考虑到导入导出功能需要对Excel具有较高的还原度，这里使用了SpreadJS组件，通过SpreadJS组件的ExcelIO功能，进行Excel的导入与导出。SpreadJS是一款纯前端的组件，与后端完全解耦，可以完美的整合到SpringBoot工程中。</p> <h3> <a id="21__65" rel="nofollow"></a><strong>2.1 前端页面创建</strong><br /> </h3> <p>在static目录下建立index.html文件，用来绘制前端页面。如果用了thymeleaf也可以将文件建立在templates目录中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/0369b2448bc095108504e67c481df341.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <h3> <a id="21_SpreadJS_70" rel="nofollow"></a><strong>2.1 SpreadJS组件引入和初始化</strong><br /> </h3> <p>在header中引入SpreadJS相关的css与js引用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/2754cc0585b11aff63109f088e66f0bf.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>创建SpreadJS对应的DOM对象。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/a5c8ba858638bbd86679d9c1b4c5a7dc.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>在JS中初始化SpreadJS和导入导出Excel相关的ExcelIO对象。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/7300703d65eacc3579ca48606dcfa5ef.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>通过按钮点击进行服务端导入与导出。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/cc6fa170595a7d5353e18b4d30f87a55.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>导入导出事件处理，在事件中发送请求与服务端进行连接。</p> <p>导入原理：</p> <p>将服务端的文件以文件流的形式传输至前端，前端通过ExcelIO将结果导入结果呈现值SpreadJS中，所以导入的传递的参数是一个文件路径。注意该路径是文件在服务端或者工程中的一个路径。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/77bf0de3644293bdfb6c6103be2e0898.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>导出原理:</p> <p>通过SpreadJS ExcelIO的功能将内容导出成Excel的blob流。之后将blob流传至服务器端，在服务器端进行保存Excel文件的操作。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/00fe9bf02058e38a6f8290fcb99d65da.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <h2> <a id="3_105" rel="nofollow"></a><strong>3.后端配置</strong><br /> </h2> <p>创建后端controller，可按照自身项目的包的层级分类进行创建。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/9a752b004df5c8c2138a01d456181788.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>构建服务端的导入导出方法和相关逻辑。</p> <p>服务器端导入：</p> <p>由于前端传入的是一个文件的路径，所以参数这里我们需要一个字符串类型的参数去接收。</p> <p>另外，我们会将流传到前端，所以会将流写到response中，所以参数中还需要response对象，方法本身不需要返回，返回空即可。原理是通过inputStream读取文件后，将其写入response的outputStream中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/a8a12111d3bf94072f414d82b8d4da73.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>导出到服务器：</p> <p>由于前端传入传入的是保存文件的名称以及文件blob文件流。服务器端需要两个参数，String用来接收文件名称，MultipartFile对象用来接收blob文件流。后端接受到文件流之后通过transferTo方法在指定目录下根军传来的fileName转存成新的文件。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b1631e316cfe0004636c6543a7750d9f.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <h2> <a id="4_127" rel="nofollow"></a><strong>4.测试运行</strong><br /> </h2> <p>将工程跑起来之后进入主页面，显示如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b4b776dd635a7404dc5521aa72792b9e.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>点击服务端导入按钮，从服务器端下载指定的Excel文件并打开。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/42f03aa60fbf1738880b0279b5d94c32.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>对该文件进行操作修改并点击服务端导出的按钮。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/10a5c7346557014c0049087eaddd4528.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>之后我们去服务器端的导出路径下查看，发下文件存在，用Excel打开文件后发现，修改后的内容健在并且其他内容显示均无问题。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221230/5d580815ee1954f123d0675dbfd24f20.jpg" alt="Spring Boot框架下实现Excel服务端导入导出"></p> <p>到这里我们就实现了Spring Boot框架下实现Excel服务端导入导出。</p> <h2> <a id="_149" rel="nofollow"></a><strong>拓展阅读</strong><br /> </h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.grapecity.com.cn/blogs/spreadjs-realize-excel-report-automation-from-0"  rel="nofollow">React + Springboot + Quartz，从0实现Excel报表自动化</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.grapecity.com.cn/blogs/spreadjs-three-steps-shopping-cart-with-spreadsheet"  rel="nofollow">电子表格也能做购物车？简单三步就能实现</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.grapecity.com.cn/blogs/spreadjs-construction-of-enterprise-cash-flow-statement"  rel="nofollow">使用纯前端类Excel表格控件SpreadJS构建企业现金流量表</a></p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3528.htm">用JS做一个有开始、暂停、重置的计时器</a></p>
+                                                <p>下一个：<a href="/html/category/article-3530.htm">数据仓库(5)数仓Kimball与Inmon架构的对比</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3683.htm" title="C语言实现BMP格式转RGB格式、YUV格式">C语言实现BMP格式转RGB格式、YUV格式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                        <li class="py-2"><a href="/html/category/article-3674.htm" title="node.js &#8211; 包、express">node.js &#8211; 包、express</a></li>
+                        <li class="py-2"><a href="/html/category/article-3678.htm" title="C++引用以及结构体">C++引用以及结构体</a></li>
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                        <li class="py-2"><a href="/html/category/article-3727.htm" title="vue 实现excel本地预览">vue 实现excel本地预览</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

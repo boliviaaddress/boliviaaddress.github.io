@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3488.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>springboot RestTemplate,访问https实现SSL请求 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">springboot RestTemplate,访问https实现SSL请求</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <div class="article fmt article__content"> <p>一、RestTemplate 简介<br />Spring RestTemplate是Spring提供的用于访问Rest服务的客户端，RestTemplate 提供了多种便捷访问远程Http服务的方法，能够大大提高客户端的编写效率.</p> <p>RestTemplate包含以下几个部分：</p> <ul> <li>HttpMessageConverter 对象转换器:将请求对象转换为具体的数据格式输出，例 <br /> 入:Jaxb2RootElementHttpMessageConverterket提供对xml格式的输入输出支持</li> <li>ClientHttpRequestFactory HTTP请求工厂，默认是JDK的HttpURLConnection，<br /> 可以通过使用ClientHttpRequestFactory指定不同的HTTP请求方式</li> <li>ResponseErrorHandler 异常错误处理</li> <li>ClientHttpRequestInterceptor 请求拦截器</li> </ul> <p>RestTemplate通过HttpEntity添加消息headers </p> <p>二、springboot 通过RestTemplate实现https访问</p> <pre><code>import java.io.InputStream; import java.security.KeyStore; import java.util.ArrayList; import java.util.Collections; import java.util.List;  import javax.net.ssl.HostnameVerifier; import javax.net.ssl.HttpsURLConnection; import javax.net.ssl.KeyManagerFactory; import javax.net.ssl.SSLContext; import javax.net.ssl.SSLSession; import javax.net.ssl.TrustManager;  import org.apache.commons.lang3.StringUtils; import org.apache.http.HttpHost; import org.apache.http.conn.ssl.SSLConnectionSocketFactory; import org.apache.http.impl.client.HttpClientBuilder; import org.apache.http.impl.client.HttpClients; import org.apache.http.ssl.SSLContexts; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.context.properties.ConfigurationProperties; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Conditional; import org.springframework.context.annotation.Configuration; import org.springframework.http.MediaType; import org.springframework.http.client.HttpComponentsClientHttpRequestFactory; import org.springframework.http.converter.json.GsonHttpMessageConverter; import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter; import org.springframework.web.client.RestTemplate;  /**  * service相关配置  *  * @date 2017年3月1日  * @since 1.0.0  */ @Configuration public class ServiceConfigConfiguration {      @Autowired     sslProperties sslProperties ;       /**      * 访问SSL的Template      *      * @throws Exception      */     @Bean("sslRestTemplate")     @Conditional(sslCondition.class)     public RestTemplate tmsRestTemplate() throws Exception {         //新建RestTemplate对象         RestTemplate restTemplate = new RestTemplate();         //判断证书文件地址是否存在         if (StringUtils.isNotEmpty(sslProperties.getKeyfile())) {             //在握手期间，如果URL的主机名和服务器的标识主机名不匹配，则验证机制可以回调此接口的实现                程序来确定是否应该允许此连接             HostnameVerifier hv = new HostnameVerifier() {                 @Override                 public boolean verify(String urlHostName, SSLSession session) {                     return true;                 }             };             HttpsURLConnection.setDefaultHostnameVerifier(hv);             //构建SSL-Socket链接工厂             SSLConnectionSocketFactory ssLSocketFactory = buildSSLSocketFactory("PKCS12",              sslProperties.getKeyfile(),sslProperties.getPassword(),              Lists.newArrayList("TLSv1"), true);             //Spring提供HttpComponentsClientHttpRequestFactory指定使用HttpClient作为底层实现创建 HTTP请求             HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory(                     HttpClients.custom().setSSLSocketFactory(ssLSocketFactory).build()             );             //设置传递数据超时时长             httpRequestFactory.setReadTimeout(sslProperties.getTimeout());             //设置建立连接超时时长             httpRequestFactory.setConnectTimeout(sslProperties.getTimeout());             //设置获取连接超时时长             httpRequestFactory.setConnectionRequestTimeout(tmsProperties.getTimeout());                          restTemplate.setRequestFactory(httpRequestFactory);              // 返回消息头也是text_html,消息格式是XML,添加新的message converter             Jaxb2RootElementHttpMessageConverter messageConverter = new Jaxb2RootElementHttpMessageConverter();             //设置message Converter支持的媒体类型             List&lt;MediaType&gt; finalMediaTypes = new ArrayList&lt;&gt;();             finalMediaTypes.addAll(messageConverter.getSupportedMediaTypes());             finalMediaTypes.add(MediaType.TEXT_HTML);             messageConverter.setSupportedMediaTypes(finalMediaTypes);             restTemplate.setMessageConverters(Lists.newArrayList(messageConverter));          }         return restTemplate;     }      /**      * 构建SSLSocketFactory      *      * @param keyStoreType      * @param keyFilePath      * @param keyPassword      * @param sslProtocols      * @param auth 是否需要client默认相信不安全证书      * @return      * @throws Exception      */     private SSLConnectionSocketFactory buildSSLSocketFactory(String keyStoreType, String keyFilePath,                                                              String keyPassword, List&lt;String&gt; sslProtocols, boolean auth) throws Exception {         //证书管理器，指定证书及证书类型         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());         //KeyStore用于存放证书，创建对象时 指定交换数字证书的加密标准         KeyStore keyStore = KeyStore.getInstance(keyStoreType);              InputStream inputStream = resourcePatternResolver.getResource(keyFilePath).getInputStream();         try {             //添加证书             keyStore.load(inputStream, keyPassword.toCharArray());         } finally {             inputStream.close();         }         keyManagerFactory.init(keyStore, keyPassword.toCharArray());                  SSLContext sslContext = SSLContext.getInstance("SSL");         if (auth) {             // 设置信任证书（绕过TrustStore验证）             TrustManager[] trustAllCerts = new TrustManager[1];             TrustManager trustManager = new AuthX509TrustManager();             trustAllCerts[0] = trustManager;             sslContext.init(keyManagerFactory.getKeyManagers(), trustAllCerts, null);             HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());         } else {             //加载证书材料，构建sslContext             sslContext = SSLContexts.custom().loadKeyMaterial(keyStore, keyPassword.toCharArray()).build();         }          SSLConnectionSocketFactory sslConnectionSocketFactory =                 new SSLConnectionSocketFactory(sslContext, sslProtocols.toArray(new String[sslProtocols.size()]),                         null,                         new HostnameVerifier() {                             // 这里不校验hostname                             @Override                             public boolean verify(String urlHostName, SSLSession session) {                                 return true;                             }                         });          return sslConnectionSocketFactory;     } }</code></pre> <p>AuthX509TrustManager 证书信任管理器类就是实现了接口X509TrustManager的类。可以自己实现该接口，信任我们指定的证书</p> <pre><code>public class AuthX509TrustManager implements javax.net.ssl.TrustManager, javax.net.ssl.X509TrustManager {     public java.security.cert.X509Certificate[] getAcceptedIssuers() {         return null;     }          public void checkServerTrusted(java.security.cert.X509Certificate[] certs, String authType)             throws java.security.cert.CertificateException {         return;     }      public void checkClientTrusted(java.security.cert.X509Certificate[] certs, String authType)             throws java.security.cert.CertificateException {         return;     } } </code></pre> </div></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3487.htm">如何保证数据库与redis缓存数据一致性</a></p>
+                                                <p>下一个：<a href="/html/category/article-3489.htm">HTML中schema.org SiteNavigationElement的正确用法是什么？</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3708.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3674.htm" title="node.js &#8211; 包、express">node.js &#8211; 包、express</a></li>
+                        <li class="py-2"><a href="/html/category/article-3685.htm" title="ForkJoin详解及应用">ForkJoin详解及应用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3678.htm" title="C++引用以及结构体">C++引用以及结构体</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

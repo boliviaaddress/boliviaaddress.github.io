@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3491.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Apache Kafka消息传递可靠性分析 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Apache Kafka消息传递可靠性分析</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p><span style="font-size:14px">如果MQ没有类似数据库事务结构和保证，是不可能达到消息投递100%可靠的，极端情况下消息投递要么丢失或重复。</span></p> <p><span style="font-size:14px">下面咋们</span><span style="font-size:14px">从producer，broker，consumer的角度</span><span style="font-size:14px">分析一下Kafka中会出现哪些情况：</span></p> <h1><span style="font-size:18px">1.producer发送消息到Broker</span></h1> <p><span style="font-size:14px"><img fetchpriority="high" decoding="async" src="http://img.555519.xyz/uploads3/20220821/ad0ce1e050c5c8616af17d8ba9999253.jpg" alt="Apache Kafka消息传递可靠性分析" width="414" height="224"><br /></span></p> <p><span style="font-size:14px">目前生产者发送消息(</span><span style="font-size:14px">request.required.acks</span><span style="font-size:14px">)有三种方式。</span></p> <p class="p1" style="font-size:14px"><span style="font-size:14px">acks =</span><span class="s1">0</span>: producer不会等待broker发送ack ，因为发送消息网络超时或broker crash(1.Partition的Leader还没有commit消息 2.Leader与Follower数据不同步)，既有可能丢失也可能会重发。</p> <p class="p1" style="font-size:14px"><span style="font-size:14px">acks =</span><span class="s1">1</span>: 当leader接收到消息之后发送ack，丢会重发，丢的概率很小</p> <p class="p1" style="font-size:14px">acks = -1: 当所有的follower都同步消息成功后发送ack. &nbsp;丢失消息可能性比较低。</p> <p class="p1" style="font-size:14px"></p> <h1><span style="font-size:18px">2.Consumer从Broker拉取消息</span></h1> <p class="p1"><span style="font-size:14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220821/2e667fd0a8fd1ecc3566c10687aecfba.jpg" alt="Apache Kafka消息传递可靠性分析" width="412" height="224"><br /></span></p> <p class="p1" style="font-size:14px">Kafka中有两种consumer接口，分别为Low<span style="font-size:14px">-level API</span>和High-level<span style="font-size:14px">API</span></p> <p class="p1" style="font-size:14px">(1).<span style="font-size:14px">Low</span><span style="font-size:14px">-level API &nbsp;SimpleConsumer</span></p> <p class="p1" style="font-size:14px"><span style="font-size:14px"></span></p> <p class="p1"><span style="font-size:14px">这套接口比较复杂的，使用者必须要考虑很多事情，优点就是对Kafka可以有完全的控制。</span></p> <p class="p1">(2).<span style="font-size:14px">High-level</span><span style="font-size:14px">API&nbsp;ZookeeperConsumerConnector</span></p> <p class="p1"><span style="font-size:14px"></span></p> <p class="p1"><span style="font-size:14px">High-level&nbsp;API使用比较简单，已经封装了对partition和offset的管理，默认是会定期自动commit offset，这样可能会丢数据的，因为consumer可能拿到数据没有处理完crash。 High-level API接口的特点，自动管理，使用简单，但是对Kafka的控制不够灵活。</span></p> <p class="p1"></p> <h1><span style="font-size:18px">3. Broker分析</span></h1> <p class="p1"> <p class="p1"><span style="font-size:14px">&nbsp; &nbsp; (1). 对于broker，落盘的数据，除非磁盘坏了，一般不会丢的。</span></p> <p class="p1"><span style="font-size:14px">&nbsp; &nbsp; (2). &nbsp;对于内存脏(没有flush磁盘)数据，broker重启会丢.<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 可以通过log.flush.interval.messages和log.flush.interval.ms来配置flush间隔，interval大丢的数据多些，小会影响性能<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 但在0.8.x版本以后，可以通过replica机制保证数据不丢，代价就是需要更多资源，尤其是磁盘资源，kafka当前支持GZip和Snappy压缩，来缓解这个问题。<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 是否使用replica取决于在可靠性和资源代价之间的平衡。</span></p> <p></p> <p class="p1"></p> <p class="p1"><span style="font-size:18px; color:#009900">总结</span></p> <p class="p1"> <p class="p1"><span style="font-size:14px">Kafka只是能保证at-least once消息语义，即数据是可能重复的，这个在应用上需要可以容忍，<br /> 对于Kafka consumer，一般情况下推荐使用high-level API接口，最好不要直接使用low-level API，自己写起来比较麻烦和困难。</span></p> <p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3490.htm">vue项目模拟假数据</a></p>
+                                                <p>下一个：<a href="/html/category/article-3492.htm">java cron 每100分钟执行一次</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3679.htm" title="Vuex大全">Vuex大全</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-3708.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

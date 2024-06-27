@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3586.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>C++逆向 可变参数Hook - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">C++逆向 可变参数Hook</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#c%E9%80%86%E5%90%91-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0hook" rel="nofollow">C++逆向 可变参数Hook</a> <ul> <li><a href="#0x00-%E5%89%8D%E8%A8%80" rel="nofollow">0x00 前言：</a></li> <li><a href="#0x01-c%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0" rel="nofollow">0x01 C++可变参数：</a> <ul> <li><a href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%AE%80%E4%BB%8B" rel="nofollow">可变参数简介</a></li> <li><a href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98" rel="nofollow">可变参数代码实战</a></li> </ul> </li> <li><a href="#0x02-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90c%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E5%8E%9F%E7%90%86" rel="nofollow">0x02 逆向分析C++可变参数原理</a></li> <li><a href="#0x03-printf-hook%E5%AE%9E%E6%88%98" rel="nofollow">0x03 printf Hook实战</a></li> <li><a href="#pwn%E8%8F%9C%E9%B8%A1%E5%AD%A6%E4%B9%A0%E5%B0%8F%E5%88%86%E9%98%9F" rel="nofollow">Pwn菜鸡学习小分队</a></li> </ul> </li> </ul> </div> <h1 id="c逆向-可变参数hook">C++逆向 可变参数Hook</h1> <h2 id="0x00-前言">0x00 前言：</h2> <p>我们在做逆向分析的时候，经常会需要去Hook一个程序的日志输出函数。</p> <p>而这种日志输出函数一般参数都不确定，这就会引起一个问题。我们如何知道参数个数？如何知道他有哪些参数呢？</p> <h2 id="0x01-c可变参数">0x01 C++可变参数：</h2> <h3 id="可变参数简介">可变参数简介</h3> <p>在C++中，可变参数的函数定义可以写成如下格式。用<code>...</code>来声明可变参数。</p> <pre><code class="language-c++">void test(int a,int b,...) {     //Code... }</code></pre> <p>在调用可变参数的函数时，可以在后面不断添加参数，例如。</p> <pre><code class="language-c++">test(1,2,3,4,5,"hello","test",6);</code></pre> <h3 id="可变参数代码实战">可变参数代码实战</h3> <p>那么回归正题，test函数里如何知道它传进来的后面所有参数个数呢？</p> <p>这就需要用到<code>stdarg.h</code>头文件中的几个关键字了<code>va_list</code>、<code>va_start</code>、<code>va_end</code>。</p> <pre><code class="language-c++">#include &lt;stdio.h&gt; #include &lt;stdarg.h&gt; void test(int a,int b,...) { 	va_list      arg_ptr;//定义可变参数指针 	va_start(arg_ptr,b); //b为最后一个固定参数     printf("Address = %p",arg_ptr);//将arg_ptr的地址进行输出。 	va_end(arg_ptr);     //清空可变参数指针 } int main(int argc,char *argv[]) {     test(1,2,3,4,5,"hello","test,6"); }</code></pre> <ol> <li>首先va_list定义了一个可变参数的指针。</li> <li>va_start函数传入，可变参数指针和最后一个固定参数，传出引用可变参数指针。</li> <li>输出可变参数指针地址。</li> <li>清空可变参数指针内存空间。</li> </ol> <h2 id="0x02-逆向分析c可变参数原理">0x02 逆向分析C++可变参数原理</h2> <p>将上面的代码用VC6编译出来后进行调试分析。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0b8a9f00061708b346d6d42e81869ff1.jpg" alt="C++逆向 可变参数Hook"></p> <p>找到特征。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/a96499674b657840565bbc966956a0f1.jpg" alt="C++逆向 可变参数Hook"></p> <p>在汇编代码中，定位到main函数。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c17c47a20873b4234c21907ec594ee5b.jpg" alt="C++逆向 可变参数Hook"></p> <p>接着在汇编处<code>call va_arg.401005</code>处下一个断点。可以看到他将参数一个个push到了堆栈中。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cc49f155e4be2c856188919bc96787dd.jpg" alt="C++逆向 可变参数Hook"></p> <p>接着按<code>F7</code>跟入<code>test</code>函数。</p> <p>通过对汇编代码的分析，我大概知道了<code>va_start函数()</code>为什么要将最后一个固定参数传入。因为他需要用最后一个固定参数在堆栈中进行偏移的计算，计算出可变参数的地址。</p> <p>遍历该堆栈，当遍历到的值是入口点，说明可变参数已经遍历完成。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/52c724f7390e2b80d48d8afb2b150fd4.jpg" alt="C++逆向 可变参数Hook"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/8fae5c40ac348f30e8719cdf1ca66131.jpg" alt="C++逆向 可变参数Hook"></p> <h2 id="0x03-printf-hook实战">0x03 printf Hook实战</h2> <p>这里我随便选了一个系统的可变参数函数，<code>printf</code>可以将格式化后的字符串进行输出，符合我们可变参数函数的要求。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/218d1896d7e1434fd8e3f5c84b0a9df9.jpg" alt="C++逆向 可变参数Hook"></p> <p></p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3585.htm">python自动化系列之使用openpyxl读写Excel</a></p>
+                                                <p>下一个：<a href="/html/category/article-3587.htm">vue原生方法自定义右键菜单_vue.js_</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3679.htm" title="Vuex大全">Vuex大全</a></li>
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3476.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>JAVA生成指定位数不重复的随机数，随机数含0-9、A-Z - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">JAVA生成指定位数不重复的随机数，随机数含0-9、A-Z</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>琢磨了一晚上，就为了写一个“不重复的随机码生成函数”，生成格式包含0-9，a-z。</p> <p>头脑风暴，异想天开，写下了如下算法，看上去很高大上的一个随机生成方法。</p> <p>原理先产生一个UUID，再根据UUID生成一个随机数，UUID，不重复嘛。一测试，坑爹了，生成100万条长度为4的随机码，重复率达到25%，傻眼了。</p> <pre><code class="language-java">/**  * 随机码生成  * @author Mo  *   * @param length 随机码长度  * @return  */ public static String random1(int length){ 	/* 	 * 这里直接数字代替，没用uuid.length() 	 * */ 	String uuid = UUID.randomUUID().toString().replace("-", ""); 	 	int len = uuid.length(); 	 	/*定义随机码字符串变量，初始化为""*/ 	String random = ""; 	 	/* 	 * 循环截取UUID 	 * len/length 每次循环截取的字符串长度 	 * len%length 如果出现32长度除不尽的情况，取余数 	 * */ 	int subLen = len/length; 	int remainder = len%length; 	 	/*定义substring的两个参数*/ 	int start = 0,end = 0; 	for(int i=0;i&lt;length;i++){ 		/* 		 * 计算start和end的值 		 * 这里涉及两种方法，一种是除不尽的时候，将截取长度分散到头部，一种是分散到尾部 		 *  		 * uuid的前部分是时间戳构成的，因此前部分截取越少，重复率越底 		 * 固本方法采用了将多余的部分分散到尾部 		 * */ 		/*分散到尾部，如length为7的时候4,4,4,4,5,5,5*/ //			end = start + (length-i &lt;= remainder ? 1 : 0)+subLen; 		/*分散到头部，如length为7 的时候5,5,5,5,4,4,4*/ 		end = start + (i &lt; remainder ? 1 : 0)+subLen; 		/*截取到的字符串*/ 		String code = uuid.substring(start,end); 		/*对所截取的长度进行16位求和*/ 		int count = 0; 		for(char c : code.toCharArray()){ 			count += Integer.valueOf(String.valueOf(c),16); 		} 		/*将求和结果转化成36位，并增加到随机码中，36位包含了0-9a-z*/ 		random += Integer.toString(count%36, 36); 		start = end; 	} 	/*返回随机码*/ 	return random; }</code></pre> <p>泡杯咖啡，清醒一下，随机码生成函数2应运而生，小学生（入门级程序员）都能看懂。经过测试，生成100万条长度4的随机码，重复率也在25%左右。</p> <p><span style="color:#FF0000"><strong>推荐方法：</strong></span></p> <pre><code class="language-java">/**  * 随机码生成  * @author Mo  *   * @param length  * @return  */ public static String random2(int length){ 	String random = ""; 	/*随机数函数*/ 	java.util.Random r=new java.util.Random(); 	for(int i = 0;i&lt;length;i++){ 		/*生成36以内的随机数，不含36，并转化为36位*/ 		random += Integer.toString(r.nextInt(36), 36); 	} 	return random; }</code></pre> <p>事实证明，最复杂的方法并不是最好的方法，程序开发跟其他的事情一样，不要画蛇添足，时间浪费了，性能浪费了，还得不到好的结果。当然，多尝试是对的。</p> <p>事后想想，既然是随机生成，又要控制长度，长度为4，又怎么会出现不重复的数字呢。当然，将长度调整到8的时候，重复率基本没有，这个没有也不能绝对，只是说概率降低了而已。</p> <p><span style="color:#009900">总结：要生成不重复的随机码，必经要经过数据验证，拿新生成的随机码去与历史生成数据对比，如果已存在，则舍弃重新生成。如果对长度没要求，可以直接采用UUID，UUID是国际通用的不重复的串，不过长度达到了36位之多。</span></p> <p>以下提供一个自写随机码测试函数：</p> <pre><code class="language-java">public static void main(String args []){ 	Set&lt;String&gt; set = new HashSet&lt;String&gt;(); 	int times = 1000000; 	for(int i = 0 ;i&lt;times;i++){ 		String random = random1(8); 		set.add(random); 	} 	System.out.println("重复了："+(times-set.size())+"次"); }</code></pre> <p> 关于java的更多交流，请给我留言，简单的问题，也可以很复杂化，只有更深入的去尝试，才能更深刻的理解每一个细节问题。<br />  </p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3475.htm">Vue3+Element plus项目搭建</a></p>
+                                                <p>下一个：<a href="/html/category/article-3477.htm">Django获取当前页面url</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3692.htm" title="创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)">创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

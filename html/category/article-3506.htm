@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3506.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>mysql数据库锁MDL锁的解释_在线工具 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">mysql数据库锁MDL锁的解释_在线工具</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<h1 id="1背景">1、背景</h1> <p>在我们系统中有一张表它的查询概率非常高。最近有个需求，需要对这个表增加一个字段，然而在增加字段的时候发现系统中有多个业务出现了超时操作，那么这个是什么原因导致的呢？经过查阅资料发现是数据库的<strong>MDL锁+事务导致</strong>的。</p> <h1 id="2什么是mdl锁">2、什么是MDL锁</h1> <p>MDL锁属于<strong>表级别的元数据锁</strong>。表级别锁分为数据锁和元数据锁，通常我们说的加锁一般指的是加的数据锁。跟数据锁一样，元数据锁也分读锁和读写锁。</p> <p>MDL不需要显示使用，在进行表操作时会自动加上。当对表进行增删改查时，会自动加上MDL读锁；当要对表进行加减字段的结构修改时，会自动加上MDL写锁。</p> <ul> <li>读锁不互斥，意味着可以多个线程同时对一张表进行增删改查的操作。</li> <li>写锁独占，进行结构修改前，要先等待其他所有的MDL锁释放了才能获取到MDL写锁。获取到写锁后，在写锁释放前，其他线程无法获取到MDL读锁和写锁。也就是说，修改一个表的结构过程中，会阻塞其他线程对表的操作。</li> </ul> <h1 id="3mdl锁的必要性">3、MDL锁的必要性</h1> <p>MDL锁的存在，其实是为了保证数据的一致性。想象一下，假如没有MDL锁，一个查询在遍历表数据的过程中，另外一个线程执行了<code>ALTER TABLE t DELETE COLUMN 'col_1'</code>把<code>col_1</code>这一列删掉了，那查询结果就乱了，结果中是否应该有这一列数据？</p> <h1 id="4举例说明">4、举例说明</h1> <p>✅ ：表示正常往下执行</p> <p>❌ ：表示卡住了，即无法往下执行。</p> <table> <thead> <tr> <th>事物一</th> <th>事物二</th> <th>事物三</th> </tr> </thead> <tbody> <tr> <td>start transaction;✅ 1️⃣</td> <td></td> <td></td> </tr> <tr> <td>select * from customer;✅2️⃣</td> <td>alter table customer add column_4 int null;❌3️⃣</td> <td></td> </tr> <tr> <td></td> <td></td> <td>select * from customer;❌4️⃣</td> </tr> <tr> <td>commit;✅5️⃣</td> <td>✅6️⃣</td> <td>✅7️⃣</td> </tr> </tbody> </table> <p><strong>解释：</strong></p> <p>步骤 1️⃣2️⃣正常执行。执行步骤2️⃣时，会申请表<code>customer</code>的<code>MDL的SHARED_READ锁</code>。</p> <p>步骤3️⃣会卡住，因为此时会申请表<code>customer</code>的<code>MDL的EXCLUSIVE锁</code>，但是事物一的事物没有提交，此时是无法申请到<code>EXCLUSIVE</code>锁，因为它们是互斥的。</p> <p>步骤4️⃣也会卡住，因为<code>EXCLUSIVE</code>锁和<code>SHARE_READ</code>锁是互斥的，且<code>EXCLUSIVE</code>锁的优先级更高，所以步骤4️⃣也会卡住。</p> <p>步骤5️⃣事物提交，释放表的<code>SHARE_READ</code>锁，之后就可以执行6️⃣和7️⃣的操作了。</p> <p>如果先执行事务二，在执行事务三，则是可以成功的，因为alter数据ddl语句，和事物无关。</p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3505.htm">vue @blur 和 .trim()</a></p>
+                                                <p>下一个：<a href="/html/category/article-3507.htm">聊聊分布式一致性算法协议 Paxos</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3685.htm" title="ForkJoin详解及应用">ForkJoin详解及应用</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

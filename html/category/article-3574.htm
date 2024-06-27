@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3574.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>二、Kotlin标准函数和静态函数 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">二、Kotlin标准函数和静态函数</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h4> <a id="1withrunapply_0" rel="nofollow"></a>1、标准函数with、run和apply</h4> <pre><code>let : 函数，配合?.进行辅助判空处理 with :  连续调用同一个对象的多个方法，让代码变得更加简洁 </code></pre> <pre><code class="prism language-kotlin"> <span class="token keyword">val</span> list <span class="token operator">=</span> <span class="token function">listOfNotNull</span><span class="token punctuation">(</span><span class="token string">"apple"</span><span class="token punctuation">,</span><span class="token string">"banana"</span><span class="token punctuation">,</span><span class="token string">"orange"</span><span class="token punctuation">,</span><span class="token string">"li"</span><span class="token punctuation">)</span>     <span class="token comment">//正常处理</span>     <span class="token keyword">val</span> stringBuilder <span class="token operator">=</span> <span class="token function">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     stringBuilder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit.\n"</span><span class="token punctuation">)</span>     <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> list<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         stringBuilder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">".\n"</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span>     stringBuilder<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit end.\n"</span><span class="token punctuation">)</span>     <span class="token keyword">val</span> result <span class="token operator">=</span> stringBuilder<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"------------------------with----------------------------"</span><span class="token punctuation">)</span>     <span class="token comment">//with函数</span>     <span class="token keyword">val</span> results <span class="token operator">=</span> <span class="token function">with</span><span class="token punctuation">(</span><span class="token function">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit.\n"</span><span class="token punctuation">)</span>         <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> list<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token function">append</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">".\n"</span><span class="token punctuation">)</span>         <span class="token punctuation">}</span>         <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit end.\n"</span><span class="token punctuation">)</span>         <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span>     <span class="token function">println</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span> </code></pre> <pre><code>run : 和with用法场景非常类似 </code></pre> <pre><code class="prism language-kotlin">  <span class="token keyword">val</span> result1 <span class="token operator">=</span> <span class="token function">StringBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">run</span> <span class="token punctuation">{<!-- --></span>         <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit.\n"</span><span class="token punctuation">)</span>         <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> list<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token function">append</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">".\n"</span><span class="token punctuation">)</span>         <span class="token punctuation">}</span>         <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit end.\n"</span><span class="token punctuation">)</span>         <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span> </code></pre> <pre><code>apply:和run类似，在对象上调用，只能有一个Lambda表达式，也会在Lambda表达式中提供调用对象的上下文，无法指定返回值 </code></pre> <pre><code class="prism language-kotlin">    <span class="token keyword">val</span> result2 <span class="token operator">=</span> <span class="token function">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{<!-- --></span>         <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit.\n"</span><span class="token punctuation">)</span>         <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> list<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token function">append</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">".\n"</span><span class="token punctuation">)</span>         <span class="token punctuation">}</span>         <span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"start eat fruit end.\n"</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span>     <span class="token function">println</span><span class="token punctuation">(</span>result2<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <pre><code>Android中跳转使用 </code></pre> <pre><code class="prism language-kotlin">    <span class="token keyword">companion</span> <span class="token keyword">object</span><span class="token punctuation">{<!-- --></span>         <span class="token keyword">fun</span> <span class="token function">gotoActivity</span><span class="token punctuation">(</span>context<span class="token operator">:</span> Context <span class="token punctuation">,</span> <span class="token keyword">data</span> <span class="token operator">:</span> String<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token keyword">val</span>  intent <span class="token operator">=</span> <span class="token function">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>SecondActivity <span class="token operator">::</span> <span class="token keyword">class</span><span class="token punctuation">.</span>java<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span> <span class="token punctuation">{<!-- --></span>                  <span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"data1"</span><span class="token punctuation">,</span><span class="token keyword">data</span><span class="token punctuation">)</span>                 <span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"data2"</span><span class="token punctuation">,</span><span class="token keyword">data</span><span class="token punctuation">)</span>                 <span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"data3"</span><span class="token punctuation">,</span><span class="token keyword">data</span><span class="token punctuation">)</span>                 <span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"data4"</span><span class="token punctuation">,</span><span class="token keyword">data</span><span class="token punctuation">)</span>                 <span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"data5"</span><span class="token punctuation">,</span><span class="token keyword">data</span><span class="token punctuation">)</span>             <span class="token punctuation">}</span>             context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> </code></pre> <h4> <a id="2_71" rel="nofollow"></a>2、静态方法</h4> <pre><code>静态方法又叫类方法，是那种不用创建实例就能调用的方法，在java中，用static修饰的方法就是静态方法，在Kotlin中，如果是定义工具类，就建议使用单例类来实现相关方法 </code></pre> <pre><code class="prism language-kotlin"><span class="token keyword">object</span> Utils <span class="token punctuation">{<!-- --></span>     <span class="token keyword">fun</span> <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"静态方法"</span><span class="token punctuation">)</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>   <span class="token comment">//调用</span>    Utils<span class="token punctuation">.</span><span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> </code></pre> <pre><code>因为使用单例类，会使所有的方法变成静态方法，如果一个类中只需要一个方法变成单例模式，需要在这个方法外面包companion object这个函数，就实现单例类了 </code></pre> <pre><code class="prism language-kotlin">    <span class="token keyword">companion</span> <span class="token keyword">object</span><span class="token punctuation">{<!-- --></span>         <span class="token keyword">fun</span> <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"静态方法"</span><span class="token punctuation">)</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> </code></pre> <pre><code>companion object这个关键字会在类中内部创建一个伴生类，而doAction就是定义在伴生类里面的实例方法。所以，kotlin中没有直接定义静态方法的关键字，但是提供了一些语法特性来支持类似静态方法的调用的写法 </code></pre> <h4> <a id="3_96" rel="nofollow"></a>3、静态方法实现</h4> <pre><code>两种方式;注解和顶层方法 1）注解 上述的方法，都无法在java中以静态方法方式调用，如果在 companion object中的静态方法上加上@JvmStatic注解，kotlin编译器就能编译成真正的静态方法 </code></pre> <pre><code class="prism language-kotlin">	<span class="token comment">// @JvmStatic 只能加载单例类和companion object的方法上，如果加在普通方法上，会报错</span>     <span class="token keyword">companion</span> <span class="token keyword">object</span><span class="token punctuation">{<!-- --></span>         <span class="token annotation builtin">@JvmStatic</span>         <span class="token keyword">fun</span> <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"静态方法"</span><span class="token punctuation">)</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> </code></pre> <pre><code>2）顶层方法 	直接创建File类，在里面定义方法 	New--Kotlin--输入类名--选择File--OK </code></pre> <pre><code class="prism language-kotlin"> <span class="token keyword">fun</span> <span class="token function">doAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"静态方法"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>  <span class="token keyword">fun</span> <span class="token function">doAction1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"静态方法"</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> </code></pre> <pre><code>在Kotlin方法中，直接可以调用，在java中，需要类名.方法调用 </code></pre> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3573.htm">java多线程[5]：信号量(Semaphore)</a></p>
+                                                <p>下一个：<a href="/html/category/article-3575.htm">C ++中二进制矩阵的最短路径</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3704.htm" title="微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪">微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪</a></li>
+                        <li class="py-2"><a href="/html/category/article-3683.htm" title="C语言实现BMP格式转RGB格式、YUV格式">C语言实现BMP格式转RGB格式、YUV格式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

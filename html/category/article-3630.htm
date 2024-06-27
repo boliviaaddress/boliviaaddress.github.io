@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3630.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>模拟器 教你如何用python制作随机点名器 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">模拟器 教你如何用python制作随机点名器</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>老师在上课的时候经常需要点名回答问题，但是遇到选择困难症，可以说非常尴尬。。。</p> <p></p> <p>因此，我开发了一款随机点名器，可以帮助点名：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230207/3c0dcf7003007bf64f16c72428514ce3.jpg" alt="模拟器 教你如何用python制作随机点名器"></p> <p>&nbsp;首先我们展示一下效果，先在database.csv文件中存放一些人名信息：</p> <p style="text-align:center;"><img decoding="async" src="http://img.555519.xyz/uploads/20230207/eb0560bb8d117310ad213843d3af57cb.jpg" alt="模拟器 教你如何用python制作随机点名器"></p> <p>&nbsp;将该csv文件存放到和py文件一个目录的文件夹里：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230207/458feb1ebf38f1565d01ffb7eb5d4594.jpg" alt="模拟器 教你如何用python制作随机点名器"></p> <p>&nbsp;接下来展示效果：</p> <div class="csdn-video-box">  <iframe id="Zwa96Cxs-1642987944469" src="https://live.csdn.net/v/embed/184795" allowfullscreen="true" data-mediaembed="csdn"></iframe></p> <p>随机点名器</p> </div> <p>可以看到，每次可以随机选取一个人的名字，而且不会重复哦~~~</p> <p>那么这个软件是如何实现的呢？</p> <p>全局变量：</p> <pre><code class="language-python">MAINLIST=[] YYY=None</code></pre> <p>界面代码：</p> <pre><code class="language-python">class basedesk():#底板     def __init__(self, master):         global YYY         self.master = master         self.master.title("随机点名系统")         self.master.configure(bg='#B1FFF9')         self.master.geometry("1370x730")         YYY=mainwindow(self.master) class mainwindow():#主界面     def __init__(self, master):         self.master = master         data_name = os.path.join(os.path.dirname(__file__), 'database.csv')         with open(data_name) as f:             f_csv=csv.reader(f)             self.data=[]             for row in f_csv:                 self.data.append(row)         self.condition=0         self.i = 0         self.j=0         self.stop_check = False         self.master.name_label = tk.Label(self.master, text="姓名：", font=("Helvetic", 30, "bold"), relief="raised",cursor="heart").place(x=10,y=10)         self.master.picname_entry = tk.Entry(self.master,font=("Calibri",80),justify='center')         self.master.picname_entry.place(x=150, y=10, width=900, height=450)         self.master.picname_entry.insert(0,"准备点名")         self.master.submit_btn = tk.Button(self.master, text="开始", font=("Helvetic", 30, "bold"), bg='lightgreen',command=self.transformer)         self.master.submit_btn.place(x=50, y=600)         self.master.stop_btn = tk.Button(self.master, text="退出", font=("Helvetic", 30, "bold"), bg='red',command=self.stop)         self.master.stop_btn.place(x=200, y=600)         self.master.developername_label=tk.Label(self.master,text='',font=("Helvetic",20, "bold"),bg='#B1FFF9').place(x=900,y=600)         self.master.already_label=tk.Label(self.master,text='已点姓名：',font=("Helvetic",20, "bold"),bg='#B1FFF9').place(x=1100,y=10)         self.window3 = tk.Frame(self.master, bg='#63F034')         self.window3.place(x=1100, y=60, width=200, height=470)         self.window3.xscrollbar = Scrollbar(self.window3, orient=HORIZONTAL)         self.window3.yscrollbar = Scrollbar(self.window3)         self.window3.submitted_listbox = tk.Listbox(self.window3)         self.window3.xscrollbar.pack(side=BOTTOM, fill=X)         self.window3.yscrollbar.pack(side=RIGHT, fill=Y)         self.window3.submitted_listbox.place(x=0, y=0, width=182, height=452)         self.window3.xscrollbar.config(command=self.window3.submitted_listbox.xview)         self.window3.yscrollbar.config(command=self.window3.submitted_listbox.yview)         self.window3.submitted_listbox.config(xscrollcommand=self.window3.xscrollbar.set, yscrollcommand=self.window3.yscrollbar.set)</code></pre> <p>&nbsp;退出键功能逻辑：</p> <pre><code class="language-python">    def stop(self):         root.destroy()</code></pre> <p>&nbsp;选取姓名功能逻辑群</p> <pre><code class="language-python">    def different(self,):         self.master.picname_entry.delete(0, END)         self.master.picname_entry.insert(0, random.choice(self.data))     def factory1(self):         self.different()         self.i += 1         self.j += 1         if self.i == len(self.data):             self.i = 0         if self.stop_check==True :             self.factory2()             self.stop_check = False         else:             t = Timer(0.05, self.factory1)             t.start()     def factory2(self):         self.master.picname_entry.delete(0, END)         while True:             choosed=random.choice(self.data)             if choosed not in MAINLIST:                 break         MAINLIST.append(choosed)         self.window3.submitted_listbox.delete(0,END)         for i in MAINLIST:             self.window3.submitted_listbox.insert(END,i)         self.master.picname_entry.insert(0, i)         self.master.stopper_btn.destroy()         self.master.submit_btn = tk.Button(self.master, text="开始", font=("Helvetic", 30, "bold"), bg='lightgreen', command=self.transformer)         self.master.submit_btn.place(x=50, y=600)     def stopper(self):         self.stop_check=True     def refresher(self):         self.window3.submitted_listbox.delete(0, END)         for i in MAINLIST:             self.window3.submitted_listbox.insert(END, self.data[i])     def transformer(self):         if len(self.data)==len(MAINLIST):             messagebox.showerror('错误', '已经点完啦~')             return         self.master.submit_btn.destroy()         self.master.stopper_btn = tk.Button(self.master, text="停止", font=("Helvetic", 30, "bold"), bg='yellow',command=self.stopper)         self.master.stopper_btn.place(x=50, y=600)         self.condition =1         self.j=0         self.factory1()</code></pre> <p>&nbsp;最后展示完整代码：</p> <pre><code class="language-python"># encoding:gbk from tkinter import * from tkinter import messagebox from mttkinter import mtTkinter as tk import os,csv,random from threading import Timer MAINLIST=[] YYY=None class basedesk():#底板     def __init__(self, master):         global YYY         self.master = master         self.master.title("随机点名系统")         self.master.configure(bg='#B1FFF9')         self.master.geometry("1370x730")         YYY=mainwindow(self.master) class mainwindow():#主界面     def __init__(self, master):         self.master = master         data_name = os.path.join(os.path.dirname(__file__), 'database.csv')         with open(data_name) as f:             f_csv=csv.reader(f)             self.data=[]             for row in f_csv:                 self.data.append(row)         self.condition=0         self.i = 0         self.j=0         self.stop_check = False         self.master.name_label = tk.Label(self.master, text="姓名：", font=("Helvetic", 30, "bold"), relief="raised",cursor="heart").place(x=10,y=10)         self.master.picname_entry = tk.Entry(self.master,font=("Calibri",80),justify='center')         self.master.picname_entry.place(x=150, y=10, width=900, height=450)         self.master.picname_entry.insert(0,"准备点名")         self.master.submit_btn = tk.Button(self.master, text="开始", font=("Helvetic", 30, "bold"), bg='lightgreen',command=self.transformer)         self.master.submit_btn.place(x=50, y=600)         self.master.stop_btn = tk.Button(self.master, text="退出", font=("Helvetic", 30, "bold"), bg='red',command=self.stop)         self.master.stop_btn.place(x=200, y=600)         self.master.developername_label=tk.Label(self.master,text='',font=("Helvetic",20, "bold"),bg='#B1FFF9').place(x=900,y=600)         self.master.already_label=tk.Label(self.master,text='已点姓名：',font=("Helvetic",20, "bold"),bg='#B1FFF9').place(x=1100,y=10)         self.window3 = tk.Frame(self.master, bg='#63F034')         self.window3.place(x=1100, y=60, width=200, height=470)         self.window3.xscrollbar = Scrollbar(self.window3, orient=HORIZONTAL)         self.window3.yscrollbar = Scrollbar(self.window3)         self.window3.submitted_listbox = tk.Listbox(self.window3)         self.window3.xscrollbar.pack(side=BOTTOM, fill=X)         self.window3.yscrollbar.pack(side=RIGHT, fill=Y)         self.window3.submitted_listbox.place(x=0, y=0, width=182, height=452)         self.window3.xscrollbar.config(command=self.window3.submitted_listbox.xview)         self.window3.yscrollbar.config(command=self.window3.submitted_listbox.yview)         self.window3.submitted_listbox.config(xscrollcommand=self.window3.xscrollbar.set, yscrollcommand=self.window3.yscrollbar.set)     def stop(self):         root.destroy()     def different(self,):         self.master.picname_entry.delete(0, END)         self.master.picname_entry.insert(0, random.choice(self.data))     def factory1(self):         self.different()         self.i += 1         self.j += 1         if self.i == len(self.data):             self.i = 0         if self.stop_check==True :             self.factory2()             self.stop_check = False         else:             t = Timer(0.05, self.factory1)             t.start()     def factory2(self):         self.master.picname_entry.delete(0, END)         while True:             choosed=random.choice(self.data)             if choosed not in MAINLIST:                 break         MAINLIST.append(choosed)         self.window3.submitted_listbox.delete(0,END)         for i in MAINLIST:             self.window3.submitted_listbox.insert(END,i)         self.master.picname_entry.insert(0, i)         self.master.stopper_btn.destroy()         self.master.submit_btn = tk.Button(self.master, text="开始", font=("Helvetic", 30, "bold"), bg='lightgreen', command=self.transformer)         self.master.submit_btn.place(x=50, y=600)     def stopper(self):         self.stop_check=True     def refresher(self):         self.window3.submitted_listbox.delete(0, END)         for i in MAINLIST:             self.window3.submitted_listbox.insert(END, self.data[i])     def transformer(self):         if len(self.data)==len(MAINLIST):             messagebox.showerror('错误', '已经点完啦~')             return         self.master.submit_btn.destroy()         self.master.stopper_btn = tk.Button(self.master, text="停止", font=("Helvetic", 30, "bold"), bg='yellow',command=self.stopper)         self.master.stopper_btn.place(x=50, y=600)         self.condition =1         self.j=0         self.factory1() if __name__ == '__main__':#主函数     root = tk.Tk()     root.resizable(False, False)     basedesk(root)     root.mainloop()</code></pre> <p>&nbsp;值得注意的是，最上面的# encoding:gbk是必须的哦~否则可能会出现乱码。。。</p> <p>&nbsp;</p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3629.htm">有关JavaScript事件循环的若干疑问探究</a></p>
+                                                <p>下一个：<a href="/html/category/article-3631.htm">数组模拟队列进阶版本——环形队列（真正意义上的排队）</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3672.htm" title="安卓夜间模式开发【深色主题适配】">安卓夜间模式开发【深色主题适配】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3678.htm" title="C++引用以及结构体">C++引用以及结构体</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3689.htm" title="Spring（六）&#8212;-Spring AOP概述及底层实现原理">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-3692.htm" title="创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)">创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

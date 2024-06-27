@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3579.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Spring的事务管理机制和传播机制 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Spring的事务管理机制和传播机制</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p><span style="font-size:14px">问：Spring的事务管理是怎么搞的？</span></p> <p><span style="font-size:14px">Spring&nbsp;的事务，可以说是&nbsp;Spring&nbsp;AOP&nbsp;的一种实现。</span></p> <p><span style="font-size:14px">AOP面向切面编程，即在不修改源代码的情况下，对原有功能进行扩展，通过代理类来对具体类进行操作。</span></p> <p><span style="font-size:14px"><span style="font-family:Microsoft YaHei; font-size:14px; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="color:#FF0000">Spring声明式事务让我们从复杂的事务处理中得到解脱。使得我们再也无需要去处理获得连接、关闭连接、事务提交和回滚等这些操作。再也无需要我们在与事务相关的方法中处理大量的try…catch…finally代码。</span></span></span></span><br /></span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px">Spring的事务管理分为<span style="color:#FF0000">声明式</span>和<span style="color:#FF0000">编程式</span>。声明式就是在Spring的配置文件中进行相关配置；编程式就是用注解的方式写到代码里。</span></p> <p><span style="font-family:Microsoft YaHei; font-size:14px"><br /></span></p> <p><span style="font-size:14px"><span style="color:#FF0000">核心接口</span>：</span></p> <p><span style="font-size:14px"><span id="Label3">Spring事务管理涉及的接口的联系如下：</span><br /></span></p> <p><span style="font-size:14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/231b8489544bcd6f5c9b9f6eda8df46d.jpg" alt="Spring的事务管理机制和传播机制"><br /></span></p> <p><span style="font-size:14px"><br /></span></p> <p><span style="font-size:14px"><span id="Label3">Spring并不直接管理事务，而是提供了多种事务管理器，他们将事务管理的职责委托给Hibernate或者JTA等持久化机制所提供的相关平台框架的事务来实现。 Spring事务管理器的接口是<span style="color:#FF0000">org.springframework.transaction.PlatformTransactionManager</span>，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。此接口的内容如下：</span><br /></span></p> <p><span style="font-size:14px"></span></p> <pre><code class="language-java">public interface PlatformTransactionManager()...{       // 由TransactionDefinition得到TransactionStatus对象     TransactionStatus getTransaction(TransactionDefinition definition) throws TransactionException;      // 提交     void commit(TransactionStatus status) throws TransactionException;       // 回滚     void rollback(TransactionStatus status) throws TransactionException;   }</code></pre> <p><span style="font-size:14px">Spring在TransactionDefinition接口中定义这些属性,以供PlatfromTransactionManager使用。<span style="font-size:14px">TransactionDefinition</span>接口定义如下：</span></p> <p><span style="font-size:14px"></span></p> <pre><code class="language-java">public interface TransactionDefinition {     int getPropagationBehavior();//返回事务的传播行为。     int getIsolationLevel();//返回事务的隔离级别，事务管理器根据它来控制另外一个事务可以看到本事务内的哪些数据。     int getTimeout();//返回事务必须在多少秒内完成。     boolean isReadOnly();//事务是否只读，事务管理器能够根据这个返回值进行优化，确保事务是只读的。 }</code></pre> <p> 上述接口定义了以下五种属性：</p> <p><span style="font-size:14px"><img decoding="async" src="http://img.555519.xyz/uploads3/20220708/761a5cbdf724187b83347c2647ef710f.jpg" alt="Spring的事务管理机制和传播机制"><br /></span></p> <p><span style="font-size:14px"><br /></span></p> <p><span style="font-size:14px"><span style="color:#FF0000">传播行为</span>：</span></p> <p><span style="font-size:14px"></span></p> <p><span style="font-family:Microsoft YaHei; font-size:16px"><strong>PROPAGATION_REQUIRED</strong>--支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。</span></p> <p><span style="font-family:Microsoft YaHei; font-size:16px"><strong>PROPAGATION_SUPPORTS</strong>--支持当前事务，如果当前没有事务，就以非事务方式执行。</span></p> <p><span style="font-family:Microsoft YaHei; font-size:16px"><strong>PROPAGATION_MANDATORY</strong>--支持当前事务，如果当前没有事务，就抛出异常。</span></p> <p><span style="font-family:Microsoft YaHei; font-size:16px"><strong>PROPAGATION_REQUIRES_NEW</strong>--新建事务，如果当前存在事务，把当前事务挂起。</span></p> <p><span style="font-family:Microsoft YaHei; font-size:16px"><strong>PROPAGATION_NOT_SUPPORTED</strong>--以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</span></p> <p><span style="font-family:Microsoft YaHei; font-size:16px"><strong>PROPAGATION_NEVER</strong>--以非事务方式执行，如果当前存在事务，则抛出异常。</span></p> <p><span style="font-family:Microsoft YaHei; font-size:16px"><strong>PROPAGATION_NESTED</strong>--如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则进行与PROPAGATION_REQUIRED类似的操作</span></p> <p><span style="font-size:14px"><br /></span></p> <p><span style="font-size:14px"><span style="color:#FF0000">声明式事务管理配置</span>：<br /></span></p> <p><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-size:14px">Spring配置文件</span>中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制（切面配置）</span><span style="font-family:'Microsoft YaHei'">。</span></p> <p><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px">比如使用Hibernate进行数据访问时，DataSource实际为SessionFactory，TransactionManager的实现为HibernateTransactionManager。</span></span></p> <p><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px"><br /></span></span></p> <p><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px">参考文献：</span></span></p> <p><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px">http://www.mamicode.com/info-detail-1248286.html<br /></span></span></p> <p><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px">http://www.cnblogs.com/newsouls/p/3988216.html<br /></span></span></p> <p><span style="font-family:'Microsoft YaHei'; font-size:16px"><span style="font-family:'Microsoft YaHei'; font-size:16px">http://bbs.csdn.net/topics/390632361<br /></span></span></p> <p></p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3578.htm">Docker报错：Using default tag: latest Error response from daemon: Get https://registry-1.docker.io/v2/</a></p>
+                                                <p>下一个：<a href="/html/category/article-3580.htm">Sequelize数据库中文排序</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3691.htm" title="中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal">中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal</a></li>
+                        <li class="py-2"><a href="/html/category/article-3671.htm" title="Eclipse开发Java如何Debug详解">Eclipse开发Java如何Debug详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3565.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>ubuntu 14.04 ndk 编译 openssl - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">ubuntu 14.04 ndk 编译 openssl</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p><strong>概述</strong><br /> 因工作上需要用到openssl，本文剪短描述ubuntu编译生成openssl，主要的命令参考网上，结合自己的实际使用<br /><strong>版本</strong><br /> openssl:1.1.1g<br /> ubuntu:14.04<br /> ndk:16b<br /><strong>准备</strong><br /> 下载openssl:http://distfiles.macports.org/openssl/openssl-1.1.1g.tar.gz<br /> openssl源码解压放在目录：/work1/SourceCode/openssl-1.1.1g<br /> 下载ndk:https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip<br /> ndk放在目录：/home/shenweihong/Android/Ndk/android-ndk-r16b</p> <p><em>注意</em>：<br /> 本人之前用<br /> android-ndk-r21b android-ndk-r18b<br /> 编译均报错，很难解决。<br /> 最后试了android-ndk-r16b才编译成功。<br /> 本人后来编译openssl版本1.0.1j，用android-ndk-r16b编译报错，用android-ndk-r14b才成功。<br /><strong>环境变量</strong><br /> ubuntu命令：<br /> export PATH=/home/shenweihong/Android/Ndk/android-ndk-r16b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH<br /> export ANDROID_NDK_HOME=/home/shenweihong/Android/Ndk/android-ndk-r16b/<br /><strong>配置</strong><br /> ./Configure android-arm -D__ANDROID_API__=24 no-threads no-shared --prefix=/work1/SourceCode/opensslLib<br /> no-shared：表示编译结果为静态库，如果想编译结果动态库，就不要这一参数；<br /> –prefix=/work1/SourceCode/opensslLib：表示最终编译结果保存的路径；</p> <p>如下结果即表示配置成功：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221113/aab13de47b7a8566a90875a1722c6e9a.jpg" alt="ubuntu 14.04 ndk 编译 openssl"><br /><strong>编译生成</strong><br /> 命令：<br /> make<br /> make install</p> <p><strong>Android.mk文件</strong></p> <p>LOCAL_PATH := $(call my-dir)</p> <p>#APP_ABI := armeabi armeabi-v7a<br /> APP_PLATFORM := android-24</p> <p>include $(CLEAR_VARS)<br /> LOCAL_LDLIBS := -llog<br /> LOCAL_MODULE := ExchangePosJNI<br /> LOCAL_SRC_FILES := ExchangePosJNI.c</p> <p>include $(BUILD_SHARED_LIBRARY)</p> <p>include $(CLEAR_VARS)<br /> LOCAL_MODULE := libcrypto<br /> LOCAL_SRC_FILES := $(LOCAL_PATH)/lib/libcrypto.a<br /> include $(PREBUILT_STATIC_LIBRARY)</p> <p>include $(CLEAR_VARS)<br /> LOCAL_MODULE := libssl<br /> LOCAL_SRC_FILES := $(LOCAL_PATH)/lib/libssl.a<br /> include $(PREBUILT_STATIC_LIBRARY)</p> <p>include $(CLEAR_VARS)<br /> LOCAL_C_INCLUDES := $(LOCAL_PATH)/include $(LOCAL_PATH)/lib<br /> LOCAL_LDLIBS := -lm -lz -llog -fPIE -ldl<br /> LOCAL_CFLAGS += -fPIE -D__ANDROID_API__=24<br /> LOCAL_STATIC_LIBRARIES := libssl libcrypto<br /> LOCAL_MODULE := OpensslClient<br /> LOCAL_SRC_FILES := OpensslClient.c SSLClient.cpp</p> <p>include $(BUILD_SHARED_LIBRARY)</p> <p>在Windows NDK，使用一样的NDK版本，即android-ndk-r16，编译报错：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221113/c55b5551ef99632b78da7cc081446512.jpg" alt="ubuntu 14.04 ndk 编译 openssl"><br /> 将应用，build.gradle中 minSdkVersion 15改成 minSdkVersion 24才通过，其他地方解释说这个宏定义在NDK不同版本中差异造成的。</p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3564.htm">详解Python的pyyaml模块</a></p>
+                                                <p>下一个：<a href="/html/category/article-3566.htm">SpringBoot下载Excel文件，解决文件损坏问题</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
+                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3672.htm" title="安卓夜间模式开发【深色主题适配】">安卓夜间模式开发【深色主题适配】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                        <li class="py-2"><a href="/html/category/article-3692.htm" title="创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)">创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3674.htm" title="node.js &#8211; 包、express">node.js &#8211; 包、express</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

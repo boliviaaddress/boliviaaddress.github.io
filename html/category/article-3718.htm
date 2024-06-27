@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3718.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Vue3中vuex的基本使用方法实例_vue.js - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Vue3中vuex的基本使用方法实例_vue.js</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">一、基本结构</a></li> <li><a href="#_label1" rel="nofollow">二、基本使用</a></li> <li><a href="#_label2" rel="nofollow">三、将store中的数据模块化后的使用</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_0" rel="nofollow">1.模块化</a></li> <li><a href="#_lab2_2_1" rel="nofollow">2.使用</a></li> </ul> <li><a href="#_label3" rel="nofollow">补充：如何改变vuex中的属性</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label4" rel="nofollow">总结 </a></li> <ul class="second_class_ul"></ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>一、基本结构</h2> <p>src/store/index.js中，代码如下</p> <div class="ay1code"> <pre class="brush:js;">// vue3中创建store实例对象的方法createStore()按需引入  import { createStore } from 'vuex'  export default createStore({    state: {    },    mutations: {    },    actions: {    },    getters: {    },    modules: {    }  })</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>二、基本使用</h2> <p>src/store/index.js</p> <div class="ay1code"> <pre class="brush:js;">import { createStore } from 'vuex'  export default createStore({    state: {      info: 'hello'    },    mutations: {      // 定义mutations，用于修改状态(同步)      updateInfo (state, payload) {        state.info = payload      }    },    actions: {      // 定义actions，用于修改状态(异步)      // 2秒后更新状态      updateInfo (context, payload) {        setTimeout(() =&gt; {          context.commit('updateInfo', payload)        }, 2000)      }    },    getters: {      // 定义一个getters      formatInfo (state) {        return state.info + ' Tom'      }    },    modules: {    }  })  </pre> </div> <p>src/views/Test.vue测试组件中对store中数据的操作与使用</p> <div class="ay1code"> <pre class="brush:js;">&lt;template&gt;    &lt;div&gt;测试组件&lt;/div&gt;    &lt;hr&gt;    &lt;!-- 页面中直接使用渲染时与vue2中的使用方法相同 --&gt;    &lt;div&gt;获取Store中的state、getters: {{$store.getters.formatInfo}}&lt;/div&gt;    &lt;button @click='handleClick'&gt;点击&lt;/button&gt;  &lt;/template&gt;    &lt;script&gt;  // 按需引入useStore()方法  import { useStore } from 'vuex'    export default {    name: 'Test',    setup () {      // this.$store.state.info      // Vue3中store类似于Vue2中this.$store      // useStore()方法创建store对象，相当于src/store/index.js中的store实例对象      const store = useStore()      console.log(store.state.info) // hello      // 修改info的值      const handleClick = () =&gt; {        // 触发mutations，用于同步修改state的信息        // store.commit('updateInfo', 'nihao')        // 触发actions，用于异步修改state的信息        store.dispatch('updateInfo', 'hi')      }      return { handleClick }    }  }  &lt;/script&gt;</pre> </div> <p>点击按钮前</p> <p style="text-align:center"><img decoding="async" alt="示例图" src="http://img.555519.xyz/uploads3/20220424/28cede801147f6f20742ea57eade120c.jpg"></p> <p>点击按钮后</p> <p style="text-align:center"><img decoding="async" alt="示例图" src="http://img.555519.xyz/uploads3/20220424/2da57fc16a9809e8a16bce40f974f63e.jpg"></p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>三、将store中的数据模块化后的使用</h2> <p class="maodian"><a name="_lab2_2_0" rel="nofollow"></a></p> <h3>1.模块化</h3> <p>基于原index.js代码进行改造拆分，假设有两个模块global和user，新建src/store/modules/global.js 、src/store/modules/user.js文件</p> <p>拆分后代码如下（src/store/modules/global.js）</p> <div class="ay1code"> <pre class="brush:js;">// 全局store,存放全局使用共享的数据  export default { // 注意：全局模块中不需要开启命名空间    state: {    },    mutations: {    },    actions: {    },    getters: {    }  }</pre> </div> <p>拆分后代码如下（src/store/modules/user.js）</p> <div class="ay1code"> <pre class="brush:js;">// 用户信息模块(局部模块)  export default {    namespaced: true, // 开启命名空间    state () {      return {        // 用户信息对象         profile: {          id: '',          avatar: '',          nickname: 'yee',          account: '',          mobile: '',          token: ''        }      }    },    mutations: {      // 定义mutations，用于同步修改状态      updateNickname (state, payload) {        state.profile.nickname = payload      }    },    actions: {      // 定义actions，用于异步修改状态      // 2秒后更新状态      updateNickname (context, payload) {        setTimeout(() =&gt; {          context.commit('updateNickname', payload)        }, 2000)      }    },    getters: {      // 定义一个getters      formatNickname (state) {        return 'Hi ' + state.profile.nickname      }    }  }</pre> </div> <p>拆分后代码如下（src/store/index.js）</p> <div class="ay1code"> <pre class="brush:js;">import { createStore } from 'vuex'  // 全局模块  import global from './modules/global'  // 局部模块  import user from './modules/user'    export default createStore({    // 全局模块    ...global,    // 局部模块    modules: {      user    }  })</pre> </div> <p class="maodian"><a name="_lab2_2_1" rel="nofollow"></a></p> <h3>2.使用</h3> <p>src/views/Test.vue测试组件中对模块化后的store中数据的操作与使用</p> <div class="ay1code"> <pre class="brush:js;">&lt;template&gt;    &lt;div&gt;测试组件&lt;/div&gt;    &lt;hr&gt;    &lt;div&gt;获取Store中user模块的getters: {{$store.getters['user/formatNickname']}}&lt;/div&gt;    &lt;button @click='handleClick'&gt;点击&lt;/button&gt;  &lt;/template&gt;    &lt;script&gt;  import { useStore } from 'vuex'  export default {    name: 'Test',    setup () {      // this.$store.state.info      // Vue3中store类似于Vue2中this.$store      const store = useStore()      console.log(store.state.user.profile.nickname)      // 修改nickname的值      const handleClick = () =&gt; {        // 触发mutations，用于同步修改user模块state的信息        // store.commit('updateNickname', 'Jackson')        store.dispatch('user/updateNickname', 'Yee')      }      return { handleClick }    }  }  &lt;/script&gt;</pre> </div> <p>点击按钮前</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/10193efc77793be2108401a06246ee00.jpg"></p> <p>点击按钮后</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/489e7c24c741eeaae27aab7d1fa3a8fb.jpg"></p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>补充：如何改变vuex中的属性</h2> <p>vue3和vue2一样，都是通过提交mutations中的方法，进行对vuex中数据的改变，那具体该如何使用呢？首先看一下mutations中的写法</p> <div class="ay1code"> <pre class="brush:js;">const mutations = {    addCount(state, payload) {      state.count += payload    },  }  export { mutations }  </pre> </div> <p>这里，定义了一个addCount方法，这个方法接受两个参数，第一个参数是要改变的state对象（当然你调用这个放法的传参中也可以写state.count，然后再mutations中直接state += payload就可以了），第二个参数是要改变的数据，比如进行 +1 操作</p> <div class="ay1code"> <pre class="brush:js;">&lt;template&gt;    &lt;h1&gt;vuex中的数据{{ store.state.count }}&lt;/h1&gt;    &lt;button @click="changeStoreCount"&gt;改变vuex数据&lt;/button&gt;  &lt;/template&gt;  &lt;script lang="ts"&gt;  import { defineComponent } from "vue"  import { useStore } from "vuex"  export default defineComponent({    name: "index",    setup() {      const store = useStore()      console.log(store)      const changeStoreCount = () =&gt; {        // 在这里提交了mutations中的addCount方法        store.commit("addCount", 1)      }      return { store, changeStoreCount }    },  })  &lt;/script&gt;  &lt;style scoped&gt;&lt;/style&gt;</pre> </div> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>总结 </h2> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3717.htm">Python－常用模块有哪些</a></p>
+                                                <p>下一个：<a href="/html/category/article-3719.htm">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3694.htm" title="Vue el-table实现右键菜单功能_vue.js_">Vue el-table实现右键菜单功能_vue.js_</a></li>
+                        <li class="py-2"><a href="/html/category/article-3691.htm" title="中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal">中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal</a></li>
+                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

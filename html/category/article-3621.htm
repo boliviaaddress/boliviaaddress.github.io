@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3621.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Spring Security核心组件之安全上下文 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Spring Security核心组件之安全上下文</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h4><a id="1_0" rel="nofollow"></a>1、安全上下文</h4> <p>Spring Security使用接口SecurityContext抽象建模"安全上下文"这一概念。这里安全上下文SecurityContext指的是当前执行线程使用的最少量的安全信息(其实就是用于代表访问者账号的有关信息)。</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">SecurityContext</span><span class="token keyword">extends</span><span class="token class-name">Serializable</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Authentication</span><span class="token function">getAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">void</span><span class="token function">setAuthentication</span><span class="token punctuation">(</span><span class="token class-name">Authentication</span> authentication<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <blockquote> <p>Spring Security为接口SecurityContext提供的缺省实现SecurityContextImpl,该实现逻辑其实很简单，主要就是保持一个Authentication`对象</p> </blockquote> <h4><a id="2_10" rel="nofollow"></a>2、安全上下文管理器</h4> <p>当一个线程在服务用户期间，该安全上下文对象会保存在SecurityContextHolder中。</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">SecurityContextHolder</span><span class="token punctuation">{<!-- --></span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">String</span> MODE_THREADLOCAL<span class="token operator">=</span><span class="token string">"MODE_THREADLOCAL"</span><span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">String</span> MODE_INHERITABLETHREADLOCAL<span class="token operator">=</span><span class="token string">"MODE_INHERITABLETHREADLOCAL"</span><span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">String</span> MODE_GLOBAL<span class="token operator">=</span><span class="token string">"MODE_GLOBAL"</span><span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">String</span> SYSTEM_PROPERTY<span class="token operator">=</span><span class="token string">"spring.security.strategy"</span><span class="token punctuation">;</span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token class-name">String</span> strategyName<span class="token operator">=</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span>SYSTEM_PROPERTY<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token class-name">SecurityContextHolderStrategy</span> strategy<span class="token punctuation">;</span><span class="token comment">//默认是ThreadLocalSecurityContextHolderStrategy</span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token keyword">int</span> initializeCount<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token keyword">static</span><span class="token punctuation">{<!-- --></span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">//忽略代码....</span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">hasText</span><span class="token punctuation">(</span>strategyName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// Set default</span> 			strategyName<span class="token operator">=</span> MODE_THREADLOCAL<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">if</span><span class="token punctuation">(</span>strategyName<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>MODE_THREADLOCAL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 			strategy<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ThreadLocalSecurityContextHolderStrategy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token keyword">if</span><span class="token punctuation">(</span>strategyName<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>MODE_INHERITABLETHREADLOCAL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 			strategy<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">InheritableThreadLocalSecurityContextHolderStrategy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token keyword">if</span><span class="token punctuation">(</span>strategyName<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>MODE_GLOBAL<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 			strategy<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">GlobalSecurityContextHolderStrategy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{<!-- --></span><span class="token comment">// Try to load a custom strategy</span><span class="token keyword">try</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> clazz<span class="token operator">=</span><span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>strategyName<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">Constructor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> customStrategy<span class="token operator">=</span> clazz<span class="token punctuation">.</span><span class="token function">getConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 				strategy<span class="token operator">=</span><span class="token punctuation">(</span><span class="token class-name">SecurityContextHolderStrategy</span><span class="token punctuation">)</span> customStrategy<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> ex<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">ReflectionUtils</span><span class="token punctuation">.</span><span class="token function">handleReflectionException</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span>  		initializeCount<span class="token operator">++</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">//忽略代码....</span><span class="token punctuation">}</span></code></pre> <p>SecurityContextHolder类提供的功能是保持SecurityContext,不过它的用法不是让使用者创建多个SecurityContextHolder对象，而是提供一组公开静态工具方法。其底层是感觉系统变量<code>spring.security.strategy</code>的值来判断使用何种策略SecurityContextHolderStrategy</p> <p>SecurityContextHolder 类有2种方式初始化 SecurityContextHolderStrategy。</p> <p>其一，通过其静态方法setStrategyName。</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">void</span><span class="token function">setStrategyName</span><span class="token punctuation">(</span><span class="token class-name">String</span> strategyName<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">SecurityContextHolder</span><span class="token punctuation">.</span>strategyName<span class="token operator">=</span> strategyName<span class="token punctuation">;</span><span class="token function">initialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p>其二，通过设置属性值 spring.security.strategy。</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">String</span> SYSTEM_PROPERTY<span class="token operator">=</span><span class="token string">"spring.security.strategy"</span><span class="token punctuation">;</span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token class-name">String</span> strategyName<span class="token operator">=</span><span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span>SYSTEM_PROPERTY<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <h4><a id="3_82" rel="nofollow"></a>3、安全上下文生成器</h4> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">SecurityContextHolderStrategy</span><span class="token punctuation">{<!-- --></span><span class="token keyword">void</span><span class="token function">clearContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">SecurityContext</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">void</span><span class="token function">setContext</span><span class="token punctuation">(</span><span class="token class-name">SecurityContext</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">SecurityContext</span><span class="token function">createEmptyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/9eb3181f0e9782e8bae517882198c6e5.jpg" alt="Spring Security核心组件之安全上下文"><br /> 线程本地模式</p> <blockquote> <p>对应用中的某个线程保持一个SecurityContext,这种模式下，应用中的每个线程同一时间通过SecurityContextHolder访问到的都是关于自己线程的SecurityContext;</p> </blockquote> <pre><code class="prism language-java"><span class="token keyword">final</span><span class="token keyword">class</span><span class="token class-name">ThreadLocalSecurityContextHolderStrategy</span><span class="token keyword">implements</span><span class="token class-name">SecurityContextHolderStrategy</span><span class="token punctuation">{<!-- --></span><span class="token comment">//使用ThreadLocal存储安全上下文</span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SecurityContext</span><span class="token punctuation">&gt;</span></span> contextHolder<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">clearContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 		contextHolder<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token class-name">SecurityContext</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">SecurityContext</span> ctx<span class="token operator">=</span> contextHolder<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>ctx<span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 			ctx<span class="token operator">=</span><span class="token function">createEmptyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 			contextHolder<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">return</span> ctx<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">setContext</span><span class="token punctuation">(</span><span class="token class-name">SecurityContext</span> context<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"Only non-null SecurityContext instances are permitted"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		contextHolder<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token class-name">SecurityContext</span><span class="token function">createEmptyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">SecurityContextImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>线程继承模式</p> <blockquote> <p>InheritableThreadLocal 相较于 ThreadLocal，多了子线程可以继承父线程的属性的特性，但是，针对普通WEB应用，应该是英雄无用武之地。</p> </blockquote> <pre><code class="prism language-java"><span class="token keyword">final</span><span class="token keyword">class</span><span class="token class-name">InheritableThreadLocalSecurityContextHolderStrategy</span><span class="token keyword">implements</span><span class="token class-name">SecurityContextHolderStrategy</span><span class="token punctuation">{<!-- --></span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SecurityContext</span><span class="token punctuation">&gt;</span></span> contextHolder<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">InheritableThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//忽略代码.....</span><span class="token punctuation">}</span></code></pre> <p>全局模式</p> <blockquote> <p>对整个应用公开保持一个SecurityContext,这种模式下,应用中的多个线程同一时间通过SecurityContextHolder访问到的都会是同一个SecurityContext对象;</p> </blockquote> <pre><code class="prism language-java"><span class="token keyword">final</span><span class="token keyword">class</span><span class="token class-name">GlobalSecurityContextHolderStrategy</span><span class="token keyword">implements</span><span class="token class-name">SecurityContextHolderStrategy</span><span class="token punctuation">{<!-- --></span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token class-name">SecurityContext</span> contextHolder<span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">clearContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 		contextHolder<span class="token operator">=</span><span class="token keyword">null</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token class-name">SecurityContext</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">if</span><span class="token punctuation">(</span>contextHolder<span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span> 			contextHolder<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">SecurityContextImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">return</span> contextHolder<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">setContext</span><span class="token punctuation">(</span><span class="token class-name">SecurityContext</span> context<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"Only non-null SecurityContext instances are permitted"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		contextHolder<span class="token operator">=</span> context<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token class-name">SecurityContext</span><span class="token function">createEmptyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">SecurityContextImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <h4><a id="4_167" rel="nofollow"></a>4、安全上下文生成器的自定义</h4> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">MySecurityContextHolderStrategy</span><span class="token keyword">implements</span><span class="token class-name">SecurityContextHolderStrategy</span><span class="token punctuation">{<!-- --></span><span class="token keyword">private</span><span class="token keyword">static</span><span class="token keyword">final</span><span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">SecurityContext</span><span class="token punctuation">&gt;</span></span> contextHolder<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">ThreadLocal</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">clearContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         contextHolder<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token class-name">SecurityContext</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">SecurityContext</span> ctx<span class="token operator">=</span> contextHolder<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span>ctx<span class="token operator">==</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             ctx<span class="token operator">=</span><span class="token function">createEmptyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             contextHolder<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">return</span> ctx<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">setContext</span><span class="token punctuation">(</span><span class="token class-name">SecurityContext</span> context<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"Only non-null SecurityContext instances are permitted"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         contextHolder<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span><span class="token class-name">SecurityContext</span><span class="token function">createEmptyContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">SecurityContextImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>MySecurityContextHolderStrategy的注册</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Configuration</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">MyWebSecurityConfig</span><span class="token keyword">extends</span><span class="token class-name">WebSecurityConfigurerAdapter</span><span class="token punctuation">{<!-- --></span><span class="token keyword">static</span><span class="token punctuation">{<!-- --></span><span class="token class-name">SecurityContextHolder</span><span class="token punctuation">.</span><span class="token function">setStrategyName</span><span class="token punctuation">(</span><span class="token string">"learinning.securityextend.MySecurityContextHolderStrategy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">//忽略代码....</span><span class="token punctuation">}</span></code></pre> <p>测试</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"demo"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">DemoController</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token comment">// @RolesAllowed({"admin"})</span><span class="token keyword">public</span><span class="token class-name">String</span><span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">SecurityContextHolderStrategy</span> context<span class="token operator">=</span><span class="token class-name">SecurityContextHolder</span><span class="token punctuation">.</span><span class="token function">getContextHolderStrategy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token string">"test1"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/1c72bd335b5d021dcd8f8c0581bd0e60.jpg" alt="Spring Security核心组件之安全上下文"></p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3620.htm">java连接mysql8.0.28数据库实例</a></p>
+                                                <p>下一个：<a href="/html/category/article-3622.htm">HCNP Routing&amp;Switching之代理ARP</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3693.htm" title="@Order的使用与Aop多切面的执行顺序">@Order的使用与Aop多切面的执行顺序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3672.htm" title="安卓夜间模式开发【深色主题适配】">安卓夜间模式开发【深色主题适配】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3716.htm" title="Java和matlab混合编程时Java代码参数不一致的问题">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

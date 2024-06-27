@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3538.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>基于docker部署Oracle 19c的详细记录_docker - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">基于docker部署Oracle 19c的详细记录_docker</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">一. 拉取Oracle 19c镜像</a></li> <li><a href="#_label1" rel="nofollow">二. 查看镜像</a></li> <li><a href="#_label2" rel="nofollow">三. 创建Oracle 19c镜像的容器</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_2_0" rel="nofollow">3.1创建目录</a></li> <li><a href="#_lab2_2_1" rel="nofollow">3.2 创建实例</a></li> <li><a href="#_lab2_2_2" rel="nofollow">3.3 查看日志</a></li> </ul> <li><a href="#_label3" rel="nofollow">四、 修改密码</a></li> <ul class="second_class_ul"></ul> <li><a href="#_label4" rel="nofollow">五、连接数据库</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_4_3" rel="nofollow">5.1测试方案一：进入容器内部测试</a></li> <li><a href="#_lab2_4_4" rel="nofollow">5.2测试方案二：用navicat连接测试</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>一. 拉取Oracle 19c镜像</h2> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 docker]# docker pull registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle:19c  19c: Pulling from zhuyijun/oracle  bce8f778fef0: Pull complete   3fc3fd32c0bc: Pull complete   02948dd6d654: Pull complete   67f2dfeb2f1b: Pull complete   2e42d8039fd9: Pull complete   b94f01bb60c6: Pull complete   Digest: sha256:3898a9394720f30ce7f0b83ef2d172f4cd11b958282e0505f83cf2b0e5eaf7d4  Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle:19c  registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle:19c</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>二. 查看镜像</h2> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 docker]# docker images  REPOSITORY                                          TAG       IMAGE ID       CREATED         SIZE  registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle   19c       7b5eb4597688   20 months ago   6.61GB  [root@node08002 docker]# </pre> </div> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>三. 创建Oracle 19c镜像的容器</h2> <p class="maodian"><a name="_lab2_2_0" rel="nofollow"></a></p> <h3>3.1创建目录</h3> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 docker]# mkdir /opt/oradata  [root@node08002 docker]# chmod -R 777 /opt/oradata/  [root@node08002 docker]# </pre> </div> <p class="maodian"><a name="_lab2_2_1" rel="nofollow"></a></p> <h3>3.2 创建实例</h3> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 docker]# docker run -d -it --name oracle19c -p 1521:1521 -p 5500:5500 -v /opt/oradata:/opt/oracle/oradata registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle:19c  </pre> </div> <p class="maodian"><a name="_lab2_2_2" rel="nofollow"></a></p> <h3>3.3 查看日志</h3> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 ~]# docker logs -f oracle19c  ORACLE EDITION: ENTERPRISE  ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: CRiP1dWzDHA=1     LSNRCTL for Linux: Version 19.0.0.0.0 - Production on 06-APR-2022 10:28:18  Copyright (c) 1991, 2019, Oracle.  All rights reserved.  Starting /opt/oracle/product/19c/dbhome_1/bin/tnslsnr: please wait...  TNSLSNR for Linux: Version 19.0.0.0.0 - Production  System parameter file is /opt/oracle/product/19c/dbhome_1/network/admin/listener.ora  Log messages written to /opt/oracle/diag/tnslsnr/1249a4a7bb32/listener/alert/log.xml  Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1)))  Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=0.0.0.0)(PORT=1521)))  Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=EXTPROC1)))  STATUS of the LISTENER  ------------------------  Alias                     LISTENER  Version                   TNSLSNR for Linux: Version 19.0.0.0.0 - Production  Start Date                06-APR-2022 10:28:18  Uptime                    0 days 0 hr. 0 min. 0 sec  Trace Level               off  Security                  ON: Local OS Authentication  SNMP                      OFF  Listener Parameter File   /opt/oracle/product/19c/dbhome_1/network/admin/listener.ora  Listener Log File         /opt/oracle/diag/tnslsnr/1249a4a7bb32/listener/alert/log.xml  Listening Endpoints Summary...    (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1)))    (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=0.0.0.0)(PORT=1521)))  The listener supports no services  The command completed successfully  Prepare for db operation  8% complete  Copying database files  31% complete  Creating and starting Oracle instance  32% complete  36% complete  40% complete  43% complete  46% complete  Completing Database Creation  51% complete  54% complete  Creating Pluggable Databases  58% complete  77% complete  Executing Post Configuration Actions  100% complete  Database creation complete. For details check the logfiles at:   /opt/oracle/cfgtoollogs/dbca/ORCLCDB.  Database Information:  Global Database Name:ORCLCDB  System Identifier(SID):ORCLCDB  Look at the log file "/opt/oracle/cfgtoollogs/dbca/ORCLCDB/ORCLCDB.log" for further details.  SQL*Plus: Release 19.0.0.0.0 - Production on Wed Apr 6 10:48:37 2022  Version 19.3.0.0.0  Copyright (c) 1982, 2019, Oracle.  All rights reserved.</pre> </div> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>四、 修改密码</h2> <blockquote> <p>系统默认的system密码修改成oracle</p> </blockquote> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 ~]# docker exec oracle19c ./setPassword.sh oracle</pre> </div> <blockquote> <p>setPassword.sh 脚本如下</p> </blockquote> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 ~]# docker exec -it oracle19c /bin/bash  [oracle@1249a4a7bb32 ~]$ ls  setPassword.sh  [oracle@1249a4a7bb32 ~]$ pwd  /home/oracle  [oracle@1249a4a7bb32 ~]$ cat setPassword.sh   #!/bin/bash  # LICENSE UPL 1.0  #  # Copyright (c) 1982-2018 Oracle and/or its affiliates. All rights reserved.  #   # Since: November, 2016  # Author: gerald.venzl@oracle.com  # Description: Sets the password for sys, system and pdb_admin  #  # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.  #      ORACLE_PWD=$1  ORACLE_SID="`grep $ORACLE_HOME /etc/oratab | cut -d: -f1`"  ORACLE_PDB="`ls -dl $ORACLE_BASE/oradata/$ORACLE_SID/*/ | grep -v pdbseed | awk '{print $9}' | cut -d/ -f6`"  ORAENV_ASK=NO  source oraenv     sqlplus / as sysdba &lt;&lt; EOF        ALTER USER SYS IDENTIFIED BY "$ORACLE_PWD";        ALTER USER SYSTEM IDENTIFIED BY "$ORACLE_PWD";        ALTER SESSION SET CONTAINER=$ORACLE_PDB;        ALTER USER PDBADMIN IDENTIFIED BY "$ORACLE_PWD";        exit;  EOF     [oracle@1249a4a7bb32 ~]$ </pre> </div> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>五、连接数据库</h2> <blockquote> <p>sqlplus system/oracle@xxx.xxx.xxx.xxx:1521/ORCLCDB</p> </blockquote> <p class="maodian"><a name="_lab2_4_3" rel="nofollow"></a></p> <h3>5.1测试方案一：进入容器内部测试</h3> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 ~]# docker exec -it oracle19c /bin/bash  [oracle@1249a4a7bb32 ~]$ sqlplus system/oracle@localhost:1521/ORCLCDB     SQL*Plus: Release 19.0.0.0.0 - Production on Thu Apr 7 01:54:17 2022  Version 19.3.0.0.0  Copyright (c) 1982, 2019, Oracle.  All rights reserved.  Last Successful login time: Thu Apr 07 2022 01:53:14 +00:00  Connected to:  Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production  SQL&gt; Show user;  USER is "SYSTEM"  SQL&gt; exit  Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production  [oracle@1249a4a7bb32 ~]$ </pre> </div> <p class="maodian"><a name="_lab2_4_4" rel="nofollow"></a></p> <h3>5.2测试方案二：用navicat连接测试</h3> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 ~]# docker exec -it oracle19c /bin/bash  [oracle@1249a4a7bb32 ~]$ cd /opt/oracle/product/19c/dbhome_1/network/admin/  [oracle@1249a4a7bb32 admin]$ ls  listener.ora  samples  shrept.lst  sqlnet.ora  tnsnames.ora  [oracle@1249a4a7bb32 admin]$ vim sqlnet.ora   [oracle@1249a4a7bb32 admin]$ cat sqlnet.ora   NAME.DIRECTORY_PATH= (TNSNAMES, EZCONNECT, HOSTNAME)  [oracle@1249a4a7bb32 admin]$ vim sqlnet.ora   [oracle@1249a4a7bb32 admin]$ cat sqlnet.ora   NAME.DIRECTORY_PATH= (TNSNAMES, EZCONNECT, HOSTNAME)  SQLNET.ALLOWED_LOGON_VERSION_CLIENT=8  SQLNET.ALLOWED_LOGON_VERSION_SERVER=8  [oracle@1249a4a7bb32 admin]$ exit  exit  [root@node08002 ~]# docker ps -a  CONTAINER ID   IMAGE                                                   COMMAND                  CREATED        STATUS                  PORTS                                                                                  NAMES  1249a4a7bb32   registry.cn-hangzhou.aliyuncs.com/zhuyijun/oracle:19c   "/bin/sh -c 'exec $O…"   16 hours ago   Up 16 hours (healthy)   0.0.0.0:1521-&gt;1521/tcp, :::1521-&gt;1521/tcp, 0.0.0.0:5500-&gt;5500/tcp, :::5500-&gt;5500/tcp   oracle19c  [root@node08002 ~]# docker restart oracle19c  oracle19c  [root@node08002 ~]# </pre> </div> <blockquote> <p>很奇怪,又要修改一次密码,具体操作步骤如下:</p> </blockquote> <div class="ay1code"> <pre class="brush:bash;">[root@node08002 ~]# docker exec -it oracle19c /bin/bash  [oracle@1249a4a7bb32 ~]$ sqlplus system/oracle@localhost:1521/ORCLCDB     SQL*Plus: Release 19.0.0.0.0 - Production on Thu Apr 7 02:59:52 2022  Version 19.3.0.0.0     Copyright (c) 1982, 2019, Oracle.  All rights reserved.     Last Successful login time: Thu Apr 07 2022 02:59:10 +00:00     Connected to:  Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production  Version 19.3.0.0.0     SQL&gt; alter user system identified by oracle;     User altered.     SQL&gt; exit  Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production  Version 19.3.0.0.0</pre> </div> <p>终于可以连接了</p> <p style="text-align:center"><img fetchpriority="high" decoding="async" alt="" height="636" src="http://img.555519.xyz/uploads3/20220423/79ca8cb7233565e3673df2a1ce83b240.jpg"></p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3537.htm">调用feign接口时，如何往header中添加参数</a></p>
+                                                <p>下一个：<a href="/html/category/article-3539.htm">C语言中sizeof函数踩过的坑总结_C 语言</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
+                        <li class="py-2"><a href="/html/category/article-3727.htm" title="vue 实现excel本地预览">vue 实现excel本地预览</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3692.htm" title="创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)">创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3708.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3694.htm" title="Vue el-table实现右键菜单功能_vue.js_">Vue el-table实现右键菜单功能_vue.js_</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

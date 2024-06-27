@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3478.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Java 18 新特性：简单Web服务器 jwebserver - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Java 18 新特性：简单Web服务器 jwebserver</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>在今年3月下旬的时候，Java版本已经更新到了18。接下来DD计划持续做一个系列，主要更新从Java 9开始的各种更新内容，但我不全部都介绍，主要挑一些有意思的内容，以文章和视频的方式来给大家介绍和学习。为了第一时间获得内容更新，对文章形式感兴趣的小伙伴可以关注我的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.didispace.com"  target="_blank" rel="nofollow">博客</a>或者公众号（程序猿DD），对视频形式感兴趣的可以关注我的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://space.bilibili.com/396803537"  target="_blank" rel="nofollow">B站</a>或视频号（程序猿DD）。</p> <h1 id="简单web服务器jwebserver">简单Web服务器：jwebserver</h1> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://openjdk.java.net/jeps/408"  target="_blank" rel="nofollow">JEP 408: Simple Web Server</a>，是这次Java 18推出的一个比较独立的全新功能点。我们可以通过命令行工具来启动一个提供静态资源访问的迷你Web服务器。</p> <p>该工具的定位官方文档中说了一堆：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cebd54b9ce6030a16335e4c6942f96bb.jpg" alt="Java 18 新特性：简单Web服务器 jwebserver"></p> <p>这里我简单总结几点，方便大家理解：</p> <ul> <li>构建目的是应用于测试与教学，不是为了替代Jetty、Nginx等高级服务器</li> <li>不提供身份验证、访问控制或加密等安全功能</li> <li>仅支持HTTP/1.1，不支持HTTPS</li> <li>仅支持GET、HEAD请求</li> <li>可以通过命令行、Java类启动</li> </ul> <p>下面我们通过一个构建HTML页面的例子，来尝试一下jwebserver的功能。</p> <h1 id="html页面准备">HTML页面准备</h1> <p>第一步：创建一个文件夹，比如就叫jwebserver</p> <p>第二步：创建一个html文件，就叫<code>index.html</code>吧</p> <p>第三步：随便写点HTML内容，比如下面这样（懒的敲的话，可以根据图片内的提示直接获取本案例需要的所有内容）：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/084705ce0a59f3cd8b16c64dd410f3dc.jpg" alt="Java 18 新特性：简单Web服务器 jwebserver"></p> <h1 id="jwebserver命令启动">jwebserver命令启动</h1> <p>打开终端，输入命令：</p> <pre><code>$ jwebserver</code></pre> <p>启动速度很快，可以看到如下输出：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3f1e3eeddaaa7cca3d63d8931f259633.jpg" alt="Java 18 新特性：简单Web服务器 jwebserver"></p> <p>尝试访问一下<code>http://127.0.0.1:8000/</code>，就可以获得之前准备的HTML内容了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/7748a84f3189d659dc5f4cb08074d6d0.jpg" alt="Java 18 新特性：简单Web服务器 jwebserver"></p> <p>同时，在终端也看到了请求日志：</p> <pre><code>127.0.0.1 - - [20/4月/2022:00:10:58 +0800] "GET / HTTP/1.1" 200 - 127.0.0.1 - - [20/4月/2022:00:10:58 +0800] "GET /banner-spring-boot.png HTTP/1.1" 200 -</code></pre> <p>关于jwebserver还有一些可选的参数，具体有这些：</p> <pre><code>-h or -? or --help  Prints the help message and exits.  -b addr or --bind-address addr  Specifies the address to bind to.  Default: 127.0.0.1 or ::1 (loopback).  For  all interfaces use -b 0.0.0.0 or -b ::.  -d dir or --directory dir  Specifies the directory to serve.  Default: current directory.  -o level or --output level  Specifies the output format.  none | info | verbose.  Default: info.  -p port or --port port  Specifies the port to listen on.  Default: 8000.  -version or --version  Prints the version information and exits.</code></pre> <p>其中比较有用的是</p> <ul> <li><code>-b</code>：要绑定的ip地址</li> <li><code>-p</code>：要启动的访问端口</li> <li><code>-d</code>：要提供服务的目录</li> <li><code>-o</code>：控制台的输出级别</li> </ul> <p>所以一个较为完整的启动命令是这样的：</p> <pre><code>jwebserver -p 9000 -d / -b 127.0.0.1 -o info</code></pre> <p>这条命令是一个以根目录<code>/</code>启动的服务器，服务端口是9000，绑定地址是127.0.0.1，控制台输出级别使用info。</p> <p>再尝试访问一下：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://127.0.0.1:9000/"  target="_blank" rel="nofollow">http://127.0.0.1:9000/</a> ，可以看到根目录<code>/</code>下的文件夹和文件：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/9655dd416a0df6c4f8cf282e012b14a3.jpg" alt="Java 18 新特性：简单Web服务器 jwebserver"></p> <p>怎么样？是不是还挺简单好用的？好了，今天的分享就到这里！如果您学习过程中如遇困难？可以加入我们超高质量的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.didispace.com/join-group-spring/index.html"  target="_blank" rel="nofollow">技术交流群</a>，参与交流与讨论，更好的学习与进步！</p> <p>另外，不要走开，关注我！下一篇更新如何使用Java代码来启动这个服务器！</p> <blockquote> <p>欢迎关注我的公众号：程序猿DD。第一时间了解前沿行业消息、分享深度技术干货、获取优质学习资源</p> </blockquote> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3477.htm">Django获取当前页面url</a></p>
+                                                <p>下一个：<a href="/html/category/article-3479.htm">ClickHouse 对付单表上亿条记录分组查询秒出, OLAP应用秒杀其他数据库_在线工具</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3704.htm" title="微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪">微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3698.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

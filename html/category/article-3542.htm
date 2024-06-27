@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3542.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>mybatis &#8211; PerpetualCache 一级缓存 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">mybatis &#8211; PerpetualCache 一级缓存</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-dracula"> <h2> <a id="mybatis__PerpetualCache__0" rel="nofollow"></a>mybatis - PerpetualCache 一级缓存</h2> <h3> <a id="mybatis__cache__2" rel="nofollow"></a>mybatis 使用 cache 顺序</h3> <pre><code class="prism language-bash">DefaultSqlSession --<span class="token operator">&gt;</span> CacheExecutor<span class="token punctuation">(</span>二级缓存<span class="token punctuation">)</span> --<span class="token operator">&gt;</span> BaseExecutor<span class="token punctuation">(</span>PerpetualCache一级缓存<span class="token punctuation">)</span> SimpleExecutor </code></pre> <h3> <a id="_8" rel="nofollow"></a>一级缓存生命周期</h3> <pre><code class="prism language-java"><span class="token comment">//DefaultSqlSession.java</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DefaultSqlSession</span> <span class="token keyword">implements</span> <span class="token class-name">SqlSession</span> <span class="token punctuation">{<!-- --></span>    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Configuration</span> configuration<span class="token punctuation">;</span>   <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Executor</span> executor<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> autoCommit<span class="token punctuation">;</span>   <span class="token keyword">private</span> <span class="token keyword">boolean</span> dirty<span class="token punctuation">;</span>   <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Cursor</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> cursorList<span class="token punctuation">;</span>      <span class="token punctuation">}</span>  <span class="token comment">// BaseExecutor.java</span> <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">BaseExecutor</span> <span class="token keyword">implements</span> <span class="token class-name">Executor</span> <span class="token punctuation">{<!-- --></span>    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Log</span> log <span class="token operator">=</span> <span class="token class-name">LogFactory</span><span class="token punctuation">.</span><span class="token function">getLog</span><span class="token punctuation">(</span><span class="token class-name">BaseExecutor</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">protected</span> <span class="token class-name">Transaction</span> transaction<span class="token punctuation">;</span>   <span class="token keyword">protected</span> <span class="token class-name">Executor</span> wrapper<span class="token punctuation">;</span>    <span class="token keyword">protected</span> <span class="token class-name">ConcurrentLinkedQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DeferredLoad</span><span class="token punctuation">&gt;</span></span> deferredLoads<span class="token punctuation">;</span>   <span class="token keyword">protected</span> <span class="token class-name">PerpetualCache</span> localCache<span class="token punctuation">;</span>   <span class="token keyword">protected</span> <span class="token class-name">PerpetualCache</span> localOutputParameterCache<span class="token punctuation">;</span>   <span class="token keyword">protected</span> <span class="token class-name">Configuration</span> configuration<span class="token punctuation">;</span>    <span class="token keyword">protected</span> <span class="token keyword">int</span> queryStack<span class="token punctuation">;</span>   <span class="token keyword">private</span> <span class="token keyword">boolean</span> closed<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p>可以整理出 PerpetualCache 的调用关系</p> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230223/547ebb77ccfe57cfa6eaac6fcd0d8260.jpg" alt="mybatis - PerpetualCache 一级缓存"></p> <p>所以 一级缓存的生命周期是和 SqlSession 对象绑定在一起的，<strong>如果 sqlSession 不一样，是不会走缓存的</strong></p> <h3> <a id="_48" rel="nofollow"></a>使用缓存例子</h3> <pre><code class="prism language-java"><span class="token annotation punctuation">@Test</span> <span class="token comment">//@Transactional</span> <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cacheTest1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token class-name">AccountModel</span> accountModel <span class="token operator">=</span> accountDao<span class="token punctuation">.</span><span class="token function">selectByPrimaryKey</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>accountModel<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token class-name">AccountModel</span> accountModel1 <span class="token operator">=</span> accountDao<span class="token punctuation">.</span><span class="token function">selectByPrimaryKey</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>accountModel1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  </code></pre> <p><strong>如果不加 @Transactional 注解，是不会使用一级缓存的，也就是创建了两个不同的 SqlSession 对象， 那 @Transaction 是如何保证获取到的是同一个 SqlSession 对象呢？</strong></p> <h3> <a id="_SqlSession__65" rel="nofollow"></a>开启事务为什么可以保证获取到的是同一个 SqlSession 对象</h3> <p>首先，spring 是通过 <code>SqlsessionTemplate</code> 创建 SqlSession 代理对象操作 mybatis 中的 SqlSession 对象</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">(</span><span class="token class-name">SqlSessionFactory</span> sqlSessionFactory<span class="token punctuation">,</span> <span class="token class-name">ExecutorType</span> executorType<span class="token punctuation">,</span>                           <span class="token class-name">PersistenceExceptionTranslator</span> exceptionTranslator<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>      <span class="token function">notNull</span><span class="token punctuation">(</span>sqlSessionFactory<span class="token punctuation">,</span> <span class="token string">"Property 'sqlSessionFactory' is required"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token function">notNull</span><span class="token punctuation">(</span>executorType<span class="token punctuation">,</span> <span class="token string">"Property 'executorType' is required"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">this</span><span class="token punctuation">.</span>sqlSessionFactory <span class="token operator">=</span> sqlSessionFactory<span class="token punctuation">;</span>     <span class="token keyword">this</span><span class="token punctuation">.</span>executorType <span class="token operator">=</span> executorType<span class="token punctuation">;</span>     <span class="token keyword">this</span><span class="token punctuation">.</span>exceptionTranslator <span class="token operator">=</span> exceptionTranslator<span class="token punctuation">;</span>     <span class="token keyword">this</span><span class="token punctuation">.</span>sqlSessionProxy <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">SqlSession</span><span class="token punctuation">)</span> <span class="token function">newProxyInstance</span><span class="token punctuation">(</span><span class="token class-name">SqlSessionFactory</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>                                                          <span class="token keyword">new</span> <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{<!-- --></span> <span class="token class-name">SqlSession</span><span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  </code></pre> <p>其中 <code>SqlSessionInterceptor</code> 是创建 代理 sqlSession 的过程</p> <h3> <a id="SqlSessionInterceptor_89" rel="nofollow"></a>SqlSessionInterceptor</h3> <pre><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">SqlSessionInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{<!-- --></span>     <span class="token annotation punctuation">@Override</span>     <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">invoke</span><span class="token punctuation">(</span><span class="token class-name">Object</span> proxy<span class="token punctuation">,</span> <span class="token class-name">Method</span> method<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">{<!-- --></span>               <span class="token comment">//获取 SqlSession 关键</span>       <span class="token class-name">SqlSession</span> sqlSession <span class="token operator">=</span> <span class="token function">getSqlSession</span><span class="token punctuation">(</span><span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>sqlSessionFactory<span class="token punctuation">,</span>           <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>executorType<span class="token punctuation">,</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>exceptionTranslator<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token keyword">try</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">Object</span> result <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>sqlSession<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isSqlSessionTransactional</span><span class="token punctuation">(</span>sqlSession<span class="token punctuation">,</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>sqlSessionFactory<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>           <span class="token comment">// force commit even on non-dirty sessions because some databases require</span>           <span class="token comment">// a commit/rollback before calling close()</span>           sqlSession<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">return</span> result<span class="token punctuation">;</span>       <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> t<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">Throwable</span> unwrapped <span class="token operator">=</span> <span class="token function">unwrapThrowable</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>exceptionTranslator <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> unwrapped <span class="token keyword">instanceof</span> <span class="token class-name">PersistenceException</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>           <span class="token comment">// release the connection to avoid a deadlock if the translator is no loaded. See issue #22</span>           <span class="token function">closeSqlSession</span><span class="token punctuation">(</span>sqlSession<span class="token punctuation">,</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>sqlSessionFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>           sqlSession <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>           <span class="token class-name">Throwable</span> translated <span class="token operator">=</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>exceptionTranslator               <span class="token punctuation">.</span><span class="token function">translateExceptionIfPossible</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">PersistenceException</span><span class="token punctuation">)</span> unwrapped<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token keyword">if</span> <span class="token punctuation">(</span>translated <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             unwrapped <span class="token operator">=</span> translated<span class="token punctuation">;</span>           <span class="token punctuation">}</span>         <span class="token punctuation">}</span>         <span class="token keyword">throw</span> unwrapped<span class="token punctuation">;</span>       <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">if</span> <span class="token punctuation">(</span>sqlSession <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>           <span class="token function">closeSqlSession</span><span class="token punctuation">(</span>sqlSession<span class="token punctuation">,</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">.</span>sqlSessionFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>       <span class="token punctuation">}</span>     <span class="token punctuation">}</span>   <span class="token punctuation">}</span> </code></pre> <p>在 <code>getSqlSession</code> 来创建 sqlSession</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">SqlSession</span> <span class="token function">getSqlSession</span><span class="token punctuation">(</span><span class="token class-name">SqlSessionFactory</span> sessionFactory<span class="token punctuation">,</span> <span class="token class-name">ExecutorType</span> executorType<span class="token punctuation">,</span>                                        <span class="token class-name">PersistenceExceptionTranslator</span> exceptionTranslator<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>      <span class="token function">notNull</span><span class="token punctuation">(</span>sessionFactory<span class="token punctuation">,</span> NO_SQL_SESSION_FACTORY_SPECIFIED<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token function">notNull</span><span class="token punctuation">(</span>executorType<span class="token punctuation">,</span> NO_EXECUTOR_TYPE_SPECIFIED<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 从 threadLocal 中获取 SessionHolder</span>     <span class="token class-name">SqlSessionHolder</span> holder <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">SqlSessionHolder</span><span class="token punctuation">)</span> <span class="token class-name">TransactionSynchronizationManager</span><span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span>sessionFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 从 SessionHolder 获取 sqlSession</span>     <span class="token class-name">SqlSession</span> session <span class="token operator">=</span> <span class="token function">sessionHolder</span><span class="token punctuation">(</span>executorType<span class="token punctuation">,</span> holder<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>session <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">return</span> session<span class="token punctuation">;</span>     <span class="token punctuation">}</span>      LOGGER<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token string">"Creating a new SqlSession"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     session <span class="token operator">=</span> sessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span>executorType<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 将 SqlSessionHolder 与当前线程绑定</span>     <span class="token function">registerSessionHolder</span><span class="token punctuation">(</span>sessionFactory<span class="token punctuation">,</span> executorType<span class="token punctuation">,</span> exceptionTranslator<span class="token punctuation">,</span> session<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">return</span> session<span class="token punctuation">;</span> <span class="token punctuation">}</span>  </code></pre> <p>这里分三个步骤:</p> <ul> <li>从 threadLocal 中获取 SessionHolder</li> <li>从 SqlSessionHolder 获取 sqlSession, 不为空则返回</li> <li>如果 sqlSession 为空， 创建新的 sqlSession , 并将 SqlSessionHolder 与当前线程绑定</li> </ul> <p>**这样 从 SqlSessionHolder 中获取的 SqlSession 就是同一个对象了 **</p> <h4> <a id="_threadLocal__SessionHolder_167" rel="nofollow"></a>从 threadLocal 中获取 SessionHolder</h4> <p><code>TransactionSynchronizationManager.getResource(sessionFactory)</code></p> <pre><code class="prism language-java"><span class="token comment">/** * Retrieve a resource for the given key that is bound to the current thread. */</span> <span class="token annotation punctuation">@Nullable</span> <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Object</span> <span class="token function">getResource</span><span class="token punctuation">(</span><span class="token class-name">Object</span> key<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token class-name">Object</span> actualKey <span class="token operator">=</span> <span class="token class-name">TransactionSynchronizationUtils</span><span class="token punctuation">.</span><span class="token function">unwrapResourceIfNecessary</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token class-name">Object</span> value <span class="token operator">=</span> <span class="token function">doGetResource</span><span class="token punctuation">(</span>actualKey<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">return</span> value<span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">//从 threadLocal 中获取 SqlSessionHolder</span> <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Object</span> <span class="token function">doGetResource</span><span class="token punctuation">(</span><span class="token class-name">Object</span> actualKey<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token comment">//	private static final ThreadLocal&lt;Map&lt;Object, Object&gt;&gt; </span>     <span class="token comment">//   resources = new NamedThreadLocal&lt;&gt;("Transactional resources");</span>     <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> map <span class="token operator">=</span> resources<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>map <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>     <span class="token class-name">Object</span> value <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>actualKey<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// Transparently remove ResourceHolder that was marked as void...</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token keyword">instanceof</span> <span class="token class-name">ResourceHolder</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ResourceHolder</span><span class="token punctuation">)</span> value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isVoid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         map<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>actualKey<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// Remove entire ThreadLocal if empty...</span>         <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             resources<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>     <span class="token keyword">return</span> value<span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <h4> <a id="_SessionHolder__sqlSession_204" rel="nofollow"></a>从 SessionHolder 获取 sqlSession</h4> <p><code>SqlSession session = sessionHolder(executorType, holder)</code></p> <pre><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">SqlSession</span> <span class="token function">sessionHolder</span><span class="token punctuation">(</span><span class="token class-name">ExecutorType</span> executorType<span class="token punctuation">,</span> <span class="token class-name">SqlSessionHolder</span> holder<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token class-name">SqlSession</span> session <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>     <span class="token comment">// 如果 holder 不为空</span>     <span class="token comment">// 并且 holder 开启了事务</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span>holder <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> holder<span class="token punctuation">.</span><span class="token function">isSynchronizedWithTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">if</span> <span class="token punctuation">(</span>holder<span class="token punctuation">.</span><span class="token function">getExecutorType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> executorType<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TransientDataAccessResourceException</span><span class="token punctuation">(</span>                 <span class="token string">"Cannot change the ExecutorType when there is an existing transaction"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>          holder<span class="token punctuation">.</span><span class="token function">requested</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         session <span class="token operator">=</span> holder<span class="token punctuation">.</span><span class="token function">getSqlSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>     <span class="token keyword">return</span> session<span class="token punctuation">;</span> <span class="token punctuation">}</span>  </code></pre> <p>从 SqlSessionHolder 获取到 同一个 SqlSession 的条件是:</p> <ul> <li>holder 不为空</li> <li>holder 开启了事务</li> </ul> <h4> <a id="_sqlSession___sqlSession___SqlSessionHolder__232" rel="nofollow"></a>如果 sqlSession 为空， 创建新的 sqlSession , 并将 SqlSessionHolder 与当前线程绑定</h4> <p><code>registerSessionHolder(sessionFactory, executorType, exceptionTranslator, session);</code></p> <pre><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">registerSessionHolder</span><span class="token punctuation">(</span><span class="token class-name">SqlSessionFactory</span> sessionFactory<span class="token punctuation">,</span> <span class="token class-name">ExecutorType</span> executorType<span class="token punctuation">,</span>       <span class="token class-name">PersistenceExceptionTranslator</span> exceptionTranslator<span class="token punctuation">,</span> <span class="token class-name">SqlSession</span> session<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     <span class="token class-name">SqlSessionHolder</span> holder<span class="token punctuation">;</span>     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">TransactionSynchronizationManager</span><span class="token punctuation">.</span><span class="token function">isSynchronizationActive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>       <span class="token class-name">Environment</span> environment <span class="token operator">=</span> sessionFactory<span class="token punctuation">.</span><span class="token function">getConfiguration</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>environment<span class="token punctuation">.</span><span class="token function">getTransactionFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">instanceof</span> <span class="token class-name">SpringManagedTransactionFactory</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>          <span class="token comment">// 用SqlSession 构建SqlSessionHolder</span>         holder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionHolder</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span> executorType<span class="token punctuation">,</span> exceptionTranslator<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 将SqlSessionHolder与 当前线程绑定</span>         <span class="token comment">// 通过ThreadLocal 传递</span>         <span class="token class-name">TransactionSynchronizationManager</span><span class="token punctuation">.</span><span class="token function">bindResource</span><span class="token punctuation">(</span>sessionFactory<span class="token punctuation">,</span> holder<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token class-name">TransactionSynchronizationManager</span>             <span class="token punctuation">.</span><span class="token function">registerSynchronization</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SqlSessionSynchronization</span><span class="token punctuation">(</span>holder<span class="token punctuation">,</span> sessionFactory<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         holder<span class="token punctuation">.</span><span class="token function">setSynchronizedWithTransaction</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         holder<span class="token punctuation">.</span><span class="token function">requested</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">TransactionSynchronizationManager</span><span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span>environment<span class="token punctuation">.</span><span class="token function">getDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>           LOGGER<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token string">"SqlSession ["</span> <span class="token operator">+</span> session               <span class="token operator">+</span> <span class="token string">"] was not registered DataSource is not transactional"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>           <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TransientDataAccessResourceException</span><span class="token punctuation">(</span>               <span class="token string">"SqlSessionFactory must be using a SpringManagedTransactionFactory ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>       <span class="token punctuation">}</span>     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>       LOGGER<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token string">"SqlSession ["</span> <span class="token operator">+</span> session<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>    <span class="token punctuation">}</span> </code></pre> <ul> <li>用SqlSession 构建SqlSessionHolder</li> <li>将SqlSessionHolder与 当前线程绑定, 通过ThreadLocal 传递</li> </ul> <p>再回到刚才的问题<strong>开启事务为什么可以保证获取到的是同一个 SqlSession 对象?</strong></p> <p><em>spring 当且仅当在开启事务的场景下，通过 ThreadLocal 传递 同一个 SqlSession 对象</em></p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3541.htm">springboot +restTemplate配置</a></p>
+                                                <p>下一个：<a href="/html/category/article-3543.htm">在MySQL中，如何将FROM_UNIXTIME()函数与格式字符串一起使用？</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
+                        <li class="py-2"><a href="/html/category/article-3692.htm" title="创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)">创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3553.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>vue框架 vue组件中的ref、props传值并修改、混合（子组件重复部分利用混合可以减少代码量的重复编写） - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">vue框架 vue组件中的ref、props传值并修改、混合（子组件重复部分利用混合可以减少代码量的重复编写）</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p id="main-toc"> <h1 id="%E7%9B%AE%E5%BD%95-toc" style="margin-left:0px;text-align:center;"><a href="#%E7%9B%AE%E5%BD%95" rel="nofollow">目录</a></h1> <h2 id="%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9Avue%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84ref-toc" style="margin-left:0px;text-align:center;"><a href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9Avue%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84ref" rel="nofollow">vue组件中的ref</a></h2> <h2 id="%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9Aprops%E4%BC%A0%E5%80%BC%E5%B9%B6%E4%BF%AE%E6%94%B9-toc" style="margin-left:0px;text-align:center;"><a href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9Aprops%E4%BC%A0%E5%80%BC%E5%B9%B6%E4%BF%AE%E6%94%B9" rel="nofollow">props传值并修改</a></h2> <h2 id="%C2%A0%E7%BB%AD%EF%BC%9A-toc" style="margin-left:40px;text-align:center;"><a href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E6%B7%B7%E5%90%88%EF%BC%88%E5%AD%90%E7%BB%84%E4%BB%B6%E9%87%8D%E5%A4%8D%E9%83%A8%E5%88%86%E5%88%A9%E7%94%A8%E6%B7%B7%E5%90%88%E5%8F%AF%E4%BB%A5%E5%87%8F%E5%B0%91%E4%BB%A3%E7%A0%81%E9%87%8F%E7%9A%84%E9%87%8D%E5%A4%8D%E7%BC%96%E5%86%99%EF%BC%89" rel="nofollow">混合（子组件重复部分利用混合可以减少代码量的重复编写）</a></h2> <h2 id="%E7%9F%A5%E8%AF%86%E7%82%B9%E6%8B%93%E5%B1%95%EF%BC%9A-toc" style="margin-left:40px;text-align:center;"><a href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E6%8B%93%E5%B1%95%EF%BC%9A" rel="nofollow">知识点拓展：</a></h2> <hr id="hr-toc"/> <h1 id="%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9Avue%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84ref"> <span style="color:#be191c;">第一部</span>：vue组件中的ref</h1> <blockquote> <p><strong><span style="color:#be191c;">&lt;!-- ref属性<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;1，被用来给元素或子组件注册引用信息(id的替代者)<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;2，应用在HTML标签上获取的是真实dom元素，应用在组件标签上市组件实例对象(vc)<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;3，使用方式：<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;打标识：&lt;h1 ref="xxx"&gt;......&lt;/h1&gt; 或 &lt;school &nbsp;ref="xxx"&gt;.....&lt;/school&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;获取：this.$refs.xxx--&gt;</span><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;template&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;div&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;h1 v-text="msg" ref="title"&lt;/h1&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;button ref="btn" @click="showDom"&gt;点我输出上方的dom&lt;/button&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&lt;school&gt;&lt;/school&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;/div&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;/template&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;script type="text/javascript"&gt;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="color:#be191c;">&nbsp;&nbsp;&nbsp; &nbsp;//引入school组件</span><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;import school from '.components/school.vue'<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;export default{<!-- --><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;name:'App',<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;components:{school},<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;data(){<!-- --><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;return{<!-- --><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;msg:'欢迎学习vue'<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;},<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;methods:{<!-- --><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;showDom(){<!-- --><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;console.log(this.$refs.title)<span style="color:#be191c;">//真实dom元素</span><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;console.log(this.$refs.btn)<span style="color:#be191c;">//真实dom元素</span><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;console.log(this.$refs.sch)<span style="color:#be191c;">//school组件的实例对象</span><br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;}<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;/script&gt;</strong></p> </blockquote> <h1 id="%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9Aprops%E4%BC%A0%E5%80%BC%E5%B9%B6%E4%BF%AE%E6%94%B9"> <span style="color:#be191c;">第二部分</span>：props传值并修改</h1> <p><img fetchpriority="high" decoding="async" alt="" height="525" src="http://img.555519.xyz/uploads/20221230/97006c5427fa1347cd45a55a9d776a42.jpg"></p> <h2 id="%C2%A0%E7%BB%AD%EF%BC%9A">&nbsp;续：</h2> <p><img decoding="async" alt="" height="478" src="http://img.555519.xyz/uploads/20221230/588f4b84efbf96005430199ce8f63f40.jpg"></p> <h3 id="%C2%A0%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B2%E8%A7%A3%EF%BC%9A">&nbsp;知识点讲解：</h3> <p><strong>功能：让组件接收外部传过来的数据<br /> （1）传递数据：<br /> &lt;Demo name="xxx"&gt;<br /> （2）接收数据：<br /> 第一种方式（只接收）<br /> props:['name','age' ]<br /> 第二种方式（限制类型）：<br /> props:{<!-- --><br /> &nbsp;name:Number<br /> }<br /> 第三种方式（限制类型，限制必要性，指定默认值）<br /> props：{<!-- --><br /> name：{<!-- --><br /> &nbsp;type：String，//数值类型<br /> required：true，//必须传值<br /> default：‘l老王’//默认值<br /> }<br /> }</strong></p> <p><strong>被用props是只读的，vue底层会监测你对props，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份<br /> ，然后修改data中的数据。</strong><br /> &nbsp;</p> <h1 id="%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E6%B7%B7%E5%90%88%EF%BC%88%E5%AD%90%E7%BB%84%E4%BB%B6%E9%87%8D%E5%A4%8D%E9%83%A8%E5%88%86%E5%88%A9%E7%94%A8%E6%B7%B7%E5%90%88%E5%8F%AF%E4%BB%A5%E5%87%8F%E5%B0%91%E4%BB%A3%E7%A0%81%E9%87%8F%E7%9A%84%E9%87%8D%E5%A4%8D%E7%BC%96%E5%86%99%EF%BC%89"> <span style="color:#be191c;">第三部分</span>：混合（子组件重复部分利用混合可以减少代码量的重复编写）</h1> <p><img decoding="async" alt="" height="629" src="http://img.555519.xyz/uploads/20221230/d97fa21ffa4779ac8f3a75f13967e65c.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="366" src="http://img.555519.xyz/uploads/20221230/e3564368283c13ac24dc7f62c351a466.jpg"><strong>&nbsp;混合部分的源代码<span style="color:#fe2c24;">minxin.js</span></strong></p> <p><img loading="lazy" decoding="async" alt="" height="311" src="http://img.555519.xyz/uploads/20221230/757b39446abd248d331bbd2dee346e29.jpg"></p> <p><strong>源代码：</strong></p> <blockquote> <p><strong>&lt;template&gt;</strong></p> <p><strong>&nbsp; &nbsp;&lt;div&gt;</strong></p> <p><strong>&nbsp; &nbsp; &nbsp;&lt;h2&gt;员工姓名：{<!-- -->{name}}&lt;/h2&gt;</strong></p> <p><strong>&nbsp; &nbsp; &nbsp;&lt;h2&gt;员工年龄:{<!-- -->{age}}&lt;/h2&gt;</strong></p> <p><strong>&nbsp; &nbsp; &nbsp;&lt;h2&gt;员工性别:{<!-- -->{sex}}&lt;/h2&gt;</strong></p> <p><strong>&nbsp; &nbsp; &lt;/div&gt;</strong></p> <p><strong>&lt;/template&gt;</strong></p> <p><strong>&lt;script&gt;</strong></p> <p><span style="color:#b95514;"><strong>//引入一个hunhe</strong></span></p> <p><strong>import {minxin} from '../minxin'</strong></p> <p><strong>export default{<!-- --></strong></p> <p><strong>&nbsp;name:'staff',</strong></p> <p><strong>&nbsp;data(){<!-- --></strong></p> <p><strong>&nbsp; &nbsp; &nbsp;return {<!-- --></strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;name:'张三',</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;age:40,</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sex:'男'</strong></p> <p><strong>&nbsp; &nbsp; &nbsp;}</strong></p> <p><strong>&nbsp;},</strong></p> <p><strong>&nbsp;<span style="color:#b95514;">//这里必须使用数组的形式，可以添加多个混合，不仅可以使用到这里，也可以在其他子组件中使用。</span></strong></p> <p><span style="color:#b95514;"><strong>&nbsp;//若添加的混合内部的部分数据与本</strong></span></p> <p><span style="color:#b95514;"><strong>&nbsp;//页面上的某个数据起到冲突时(两个数据都一样)，那么会已本页面中为主，不会破坏本页面中的数据，</strong></span></p> <p><span style="color:#b95514;"><strong>&nbsp;//若是生命周期里面的钩子，那么他是不会</strong></span></p> <p><span style="color:#b95514;"><strong>//听从本页面的，直接继续叠加在本页面同样数据中呈现</strong></span></p> <p><strong>&nbsp;minxins:[minxin]</strong></p> <p><strong>}</strong></p> <p><strong>&lt;/script&gt;</strong></p> <p><strong>&lt;style scoped&gt;</strong></p> <p><strong>&lt;/style&gt;</strong></p> </blockquote> <p><strong>minxin.js源码：</strong></p> <blockquote> <p><strong>export const &nbsp;minxin={<!-- --></strong></p> <p><strong>&nbsp; &nbsp; methods:{<!-- --></strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; showName(){<!-- --></strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alert(this.name);</strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; }</strong></p> <p><strong>&nbsp; &nbsp; },</strong></p> <p><strong>&nbsp; &nbsp; mounted(){<!-- --></strong></p> <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; console.log('你好呀');</strong></p> <p><strong>&nbsp; &nbsp; }</strong></p> <p><strong>}</strong></p> </blockquote> <p><strong>mixin混入：</strong><br /> 将一个内容被同时多个子组件使用（该内容是两个子组件的共同部分）。</p> <p>功能：可以把多个组件共用的配置提取成一个混入对象<br /><strong>使用方式：</strong><br /> 第一步定义混合，例如：<br /> {<!-- --><br /> &nbsp; data( ) {...},<br /> methods:{...}<br /> ....<br /> }<br /> 第二步使用混入，例如：<br /> （1）全局混入，vue.minxin（xxx）<br /> &nbsp;（2）局部混入，minxins:【'xxx'】</p> <h2 id="%E7%9F%A5%E8%AF%86%E7%82%B9%E6%8B%93%E5%B1%95%EF%BC%9A">知识点拓展：</h2> <p><strong>在创建子组件时，切记不能创建多个components文件，内部是单独存放所有的子组件的，若是创建多个同级的文件，那么系统会报错，所以不可以创建多个同级文件，其中包含（src文件，components文件，main.js文件等都不可以创建多个），若必要创建时，需要更改vue框架系统内部的默认的设置，否则系统就会报错，无法执行。</strong></p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3552.htm">Bootstrap Blazor 模板使用Layout 组件</a></p>
+                                                <p>下一个：<a href="/html/category/article-3554.htm">Google kickstart 2022 Round A题解</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                        <li class="py-2"><a href="/html/category/article-3678.htm" title="C++引用以及结构体">C++引用以及结构体</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3692.htm" title="创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)">创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

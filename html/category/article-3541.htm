@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3541.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>springboot +restTemplate配置 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">springboot +restTemplate配置</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>springboot +restTemplate配置</h3> <ul> <li> <ul> <li><a href="#_2" rel="nofollow">需要引入的依赖</a></li> <li><a href="#RestTempalteConfig_23" rel="nofollow">RestTempalteConfig配置类</a></li> <li><a href="#MyOkHttpClientIntercetor__77" rel="nofollow">MyOkHttpClientIntercetor 配置类</a></li> </ul> </li> </ul> </div> <h2> <a id="_2" rel="nofollow"></a>需要引入的依赖</h2> <pre><code class="prism language-javascript"># okhttp客户端 <span class="token operator">&lt;</span>dependency<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>groupId<span class="token operator">&gt;</span>com<span class="token punctuation">.</span>squareup<span class="token punctuation">.</span>okhttp3<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>artifactId<span class="token operator">&gt;</span>okhttp<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">&gt;</span>            <span class="token operator">&lt;</span>dependency<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>groupId<span class="token operator">&gt;</span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">&gt;</span>             <span class="token operator">&lt;</span>artifactId<span class="token operator">&gt;</span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>web<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">&gt;</span>         <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">&gt;</span>  </code></pre> <h2> <a id="RestTempalteConfig_23" rel="nofollow"></a>RestTempalteConfig配置类</h2> <p>下面展示一些 <code>内联代码片</code>。</p> <pre><code class="prism language-javascript"><span class="token keyword">package</span> com<span class="token punctuation">.</span>zhouzhou<span class="token punctuation">.</span>springredistemplatedemo<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>  <span class="token keyword">import</span> okhttp3<span class="token punctuation">.</span>ConnectionPool<span class="token punctuation">;</span> <span class="token keyword">import</span> okhttp3<span class="token punctuation">.</span>OkHttpClient<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>http<span class="token punctuation">.</span>client<span class="token punctuation">.</span>OkHttp3ClientHttpRequestFactory<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>http<span class="token punctuation">.</span>client<span class="token punctuation">.</span>SimpleClientHttpRequestFactory<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Component<span class="token punctuation">;</span> <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>client<span class="token punctuation">.</span>RestTemplate<span class="token punctuation">;</span>  <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>TimeUnit<span class="token punctuation">;</span>  @Configuration <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RestTempalteConfig</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">// 简单客户端配置</span>     @Bean     <span class="token keyword">public</span> RestTemplate <span class="token function">restTemplate1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>          SimpleClientHttpRequestFactory factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleClientHttpRequestFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         factory<span class="token punctuation">.</span><span class="token function">setConnectTimeout</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         factory<span class="token punctuation">.</span><span class="token function">setReadTimeout</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         RestTemplate restTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span>factory<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">return</span> restTemplate<span class="token punctuation">;</span>     <span class="token punctuation">}</span>  <span class="token comment">// 利用 okhttpclient 配置 （核心）</span>     @Bean     <span class="token keyword">public</span> RestTemplate <span class="token function">restTemplate2</span><span class="token punctuation">(</span><span class="token parameter">OkHttpClient okHttpClient</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>         OkHttp3ClientHttpRequestFactory factory <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">OkHttp3ClientHttpRequestFactory</span><span class="token punctuation">(</span>okHttpClient<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span>factory<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span>      @Bean     <span class="token keyword">public</span> OkHttpClient <span class="token function">okHttpClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>          <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OkHttpClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token function">retryOnConnectionFailure</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token comment">//连接失败是否重试</span>                 <span class="token punctuation">.</span><span class="token function">connectionPool</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ConnectionPool</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span> TimeUnit<span class="token punctuation">.</span><span class="token constant">MINUTES</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// 连接池配置</span>                 <span class="token punctuation">.</span><span class="token function">connectTimeout</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span>TimeUnit<span class="token punctuation">.</span><span class="token constant">SECONDS</span><span class="token punctuation">)</span><span class="token comment">//连接超时时间</span>                 <span class="token punctuation">.</span><span class="token function">readTimeout</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span>TimeUnit<span class="token punctuation">.</span><span class="token constant">SECONDS</span><span class="token punctuation">)</span><span class="token comment">// 读取超时时间</span>                 <span class="token punctuation">.</span><span class="token function">writeTimeout</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span>TimeUnit<span class="token punctuation">.</span><span class="token constant">SECONDS</span><span class="token punctuation">)</span><span class="token comment">//写超时时间</span>                 <span class="token punctuation">.</span><span class="token function">addInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyOkHttpClientIntercetor</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 增加过滤器，可以实现过一段时间重试的功能</span>                 <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>  </code></pre> <h2> <a id="MyOkHttpClientIntercetor__77" rel="nofollow"></a>MyOkHttpClientIntercetor 配置类</h2> <pre><code class="prism language-javascript"><span class="token keyword">package</span> com<span class="token punctuation">.</span>zhouzhou<span class="token punctuation">.</span>springredistemplatedemo<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>  <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span> <span class="token keyword">import</span> okhttp3<span class="token punctuation">.</span>Interceptor<span class="token punctuation">;</span> <span class="token keyword">import</span> okhttp3<span class="token punctuation">.</span>Request<span class="token punctuation">;</span> <span class="token keyword">import</span> okhttp3<span class="token punctuation">.</span>Response<span class="token punctuation">;</span>  <span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span> <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>TimeUnit<span class="token punctuation">;</span>  @Slf4j <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyOkHttpClientIntercetor</span> <span class="token keyword">implements</span> <span class="token class-name">Interceptor</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">// 重试次数</span>     <span class="token keyword">private</span> int executionCount<span class="token punctuation">;</span> 	<span class="token comment">// 每次重试间隔的时间</span>     <span class="token keyword">private</span> long retryInterval<span class="token punctuation">;</span>       <span class="token keyword">public</span> <span class="token function">MyOkHttpClientIntercetor</span><span class="token punctuation">(</span><span class="token parameter">int executionCount<span class="token punctuation">,</span> long retryInterval</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">this</span><span class="token punctuation">.</span>executionCount <span class="token operator">=</span> executionCount<span class="token punctuation">;</span>         <span class="token keyword">this</span><span class="token punctuation">.</span>retryInterval <span class="token operator">=</span> retryInterval<span class="token punctuation">;</span>     <span class="token punctuation">}</span>      @Override     <span class="token keyword">public</span> Response <span class="token function">intercept</span><span class="token punctuation">(</span>Chain chain<span class="token punctuation">)</span> throws IOException <span class="token punctuation">{<!-- --></span>         Request request <span class="token operator">=</span> chain<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         Response response <span class="token operator">=</span> <span class="token function">dorequest</span><span class="token punctuation">(</span>chain<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>         int retryNum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>         <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>response <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> <span class="token operator">!</span>response<span class="token punctuation">.</span><span class="token function">isSuccessful</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> retryNum <span class="token operator">&lt;</span> executionCount<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"okhttpclient retry ,request=[{}],response=[{}]"</span><span class="token punctuation">,</span> request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>             final long nextInterval <span class="token operator">=</span> retryInterval<span class="token punctuation">;</span>              <span class="token keyword">try</span> <span class="token punctuation">{<!-- --></span>                 log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"okhttpclient retry, wait for {}ms"</span><span class="token punctuation">,</span> nextInterval<span class="token punctuation">)</span><span class="token punctuation">;</span>                 TimeUnit<span class="token punctuation">.</span><span class="token constant">MILLISECONDS</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>retryInterval<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>InterruptedException e<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>             retryNum<span class="token operator">++</span><span class="token punctuation">;</span>             response <span class="token operator">=</span> <span class="token function">dorequest</span><span class="token punctuation">(</span>chain<span class="token punctuation">,</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token punctuation">}</span>         <span class="token keyword">return</span> response<span class="token punctuation">;</span>     <span class="token punctuation">}</span>      <span class="token keyword">public</span> Response <span class="token function">dorequest</span><span class="token punctuation">(</span><span class="token parameter">Interceptor<span class="token punctuation">.</span>Chain chain<span class="token punctuation">,</span> Request request</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>           Response response <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>         <span class="token keyword">try</span> <span class="token punctuation">{<!-- --></span>             response <span class="token operator">=</span> chain<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>IOException e<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>         <span class="token keyword">return</span> response<span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span>  </code></pre> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3540.htm">pyqt5 app基本设计框架_在abaqus中使用PyQt设计GUI</a></p>
+                                                <p>下一个：<a href="/html/category/article-3542.htm">mybatis &#8211; PerpetualCache 一级缓存</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3678.htm" title="C++引用以及结构体">C++引用以及结构体</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3704.htm" title="微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪">微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪</a></li>
+                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3679.htm" title="Vuex大全">Vuex大全</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3685.htm" title="ForkJoin详解及应用">ForkJoin详解及应用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3672.htm" title="安卓夜间模式开发【深色主题适配】">安卓夜间模式开发【深色主题适配】</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

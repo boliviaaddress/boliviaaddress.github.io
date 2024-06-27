@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3660.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>关于VUE中组件之间传值以及调用方法汇总 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">关于VUE中组件之间传值以及调用方法汇总</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3 id="vue中组件之间传值总结来讲有三种情况分别是父组件对子组件子组件对父组件以及兄弟组件之间传值以及调用">VUE中组件之间传值，总结来讲有三种情况，分别是：父组件对子组件、子组件对父组件以及兄弟组件之间传值以及调用。</h3> <dl> <p>  一、父组件==&gt;子组件</p> <dd> <p><strong>1.父组件传值给子组件</strong>，通过类似于属性绑定的方式，将需要传入子组件中的数据，绑定在子组件上，子组件通过props接收传入进来的数据。</p> <pre><code>父组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs lasso"><span class="hljs-comment">//在teamplate中调用此组件</span> <span class="hljs-subst">&lt;</span>spList :keyword<span class="hljs-subst">=</span><span class="hljs-string">"keyword"</span> :activename<span class="hljs-subst">=</span><span class="hljs-string">"active"</span><span class="hljs-subst">&gt;&lt;</span>/spList<span class="hljs-subst">&gt;</span> <span class="hljs-comment">//引入子组件</span> <span class="hljs-keyword">import</span> spList from <span class="hljs-string">"../../components/sp_list.vue"</span>; components: {     spList }, <span class="hljs-built_in">data</span>() {     <span class="hljs-keyword">return</span> {         active: <span class="hljs-string">"2"</span>,         keyword: <span class="hljs-string">''</span>,     }; },</code></pre> <pre><code>子组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs javascript">props: {      keyword:<span class="hljs-built_in">String</span>,      activename:<span class="hljs-built_in">String</span>, }, <span class="hljs-comment">//或者</span> props: {      <span class="hljs-string">"keyword"</span>,      <span class="hljs-string">"activename"</span> },</code></pre> </dd> <dd> <p><strong>2.父组件调用子组件中的方法或数据</strong>，VUE官网中的描述：ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例。</p> <pre><code>父组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-comment">//在teamplate中调用此组件，并将该组件注册在$refs对象上</span> &lt;spList <span class="hljs-keyword">ref</span>=<span class="hljs-string">"splist"</span>&gt;&lt;/spList&gt; <span class="hljs-comment">//引入子组件</span> import spList <span class="hljs-keyword">from</span> <span class="hljs-string">"../../components/sp_list.vue"</span>; components: {     spList }, methods: {     getsomeList(){         <span class="hljs-keyword">this</span>.$refs.splist.getlist();<span class="hljs-comment">//调用子组件中的方法</span>         <span class="hljs-keyword">this</span>.$refs.splist.tableData;<span class="hljs-comment">//获取子组件中的数据</span>     } },</code></pre> <pre><code>子组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs haskell"><span class="hljs-typedef"><span class="hljs-keyword">data</span><span class="hljs-container">()</span> <span class="hljs-container">{     <span class="hljs-title">return</span> {         <span class="hljs-title">tableData</span>:[],     }</span></span> },  methods: {     //获取列表的方法     getlist(){      }, },</code></pre> </dd> <p>  二、子组件==&gt;父组件</p> <dd> <p>1.通过<strong>事件派发</strong>的方式传值给父组件，或者告知父组件需要调用方法。</p> <pre><code>父组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs scala"><span class="hljs-comment">//在teamplate中调用此组件，并绑定与子组件约定好的事件名称和在父组件中由该事件出发的方法</span> &lt;spList <span class="hljs-annotation">@changeBxd</span>=<span class="hljs-string">"setBxd"</span>&gt;&lt;/spList&gt; <span class="hljs-comment">//引入子组件</span> <span class="hljs-keyword">import</span> spList from <span class="hljs-string">"../../components/sp_list.vue"</span>; components: {     spList }, methods: {     setBxd(<span class="hljs-keyword">val</span>){         console.log(<span class="hljs-keyword">val</span>);<span class="hljs-comment">//'你好世界'</span>         <span class="hljs-keyword">this</span>.getFlow();<span class="hljs-comment">//触发事件后调用其他父组件中的方法</span>     },     getFlow(){      }, },</code></pre> <pre><code>子组件中内容 </code></pre> <pre class="prettyprint"><code class="hljs cs">methods: {     <span class="hljs-comment">//获取列表的方法</span>     getlist(){         <span class="hljs-keyword">let</span> name = <span class="hljs-string">'你好世界'</span>;         <span class="hljs-keyword">this</span>.$emit(<span class="hljs-string">'changeBxd'</span>,name );<span class="hljs-comment">//触发约定好的事件</span>     }, },</code></pre> </dd> <p>  三、兄弟组件之间</p> <dd> <p>1.通过<strong>eventbus</strong>的方式监听事件。 <br /> 首先需要先创建一个eventbus的事件容器，哪里需要哪里引用。 <br /><img decoding="async" src="http://img.555519.xyz/uploads/20221230/b513e415939e3068697875d737f47435.jpg" alt="关于VUE中组件之间传值以及调用方法汇总"></p> <pre><code>兄弟组件1中的内容 </code></pre> <pre class="prettyprint"><code class="hljs lasso"><span class="hljs-comment">//引入eventbus</span> <span class="hljs-keyword">import</span> Bus from <span class="hljs-string">'@/util/bus.js'</span> <span class="hljs-comment">//在方法中触发事件，（提前约定好事件名称）</span> methods: {     getFlow(){         Bus<span class="hljs-built_in">.</span><span class="hljs-variable">$emit</span>(<span class="hljs-string">'getCwbxList'</span>)     }, },</code></pre> <pre><code>兄弟组件2中的内容 </code></pre> <pre class="prettyprint"><code class="hljs coffeescript"><span class="hljs-regexp">//</span> 引入eventbus <span class="hljs-reserved">import</span> Bus from <span class="hljs-string">'@/util/bus.js'</span> mounted(){     <span class="hljs-regexp">//</span> 监听此事件     Bus.$<span class="hljs-literal">on</span><span class="hljs-function"><span class="hljs-params">(<span class="hljs-string">'getCwbxList'</span>,()=&gt;{         <span class="hljs-keyword">this</span>.getlist();     })</span> }</span></code></pre> <blockquote> <p><strong>注意：</strong>：eventbus 这种传值方式，适用于任何组件之间传值，父子间或者兄弟间。</p> </blockquote> </dd> </dl> <p>另外，除了这些方法之外，还可以是用<strong>vuex</strong>官方推荐的状态管理。关于vuex在之后记录介绍，最近还在整理中。</p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3659.htm">Nacos Discovery&#8211;服务治理</a></p>
+                                                <p>下一个：<a href="/html/category/article-3661.htm">Vue3的vue-router路由详解</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3669.htm" title="react实战系列起步（mockjs、第一个模块、docusaurus）">react实战系列起步（mockjs、第一个模块、docusaurus）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3722.htm" title="MyBatis:SQL语句中的foreach标签的详细介绍">MyBatis:SQL语句中的foreach标签的详细介绍</a></li>
+                        <li class="py-2"><a href="/html/category/article-3679.htm" title="Vuex大全">Vuex大全</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

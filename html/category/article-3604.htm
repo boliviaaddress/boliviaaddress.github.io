@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3604.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Vue项目中v-bind动态绑定src路径不成功问题及解决_vue.js - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Vue项目中v-bind动态绑定src路径不成功问题及解决_vue.js</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">v-bind动态绑定src路径不成功</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">解决方案 1</a></li> <li><a href="#_lab2_0_1" rel="nofollow">解决方案 2</a></li> <li><a href="#_lab2_0_2" rel="nofollow">解决方案 3</a></li> </ul> <li><a href="#_label1" rel="nofollow">vue踩坑--动态v-for图片路径问题</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_3" rel="nofollow">问题所在</a></li> <li><a href="#_lab2_1_4" rel="nofollow">解决办法</a></li> <li><a href="#_lab2_1_5" rel="nofollow">实现代码</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>v-bind动态绑定src路径不成功</h2> <p><strong>问题：</strong>在做Vue项目的时候，由于项目需求，需要动态绑定img的src时，突然发现如果说是直接请求后台接口的图片地址就能显示，</p> <p>但是直接动态绑定img的src的图片的相对路径或者是绝对路径的时候，图片不能显示。</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/974cf89b2aea49da2c84bd87d4e85d21.jpg"></p> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>解决方案 1</h3> <p>当在给数据MyimgSrc 设置绝对路径或者是相对路径时应该使用require引入才能成功</p> <div class="ay1code"> <pre class="brush:js;">currentSrc : require("@/assets/1.png")</pre> </div> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>解决方案 2</h3> <p>直接导入</p> <div class="ay1code"> <pre class="brush:js;">&lt;img :src="url"/&gt;  import url from '../../assets/logo.png'  data {      url,  }</pre> </div> <p class="maodian"><a name="_lab2_0_2" rel="nofollow"></a></p> <h3>解决方案 3</h3> <p>把图片放到static 文件夹里面 就能直接引入</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/008f1afb2a8c0a1d6c274a524288eb96.jpg"></p> <p><strong>总结：</strong>当动态绑定img的src的时候，vue数据绑定图片的相对路径或者是绝对路径的时候，需要require路径。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>vue踩坑--动态v-for图片路径问题</h2> <p><strong>问题描述：</strong>想要用v-for来动态生成图片路径</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;div v-for="item in 40"&gt;  	&lt;img :src="'./../../assets/img/' + item + '.jpg'" alt=""&gt;  &lt;/div&gt;  </pre> </div> <p><strong>打包后的路径是这样的</strong></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220420/d7d8e8ec13a0b1c7868d0a2f42909312.jpg"></p> <p><strong>打包后的资源目录是这样的</strong></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220420/71078c0c11206dcd8abb6585c7eec51f.jpg"></p> <p class="maodian"><a name="_lab2_1_3" rel="nofollow"></a></p> <h3>问题所在</h3> <p>上面样写是不行的，你会发现图片在页面中并没有正确显示。从上面的图片可以看出，打包后的图片路径明显不对。     </p> <p>这是因为webpack并没有对我们拼接的路径进行解析，图片也没有被引用到打包后的目录（如果有的话应该是40张）</p> <p>vue-cli文档的HTML和静态资源处理里是这么描述的</p> <p><strong>静态资源可以通过两种方式进行处理：</strong>    </p> <p>在 JavaScript 被导入或在 template/CSS 中通过相对路径被引用。这类引用会被 webpack 处理。</p> <p>放置在 public 目录下或通过绝对路径被引用。这类资源将会直接被拷贝，而不会经过 webpack 的处理。</p> <p><strong>从相对路径导入</strong>    </p> <p>当你在 JavaScript、CSS 或 *.vue 文件中使用相对路径 (必须以 . 开头) 引用一个静态资源时，该资源将会被包含进入 webpack 的依赖图中。在其编译过程中，所有诸如 &lt;img src="…"&gt;、background: url(…) 和 CSS @import 的资源 URL 都会被解析为一个模块依赖。</p> <p>例如，url(./image.png) 会被翻译为 <strong>require(’./image.png’)</strong>，</p> <p>而：&lt;img src="./image.png" alt="Vue项目中v-bind动态绑定src路径不成功问题及解决_vue.js"&gt;将会被编译到：<strong>h(‘img’, { attrs: { src: require(’./image.png’) }})</strong></p> <p>那在上面里我们也是写的相对路径呀，为什么没有被编译呢？     </p> <p>这是因为在编译时图片的url还没有拼接好，{<!-- -->{}}表达式只会在渲染到页面上的时候执行，所以编译的时候src还是’./…/…/assets/img/’ + item + ‘.jpg’，这样的话webpack不认为这是一个模块，所以直接不处理，图片也就没有被编译。</p> <p class="maodian"><a name="_lab2_1_4" rel="nofollow"></a></p> <h3>解决办法</h3> <p>把图片作为资源引入，在图片的url加上require，变成require(url)。</p> <p class="maodian"><a name="_lab2_1_5" rel="nofollow"></a></p> <h3>实现代码</h3> <div class="ay1code"> <pre class="brush:js;">&lt;template&gt;  	&lt;div v-for="item in images"&gt;  		&lt;img :src="item" alt=""&gt;  	&lt;/div&gt;  &lt;/template&gt;  &lt;script&gt;      export default {          name: "",          data: function () {              return {                  changeDirection: true,                  images:[  					require('./../../assets/img/0.jpg'),  					......  					require('./../../assets/img/40.jpg'),  				]              }          }      }  &lt;/script&gt;  </pre> </div> <p>不会吧不会吧，这么多图片不会真有人一个个写吧？多图片应该这样写</p> <div class="ay1code"> <pre class="brush:js;">&lt;script&gt;      export default {          name: "",          data: function () {              return {                  changeDirection: true,                  images:(function () {                      // 导入图片模块                      let fileArr = [];                      for (let i = 0; i &lt; 40; i++) {                          fileArr[i] = require('./../../assets/img/' + i + '.jpg');                      }                      return fileArr;                  })(),              }          }      }  &lt;/script&gt;  </pre> </div> <p><strong>修改后打包后的路径</strong></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220420/ce97a11d13a2bc3f2f75832a2749c65e.jpg"></p> <p><strong>修改后打包后的资源目录</strong></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220420/95af630f9b51321d9cafc89af6f98dcd.jpg"></p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3603.htm">Java核心知识1：泛型机制详解</a></p>
+                                                <p>下一个：<a href="/html/category/article-3605.htm">JS Promise用法</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3671.htm" title="Eclipse开发Java如何Debug详解">Eclipse开发Java如何Debug详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

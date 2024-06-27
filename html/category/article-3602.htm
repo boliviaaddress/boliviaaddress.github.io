@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3602.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>victoriaMetrics库之布隆过滤器 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">victoriaMetrics库之布隆过滤器</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<h2 id="victoriametrics库之布隆过滤器">victoriaMetrics库之布隆过滤器</h2> <p>代码路径：<code>/lib/bloomfilter</code></p> <h3 id="概述">概述</h3> <p>victoriaMetrics的<code>vmstorage</code>组件会接收上游传递过来的指标，在现实场景中，指标或瞬时指标的数量级可能会非常恐怖，如果不限制缓存的大小，有可能会由于cache miss而导致出现过高的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.victoriametrics.com/FAQ.html#what-is-a-slow-insert"  target="_blank" rel="nofollow">slow insert</a>。</p> <p>为此，vmstorage提供了两个参数：<code>maxHourlySeries</code>和<code>maxDailySeries</code>，用于限制每小时/每天添加到缓存的唯一序列。</p> <blockquote> <p>唯一序列指表示唯一的时间序列，如<code>metrics{label1="value1",label2="value2"}</code>属于一个时间序列，但多条不同值的<code>metrics{label1="value1",label2="value2"}</code>属于同一条时间序列。victoriaMetrics使用如下方式来获取时序的唯一标识：</p> <pre><code class="language-go">func getLabelsHash(labels []prompbmarshal.Label) uint64 { 	bb := labelsHashBufPool.Get() 	b := bb.B[:0] 	for _, label := range labels { 		b = append(b, label.Name...) 		b = append(b, label.Value...) 	} 	h := xxhash.Sum64(b) 	bb.B = b 	labelsHashBufPool.Put(bb) 	return h }</code></pre> </blockquote> <h3 id="限速器的初始化">限速器的初始化</h3> <p>victoriaMetrics使用了一个类似限速器的概念，限制每小时/每天新增的唯一序列，但与普通的限速器不同的是，它需要在序列级别进行限制，即判断某个序列是否是新的唯一序列，如果是，则需要进一步判断一段时间内缓存中新的时序数目是否超过限制，而不是简单地在请求层面进行限制。</p> <pre><code class="language-go">hourlySeriesLimiter = bloomfilter.NewLimiter(*maxHourlySeries, time.Hour) dailySeriesLimiter = bloomfilter.NewLimiter(*maxDailySeries, 24*time.Hour)</code></pre> <p>下面是新建限速器的函数，传入一个最大(序列)值，以及一个刷新时间。该函数中会：</p> <ol> <li>初始化一个限速器，限速器的最大元素个数为<code>maxItems</code></li> <li>则启用了一个goroutine，当时间达到<code>refreshInterval</code>时会重置限速器</li> </ol> <pre><code class="language-go">func NewLimiter(maxItems int, refreshInterval time.Duration) *Limiter { 	l := &amp;Limiter{ 		maxItems: maxItems, 		stopCh:   make(chan struct{}), 	} 	l.v.Store(newLimiter(maxItems)) //1 	l.wg.Add(1) 	go func() { 		defer l.wg.Done() 		t := time.NewTicker(refreshInterval) 		defer t.Stop() 		for { 			select { 			case &lt;-t.C: 				l.v.Store(newLimiter(maxItems))//2 			case &lt;-l.stopCh: 				return 			} 		} 	}() 	return l }</code></pre> <p>限速器只有一个核心函数<code>Add</code>，当vmstorage接收到一个指标之后，会(通过<code>getLabelsHash</code>计算该指标的唯一标识(h)，然后调用下面的<code>Add</code>函数来判断该唯一标识是否存在于缓存中。</p> <p>如果当前存储的元素个数大于等于允许的最大元素，则通过过滤器判断缓存中是否已经存在该元素；否则将该元素直接加入过滤器中，后续允许将该元素加入到缓存中。</p> <pre><code class="language-go">func (l *Limiter) Add(h uint64) bool { 	lm := l.v.Load().(*limiter) 	return lm.Add(h) }  func (l *limiter) Add(h uint64) bool { 	currentItems := atomic.LoadUint64(&amp;l.currentItems) 	if currentItems &gt;= uint64(l.f.maxItems) { 		return l.f.Has(h) 	} 	if l.f.Add(h) { 		atomic.AddUint64(&amp;l.currentItems, 1) 	} 	return true }</code></pre> <p>上面的过滤器采用的是布隆过滤器，核心函数为<code>Has</code>和<code>Add</code>，分别用于判断某个元素是否存在于过滤器中，以及将元素添加到布隆过滤器中。</p> <p>过滤器的初始化函数如下，<code>bitsPerItem</code>是个常量，值为16。<code>bitsCount</code>统计了过滤器中的总bit数，每个bit表示某个值的存在性。<code>bits</code>以64bit为单位的(后续称之为slot，目的是为了在bitsCount中快速检索目标bit)。计算<code>bits</code>时加上<code>63</code>的原因是为了四舍五入向上取值，比如当maxItems=1时至少需要1个unit64的slot。</p> <pre><code class="language-go">func newFilter(maxItems int) *filter { 	bitsCount := maxItems * bitsPerItem 	bits := make([]uint64, (bitsCount+63)/64) 	return &amp;filter{ 		maxItems: maxItems, 		bits:     bits, 	} }</code></pre> <blockquote> <p>为什么<code>bitsPerItem</code>为16？<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/282864286"  target="_blank" rel="nofollow">这篇文章</a>给出了如何计算布隆过滤器的大小。在本代码中，k为4(<code>hashesCount</code>)，期望的漏失率为0.003(可以从官方的<code>filter_test.go</code>中看出)，则要求总存储和总元素的比例为15，为了方便检索slot(64bit，为16的倍数)，将之设置为16。</p> <pre><code class="language-go">	if p &gt; 0.003 { 		t.Fatalf("too big false hits share for maxItems=%d: %.5f, falseHits: %d", maxItems, p, falseHits) 	}</code></pre> <p><img decoding="async" src="https://img2022.cnblogs.com/blog/1334952/202204/1334952-20220404235017277-1492083064.png" alt="victoriaMetrics库之布隆过滤器" style="zoom: 80%"/></p></blockquote> <p>下面是过滤器的<code>Add</code>操作，目的是在过滤器中添加某个元素。<code>Add</code>函数中没有使用多个哈希函数来计算元素的哈希值，转而改变同一个元素的值，然后对相应的值应用相同的哈希函数，元素改变的次数受<code>hashesCount</code>的限制。</p> <ol> <li>获取过滤器的完整存储，并转换为以bit单位</li> <li>将元素<code>h</code>转换为byte数组，便于xxhash.Sum64计算</li> <li>后续将执行hashesCount次哈希，降低漏失率</li> <li>计算元素h的哈希</li> <li>递增元素<code>h</code>，为下一次哈希做准备</li> <li>取余法获取元素的bit范围</li> <li>获取元素所在的slot(即uint64大小的bit范围)</li> <li>获取元素所在的slot中的bit位，该位为1表示该元素存在，为0表示该元素不存在</li> <li>获取元素所在bit位的掩码</li> <li>加载元素所在的slot的数值</li> <li>如果<code>w &amp; mask</code>结果为0，说明该元素不存在，</li> <li>将元素所在的slot(<code>w</code>)中的元素所在的bit位(mask)置为1，表示添加了该元素</li> <li>由于<code>Add</code>函数可以并发访问，因此<code>bits[i]</code>有可能被其他操作修改，因此需要通过重新加载(14)并通过循环来在<code>bits[i]</code>中设置该元素的存在性</li> </ol> <pre><code class="language-go">func (f *filter) Add(h uint64) bool { 	bits := f.bits 	maxBits := uint64(len(bits)) * 64 //1 	bp := (*[8]byte)(unsafe.Pointer(&amp;h))//2 	b := bp[:] 	isNew := false 	for i := 0; i &lt; hashesCount; i++ {//3 		hi := xxhash.Sum64(b)//4 		h++ //5 		idx := hi % maxBits //6 		i := idx / 64 //7 		j := idx % 64 //8 		mask := uint64(1) &lt;&lt; j //9 		w := atomic.LoadUint64(&amp;bits[i])//10 		for (w &amp; mask) == 0 {//11 			wNew := w | mask //12 			if atomic.CompareAndSwapUint64(&amp;bits[i], w, wNew) {//13 				isNew = true//14 				break 			} 			w = atomic.LoadUint64(&amp;bits[i])//14 		} 	} 	return isNew }</code></pre> <p>看懂了<code>Add</code>函数，<code>Has</code>就相当简单了，它只是<code>Add</code>函数的缩减版，无需设置<code>bits[i]</code>：</p> <pre><code class="language-go">func (f *filter) Has(h uint64) bool { 	bits := f.bits 	maxBits := uint64(len(bits)) * 64 	bp := (*[8]byte)(unsafe.Pointer(&amp;h)) 	b := bp[:] 	for i := 0; i &lt; hashesCount; i++ { 		hi := xxhash.Sum64(b) 		h++ 		idx := hi % maxBits 		i := idx / 64 		j := idx % 64 		mask := uint64(1) &lt;&lt; j 		w := atomic.LoadUint64(&amp;bits[i]) 		if (w &amp; mask) == 0 { 			return false 		} 	} 	return true }</code></pre> <h3 id="总结">总结</h3> <p>由于victoriaMetrics的过滤器采用的是布隆过滤器，因此它的限速并不精准，在源码条件下， 大约有3%的偏差。但同样地，由于采用了布隆过滤器，降低了所需的内存以及相关计算资源。此外victoriaMetrics的过滤器实现了并发访问。<br /> 过滤器为了支持并发访问，使用atomic来实现数值存储和加载以及数值变更等操作。</p> <p>在大流量场景中，如果需要对请求进行相对精准的过滤，可以考虑使用布隆过滤器，降低所需要的资源，但前提是过滤的结果能够忍受一定程度的漏失率。</p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3601.htm">【SpringBoot】核心依赖和自动配置</a></p>
+                                                <p>下一个：<a href="/html/category/article-3603.htm">Java核心知识1：泛型机制详解</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3691.htm" title="中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal">中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                        <li class="py-2"><a href="/html/category/article-3669.htm" title="react实战系列起步（mockjs、第一个模块、docusaurus）">react实战系列起步（mockjs、第一个模块、docusaurus）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-3727.htm" title="vue 实现excel本地预览">vue 实现excel本地预览</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3500.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>深度学习Pytorch——神经网络 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">深度学习Pytorch——神经网络</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h1> <a id="Pytorch_0" rel="nofollow"></a>深度学习Pytorch（三）——神经网络</h1> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#Pytorch_0" rel="nofollow">深度学习Pytorch（三）——神经网络</a></li> <li> <ul> <li><a href="#_2" rel="nofollow">一、简介</a></li> <li><a href="#_6" rel="nofollow">二、神经网络训练过程</a></li> <li><a href="#_15" rel="nofollow">三、实例演示</a></li> <li> <ul> <li><a href="#1_16" rel="nofollow">1、定义一个神经网络</a></li> <li><a href="#2netparameters_64" rel="nofollow">2、通过调用net.parameters()返回模型可训练的参数</a></li> <li><a href="#3_73" rel="nofollow">3、迭代整个输入</a></li> <li><a href="#4_83" rel="nofollow">4、调用反向传播</a></li> <li><a href="#5_92" rel="nofollow">5、计算损失值</a></li> <li><a href="#6_106" rel="nofollow">6、反向传播梯度</a></li> <li><a href="#7_120" rel="nofollow">7、更新神经网络参数</a></li> </ul> </li> </ul> </li> </ul> </div> <h2> <a id="_2" rel="nofollow"></a>一、简介</h2> <p>神经网络可以通过torch.nn包构建，上一节已经对自动梯度有些了解，神经网络是基于自动梯度来定义一些模型。一个nn.Module包括层和一个方法，它会返回输出。例如：数字图片识别的网络：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/c5b8591b4138b6ec7695d23fe5a33535.jpg" alt="深度学习Pytorch——神经网络"><br /> 上图是一个简单的前回馈神经网络，它接收输入，让输入一个接着一个通过一些层，最后给出输出。</p> <h2> <a id="_6" rel="nofollow"></a>二、神经网络训练过程</h2> <p>一个典型的神经网络训练过程包括一下几点：</p> <ol> <li>定义一个包含可以训练参数的神经网络</li> <li>迭代整个输入</li> <li>通过神经网络处理输入</li> <li>计算损失</li> <li>反向传播梯度到神经网络的参数</li> <li>更新网络的参数（典型的一个简单的更新方法是：weight=weight-learning_rate*gradient）</li> </ol> <h2> <a id="_15" rel="nofollow"></a>三、实例演示</h2> <h3> <a id="1_16" rel="nofollow"></a>1、定义一个神经网络</h3> <pre><code class="prism language-python"><span class="token comment"># -*- coding: utf-8 -*-</span> <span class="token triple-quoted-string string">""" Created on Sun Oct 24 15:56:23 2021 @author: Lenovo """</span> <span class="token comment"># 神经网络</span> <span class="token comment"># import torch</span> <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F  <span class="token keyword">class</span> <span class="token class-name">Net</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>          <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>         <span class="token builtin">super</span><span class="token punctuation">(</span>Net<span class="token punctuation">,</span>self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>         <span class="token comment"># 1个输入，6个输出，5*5的卷积</span>         <span class="token comment"># 内核</span>         self<span class="token punctuation">.</span>conv1<span class="token operator">=</span>nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>conv2<span class="token operator">=</span>nn<span class="token punctuation">.</span>Conv2d<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>         <span class="token comment"># 映射函数：线性——y=Wx+b</span>         self<span class="token punctuation">.</span>fc1<span class="token operator">=</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">16</span><span class="token operator">*</span><span class="token number">5</span><span class="token operator">*</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">120</span><span class="token punctuation">)</span><span class="token comment">#输入特征值：16*5*5，输出特征值：120</span>         self<span class="token punctuation">.</span>fc2<span class="token operator">=</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">120</span><span class="token punctuation">,</span><span class="token number">84</span><span class="token punctuation">)</span>         self<span class="token punctuation">.</span>fc3<span class="token operator">=</span>nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">84</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span>              <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>         x<span class="token operator">=</span>F<span class="token punctuation">.</span>max_pool2d<span class="token punctuation">(</span>F<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>conv1<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>         <span class="token comment"># 如果其尺寸是一个square只能指定一个数字</span>         x<span class="token operator">=</span>F<span class="token punctuation">.</span>max_pool2d<span class="token punctuation">(</span>F<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>conv2<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>         x<span class="token operator">=</span>x<span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>self<span class="token punctuation">.</span>num_flat_features<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>         x<span class="token operator">=</span>F<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>fc1<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>         x<span class="token operator">=</span>F<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>fc2<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>         x<span class="token operator">=</span>self<span class="token punctuation">.</span>fc3<span class="token punctuation">(</span>x<span class="token punctuation">)</span>         <span class="token keyword">return</span> x          <span class="token keyword">def</span> <span class="token function">num_flat_features</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>         size<span class="token operator">=</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>         num_features<span class="token operator">=</span><span class="token number">1</span>         <span class="token keyword">for</span> s <span class="token keyword">in</span> size<span class="token punctuation">:</span>             num_features <span class="token operator">*=</span> s         <span class="token keyword">return</span> num_features                         net<span class="token operator">=</span>Net<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>net<span class="token punctuation">)</span> </code></pre> <p><strong>运行结果</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/947f94ed36ad945e47fa52e192950e2c.jpg" alt="深度学习Pytorch——神经网络"><br /> 以上定义了一个前馈函数，然后反向传播函数被自动通过autograd定义，可以使用任何张量操作在前馈函数上。</p> <h3> <a id="2netparameters_64" rel="nofollow"></a>2、通过调用net.parameters()返回模型可训练的参数</h3> <pre><code class="prism language-python"><span class="token comment"># 查看模型可训练的参数</span> params<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">(</span>net<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment"># conv1 的权重weight</span> </code></pre> <p><strong>运行结果</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/99f5d3f4130f468b728a76f921bcdc27.jpg" alt="深度学习Pytorch——神经网络"></p> <h3> <a id="3_73" rel="nofollow"></a>3、迭代整个输入</h3> <p>尝试随机生成一个32<em>32的输入。注：期望的输入维度是32</em>32，为了在MNIST数据集上使用这个网络，我们需要把数据集中的图片维度修改为32*32</p> <pre><code class="prism language-python"><span class="token builtin">input</span><span class="token operator">=</span>torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span><span class="token number">32</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">)</span> out<span class="token operator">=</span>net<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span> </code></pre> <p><strong>运行结果</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/d03a0ec648ea0106d117f333d37506f0.jpg" alt="深度学习Pytorch——神经网络"></p> <h3> <a id="4_83" rel="nofollow"></a>4、调用反向传播</h3> <p>将所有参数梯度缓存器置零，用随机的梯度来反向传播</p> <pre><code class="prism language-python"><span class="token comment"># 调用反向传播</span> net<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span> out<span class="token punctuation">.</span>backward<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> </code></pre> <p><strong>运行结果</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/43d729fcba511753c81a525d85007665.jpg" alt="深度学习Pytorch——神经网络"></p> <h3> <a id="5_92" rel="nofollow"></a>5、计算损失值</h3> <p>#计算损失值——损失函数：一个损失函数需要一对输入：模型输出和目标，然后计算一个值来评估输出距离目标多远。有一些不同的损失函数在nn包中，一个简单的损失函数就是nn.MSELoss，他计算了均方误差</p> <pre><code>如果跟随损失到反向传播路径，可以使用他的.grad_fn属性，将会看到一个计算图 </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/437cc41d0d178868284e333a9d590009.jpg" alt="深度学习Pytorch——神经网络"></p> <pre><code class="prism language-python"><span class="token comment"># 在调用loss.backward()时候，整个图都会微分，而且所有的图中的requires_grad=True的张量将会让他们的grad张量累计梯度</span> <span class="token comment">#跟随以下步骤反向传播</span> <span class="token keyword">print</span><span class="token punctuation">(</span>loss<span class="token punctuation">.</span>grad_fn<span class="token punctuation">)</span><span class="token comment">#MSELoss</span> <span class="token keyword">print</span><span class="token punctuation">(</span>loss<span class="token punctuation">.</span>grad_fn<span class="token punctuation">.</span>next_functions<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment">#Linear</span> <span class="token keyword">print</span><span class="token punctuation">(</span>loss<span class="token punctuation">.</span>grad_fn<span class="token punctuation">.</span>next_functions<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>next_functions<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment">#relu</span> </code></pre> <p><strong>运行结果</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/ba5abb5212f52bd0ba5f71664595e7cf.jpg" alt="深度学习Pytorch——神经网络"></p> <h3> <a id="6_106" rel="nofollow"></a>6、反向传播梯度</h3> <p>为了实现反向传播loss，我们所有需要做的事情仅仅是使用loss.backward()。<strong>需要先清空现存的梯度</strong>，不然梯度将会和现存的梯度累计在一起。</p> <pre><code class="prism language-python"><span class="token comment"># 调用loss.backward()然后看一下con1的偏置项在反向传播之前和之后的变化</span> net<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'conv1.bias.grad before backward'</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>net<span class="token punctuation">.</span>conv1<span class="token punctuation">.</span>bias<span class="token punctuation">.</span>grad<span class="token punctuation">)</span> loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#反向传播</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'conv1.bias.grad after backward'</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>net<span class="token punctuation">.</span>conv1<span class="token punctuation">.</span>bias<span class="token punctuation">.</span>grad<span class="token punctuation">)</span> </code></pre> <p><strong>运行结果</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/6e83242f180043b5d913eb334d6c6b17.jpg" alt="深度学习Pytorch——神经网络"></p> <h3> <a id="7_120" rel="nofollow"></a>7、更新神经网络参数</h3> <pre><code class="prism language-python"><span class="token comment"># =============================================================================</span> <span class="token comment"># # 最简单的更新规则就是随机梯度下降:weight=weight-learning_rate*gradient</span> <span class="token comment"># learning_rate=0.01</span> <span class="token comment"># for f in net.parameters():</span> <span class="token comment">#     f.data.sub_(f.grad.data*learning_rate)#f.data=f.data-learning_rate*gradient</span> <span class="token comment">#  =============================================================================</span> </code></pre> <p>如果使用的是神经网络，想要使用不同的更新规则，类似于SGD,Nesterov-SGD,Adam,RMSProp等。为了让这可行，Pytorch建立一个称为torch.optim的package实现所有的方法，使用起来更加方便</p> <pre><code class="prism language-python"><span class="token comment"># =============================================================================</span> <span class="token comment"># import torch.optim as optim</span> <span class="token comment"># optimizer=optim.SGD(net.parameters(), lr=0.01)</span> <span class="token comment"># # 在迭代训练过程中</span> <span class="token comment"># optimizer.zero_grad()#将现存梯度置零</span> <span class="token comment"># output=net(input)</span> <span class="token comment"># loss=criterion(output,target)</span> <span class="token comment"># loss.backward()#反向传递</span> <span class="token comment"># optimizer.step()#更新网络参数</span> <span class="token comment"># =============================================================================</span> </code></pre> <p>记得神经网络训练过程（part 二），其中最重要的还是梯度。记得反向传播~<br /> 今日告一段落，明儿见~</p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3499.htm">什么是JavaSpring框架?</a></p>
+                                                <p>下一个：<a href="/html/category/article-3501.htm">C ++程序查找n个数的GCD和LCM</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-3689.htm" title="Spring（六）&#8212;-Spring AOP概述及底层实现原理">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3669.htm" title="react实战系列起步（mockjs、第一个模块、docusaurus）">react实战系列起步（mockjs、第一个模块、docusaurus）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

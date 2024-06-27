@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3516.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Redis 内存满了怎么办？这样设置才正确！ - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Redis 内存满了怎么办？这样设置才正确！</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>上回在《<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://mp.weixin.qq.com/s?__biz=MzkzMDI1NjcyOQ==&amp;mid=2247499253&amp;idx=1&amp;sn=816395c3429177bf94448f1750090a89&amp;chksm=c27fbfc3f50836d53ea80d574d8db93cc3d9be0ff9de1d6339024a2b2f476e05eb2110438917&amp;token=563623526&amp;lang=zh_CN#rd"  target="_blank" rel="nofollow">Redis 数据过期了会被立马删除么？</a>》说到如果过期的数据太多，定时删除无法删除完全（每次删除完过期的 key 还是超过 25%），同时这些 key 再也不会被客户端请求，就无法走惰性删除，内存被打满会怎样？</p> <p>答案是走<strong>内存淘汰机制</strong>。</p> <hr/> <p>故事从一个叫 Redis 帝国的三公九卿官职说起……</p> <p>在 Redis 帝国中，整个帝国的国法、家法和军法等都记录在<code>redis.conf</code>中，它控制着整个帝国的运行。</p> <p>公务员占用的国家地盘资源大小限定由名叫「maxmemory」的司法官员制定，一共有两种方式实现：</p> <ul> <li>在运行时使用<code>CONFIG SET maxmemory 4gb</code>指定帝国官职人员最大地盘资源为 4GB；</li> <li>将<code>maxmemory 4gb</code>法令记录到<code>redis.conf</code>「法典」中，在帝国运转指定使用该「法典」运行。</li> </ul> <p>需要注意的是，如果<code>maxmemory</code>  为 0 ，在<code>64</code> 位「空间」上则没有限制，而<code>32</code> 位「空间」则有<code>3GB</code> 的隐式限制。</p> <h1 id="redis-内存淘汰策略">Redis 内存淘汰策略</h1> <blockquote> <p>设置了帝国官职地盘资源限制，每年选拔新人就会导致没有地盘资源可以使用怎么办？如何选择一些公务员淘汰？</p> </blockquote> <p>在 Redis 4.0 时代，一共有 6 种淘汰策略，之后，又新增了 2 中策略。</p> <p>总体上我们可以根据是否需要淘汰可以分为两大类：</p> <ul> <li>不执行淘汰策略，<code>noeviction</code>；</li> <li>根据不同法则淘汰的其他 7 中策略。</li> </ul> <h2 id="noeviction-不退伍策略">noeviction 不退伍策略</h2> <p>默认情况下，资源超过<code>maxmemory</code> 的值也不会执行淘汰，不允许新人加入。</p> <p>关系户啊这是，皇亲国戚，永久 vip 啊喂。</p> <p>随着官职人员的新增，由于不会淘汰，资源容量迟早会满。满了以后，<strong>当有「新人」想要进来的时候，Redis 直接返回错误，并罢工</strong>。</p> <p>秀，真是任性。</p> <h2 id="各式各样的淘汰策略">各式各样的淘汰策略</h2> <p>剩下的 7 种策略还可以根据淘汰的候选集合和淘汰范围分为两大类：</p> <ul> <li> <p>对<strong>有设置任职过期时间</strong>的职员进行淘汰，没有设定任职过期时间的不会淘汰，淘汰策略如下：</p> <ul> <li><strong>volatile-lru</strong>：淘汰最近最少上一线干活的人员；</li> <li><strong>volatile-lfu</strong>：4.0 之后新增的策略，淘汰上一线干活次数最少的人员；</li> <li><strong>volatile-random</strong>：随机淘汰，腾出坑位给新人；</li> <li><strong>volatile-ttl</strong>：淘汰设置了任期时间的公务员，谁最接近任期时间就先淘汰谁。</li> </ul> </li> <li> <p>对<strong>所有类型人员淘汰</strong>，不管是永久 vip 的皇亲国戚还是设置了任职过期时间的人员。</p> <ul> <li><strong>allkeys-lru</strong>：淘汰最近最少上一线干活的职员；</li> <li><strong>allkeys-lfu</strong>：淘汰最少上一线干活的公务员；</li> <li><strong>allkeys-random</strong>：随机淘汰职员，为新兵腾出空位。</li> </ul> </li> </ul> <p>故事到这里就结束了，接下来「码哥」分享下在实际 Redis 中如何选择合适的淘汰策略和设置最佳缓存大小给大家。</p> <p>淘汰执行过程如下图所示：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0721b96bea661a89b6ffae4876db1793.jpg" alt="Redis 内存满了怎么办？这样设置才正确！"></p> <ul> <li> <p>客户端发送新命令到服务端；</p> </li> <li> <p>服务端收到客户端命令，Redis 检查内存使用情况，如果大于<code>maxmemory</code> 限制，则根据策略驱逐数据。</p> </li> <li> <p>执行新命令。</p> </li> </ul> <h3 id="allkeys-lru-使用场景">allkeys-lru 使用场景</h3> <p>假如你的应用存在明显的冷热数据区别，根据经验推荐你使用这个策略，充分利用 LRU 算法把<strong>最近最常访问的数据保留</strong>，有限的内存提高访问性能。</p> <h3 id="allkeys-random-使用场景">allkeys-random 使用场景</h3> <p>假如数据没有明显的冷热分别，所有的数据分布查询比较均衡，这些数据都会被随机查询，那就使用<strong>allkeys-random</strong> 策略，让其随机选择淘汰数据。</p> <h3 id="volatile-lru-使用场景">volatile-lru 使用场景</h3> <p>业务场景有一些数据不能删除，比如置顶新闻、视频，这时候我们为这些数据不设置过期时间，这样的话数据就不会被删除，该策略就会去根据 LRU 算法去淘汰哪些设置了过期时间且最近最少被访问的数据。</p> <p><strong>有一个点需要注意下，为 key 执行 expire 设置过期时间会消耗一些内存，所以使用<code>allkeyds-lru</code> 会提高内存效率。</strong></p> <p><strong>将需要持数据不能删除的和全都可以淘汰数据的业务系统分别使用不同的 Redis 实例集群是更好的方案。</strong></p> <p>针对业务场景有一些数据不能删除的使用<code>volatile-lru</code>策略，另一类则可以使用<code>allkyes-lru 或者 allkeys-random</code>。</p> <h1 id="redis-容量设置多大合适">Redis 容量设置多大合适</h1> <p>缓存并不是越大越好，用最小的代价去获得最高的收益才是老板想要的。</p> <p>数据访问有局部性，根据「二八原理」：<strong>通常 20% 的数据能支撑 80% 的访问请求。</strong></p> <p>所以我们可不可以把缓存容量大小设置为总数据量的 20%？</p> <p><strong>当然，不能这么绝对，这是理想状态。因为可能存在一些个性化需求，不同的用户访问的数据可能差别很大，不完全具备「二八原理」。</strong></p> <p><strong>我们应当结合实际的访问特点和成本来综合评估。根据经验建议将容量设置成总数据量的 15%~30%。</strong></p> <blockquote> <p>码哥，其他淘汰规则比较简单，volatile-lru 和 volatile-lfu 则比较复杂，他们的算法是怎样的？</p> </blockquote> <p>volatile-lru 使用了 LRU 算法，淘汰最近最少使用的数据。而volatile-lfu 使用了 LFU 算法，它在 LRU 算法基础上同时考虑了数据的时效性和访问频率，最少访问的 key 会被删除。</p> <p>至于具体算法细节，我们下回分解。一次性太多的话大家容易在知识的海洋里里呛水。</p> <p>现在的文章阅读量越来越低</p> <p>大家可以在评论区叫我一声靓仔么？</p> <p>不想叫我靓仔的可以帮我点个赞和在看么？</p> <p>参考资料</p> <p>1.<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://redis.io/docs/manual/eviction/"  target="_blank" rel="nofollow">https://redis.io/docs/manual/eviction/</a></p> <p>2.Redis 核心技术与实战</p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3515.htm">Mybatis学习之程序编译后在target/classes目录下找不到主配置文件或sql映射文件（sql mapper）</a></p>
+                                                <p>下一个：<a href="/html/category/article-3517.htm">Java指令重排序在多线程环境下的应对策略</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
+                        <li class="py-2"><a href="/html/category/article-3671.htm" title="Eclipse开发Java如何Debug详解">Eclipse开发Java如何Debug详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3691.htm" title="中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal">中文时间日期解析错误-UnicodeEncodeError: &#8216;locale&#8217; codec can&#8217;t encode character &#8216;\u5e74&#8217; in position 2: Illegal</a></li>
+                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3698.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

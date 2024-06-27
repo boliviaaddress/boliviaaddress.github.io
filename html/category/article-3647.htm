@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3647.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>拼音转换&#8212;Python自然语言处理（6） - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">拼音转换&#8212;Python自然语言处理（6）</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>目录</h3> <ul> <li><a href="#_2" rel="nofollow">什么是拼音转换</a></li> <li><a href="#_9" rel="nofollow">拼音转换</a></li> <li> <ul> <li><a href="#_28" rel="nofollow">输出音调</a></li> <li><a href="#_48" rel="nofollow">输出声调</a></li> <li><a href="#_65" rel="nofollow">输出声母</a></li> <li><a href="#_83" rel="nofollow">输出韵母</a></li> </ul> </li> <li><a href="#_101" rel="nofollow">处理数字拼音</a></li> </ul> </div> <h1><a id="_2" rel="nofollow"></a>什么是拼音转换</h1> <p>在我们学习语言之前，我们一般会学习拼音来认识汉字，并学会如何读汉字。所以，拼音在对于我们语言的重要性不言而喻。</p> <p>而拼音转换指的是将汉字转为拼音的过程。但是，我们中文博大精深，一般来说某个字并不仅仅只有一个读音，比如“翟”，它作为姓氏可以读作zhái，作为其他可读作di。这是就需要结合上下文，或者说结合与其组合的词汇进行转换拼音。不仅如此，拼音还有音调，比如一二三四声表示的意义有时候也是不一样的。</p> <p>本篇博文将介绍字符串到拼音的转换。</p> <h1><a id="_9" rel="nofollow"></a>拼音转换</h1> <p>首先，HanLP库提供的拼音转换为本位于data/dictionary/pinyin/pinyin.txt文件中。每行分别由=隔开汉字与拼音。其中多音字的拼音数量多余汉字数量。在实际的转换过程中，默认读取多音字的第一个拼音，除非匹配到更长的词语。</p> <p>此外，HanLP库还支持声母，韵母，音调，音标以及输入法首字母与收声母功能。当然，也能给前文的繁体字转换为拼音。</p> <p>下面，我们来看一段代码示例：</p> <pre><code class="prism language-python"><span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>     text<span class="token operator">=</span><span class="token string">"重载不是重量"</span>     pinyin_list<span class="token operator">=</span> HanLP<span class="token punctuation">.</span>convertToPinyinList<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>pinyin_list<span class="token punctuation">)</span></code></pre> <p>运行之后，控制台输出如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/cec549a1ef2140edad3a2d5a3369c03a.jpg" alt="拼音转换---Python自然语言处理（6）"><br /> 可以看到，基本上每个字的拼音都输出了。如果程序判断不出来多音字是哪个声调，会输出其所有的声调。比如这里的体输出了3声和1声，重输出了3声与2声。</p> <blockquote> <p>在python中，我们通过HanLP.convertToPinyinList进行汉字与拼音的转换。</p> </blockquote> <h2><a id="_28" rel="nofollow"></a>输出音调</h2> <p>鉴于我们已经知道了如何转换汉字到拼音，那么我们现在需要实现的是单独获取每个汉字的音调，不需要声调。现在该如何去实现呢？不妨先来看看代码：</p> <pre><code class="prism language-python"><span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>     Pinyin<span class="token operator">=</span> JClass<span class="token punctuation">(</span><span class="token string">"com.hankcs.hanlp.dictionary.py.Pinyin"</span><span class="token punctuation">)</span>     text<span class="token operator">=</span><span class="token string">"重载不是体重"</span>     pinyin_list<span class="token operator">=</span> HanLP<span class="token punctuation">.</span>convertToPinyinList<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>pinyin_list<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"输出音调"</span><span class="token punctuation">)</span><span class="token keyword">for</span> pinyin<span class="token keyword">in</span> pinyin_list<span class="token punctuation">:</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%s,"</span><span class="token operator">%</span> pinyin<span class="token punctuation">.</span>getPinyinWithToneMark<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">" "</span><span class="token punctuation">)</span></code></pre> <p>如上面代码所示，我们获取了Java的HanLP库中的Pinyin类，这个类可以帮我们处理很多的拼音相关的问题，比如这里的获取音调。</p> <p>运行之后，效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/ecf2bbcc39855da0e25d45af443fa7d4.jpg" alt="拼音转换---Python自然语言处理（6）"></p> <blockquote> <p>需要注意的是，前面博文已经说过了，通过python进行HanLP库使用时，尽量调用Java类进行处理，因为Java类的处理时间比python快很多。这里我们通过Pinyin类的getPinyinWithToneMark()方法获取声调。</p> </blockquote> <h2><a id="_48" rel="nofollow"></a>输出声调</h2> <p>既然可以只输出音调，那么肯定也可以单独输出声调。具体代码如下：</p> <pre><code class="prism language-python"><span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>     Pinyin<span class="token operator">=</span> JClass<span class="token punctuation">(</span><span class="token string">"com.hankcs.hanlp.dictionary.py.Pinyin"</span><span class="token punctuation">)</span>     text<span class="token operator">=</span><span class="token string">"重载不是体重"</span>     pinyin_list<span class="token operator">=</span> HanLP<span class="token punctuation">.</span>convertToPinyinList<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>pinyin_list<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"输出声调"</span><span class="token punctuation">)</span><span class="token keyword">for</span> pinyin<span class="token keyword">in</span> pinyin_list<span class="token punctuation">:</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%s,"</span><span class="token operator">%</span> pinyin<span class="token punctuation">.</span>getTone<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">" "</span><span class="token punctuation">)</span></code></pre> <p>运行之后，效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/316d6fb5e061097a1ece5d8adc0a0b73.jpg" alt="拼音转换---Python自然语言处理（6）"></p> <blockquote> <p>这里我们通过Pinyin类的getTone()方法获取声调。</p> </blockquote> <h2><a id="_65" rel="nofollow"></a>输出声母</h2> <p>同样的，我们还可以输出声母。代码如下：</p> <pre><code class="prism language-python"><span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>     Pinyin<span class="token operator">=</span> JClass<span class="token punctuation">(</span><span class="token string">"com.hankcs.hanlp.dictionary.py.Pinyin"</span><span class="token punctuation">)</span>     text<span class="token operator">=</span><span class="token string">"重载不是体重"</span>     pinyin_list<span class="token operator">=</span> HanLP<span class="token punctuation">.</span>convertToPinyinList<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>pinyin_list<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\r\n输出声母"</span><span class="token punctuation">)</span><span class="token keyword">for</span> pinyin<span class="token keyword">in</span> pinyin_list<span class="token punctuation">:</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%s,"</span><span class="token operator">%</span> pinyin<span class="token punctuation">.</span>getShengmu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">" "</span><span class="token punctuation">)</span></code></pre> <p>运行之后，效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/1407340c39abfecbfd3c77ea2358f180.jpg" alt="拼音转换---Python自然语言处理（6）"></p> <blockquote> <p>这里我们用getShengmu()方法输出声母，方法名就是中文意思，很好理解。</p> </blockquote> <h2><a id="_83" rel="nofollow"></a>输出韵母</h2> <p>接着，我们再来输出韵母。代码如下：</p> <pre><code class="prism language-python"><span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>     Pinyin<span class="token operator">=</span> JClass<span class="token punctuation">(</span><span class="token string">"com.hankcs.hanlp.dictionary.py.Pinyin"</span><span class="token punctuation">)</span>     text<span class="token operator">=</span><span class="token string">"重载不是体重"</span>     pinyin_list<span class="token operator">=</span> HanLP<span class="token punctuation">.</span>convertToPinyinList<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>pinyin_list<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\r\n输出韵母"</span><span class="token punctuation">)</span><span class="token keyword">for</span> pinyin<span class="token keyword">in</span> pinyin_list<span class="token punctuation">:</span><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%s,"</span><span class="token operator">%</span> pinyin<span class="token punctuation">.</span>getYunmu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">" "</span><span class="token punctuation">)</span></code></pre> <p>运行之后，效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/2f41a5fd6b4526bca2da20ed2e261f8f.jpg" alt="拼音转换---Python自然语言处理（6）"></p> <blockquote> <p>这里我们用getYunmu()方法输出韵母，方法名就是中文意思，很好理解。</p> </blockquote> <h1><a id="_101" rel="nofollow"></a>处理数字拼音</h1> <p>除此之外，上面因为都是汉字，所以大家肯定都很好处理成拼音。但是现在很多时候，中文文本里面并不仅仅只有汉字，也有数字和英文。但是拼音是汉字独有的，那怎么办呢？</p> <p>我们先来看看按上面直接处理带数字与英文时，效果怎么样。代码如下所示：</p> <pre><code class="prism language-python"><span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>     Pinyin<span class="token operator">=</span> JClass<span class="token punctuation">(</span><span class="token string">"com.hankcs.hanlp.dictionary.py.Pinyin"</span><span class="token punctuation">)</span>     text<span class="token operator">=</span><span class="token string">"我们到2035年就会称为世界第一"</span>     pinyin_list<span class="token operator">=</span> HanLP<span class="token punctuation">.</span>convertToPinyinList<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>pinyin_list<span class="token punctuation">)</span></code></pre> <p>运行之后，效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/405226d42bd7baa000a2eae52ed86c00.jpg" alt="拼音转换---Python自然语言处理（6）"><br /> 可以看到数字都直接替换为none5，也就是缺失的意义。拼音文件找不到与其匹配的汉语拼音。</p> <p>而我们实际在处理中文文档时，都是保留数字与英文的并不直接翻译。其实这里我们想保留其数字的话，HanLP.convertToPinyinString()方法就能实现，我们来看看这个方法的完整定义：</p> <pre><code class="prism language-python">convertToPinyinString<span class="token punctuation">(</span>转换为拼音的字符串文本<span class="token punctuation">,</span>输出间隔符<span class="token punctuation">,</span>布尔类型<span class="token punctuation">)</span></code></pre> <p>相信看了上面方法的读者应该很快就知道了，第3个布尔类型就是转换数字与保留数字的关键参数，这里我们再来变换代码：</p> <pre><code class="prism language-python"><span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span><span class="token punctuation">:</span>     Pinyin<span class="token operator">=</span> JClass<span class="token punctuation">(</span><span class="token string">"com.hankcs.hanlp.dictionary.py.Pinyin"</span><span class="token punctuation">)</span>     text<span class="token operator">=</span><span class="token string">"我们到2035年就会称为世界第一"</span>     pinyin_list<span class="token operator">=</span> HanLP<span class="token punctuation">.</span>convertToPinyinString<span class="token punctuation">(</span>text<span class="token punctuation">,</span><span class="token string">" "</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>pinyin_list<span class="token punctuation">)</span></code></pre> <p>运行之后，我们的英文与数字就会原封不动的保留下来。效果如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/da4a41a8a303ee08cbbfcd1b58edd098.jpg" alt="拼音转换---Python自然语言处理（6）"></p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3646.htm">SpringBoot运行错误：java.lang.NoClassDefFoundError:org/springframework/web/util/UriTemplateHandler</a></p>
+                                                <p>下一个：<a href="/html/category/article-3648.htm">mybatis idea多级目录的坑</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3672.htm" title="安卓夜间模式开发【深色主题适配】">安卓夜间模式开发【深色主题适配】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3727.htm" title="vue 实现excel本地预览">vue 实现excel本地预览</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3693.htm" title="@Order的使用与Aop多切面的执行顺序">@Order的使用与Aop多切面的执行顺序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3704.htm" title="微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪">微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

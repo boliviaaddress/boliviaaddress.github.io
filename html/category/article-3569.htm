@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3569.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>SpringBoot2.0.4配置多个数据库 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">SpringBoot2.0.4配置多个数据库</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night-eighties"> <p>使用场景： 一个Spring Boot服务根据不同的业务逻辑需要对不同的数据库进行操作。</p> <h4><a id="_2" rel="nofollow"></a>一、举例说明</h4> <p>假设需要处理的两个数据库是test1、test2，那么必须要有的是：</p> <ol> <li>两个数据库的配置参数（写在配置文件<code>application.properties</code>）。</li> <li>两个数据库的<code>DataSource</code>实例，代码中用来处理两个数据库连接的代码。</li> <li>两个数据库表对应的相应的<code>JavaBean</code>。</li> <li>操作（DML）两个数据库的<code>Repository</code>。</li> <li>将以上提到的配置、实例等整合到一起，分别对不同数据库进行事务管理配置，也必须有两部分。</li> </ol> <h4><a id="_11" rel="nofollow"></a>二、代码逻辑</h4> <p>上面提到的必要条件都是“两个”，那么就必须要有区分，这样才能保证操作一个数据库表时不会影响到另外一个数据库中的表。下面整理一下Spring boot是如何对每部分进行区分的。</p> <ol> <li>配置文件中数据库参数是利用<strong>前缀</strong>来区分不同的配置。</li> <li><code>DataSource</code>实例是利用前缀去创建相应的实例，并且为每个<code>DataSource</code>使用不同的beanName。</li> <li>不同数据库表对应的<code>JavaBean</code>是通过<strong>包名</strong>来划分的。（也可以通过类名划分）。</li> <li><code>Repository</code>也是通过包名划分的。（也可以通过类名划分）</li> <li>通过装配相对应的bean、包名、配置来实现相对应的整合。</li> </ol> <h4><a id="_20" rel="nofollow"></a>三、代码逻辑</h4> <p>继续上面提的test1、test2数据库，假设test1中只有一个user1表，test2中只有一个user2表，完成多数据源的代码实现。</p> <p><b>第1步：</b><code>application.properties</code>配置文件入下：</p> <pre><code class="prism language-c"><span class="token macro property">#test1数据库的配置</span> test1<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>jdbcUrl<span class="token operator">=</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">192.168</span><span class="token number">.1</span><span class="token number">.105</span><span class="token punctuation">:</span><span class="token number">3306</span><span class="token operator">/</span>test1<span class="token operator">?</span>createDatabaseIfNotExist<span class="token operator">=</span>true<span class="token operator">&amp;</span>useUnicode<span class="token operator">=</span>true<span class="token operator">&amp;</span>characterEncoding<span class="token operator">=</span>UTF<span class="token operator">-</span><span class="token number">8</span> test1<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>username<span class="token operator">=</span> mysql test1<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>password<span class="token operator">=</span> mysql test1<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>driverClassName<span class="token operator">=</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver<span class="token macro property">#test2数据库的配置</span> test2<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>jdbcUrl<span class="token operator">=</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">192.168</span><span class="token number">.1</span><span class="token number">.105</span><span class="token punctuation">:</span><span class="token number">3306</span><span class="token operator">/</span>test2<span class="token operator">?</span>createDatabaseIfNotExist<span class="token operator">=</span>true<span class="token operator">&amp;</span>useUnicode<span class="token operator">=</span>true<span class="token operator">&amp;</span>characterEncoding<span class="token operator">=</span>UTF<span class="token operator">-</span><span class="token number">8</span> test2<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>username<span class="token operator">=</span> mysql test2<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>password<span class="token operator">=</span> mysql test2<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>driverClassName<span class="token operator">=</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver</code></pre> <p>配置文件中要注意：</p> <blockquote> <ul> <li><b><code>jdbcUrl</code>可以写成<code>jdbc-url</code>，不能写成<code>jdbc.url</code>或<code>url</code></b>。</li> <li><b><code>driverClassName</code>可以写成<code>driver-class-name</code>，不能写成<code>driver.class.name</code></b></li> </ul> </blockquote> <p><b>第2步：</b><code>DataSource</code>实例的创建，这个实例需要写在一个类里面，实例创建时，要用到配置文件中的不同数据参数的前缀，创建相应的实例。</p> <p><b>DataSourceConfig代码如下：</b></p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>config<span class="token punctuation">;</span><span class="token keyword">import</span> com<span class="token punctuation">.</span>zaxxer<span class="token punctuation">.</span>hikari<span class="token punctuation">.</span>HikariDataSource<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Qualifier<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>DataSourceProperties<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>context<span class="token punctuation">.</span>properties<span class="token punctuation">.</span>ConfigurationProperties<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>DataSourceBuilder<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Primary<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataSource<span class="token punctuation">;</span><span class="token annotation punctuation">@Configuration</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">DataSourceConfig</span><span class="token punctuation">{<!-- --></span><span class="token comment">/**      * 创建test1的DataSource实例      * @return      */</span><span class="token annotation punctuation">@Primary</span><span class="token comment">//配置一个主连接</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"test1DataSource"</span><span class="token punctuation">)</span><span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"test1DataSource"</span><span class="token punctuation">)</span><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix<span class="token operator">=</span><span class="token string">"test1.spring.datasource"</span><span class="token punctuation">)</span><span class="token keyword">public</span> DataSource<span class="token function">test1DataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> DataSourceBuilder<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">/**      * 创建test2的DataSource实例      * @return      */</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"test2DataSource"</span><span class="token punctuation">)</span><span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"test2DataSource"</span><span class="token punctuation">)</span><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix<span class="token operator">=</span><span class="token string">"test2.spring.datasource"</span><span class="token punctuation">)</span><span class="token keyword">public</span> DataSource<span class="token function">test2aryDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> DataSourceBuilder<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p><b>第3步：</b> 创建数据库表对应的JavaBean，test1和test2数据库中的表分别放在相应名称的包下。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/4278fb41566b24bc1eef86ae2f21aa71.jpg" alt="SpringBoot2.0.4配置多个数据库"></p> <p><strong>User1代码如下：</strong></p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>test1<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>GenericGenerator<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Column<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Entity<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>GeneratedValue<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Id<span class="token punctuation">;</span><span class="token annotation punctuation">@Entity</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">User1</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Id</span><span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>length<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token annotation punctuation">@GenericGenerator</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"sys_uuid"</span><span class="token punctuation">,</span> strategy<span class="token operator">=</span><span class="token string">"uuid"</span><span class="token punctuation">)</span><span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>generator<span class="token operator">=</span><span class="token string">"sys_uuid"</span><span class="token punctuation">)</span><span class="token keyword">private</span> String id<span class="token punctuation">;</span><span class="token keyword">private</span> String name<span class="token punctuation">;</span><span class="token comment">//……省略get/set方法</span><span class="token punctuation">}</span></code></pre> <p><strong>User2代码如下：</strong></p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>test1<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>hibernate<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>GenericGenerator<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Column<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Entity<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>GeneratedValue<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>Id<span class="token punctuation">;</span><span class="token annotation punctuation">@Entity</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">User1</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Id</span><span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>length<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token annotation punctuation">@GenericGenerator</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"sys_uuid"</span><span class="token punctuation">,</span> strategy<span class="token operator">=</span><span class="token string">"uuid"</span><span class="token punctuation">)</span><span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>generator<span class="token operator">=</span><span class="token string">"sys_uuid"</span><span class="token punctuation">)</span><span class="token keyword">private</span> String id<span class="token punctuation">;</span><span class="token keyword">private</span> String name<span class="token punctuation">;</span><span class="token comment">//……省略get/set方法</span><span class="token punctuation">}</span></code></pre> <p><b>第4步：</b> 创建操作对应数据库的<code>Repository</code>，与<code>JavaBean</code>的分包方式一致。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220603/889a29ffd625d0855598149029b7bd16.jpg" alt="SpringBoot2.0.4配置多个数据库"></p> <p><strong>User1Repository的代码如下：</strong></p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>test1<span class="token punctuation">;</span><span class="token keyword">import</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>test1<span class="token punctuation">.</span>User1<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>JpaRepository<span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">User1Repository</span><span class="token keyword">extends</span><span class="token class-name">JpaRepository</span><span class="token generics function"><span class="token punctuation">&lt;</span>User1<span class="token punctuation">,</span>String<span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span></code></pre> <p><strong>User2Repository的代码如下：</strong></p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>test2<span class="token punctuation">;</span><span class="token keyword">import</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>test2<span class="token punctuation">.</span>User2<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>JpaRepository<span class="token punctuation">;</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">User2Repository</span><span class="token keyword">extends</span><span class="token class-name">JpaRepository</span><span class="token generics function"><span class="token punctuation">&lt;</span>User2<span class="token punctuation">,</span>String<span class="token punctuation">&gt;</span></span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span></code></pre> <p><b>第5步：</b> 整合配置和Bean、配置事务的配置类，test1对应的类是<code>Test1DataSourceConfig</code>，test2对应的类是<code>Test2DataSourceConfig</code>，前面几步对JavaBean和repository进行分包，都是在这个类中进行配置区分的。</p> <p><strong>Test1DataSourceConfig代码如下：</strong></p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>config<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Qualifier<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>HibernateSettings<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>JpaProperties<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>EntityManagerFactoryBuilder<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Primary<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>config<span class="token punctuation">.</span>EnableJpaRepositories<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>JpaTransactionManager<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>LocalContainerEntityManagerFactoryBean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>transaction<span class="token punctuation">.</span>PlatformTransactionManager<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>transaction<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>EnableTransactionManagement<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>EntityManager<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataSource<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Map<span class="token punctuation">;</span><span class="token annotation punctuation">@Configuration</span><span class="token annotation punctuation">@EnableTransactionManagement</span><span class="token annotation punctuation">@EnableJpaRepositories</span><span class="token punctuation">(</span>         entityManagerFactoryRef<span class="token operator">=</span><span class="token string">"entityManagerFactoryTest1"</span><span class="token punctuation">,</span>         transactionManagerRef<span class="token operator">=</span><span class="token string">"transactionManagerTest1"</span><span class="token punctuation">,</span>         basePackages<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token string">"com.xyh.test.repository.test1"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">//设置repository所在位置</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">Test1DataSourceConfig</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Autowired</span><span class="token punctuation">(</span>required<span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token comment">//required=true表示bean必须存在，否则注入失败，默认为true</span><span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"test1DataSource"</span><span class="token punctuation">)</span><span class="token keyword">private</span> DataSource test1DataSource<span class="token punctuation">;</span><span class="token annotation punctuation">@Primary</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"entityManagerTest1"</span><span class="token punctuation">)</span><span class="token keyword">public</span> EntityManager<span class="token function">entityManager</span><span class="token punctuation">(</span>EntityManagerFactoryBuilder builder<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token function">entityManagerFactoryTest1</span><span class="token punctuation">(</span>builder<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Autowired</span><span class="token keyword">private</span> JpaProperties jpaProperties<span class="token punctuation">;</span><span class="token keyword">private</span> Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span><span class="token function">getVendorProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> jpaProperties<span class="token punctuation">.</span><span class="token function">getHibernateProperties</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">HibernateSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Primary</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"entityManagerFactoryTest1"</span><span class="token punctuation">)</span><span class="token keyword">public</span> LocalContainerEntityManagerFactoryBean<span class="token function">entityManagerFactoryTest1</span><span class="token punctuation">(</span>EntityManagerFactoryBuilder builder<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> builder<span class="token punctuation">.</span><span class="token function">dataSource</span><span class="token punctuation">(</span>test1DataSource<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">packages</span><span class="token punctuation">(</span><span class="token string">"com.xyh.test.entity.test1"</span><span class="token punctuation">)</span><span class="token comment">//设置实体类所在位置</span><span class="token punctuation">.</span><span class="token function">persistenceUnit</span><span class="token punctuation">(</span><span class="token string">"test1PersistenceUnit"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">properties</span><span class="token punctuation">(</span><span class="token function">getVendorProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Primary</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"transactionManagerTest1"</span><span class="token punctuation">)</span>     PlatformTransactionManager<span class="token function">transactionManagerSecondary</span><span class="token punctuation">(</span>EntityManagerFactoryBuilder builder<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">JpaTransactionManager</span><span class="token punctuation">(</span><span class="token function">entityManagerFactoryTest1</span><span class="token punctuation">(</span>builder<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p><strong>Test2DataSourceConfig代码如下：</strong></p> <pre><code class="prism language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xyh<span class="token punctuation">.</span>test<span class="token punctuation">.</span>config<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Qualifier<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>HibernateSettings<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>JpaProperties<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>EntityManagerFactoryBuilder<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>config<span class="token punctuation">.</span>EnableJpaRepositories<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>JpaTransactionManager<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>orm<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>LocalContainerEntityManagerFactoryBean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>transaction<span class="token punctuation">.</span>PlatformTransactionManager<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>transaction<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>EnableTransactionManagement<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Resource<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>EntityManager<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataSource<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Map<span class="token punctuation">;</span><span class="token annotation punctuation">@Configuration</span><span class="token annotation punctuation">@EnableTransactionManagement</span><span class="token annotation punctuation">@EnableJpaRepositories</span><span class="token punctuation">(</span>         entityManagerFactoryRef<span class="token operator">=</span><span class="token string">"entityManagerFactoryTest2"</span><span class="token punctuation">,</span>         transactionManagerRef<span class="token operator">=</span><span class="token string">"transactionManagerTest2"</span><span class="token punctuation">,</span>         basePackages<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token string">"com.xyh.test.repository.test2"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment">//repository类的包</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">Test2DataSourceConfig</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Resource</span><span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"test2DataSource"</span><span class="token punctuation">)</span><span class="token keyword">private</span> DataSource test2DataSource<span class="token punctuation">;</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"entityManagerTest2"</span><span class="token punctuation">)</span><span class="token keyword">public</span> EntityManager<span class="token function">entityManager</span><span class="token punctuation">(</span>EntityManagerFactoryBuilder builder<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token function">entityManagerFactoryTest2</span><span class="token punctuation">(</span>builder<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Resource</span><span class="token keyword">private</span> JpaProperties jpaProperties<span class="token punctuation">;</span><span class="token keyword">private</span> Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">&gt;</span></span><span class="token function">getVendorProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> jpaProperties<span class="token punctuation">.</span><span class="token function">getHibernateProperties</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token class-name">HibernateSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment">/**      * 设置实体类所在位置      */</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"entityManagerFactoryTest2"</span><span class="token punctuation">)</span><span class="token keyword">public</span> LocalContainerEntityManagerFactoryBean<span class="token function">entityManagerFactoryTest2</span><span class="token punctuation">(</span>EntityManagerFactoryBuilder builder<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span> builder<span class="token punctuation">.</span><span class="token function">dataSource</span><span class="token punctuation">(</span>test2DataSource<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">packages</span><span class="token punctuation">(</span><span class="token string">"com.xyh.test.entity.test2"</span><span class="token punctuation">)</span><span class="token comment">//javabean的包</span><span class="token punctuation">.</span><span class="token function">persistenceUnit</span><span class="token punctuation">(</span><span class="token string">"test2PersistenceUnit"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">properties</span><span class="token punctuation">(</span><span class="token function">getVendorProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"transactionManagerTest2"</span><span class="token punctuation">)</span><span class="token keyword">public</span> PlatformTransactionManager<span class="token function">transactionManagerTest2</span><span class="token punctuation">(</span>EntityManagerFactoryBuilder builder<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">new</span><span class="token class-name">JpaTransactionManager</span><span class="token punctuation">(</span><span class="token function">entityManagerFactoryTest2</span><span class="token punctuation">(</span>builder<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <h4><a id="_326" rel="nofollow"></a>四、测试</h4> <p>写一个<code>controller</code>，然后分别注入不同的<code>Repository</code>，调用相应save方法，可以看到相应的数据库表增加了一条记录。</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@EnableConfigurationProperties</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">IndexController</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Autowired</span><span class="token keyword">private</span> User1Repository user1Repository<span class="token punctuation">;</span><span class="token annotation punctuation">@Autowired</span><span class="token keyword">private</span> User2Repository user2Repository<span class="token punctuation">;</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token keyword">public</span> String<span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>          User1 user1<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">User1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         user1<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"user1Name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         user1Repository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user1<span class="token punctuation">)</span><span class="token punctuation">;</span>          User2 user2<span class="token operator">=</span><span class="token keyword">new</span><span class="token class-name">User2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         user2<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"user2Name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          user2Repository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token string">"hello world"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3568.htm">OpenCV+QT5在Window下的环境配置记录</a></p>
+                                                <p>下一个：<a href="/html/category/article-3570.htm">vue中使用sass及解决sass-loader版本过高导致的编译错误问题_vue.js_</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3685.htm" title="ForkJoin详解及应用">ForkJoin详解及应用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

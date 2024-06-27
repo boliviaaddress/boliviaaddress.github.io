@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3564.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>详解Python的pyyaml模块 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">详解Python的pyyaml模块</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="htmledit_views"> <h1>一：什么是yaml</h1> <p>&nbsp; &nbsp; &nbsp; &nbsp; yaml的英文名称是Yet Another Markup Language，直译过来就是标记语言。yaml用的比较多的地方就是写配置文件，比如yaml配置文件在Kubernetes用的就非常广泛，学Kubernetes必须要先学yaml文件格式。</p> <p>&nbsp; &nbsp; &nbsp; &nbsp; 先简单的介绍一下yaml的基本语法：</p> <ul> <li>大小写敏感</li> <li>使用缩进表示层级关系</li> <li>缩进时不允许使用Tab键，只允许使用空格。</li> <li>缩进的空格数目不重要，只要相同层级的元素左侧对齐即可</li> <li>#表示注释，从这个字符一直到行尾，都会被解析器忽略，这个和python的注释一样</li> </ul> <h1>&nbsp;二：安装pyyaml</h1> <p>&nbsp; &nbsp; &nbsp; &nbsp; pyyaml是python的第三方库，需要自己手动安装才能使用</p> <pre><code class="language-bash">pip install pyyaml</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本次安装的是pyyaml的6.0版本</p> <p><img fetchpriority="high" decoding="async" alt="" height="327" src="http://img.555519.xyz/uploads/20221230/61a59b28ebbb87c6e3bef2b100ea6286.jpg"></p> <h1>&nbsp;三：pyyaml的使用</h1> <h2>&nbsp;1，读取yaml文件</h2> <p>&nbsp; &nbsp; &nbsp; &nbsp; 先看看已经准备好的yaml文件</p> <pre><code class="language-bash">一级标题:     二级标题1:         b:1         c:2         a:3     二级标题2:         f:7         t:8         z:9</code></pre> <p>&nbsp;用yaml的load方法来加载一个yaml文件流，返回的是一个json对象</p> <pre><code class="language-python">import yaml   with open('./file.yaml', 'r', encoding='utf-8') as f: 	data = yaml.load(stream=f, Loader=yaml.FullLoader) 	print(data)</code></pre> <p>&nbsp;运行结果如下：</p> <p><img decoding="async" alt="" height="86" src="http://img.555519.xyz/uploads/20221230/2fca1ea31688dfd8c859480a11343ed6.jpg"></p> <p>&nbsp;对于初学python的同学其实第一手资料最好查看模块对于自家方法以及属性的说明，怎么查看help呢，以上面的load方法为例，help('yaml.load')会显示出该方法的说明文档</p> <blockquote> <p>root@ubuntu:~# python3<br /> Python 3.4.3 (default, Nov 12 2018, 22:25:49)<br /> [GCC 4.8.4] on linux<br /> Type "help", "copyright", "credits" or "license" for more information.<br /> &gt;&gt;&gt; import yaml<br /> &gt;&gt;&gt;<br /> &gt;&gt;&gt; help('yaml.load')</p> </blockquote> <p>&nbsp;其说明文档如下：</p> <p class="img-center"><img decoding="async" alt="" height="121" src="http://img.555519.xyz/uploads/20221230/241f05b26e04a67f09ffadabe14a0566.jpg"></p> <h2>&nbsp;2，写入yaml文件</h2> <pre><code class="language-bash">with open('./data_yaml.yaml', 'w', encoding='utf-8') as f: 	yaml.dump(data=data, stream=f, allow_unicode=True, sort_keys=False, indent=4)</code></pre> <p>其写入的文件如下：</p> <p class="img-center"><img loading="lazy" decoding="async" alt="" height="78" src="http://img.555519.xyz/uploads/20221230/ab8fa96325c43d7585374536844c92da.jpg"></p> <h2>3，dump_all的使用</h2> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果要将多个Python对象序列化到一个YAML流中，可以使用&nbsp;<code>yaml.dump_all</code>&nbsp;函数。该函数接受一个Python的列表或者生成器对象作为第一个参数，表示要序列化的多个Python对象</p> <pre><code class="language-python">&gt;&gt;&gt; obj = [{'name': 'bob', 'age': 19}, {'name': 20, 'age': 23}, {'name': 'leo', 'age': 25}] &gt;&gt;&gt; print(yaml.dump_all(obj)) {age: 19, name: bob} --- {age: 23, name: 20} --- {age: 25, name: leo} </code></pre> <p><code>&nbsp;&nbsp;&nbsp;yaml.dump</code>&nbsp;和&nbsp;<code>yaml.dump_all</code>&nbsp;方法还支持多个关键字参数，用来指定生成的YAML流中YAML文档的样式和是否包含其他信息。下面就来详细介绍下每个参数的含义和用法</p> <p>stream</p> <p>指定由于输出YAML流的打开的文件对象。默认值为 None，表示作为函数的返回值返回。</p> <p>default_flow_style</p> <p>是否默认以流样式显示序列和映射。默认值为 None，表示对于不包含嵌套集合的YAML流使用流样式。设置为 True 时，序列和映射使用块样式。</p> <p>default_style</p> <p>默认值为 None。表示标量不使用引号包裹。设置为 '"' 时，表示所有标量均以双引号包裹。设置为 "'" 时，表示所有标量以单引号包裹。</p> <p>canonical</p> <p>是否以规范形式显示YAML文档。默认值为 None，表示以其他关键字参数设置的值进行格式化，而不使用规范形式。设置为 True 时，将以规范形式显示YAML文档中的内容。</p> <p>indent</p> <p>表示缩进级别。默认值为 None， 表示使用默认的缩进级别（两个空格），可以设置为其他整数。</p> <p>width</p> <p>表示每行的最大宽度。默认值为 None，表示使用默认的宽度80。</p> <p>allow_unicode</p> <p>是否允许YAML流中出现unicode字符。默认值为 False，会对unicode字符进行转义。设置为 True 时，YAML文档中将正常显示unicode字符，不会进行转义。</p> <p>line_break</p> <p>设置换行符。默认值为 None，表示换行符为 ''，即空。可以设置为 \n、\r 或 \r\n。</p> <p>encoding</p> <p>使用指定的编码对YAML流进行编码，输出为字节字符串。默认值为 None，表示不进行编码，输出为一般字符串。</p> <p>explicit_start</p> <p>每个YAML文档是否包含显式的指令结束标记。默认值为 None，表示流中只有一个YAML文档时不包含显式的指令结束标记。设置为 True 时，YAML流中的所有YAML文档都包含一个显式的指令结束标记。</p> <p>explicit_end</p> <p>每个YAML文档是否包含显式的文档结束标记。默认值为 None，表示流中的YAML文档不包含显式的文档结束标记。设置为 True 时，YAML流中的所有YAML文档都包含一个显式的文档结束标记。</p> <p>version</p> <p>用于在YAML文档中指定YAML的版本号，默认值为 None，表示不在YAML中当中指定版本号。可以设置为一个包含两个元素的元组或者列表，但是第一个元素必须为1，否则会引发异常。当前可用的YAML的版本号为1.0、1.1 和1.2。</p> <p>tags</p> <p>用于指定YAML文档中要包含的标签。默认值为 None，表示不指定标签指令。可以设置为一个包含标签的字典，字典中的键值对对应各个不同的标签名和值。</p> <h2>4，其他方法和属性</h2> <p>pyyaml支持很多的对yaml文件以及yaml格式数据的操作</p> <blockquote> <p>&gt;&gt;&gt; dir(yaml)<br /> ['AliasEvent', 'AliasToken', 'AnchorToken', 'BaseDumper', 'BaseLoader', 'BlockEndToken', 'BlockEntryToken', 'BlockMappingStartToken', 'BlockSequenceStartToken',&nbsp;<br /> 'CollectionEndEvent', 'CollectionNode', 'CollectionStartEvent', 'DirectiveToken', 'DocumentEndEvent', 'DocumentEndToken', 'DocumentStartEvent', 'DocumentStartToken',<br /> &nbsp;'Dumper', 'Event', 'FlowEntryToken', 'FlowMappingEndToken', 'FlowMappingStartToken', 'FlowSequenceEndToken', 'FlowSequenceStartToken', 'FullLoader', 'KeyToken',&nbsp;<br /> &nbsp;'Loader', 'MappingEndEvent', 'MappingNode', 'MappingStartEvent', 'Mark', 'MarkedYAMLError', 'Node', 'NodeEvent', 'SafeDumper', 'SafeLoader', 'ScalarEvent',&nbsp;<br /> &nbsp;'ScalarNode', 'ScalarToken', 'SequenceEndEvent', 'SequenceNode', 'SequenceStartEvent', 'StreamEndEvent', 'StreamEndToken', 'StreamStartEvent',&nbsp;<br /> &nbsp;'StreamStartToken', 'TagToken', 'Token', 'UnsafeLoader', 'ValueToken', 'YAMLError', 'YAMLLoadWarning', 'YAMLObject', 'YAMLObjectMetaclass',&nbsp;<br /> &nbsp;'__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', '__with_libyaml__',<br /> &nbsp;'_warnings_enabled', 'add_constructor', 'add_implicit_resolver', 'add_multi_constructor', 'add_multi_representer', 'add_path_resolver', 'add_representer',<br /> &nbsp;'compose', 'compose_all', 'composer', 'constructor', 'dump', 'dump_all', 'dumper', 'emit', 'emitter', 'error', 'events', 'full_load', 'full_load_all', 'io',&nbsp;<br /> &nbsp;'load', 'load_all', 'load_warning', 'loader', 'nodes', 'parse', 'parser', 'reader', 'representer', 'resolver', 'safe_dump', 'safe_dump_all', 'safe_load',&nbsp;<br /> &nbsp;'safe_load_all', 'scan', 'scanner', 'serialize', 'serialize_all', 'serializer', 'tokens', 'unsafe_load', 'unsafe_load_all', 'warnings']<br /> &nbsp;<br /> &nbsp;</p> </blockquote></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3563.htm">vue的混合mixins学习</a></p>
+                                                <p>下一个：<a href="/html/category/article-3565.htm">ubuntu 14.04 ndk 编译 openssl</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3674.htm" title="node.js &#8211; 包、express">node.js &#8211; 包、express</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3689.htm" title="Spring（六）&#8212;-Spring AOP概述及底层实现原理">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

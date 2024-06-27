@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3608.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>树莓派4B基于OpenCV的C++环境的串口通信 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">树莓派4B基于OpenCV的C++环境的串口通信</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<blockquote> <p>第二次积分赛我们队选择了飞控，我负责图像方面，我先简要说明一下该题中树莓派所需要的功能：用OpenCV图像处理进行巡线，同时识别红圆和绿圆。然后就是关键的一步，树莓派与飞控的<strong>通信</strong>。</p> </blockquote> <p>树莓派将处理好的数据（为巡线所确定的点、圆心等）发送给飞控，飞控端再通过PID等算法对接收到的数据进行解析，从而控制飞行器的运动。在这里就需要树莓派与飞控通信，我们选择了简单的<strong>uart串口通信</strong>。</p> <p>本以为会比较顺利，因为树莓派在网上有很多的开源教程，我也找了许多的教程一步步试，费尽了许多周折将串口配置好、下载的库也配置好，程序也编译通过，但是和CH340连电脑，就。。。啥也没显示。。。：-）此时我的心是悲剧的。</p> <p></p> <p>最终找了学长才解决的问题。（这里先感谢srh学长！！学长也超级耐心!）</p> <p>目前网上找到的大多数关于树莓派 4B 串口的文章，包括B站树小悉的视频教程，大都是将<strong>硬件串口（ttyAMA0，UART0）</strong>设置为<strong>主串口（Serial0）</strong>并<strong>关闭蓝牙</strong>，这个做法针对树莓派<strong>3B</strong>及以下是必须的，因为本身串口不够用。但对树莓派<strong>4B</strong> 来说并不需要，因为有额外 4 个串口可以利用，默认配置好的硬件串口和miniUART 可以保留设置。我参考了网上的教程，但就是无法串口收发数据，不过<strong>使用树莓派的这额外四个串口</strong>就成功了。（<strong>串口相关的具体可以查看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.raspberrypi.com/documentation/computers/configuration.html"  target="_blank" rel="nofollow">这篇官方文档</a></strong>，用浏览器自带网页搜索“serial”可以较快查到）</p> <p>然后，在配置WiringPi库的时候也遇到了<strong>版本</strong>和<strong>加入OpenCV环境</strong>等问题。</p> <p>话不多说，先分享我的配置过程，也为了让后来人少走一些弯路。这里先默认读者已经会使用树莓派的基本操作，且已经装好OpenCV的C++环境，并且会cmake编译运行。如果不会，请参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/Lin_QC/article/details/104392936"  target="_blank" rel="nofollow">这篇文章</a>。下面的操作也是基于这篇文章的基础之上的。</p> <h1 id="一串口配置">一、串口配置</h1> <h2 id="1-展示所有串口命令">1. 展示所有串口命令</h2> <p>命令行输入：</p> <pre><code class="language-C++">dtoverlay -a | grep uart</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e9356f5e7505f373b905360c69d3938f.jpg" alt="树莓派4B基于OpenCV的C++环境的串口通信"></p> <h2 id="2-查看串口信息">2. 查看串口信息</h2> <p>我们来康康树莓派4B额外4个串口之一的uart2，命令行输入：</p> <pre><code class="language-C++">dtoverlay -h uart2</code></pre> <p>可以查看到配置信息：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/58e675af126c5097dba2a742a957d8c2.jpg" alt="树莓派4B基于OpenCV的C++环境的串口通信"></p> <p>相关信息会展现 GPIOs 与树莓派4B额外的4个UART 串口的分配：0-3 对应 UART2， 4-7 对应 UART3，8-11 对应 UART 4，以及 12-15 对应UART 5。</p> <h2 id="3-开启串口-uart2-5">3. 开启串口 UART2-5</h2> <p>执行编辑 config.txt 命令，命令行输入：</p> <pre><code class="language-C++">sudo nano /boot/config.txt</code></pre> <p>拉到文件结尾，添加如下代码：</p> <pre><code class="language-C++">dtoverlay=uart2 dtoverlay=uart3 dtoverlay=uart4 dtoverlay=uart5</code></pre> <p>按ctrl+x，然后保存，enter退出。</p> <p>重启树莓派，命令行输入：</p> <pre><code class="language-C++">sudo reboot</code></pre> <p>重启后查看串口是否打开，命令行输入：</p> <pre><code class="language-C++">ls /dev/ttyAMA*</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/8ee25bf0ce7358e421ba7f6b52ea0baf.jpg" alt="树莓派4B基于OpenCV的C++环境的串口通信"></p> <p>可以看到几个串口都打开了。（AMA1-4分别对应UART2-5）</p> <h2 id="4串口接线">4、串口接线</h2> <p>接下来我们看看这4个串口分别对应于树莓派的哪些引脚：</p> <pre><code class="language-C++">UART0： GPIO14 = TXD0 -&gt; ttyAMA0     GPIO15 = RXD0 -&gt; ttyAMA0 UART2： GPIO0  = TXD2 -&gt; ttyAMA1     GPIO1  = RXD2 -&gt; ttyAMA1 UART3： GPIO4  = TXD3 -&gt; ttyAMA2     GPIO5  = RXD3 -&gt; ttyAMA2 UART4： GPIO8  = TXD4 -&gt; ttyAMA3     GPIO9  = RXD4 -&gt; ttyAMA3 UART5： GPIO12 = TXD5 -&gt; ttyAMA4     GPIO13 = RXD5 -&gt; ttyAMA4</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/63d352239f45d64f4acd9dd8c0f9b0d5.jpg" alt="树莓派4B基于OpenCV的C++环境的串口通信"></p> <p>我们这里使用UART2，可以看到 GPIO0对应于uart2的TX（引脚编号为27），GPIO1对应于uart2的RX（引脚编号为28）。故将CH340的TX和28号引脚相连，RX引脚和27号引脚相连，GND和30号引脚相连共地。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0a4e52317538de1a74a10cbde909db8d.jpg" alt="树莓派4B基于OpenCV的C++环境的串口通信"></p> <h1 id="二安装wiringpi库">二、安装WiringPi库</h1> <blockquote> <p>什么？WiringPi？你确定是WiringPi？不是WritingPi？没错，你的英语没问题，就是WiringPi。。：-）</p> </blockquote> <p>WiringPi是一个用C语言编写的树莓派软件包，可用于树莓派GPIO引脚控制、串口通信、SPI通信及I2C通信等功能。其官方网址为<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=http%3A//wiringpi.com"  target="_blank" rel="nofollow">http://wiringpi.com</a>。我们可以看到这个库作者已经停止维护了。我们在这里用的是串口通信，故只用它的wiringSerial库。</p> <p>安装WiringPi，我试了试若直接<code>apt-get install wiringpi</code>的话不行，只能卡在2.32版本，而树莓派4B要树莓派2.52版本才行。（有可能是我安装的问题）好在 GitHub 仓库上的有源码可以下载。</p> <p>在命令行输入：</p> <pre><code class="language-C++">git clone https://github.com/WiringPi/WiringPi.git cd ~/wiringPi ./build</code></pre> <p>这样我们就在<code>wiringPi</code>目录下安装好了WiringPi库。</p> <p>我们查看一下版本，在命令行中输入：</p> <pre><code class="language-C++">gpio -v</code></pre> <p>可以看到版本号是 2.7。在树莓派4B上可以正常使用。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/4bec4be3252fba2a811ed30483975a05.jpg" alt="树莓派4B基于OpenCV的C++环境的串口通信"></p> <h1 id="三在opencv环境中cmakewiringpi库">三、在OpenCV环境中cmakeWiringPi库</h1> <p>cmake原来OpenCV程序时（OpenCV相关目录下已创建cpp文件test_opencv.cpp）需要在CMakeLists.txt里写如下代码：（如不懂，具体还是请看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/Lin_QC/article/details/104392936"  target="_blank" rel="nofollow">这篇文章</a>）</p> <pre><code class="language-C++">cmake_minimum_required(VERSION 2.6) project(test_opencv) find_package(OpenCV REQUIRED) add_executable(test_opencv test_opencv.cpp) target_link_libraries(test_opencv ${OpenCV_LIBS})</code></pre> <p>要加入WiringPi库，只需在CMakeLists.txt里写：</p> <pre><code class="language-C++">cmake_minimum_required(VERSION 2.6) add_definitions( -lwiringPi  ) project(test_opencv) find_package(OpenCV REQUIRED) find_library(WIRINGPI_LIBRARIES NAMES wiringPi) add_executable(test_opencv test_opencv.cpp) target_link_libraries(test_opencv ${OpenCV_LIBS}) target_link_libraries(test_opencv ${WIRINGPI_LIBRARIES}  -lpthread)    //-lpthread后缀要写上，否则编译会不通过</code></pre> <h1 id="四cpp代码编写">四、cpp代码编写</h1> <p>使用WiringPi库来串口通信要包含头文件：</p> <pre><code class="language-C++">#include &lt;wiringPi.h&gt; #include &lt;wiringSerial.h&gt;</code></pre> <p>其实用wiringSerial.h就可以了。</p> <p>在main函数里写串口初始化代码：</p> <pre><code class="language-C++">wiringPiSetup();</code></pre> <p>然后打开串口2，并设一个变量fd来作为串口文件描述符：</p> <pre><code class="language-C++">int fd =serialOpen("/dev/ttyAMA1",9600);   //这里波特率设置为9600</code></pre> <p>发送函数：</p> <pre><code class="language-C++">//写在while里，每隔3秒发送一个hello world!! serialPrintf(fd,"hello world!!\n");    delay(3000);</code></pre> <p>功能类似于printf，可以同时发送多个字符串。</p> <p>注：</p> <p><strong>以上发送函数只是把数据推送到发送缓冲区里，不会等待串口发送完成。</strong>后续程序如果要用到用到串口返回数据应当要考虑到串口传输时间。<strong>并且最好等之前的数据全部发送完成后再发送新数据，否则可能会出问题，这也要考虑到串口发送数据的时间，可能需要等待。</strong></p> <p>我们在项目的目录下输入：</p> <pre><code class="language-C++">cmake . make ./test_opencv</code></pre> <p>可以编译并运行程序了！编译也没有报错！</p> <p>这样电脑端可以在串口调试助手上接收到数据。图中是vofa上接收数据情况。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/4e010a93ab9d53fcca044af3423b247a.jpg" alt="树莓派4B基于OpenCV的C++环境的串口通信"></p> <p>当然，我们串口通信是为了发送图像处理后的数据，并和我们的飞控通信，在树莓派端，我们需要将需要的数据打包成帧，建立一个自己写的通信协议，发送给飞控，飞控端解析这些数据帧就可以了。这些会在第二次积分赛总结里写，不过估计要鸽到暑假了。:-）</p> <p>参考文章：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/weixin_40796925/article/details/107907991"  target="_blank" rel="nofollow">https://blog.csdn.net/weixin_40796925/article/details/107907991</a></p> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3607.htm">java8中的Instant有关</a></p>
+                                                <p>下一个：<a href="/html/category/article-3609.htm">Hadoop C#操作Hbase_在线工具</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

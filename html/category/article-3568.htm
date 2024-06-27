@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3568.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>OpenCV+QT5在Window下的环境配置记录 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">OpenCV+QT5在Window下的环境配置记录</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<p>在安装OpenCV时最需要注意的是，OpenCV库，也就是我们需要的dll和动态库需要我们使用CMake来生成。</p> <p>虽然在官网上下载得到的文件中已经包含了库文件和.h等头文件，但是在具体开发中编译器编译后的源文件都会和库文件去进行链接。</p> <p>这就导致不同的编译器可能需要不同的库。所以，下载得到源文件之后，要用指定的编译器重新编译。</p> <h2 id="0-需要的工具">0. 需要的工具</h2> <ul> <li>Qt Creator</li> <li>OpenCV</li> <li>CMake</li> <li>cmd</li> </ul> <h2 id="1-qt-creator安装">1. Qt Creator安装</h2> <p>这里Qt Creator的安装不在赘述，由于Qt提供的在线下载器太慢，可以直接去<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://download.qt.io/"  title="qt的离线下载界面" target="_blank" rel="nofollow">qt的离线下载界面</a>下载，使用迅雷会比较快。详细操作可以参考<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://c.biancheng.net/view/3851.html"  title="这里" target="_blank" rel="nofollow">这里</a>。笔者使用的是5.9.0版本。</p> <blockquote> <p>注意，这里需要在环境变量中的Path变量下添加Qt\Qt5.9.0\Tools\mingwxx_xx\bin路径。例如我在这里添加了F:\Qt\Qt5.9.0\Tools\mingw530_32\bin，否则后面的CMake可能在Configure过后没有对应的选项！</p> </blockquote> <h2 id="2-opencv的下载安装">2. OpenCV的下载安装</h2> <p>OpenCV也可以直接在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://opencv.org/"  title="官网" target="_blank" rel="nofollow">官网</a>下载，这里选择对应的Windows版本，下载后安装。我这里一开始使用4.5.5在cmd界面编译时候报错，后面使用的是3.2.0。</p> <p>安装完成后，在环境变量中添加Path变量，我添加的地址为F:\environment\opencv\build\bin。</p> <h2 id="3-cmake的下载使用">3. CMake的下载使用</h2> <p>CMake可以直接在<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.cmake.org/cmake/resources/software.html"  title="官网" target="_blank" rel="nofollow">官网</a>下载，注意安装的是带有界面的cmake-3.6.1-win64-x64.msi。</p> <p>安装后打开cmake-gui.exe，<strong>Browse Source</strong>下选择安装的opencv下的sources文件夹，<strong>Browse Build</strong>可在opencv下新建一个release目录并选择，完整后点击左下角的<strong>Configure，选择MinGW Makefiles。</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a3b997df377a825423ae0b9d7c3ad20a.jpg" alt="OpenCV+QT5在Window下的环境配置记录"></p> <p>点击后CMake开始运行，过一段时间，中间会出现许多红色的选项，<strong>勾选WITH_OPENGL和WITH_QT</strong>，再次点击Configure。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f9084efa06bb53b45e697d0d09042fc3.jpg" alt="OpenCV+QT5在Window下的环境配置记录"></p> <p>运行完毕后可能还会出现部分红色选项，分别以下表选择对应项目。（有可能只有部分）</p> <table> <thead> <tr> <th>Name</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td>QT_QMAKE_EXECUTABLE</td> <td>.../Qt/Qt5.3.1/5.3/mingw482_32/bin/qmake.exe</td> </tr> <tr> <td>QT_MKSPECS_DIR</td> <td>.../Qt/Qt5.3.1/5.3/mingw482_32/mkspecs</td> </tr> <tr> <td>QT_QTCORE_LIBRARY_DEBUG</td> <td>.../Qt/Qt5.3.1/5.3/mingw482_32/bin/Qt5Cored.dll</td> </tr> <tr> <td>QT_QTCORE_LIBRARY_RELEAS</td> <td>.../Qt/Qt5.3.1/5.3/mingw482_32/bin/Qt5Core.dll</td> </tr> <tr> <td>QT_QTCORE_INCLUDE_DIR</td> <td>.../Qt/Qt5.3.1/5.3/mingw482_32/include/QtCore/5.3.1/QtCore</td> </tr> <tr> <td>Qt5_DIR</td> <td>.../Qt/Qt5.3.1</td> </tr> </tbody> </table> <blockquote> <p>注意：如果你在安装Qt5后，没有给Qt5添加环境变量的话，那么在这一步，CMake软件是不会找到这些和Qt5相关的项的。</p> </blockquote> <p>配置完成后再次Configure，没有红色选项，<strong>CMAKE_BUILD_TYPE选择Release类型</strong>，再次点击Configure后没有报错，<strong>点击Generate</strong>。</p> <p>在Generate结束后需要使用cmd来最后编译生成我们需要的动态dll库。</p> <h2 id="4-在cmd中使用mingw32-make命令构建dll库">4. 在cmd中使用mingw32-make命令构建dll库</h2> <p>打开cmd，使用cd命令进入我们刚才在CMake里Browse Build选项中选择的目录，笔者的为F:\environment\opencv\release。（这里可能cd不进去，Windows下切换磁盘直接输入磁盘符＋冒号就可以切换到其他盘了）。</p> <blockquote> <p>f:<br /> cd F:\environment\opencv\release<br /> mingw32-make</p> </blockquote> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/9d131add69e9b4c70ff4319e560ecacb.jpg" alt="OpenCV+QT5在Window下的环境配置记录"></p> <p>等待构建成功后，该目录下的include目录和lib目录下就生成了我们需要的库了。</p> <h2 id="5-在qt-creator的pro文件中添加配置">5. 在Qt Creator的.pro文件中添加配置</h2> <p>在你需要使用OpenCV的项目的.pro文件中添加配置</p> <blockquote> <p>INCLUDEPATH += E:\opencv-4.0.1-Sources\opencv-build\install\include<br /> LIBS += E:\opencv-4.0.1-Sources\opencv-build\lib\libopencv_*.a</p> </blockquote> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3567.htm">C++标准异常处理 三角形面积</a></p>
+                                                <p>下一个：<a href="/html/category/article-3569.htm">SpringBoot2.0.4配置多个数据库</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3671.htm" title="Eclipse开发Java如何Debug详解">Eclipse开发Java如何Debug详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

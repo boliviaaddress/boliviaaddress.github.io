@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3474.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>触摸板触摸屏禁止手指缩放，这么处理才行_在线工具 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">触摸板触摸屏禁止手指缩放，这么处理才行_在线工具</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<h2 id="禁止缩放">禁止缩放</h2> <p>有天，辛苦做了个复杂操作功能的页面，上线后有用户反馈：很多功能使用不了。惊了，以为是哪里出了bug。<br /> 立马联系用户，才发现原来是用户使用笔记本电脑，没有禁用触控板，然后不小心碰到导致整个界面都放大，很多功能超出界面不见了。<br /> 然而那能怎么办，用户第一，自然得快速解决这个问题，而且是触控板和触摸屏都得解决。</p> <p>在以前，如果要禁止移动端设备的触摸屏上，手指缩小放大的功能，都会想到使用<code>viewport</code> 来处理。如下：</p> <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"&gt; </code></pre> <p>然而，目前的浏览器已经不再支持 <code>viewport</code> 禁止缩放的定义。现在使用这段代码，已经彻底无效，要想解决问题，得想新的方案。</p> <p>话不多说，下面先给出具体的解决办法。</p> <h3 id="触控板">触控板</h3> <p>要禁止触控板的缩放行为，需要处理鼠标滚轮事件：<code>wheel</code> 。<br /> 因为笔记本触摸板双指滑动，将响应该事件，如果对该事件阻止默认行为，就能解决缩放问题了。<br /><strong>注意</strong>：<br /><code>passive: false</code> 必须使用，下面会介绍。<br /> 此外，对 <code>document</code> 处理了滚轮事件后，因为该事件会传播冒泡，所以需要注意页面上其他的子元素——<strong>如果有滚动条之类的，需要在子元素上阻止冒泡，不然后滚动会失效。</strong></p> <pre><code class="language-js">// 触摸板禁止手指缩放 document.addEventListener('wheel', function(event) {     event.preventDefault() }, { passive: false })  // 阻止子元素相同事件冒泡 // document.getElementById('app').addEventListener('wheel', function(event) { //   event.stopPropagation() // }) </code></pre> <h3 id="触摸屏">触摸屏</h3> <p>要禁止触摸屏的手指缩放，可以使用如下的 <code>CSS</code> 和 <code>JS</code> 两种方法。</p> <h4 id="css-处理">css 处理</h4> <p>只要在页面上使用css样式 <code>touch-action: none</code>，就能禁止web在手机或平板上的缩放了。</p> <pre><code class="language-js">&lt;html style="touch-action: none;"&gt; </code></pre> <p><strong>注意：</strong><br /> 使用 <code>touch-action: none</code> 作用于html元素上，可以禁止页面缩放，因为该样式属性是非继承属性，不会影响页面子元素的手势操作。<br /> 如果使用 <code>* {touch-action: none;}</code> 全局作用，则会影响子元素的各种手势操作。</p> <h4 id="js-处理">js 处理</h4> <p>使用js代码来禁止触摸屏的手指缩放，和处理触控板类似的，这里主要是监听几个手势事件，touchstart, touchend, touchmove等。<br /> 注意：需要注意的事项也会触控板处理时一样，加上 <code>{ passive: false }</code>，并且对子元素进行阻止冒泡的操作。</p> <pre><code class="language-js">document.addEventListener('touchstart', function(event) {     event.preventDefault() }, { passive: false })  // 阻止子元素相同事件冒泡 // document.getElementById('app').addEventListener('touchstart', function(event) { //   event.stopPropagation() // }) </code></pre> <h2 id="扩展解读">扩展解读</h2> <h3 id="touch-action">touch-action</h3> <blockquote> <p>非继承属性，默认<code>auto</code>。<br /> 用于设置触摸屏用户如何操纵元素的区域，允许你在触控时控制滚动操作。<br /> 例如，浏览器内置的缩放功能。<br /> 这样做的好处还有，它可以允许你自己实现这些手势。<br /> 现代浏览器都支持该属性，但部分属性值只有chrome支持。</p> </blockquote> <pre><code class="language-css">touch-action: auto | none | [ [ pan-x | pan-left | pan-right ] || [ pan-y | pan-up | pan-down ] || pinch-zoom ] | manipulation; </code></pre> <h4 id="touch-action-属性值">touch-action 属性值</h4> <ul> <li>auto<br /> 当触控事件发生在元素上时，由浏览器来决定进行哪些操作，比如对viewport进行平滑、缩放等。</li> <li>none<br /> 当触控事件发生在元素上时，不进行任何操作。</li> <li>pan-x<br /> 启用单指水平平移手势。可以与 pan-y 、pan-up、pan-down 和／或 pinch-zoom 组合使用。</li> <li>pan-y<br /> 启用单指垂直平移手势。可以与 pan-x 、pan-left 、pan-right 和／或 pinch-zoom 组合使用。</li> <li>manipulation<br /> 这是<code>pan-x pan-y pinch-zoom</code>的别名。<br /> 浏览器只允许进行滚动和持续缩放操作，任何其它被auto值支持的行为不被支持。<br /> 启用平移和缩小缩放手势，但禁用其他非标准手势，例如双击以进行缩放。<br /> 禁用双击可缩放功能可减少浏览器在用户点击屏幕时延迟生成点击事件的需要。<br /> 触摸动作也经常用于完全解决由支持双击缩放手势引起的点击事件的延迟。</li> <li>pinch-zoom<br /> 启用多手指平移和缩放页面。<br /> 这可以与任何平移值组合。</li> <li>pan-left, pan-right,pan-up,pan-down<br /> 启用以指定方向滚动开始的单指手势。 一旦滚动开始，方向可能仍然相反。<br /> 多个方向可以组合。<br /> 请注意，滚动向上（pan-up）意味着用户正在将其手指向下拖动到屏幕表面上，同样 pan-left 表示用户将其手指向右拖动。<br /> 这些值的兼容性较差，Chrome支持，IE\Firefox\Safari不支持。</li> </ul> <h3 id="wheel-与-mousewheel">wheel 与 mousewheel</h3> <p><code>mousewheel</code> 并不是标准特性，ie、chrome等浏览器支持，但 <code>firefox</code> 不支持。<br /><code>firefox</code> 支持的是自定义的 <code>DOMMouseScroll</code> 事件。</p> <p><code>wheel</code> 才是标准特性，现代浏览器基本都支持，建议使用 <code>wheel</code> 替代。</p> <p>笔记本触摸板双指滑动，将响应滚轮事件，因此可以监听该事件，禁止触摸板手指缩放界面。<br /> 但需要注意滚轮默认事件，如会导致子元素滚动失效，这时候就要在子元素上阻止相同事件冒泡。</p> <h3 id="passive">passive</h3> <p><code>passive</code> 是作为属性值，来自于事件监听函数 <code>addEventListener</code> 的可选属性 <code>options</code>。<br /><code>addEventListener</code> 的第三个属性还可以取布尔值，指示是否能冒泡。<br /> 需要注意的是：对于第三个参数，IE只支持布尔值，不支持属性对象 <code>options</code>；而部分属性值，也有浏览器不支持。</p> <pre><code class="language-js">target.addEventListener(type, listener, options); </code></pre> <h4 id="options参数">options参数</h4> <p>可选参数可用的属性如下：</p> <ul> <li>capture:  Boolean，表示 listener 会在该类型的事件捕获阶段传播到该 EventTarget 时触发。</li> <li>once:  Boolean，表示 listener 在添加之后最多只调用一次。如果是 true， listener 会在其被调用之后自动移除。</li> <li>signal：AbortSignal，该 AbortSignal 的 abort() 方法被调用时，监听器会被移除。Safari不支持。</li> <li>mozSystemGroup: 只能在 XBL 或者是 Firefox' chrome 使用，这是个 Boolean，表示 listener 被添加到 system group。</li> <li> <strong>passive</strong>: Boolean，设置为true时，表示 listener 永远不会调用 preventDefault()。</li> </ul> <p><code>passived</code> 实际上就是告诉浏览器，某个事件监听是否会使用 <code>preventDefault</code> 来阻止默认行为，便于浏览器优化性能。特别是浏览器优化页面滚动时的性能，可以让页面滚动更顺滑。<br /> 在Chrome中，<code>wheel / touch</code> 等事件中的 <code>passive</code> 会默认设置为true，但Safari不支持。<br /> 添加 <code>passive</code> 参数为true后，<code>touchmove</code> 事件不会阻塞页面的滚动（同样适用于鼠标的滚轮事件）。</p> <p>如果 <code>passive</code> 设置为true，而 <code>listener</code> 仍然调用了 <code>preventDefault</code>，则浏览器客户端将会忽略它，并抛出一个控制台警告：</p> <blockquote> <p>Unable to preventDefault inside passive event listener invocation。</p> </blockquote> <h4 id="可能遇到的报错">可能遇到的报错</h4> <p><strong>Unable to preventDefault inside passive event listener due to target being treated as passive.</strong></p> <p>由于目标被视为被动，因此无法在被动事件侦听器中阻止默认行为。<br /> 可能的发生情景：移动端使用<code>touch事件</code>后，垂直平移时的报错。</p> <p>方法一：使用 <code>touch-action</code> 样式来禁止垂直平移的默认行为</p> <pre><code class="language-css">touch-action: pan-y; </code></pre> <p>方法二：监听 <code>touch事件</code> 中，明确设置 <code>passive</code> 为 false，声明不是被动的。</p> <pre><code class="language-js">document.addEventListener('touchmove', function (event) {   event.preventDefault(); }, { passive: false }); </code></pre> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3473.htm">QtWebEngine性能问题_在线工具</a></p>
+                                                <p>下一个：<a href="/html/category/article-3475.htm">Vue3+Element plus项目搭建</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3674.htm" title="node.js &#8211; 包、express">node.js &#8211; 包、express</a></li>
+                        <li class="py-2"><a href="/html/category/article-3669.htm" title="react实战系列起步（mockjs、第一个模块、docusaurus）">react实战系列起步（mockjs、第一个模块、docusaurus）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3670.htm" title="AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)">AES算法中填充模式的区别(PKCS7Padding/PKCS5Padding/ZeroPadding)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3693.htm" title="@Order的使用与Aop多切面的执行顺序">@Order的使用与Aop多切面的执行顺序</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3671.htm" title="Eclipse开发Java如何Debug详解">Eclipse开发Java如何Debug详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

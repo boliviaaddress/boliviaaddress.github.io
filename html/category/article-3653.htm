@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3653.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>liunx中搭建python3.7环境和安装pycharm并搭建Django - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">liunx中搭建python3.7环境和安装pycharm并搭建Django</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>首先第一步我们先安装python3.7的环境在liunx中，先去下面这个网站然后找到Gzipped source tarball<br /> https://www.python.org/downloads/release/python-377/<br /> 下拉到最底下选择它然后下载<br /> 如果python中已经安装就跳过这一步<br /> 用python --version<br /> 检查后如果已经装好python就不用安装<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/47e0c55aa4bf54660e4df73f033df826.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"></p> <h1> <a id="1xftpliunx_7" rel="nofollow"></a>1.用xftp上传文件到liunx服务器中</h1> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/98b500f3221eabfda1ec8df3ae11dc03.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"><br /> 然后解压出来tar -xvf Python-3.7.7.tgz<br /> 解压python3.7的安装包到目录中<br /> 然后切换到python的安装目录中<br /> cd /root/Python-3.7.7<br /> 检查是否有遗漏的没有装的内容<br /> ./configure<br /> 没有问题后就执行安装<br /> make &amp;&amp; make install<br /> 然后输入python如果能进入python就代表安装成功。</p> <h1> <a id="2liunxpycharm_18" rel="nofollow"></a>2.在liunx中安装pycharm</h1> <p>去到pycharm官网然后点击Professional版本不然我们后面django无法安装<br /> https://www.jetbrains.com/pycharm/download/#section=linux<br /> 然后用xftp上传到liunx服务器中<img decoding="async" src="http://img.555519.xyz/uploads/20230108/2a207593a3da14f9df3d058815a276ba.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"><br /> 然后用tar-xvf pycharm-community-2022.3.1.tar.gz<br /> 解压<br /> 然后cd /root/pycharm-community-2022.3.1/bin<br /> 切换到目录里面/<br /> ./pycharm.sh<br /> 然后进入编辑器环境<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/5e783aaeb19798701af1c7fda6eacd35.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"><br /> 新建一个项目然后输入print(‘hello world’)显示出来即可<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/557c52f60deedf7e9314c77dbb185876.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"></p> <h1> <a id="3pycharm_31" rel="nofollow"></a>3.创建pycharm快捷键</h1> <pre><code class="prism language-python">sudo gedit <span class="token operator">/</span>usr<span class="token operator">/</span>share<span class="token operator">/</span>applications<span class="token operator">/</span>Pycharm<span class="token punctuation">.</span>desktop </code></pre> <p>然后修改文件</p> <pre><code class="prism language-python"><span class="token punctuation">[</span>Desktop Entry<span class="token punctuation">]</span> Type<span class="token operator">=</span>Application Name<span class="token operator">=</span>Pycharm GenericName<span class="token operator">=</span>Pycharm3 Comment<span class="token operator">=</span>Pycharm3<span class="token punctuation">:</span>The Python IDE Exec<span class="token operator">=</span>sh <span class="token operator">/</span>root<span class="token operator">/</span>pycharm<span class="token operator">-</span><span class="token number">2022.3</span><span class="token number">.1</span><span class="token operator">/</span><span class="token builtin">bin</span><span class="token operator">/</span>pycharm<span class="token punctuation">.</span>sh Icon<span class="token operator">=</span><span class="token operator">/</span>root<span class="token operator">/</span>pycharm<span class="token operator">-</span><span class="token number">2022.3</span><span class="token number">.1</span><span class="token operator">/</span><span class="token builtin">bin</span><span class="token operator">/</span>pycharm<span class="token punctuation">.</span>png Terminal<span class="token operator">=</span>pycharm Categories<span class="token operator">=</span>Pycharm<span class="token punctuation">;</span> </code></pre> <p>然后重启一下就可以看到快捷命令出现，但是有一种情况就是安装失败，你需要切换成管理员用户才能出现pycharm的快捷启动图标<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/94222e9f1de4aaf79dab29a08a521f05.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"></p> <h1> <a id="4django_51" rel="nofollow"></a>4.安装django</h1> <p>pip3 install django -i https://pypi.douban.com/simple/<br /> 用国内镜像下载快，如果pip3没有安装的话会默认帮你安装按y下一步即可<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/c98a092981c1eefa01deeecc8acb2c45.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"><br /> python -m django --version<br /> 验证django的版本<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/cffbf8453cc6a565721e131f7c6b270f.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"><br /> 、<br /> 在pycharm中Terminal中将镜像更改成国内镜像这样第一次创建django项目时速度会很快</p> <pre><code class="prism language-java">pip config set global<span class="token punctuation">.</span>index<span class="token operator">-</span>url https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>pypi<span class="token punctuation">.</span>doubanio<span class="token punctuation">.</span>com<span class="token operator">/</span>simple </code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads/20230108/cb322def9502c9b399f2fa5991a201ae.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"></p> <p>然后新建一个项目选择django，Location就是你的文件本地路径可以自己修改，New enviroment using就是django的配置环境默认你的系统安装python的版本，这里不用修改用默认即可。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/7f6d3d7a77ba661446e3c0068adf148d.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"></p> <p>点击开始箭头然后启动django<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/9919ca5dae567186763d6c64b3e8ffc5.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"><br /> 启动之后默认地址就是127.0.0.1:8000<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/e38ae3f1acba9839e1ad3e80b55473d7.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"><br /> 在浏览器输入http://127.0.0.1:8000/能够跳转到django默认的页面就代表搭建成功<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230108/05e4e3fc8c7083b7e9326c8aab9831ed.jpg" alt="liunx中搭建python3.7环境和安装pycharm并搭建Django"></p> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3652.htm">总结-微信小程序自定义顶部导航(超详细)附加效果图</a></p>
+                                                <p>下一个：<a href="/html/category/article-3654.htm">asp+vb.net解决调接口返回中文乱码问题</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-3722.htm" title="MyBatis:SQL语句中的foreach标签的详细介绍">MyBatis:SQL语句中的foreach标签的详细介绍</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

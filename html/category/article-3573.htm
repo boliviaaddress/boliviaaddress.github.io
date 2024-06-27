@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3573.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>java多线程[5]：信号量(Semaphore) - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        V2ray Node</a>
+                </h1>
+                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">java多线程[5]：信号量(Semaphore)</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-dracula"> <p>Semaphore通过计数器来控制对一个共享资源的访问，它的工作机制是：当一个线程想要访问一个共享资源时，需要向Semaphore申请访问权限，如果Semaphore的计数器大于0，则线程获得共享资源的访问权限，此时Semaphore的计数器减一。当该线程使用完共享资源后，需要释放访问权限，此时Semaphore的计数器加一。如果一个线程在申请访问权限时Semaphore的计数器为0，则当前线程就会自动挂起，直到另一个线程释放一个访问权限后，当前线程获取访问权限并恢复运行。</p> <h1 id="semaphore的用法介绍">Semaphore的用法介绍</h1> <p>Semaphore的用法比较简单，下面看一下它的构造方法和常用方法。</p> <h3 id="构造方法">构造方法</h3> <p>Semaphore有两个构造函数，第一个指定了计数器的个数，如果设置为1的话，则只有1个线程可以同时获取到共享资源。第二个重载的第二个参数如果设置为true，则先申请访问权限的线程会保证先得到访问权限。</p> <pre class="prettyprint"><code class="hljs java">Semaphore(<span class="hljs-keyword">int</span> num) Semaphore(<span class="hljs-keyword">int</span> num, <span class="hljs-keyword">boolean</span> how)</code></pre> <h3 id="申请权限">申请权限</h3> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">void</span> acquire( ) <span class="hljs-keyword">throws</span> InterruptedException <span class="hljs-keyword">void</span> acquire(<span class="hljs-keyword">int</span> num) <span class="hljs-keyword">throws</span> InterruptedException</code></pre> <p>acquire方法默认申请1个访问权限，也可以通过第二个重载来一次申请多个访问权限。</p> <h3 id="释放权限">释放权限</h3> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">void</span> release( ) <span class="hljs-keyword">void</span> release(<span class="hljs-keyword">int</span> num)</code></pre> <p>同acquire一样，release方法默认释放一个访问权限，也可以通过第二个重载版本来一次释放多个访问权限。</p> <h1 id="示例一并发控制">示例一，并发控制</h1> <p>下面来看一个例子，假设有一个全局范围内的数字作为共享资源，有三个线程需要访问这个数字来做一个处理，每次处理的时间比较长，并且并发运行的话可能会影响最终的处理结果，所以要通过Semaphore来阻止并发。下面这个类作为共享资源</p> <pre class="prettyprint"><code class="hljs vala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shared</span> {<!-- --></span>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> resources = <span class="hljs-number">0</span>; }</code></pre> <p>下面这个类实现了Runable接口，它表示一个需要访问共享资源的线程</p> <pre class="prettyprint"><code class="hljs axapta"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyThread</span> <span class="hljs-inheritance"><span class="hljs-keyword">implements</span></span> <span class="hljs-title">Runnable</span> {<!-- --></span>      String name;     Semaphore semaphore;      <span class="hljs-keyword">public</span> MyThread(String name, Semaphore semaphore) {         <span class="hljs-keyword">this</span>.name = name;         <span class="hljs-keyword">this</span>.semaphore = semaphore;         <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">this</span>).start();     }      @Override     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> run() {         System.out.println(name + <span class="hljs-string">" want a permit"</span>);         <span class="hljs-keyword">try</span> {             semaphore.acquire();         } <span class="hljs-keyword">catch</span> (InterruptedException e) {             e.printStackTrace();         }         System.out.println(name + <span class="hljs-string">" get a permit"</span>);         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {             Shared.resources++;             System.out.println(<span class="hljs-string">"shared resources now is "</span> + Shared.resources + <span class="hljs-string">", by "</span> + name);             <span class="hljs-keyword">try</span> {                 Thread.sleep(<span class="hljs-number">500</span>);             } <span class="hljs-keyword">catch</span> (InterruptedException e) {                 e.printStackTrace();             }         }         System.out.println(name + <span class="hljs-string">"release a permit"</span>);         semaphore.release();     } }</code></pre> <p>这个线程先通过<code>semaphore.acquire()</code>获取到访问权限，然后长时间占有共享资源，最终通过<code>semaphore.release();</code>释放访问权限。</p> <p>下面是main方法</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(String[] args) {     Semaphore semaphore = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);     <span class="hljs-keyword">new</span> MyThread(<span class="hljs-string">"thread a"</span>, semaphore);     <span class="hljs-keyword">new</span> MyThread(<span class="hljs-string">"thread b"</span>, semaphore);     <span class="hljs-keyword">new</span> MyThread(<span class="hljs-string">"thread c"</span>, semaphore);  }</code></pre> <p>它首先创建了一个计数器为1的Semaphore，然后实例化了三个MyThread对象，该对象实例化后会自动运行线程。从输出结果可以看出，Semaphore有效地阻止了访问公共资源的代码的并发。下面是代码的输出</p> <pre class="prettyprint"><code class="hljs vbnet">thread b want a permit thread a want a permit thread c want a permit thread b <span class="hljs-keyword">get</span> a permit <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">1</span>, <span class="hljs-keyword">by</span> thread b <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">2</span>, <span class="hljs-keyword">by</span> thread b <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">3</span>, <span class="hljs-keyword">by</span> thread b <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">4</span>, <span class="hljs-keyword">by</span> thread b <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">5</span>, <span class="hljs-keyword">by</span> thread b thread b release a permit thread a <span class="hljs-keyword">get</span> a permit <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">6</span>, <span class="hljs-keyword">by</span> thread a <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">7</span>, <span class="hljs-keyword">by</span> thread a <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">8</span>, <span class="hljs-keyword">by</span> thread a <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">9</span>, <span class="hljs-keyword">by</span> thread a <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">10</span>, <span class="hljs-keyword">by</span> thread a thread a release a permit thread c <span class="hljs-keyword">get</span> a permit <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">11</span>, <span class="hljs-keyword">by</span> thread c <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">12</span>, <span class="hljs-keyword">by</span> thread c <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">13</span>, <span class="hljs-keyword">by</span> thread c <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">14</span>, <span class="hljs-keyword">by</span> thread c <span class="hljs-keyword">shared</span> resources now <span class="hljs-keyword">is</span> <span class="hljs-number">15</span>, <span class="hljs-keyword">by</span> thread c thread c release a permit</code></pre> <h1 id="示例二线程间通信">示例二，线程间通信</h1> <p>除了并发控制以外，Semaphore还可以用来做线程间的通信。以生产者和消费者为例，假设生产者持有消费者的一个访问权限，导致消费者无法进行消费，当生产者完成生产后，释放这个访问权限，消费者就可以消费了，同时，消费者还可以持有一个生产者的访问权限，在消费完之后再释放，从而通知生产者继续生产。这有点类似wait和notify。下面来看如何通过Semaphore来实现这个场景。</p> <p>首先来看一个队列</p> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> Queue {     <span class="hljs-keyword">private</span> Semaphore semaphoreConsumer = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);     <span class="hljs-keyword">private</span> Semaphore semaphoreProducer = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">value</span>;     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span>(<span class="hljs-keyword">int</span> <span class="hljs-keyword">value</span>) throws InterruptedException {         semaphoreProducer.acquire();         <span class="hljs-keyword">this</span>.<span class="hljs-keyword">value</span> = <span class="hljs-keyword">value</span>;         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"----------  value is put "</span> + <span class="hljs-keyword">this</span>.<span class="hljs-keyword">value</span>);         semaphoreConsumer.release();     }      <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">get</span>() throws InterruptedException {         semaphoreConsumer.acquire();         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"**********  value is get "</span> + <span class="hljs-keyword">value</span>);         semaphoreProducer.release();     } }</code></pre> <p>这个类中包含两个Semaphore对象，一个用于控制生产者的生产，另一个用于控制消费者的消费，用于控制消费的Semaphore默认的计数器是0，表示消费者默认是不能消费的，只有等生产者release一个访问权限后，计数器会加一，此时消费者才可以拿到访问权限并开始消费。下面是生产者和消费者，他们内部只管不停地生产或消费即可</p> <pre class="prettyprint"><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> {<!-- --></span>     Queue queue;     <span class="hljs-keyword">public</span> <span class="hljs-title">Producer</span>(Queue queue) {         <span class="hljs-keyword">this</span>.queue = queue;         <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">this</span>).start();     }      <span class="hljs-annotation">@Override</span>     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) {             <span class="hljs-keyword">try</span> {                 queue.put(i + <span class="hljs-number">1</span>);             } <span class="hljs-keyword">catch</span> (InterruptedException e) {                 e.printStackTrace();             }         }     } }</code></pre> <pre class="prettyprint"><code class="hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> Queue {     <span class="hljs-keyword">private</span> Semaphore semaphoreConsumer = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);     <span class="hljs-keyword">private</span> Semaphore semaphoreProducer = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);     <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">value</span>;     <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span>(<span class="hljs-keyword">int</span> <span class="hljs-keyword">value</span>) throws InterruptedException {         semaphoreProducer.acquire();         <span class="hljs-keyword">this</span>.<span class="hljs-keyword">value</span> = <span class="hljs-keyword">value</span>;         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"----------  value is put "</span> + <span class="hljs-keyword">this</span>.<span class="hljs-keyword">value</span>);         semaphoreConsumer.release();     }      <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">get</span>() throws InterruptedException {         semaphoreConsumer.acquire();         System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"**********  value is get "</span> + <span class="hljs-keyword">value</span>);         semaphoreProducer.release();     } }</code></pre> <p>下面是main方法</p> <pre class="prettyprint"><code class="hljs cpp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(String[] args) {     Queue <span class="hljs-built_in">queue</span> = <span class="hljs-keyword">new</span> Queue();     <span class="hljs-keyword">new</span> Consumer(<span class="hljs-built_in">queue</span>);     <span class="hljs-keyword">new</span> Producer(<span class="hljs-built_in">queue</span>); }</code></pre> <p>下面是代码的输出</p> <pre class="prettyprint"><code class="hljs cs">----------  <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> put <span class="hljs-number">1</span> **********  <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">get</span> <span class="hljs-number">1</span> ----------  <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> put <span class="hljs-number">2</span> **********  <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">get</span> <span class="hljs-number">2</span> ----------  <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> put <span class="hljs-number">3</span> **********  <span class="hljs-keyword">value</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">get</span> <span class="hljs-number">3</span> ......</code></pre> </p></div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-3572.htm">用 Python 定义 Schema 并生成 Parquet 文件</a></p>
+                                                <p>下一个：<a href="/html/category/article-3574.htm">二、Kotlin标准函数和静态函数</a></p>
+                                            </div>
+
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3672.htm" title="安卓夜间模式开发【深色主题适配】">安卓夜间模式开发【深色主题适配】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3679.htm" title="Vuex大全">Vuex大全</a></li>
+                        <li class="py-2"><a href="/html/category/article-3689.htm" title="Spring（六）&#8212;-Spring AOP概述及底层实现原理">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3690.htm" title="springboot集成Elasticsearch实现各种搜索功能">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                        <li class="py-2"><a href="/html/category/article-3682.htm" title="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3669.htm" title="react实战系列起步（mockjs、第一个模块、docusaurus）">react实战系列起步（mockjs、第一个模块、docusaurus）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3683.htm" title="C语言实现BMP格式转RGB格式、YUV格式">C语言实现BMP格式转RGB格式、YUV格式</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>
