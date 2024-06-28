@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3613.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3753.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>一文解决浏览器跨域问题 - Bolivia Address</title>
+    <title>Mac下配置Maven以及IDEA Maven配置 - Bolivia Address</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">一文解决浏览器跨域问题</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Mac下配置Maven以及IDEA Maven配置</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,12 +93,31 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<p><span style="font-size: 18pt"><strong>1. 概述</strong></span></p> <p>老话说的好：大处着眼，不贪一时之利。太贪心，只会失去更多，知足才能常乐。</p> <p>言归正传，今天我们来聊聊 如何解决浏览器跨域的问题。</p> <p><span style="font-size: 18pt"><strong>2. 跨域问题</strong></span></p> <p><span style="font-size: 14pt"><strong>2.1 什么是跨域</strong></span></p> <p>跨域，简单说就是访问的页面域名是 www.a.com，而在此页面中 Ajax 请求接口，请求的是 www.b.com 的接口，出于安全考虑，浏览器默认不允许这样做，便会报错，提示跨域。</p> <p>至于为什么浏览器默认不允许跨域，允许跨域有什么安全隐患，这里就不讨论了，本文只是给大家讲讲在需要跨域的情况下，如何解决跨域问题。</p> <p>当然，如果访问的页面和页面中请求的接口都在一个域名下，就没有跨域的烦恼了。</p> <p><strong>解决跨域问题，前端、后端都需要配置，只配置一端是不行的。</strong></p> <p><span style="font-size: 14pt"><strong>2.2 使用 java 代码解决<strong>后端</strong>跨域</strong></span></p> <p>新增一个跨域配置类 CrossDomainConfig，在其中配置允许跨域访问的url、请求方式、Header等。代码如下：</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.context.annotation.Bean;</span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.context.annotation.Configuration;</span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.web.cors.CorsConfiguration;</span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.web.cors.UrlBasedCorsConfigurationSource;</span><span style="color: rgba(0, 0, 255, 1)">import</span><span style="color: rgba(0, 0, 0, 1)"> org.springframework.web.filter.CorsFilter;  @Configuration</span><span style="color: rgba(0, 0, 255, 1)">public</span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> CrossDomainConfig{</span><span style="color: rgba(0, 0, 255, 1)">public</span><span style="color: rgba(0, 0, 0, 1)"> CrossDomainConfig() {      }</span><span style="color: rgba(0, 0, 255, 1)">private</span><span style="color: rgba(0, 0, 0, 1)"> CorsConfiguration buildConfig() {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 添加cors配置信息</span>     　　CorsConfiguration corsConfiguration =<span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> CorsConfiguration(); 　　　　 corsConfiguration.addAllowedOrigin(</span>"http://localhost:8080"<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> * 代表所有url</span>         corsConfiguration.addAllowedOrigin("*"<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 设置允许请求的方式</span>         corsConfiguration.addAllowedMethod("*"<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 设置允许的header</span>         corsConfiguration.addAllowedHeader("*"<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 设置是否发送cookie信息</span>         corsConfiguration.setAllowCredentials(<span style="color: rgba(0, 0, 255, 1)">true</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> corsConfiguration; 　　}      @Bean</span><span style="color: rgba(0, 0, 255, 1)">public</span><span style="color: rgba(0, 0, 0, 1)"> CorsFilter corsFilter() {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 为url添加映射路径</span>         UrlBasedCorsConfigurationSource crossDomainSource =<span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> UrlBasedCorsConfigurationSource();         crossDomainSource.registerCorsConfiguration(</span>"/**"<span style="color: rgba(0, 0, 0, 1)">, buildConfig());</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 返回重新定义好的配置</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> CorsFilter(crossDomainSource);      }  }</span></pre> </div> <p><span style="font-size: 14pt"><strong>2.3 Nginx 解决后端跨域</strong></span></p> <p>在后端接口所在的 server 配置中增加如下配置即可。</p> <div class="cnblogs_code"> <pre># 允许跨域请求的域名，*<span style="color: rgba(0, 0, 0, 1)">代表所有 add_header</span>'Access-Control-Allow-Origin' *<span style="color: rgba(0, 0, 0, 1)">; # 允许带上cookie请求 add_header</span>'Access-Control-Allow-Credentials' 'true'<span style="color: rgba(0, 0, 0, 1)">; # 允许请求的方法，例如：GET、POST、PUT、DELETE等，</span>*<span style="color: rgba(0, 0, 0, 1)">代表所有 add_header</span>'Access-Control-Allow-Methods' *<span style="color: rgba(0, 0, 0, 1)">; # 允许请求的头信息，例如：DNT,X</span>-Mx-ReqToken,Keep-Alive,User-Agent等，*<span style="color: rgba(0, 0, 0, 1)">代表所有 add_header</span>'Access-Control-Allow-Headers' *;</pre> </div> <p>对于后端接口来说，Java代码 和 Nginx，使用其中一种方法解决跨域即可。</p> <p><span style="font-size: 14pt"><strong>2.3 前端 Ajax 解决跨域</strong></span></p> <p>只是后端解决跨域，使用 Ajax 默认配置调用接口时，接口可以调通，但 Cookie 无法跨域携带，需要在 Ajax 调用时增加以下配置：</p> <div class="cnblogs_code"> <pre>crossDomain:<span style="color: rgba(0, 0, 255, 1)">true</span>,<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">设置跨域为true</span><span style="color: rgba(0, 0, 0, 1)">xhrFields: {  withCredentials:</span><span style="color: rgba(0, 0, 255, 1)">true</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">默认情况下，标准的跨域请求是不会发送cookie的</span> },</pre> </div> <p><span style="font-size: 14pt"><strong>2.4 SameSite 问题</strong></span></p> <p>为了防止 CSRF 攻击和用户追踪，一些浏览器的高版本增加并默认开启了 SameSite 的机制，严格控制跨域携带 Cookie。</p> <p>Microsoft Edge 和&nbsp;Google Chrome 的高版本就默认开启了 SameSite 机制。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/ae51a2ad850f8736d1eb30fac1742aa5.jpg" alt="一文解决浏览器跨域问题"></p> <p>SameSite 简单说，就是浏览器在生成 Cookie 时，增加了 Cookie 的安全级别，跨域携带是不允许的。</p> <p>解决的方法有两个：</p> <p>1、登录接口在生成 Cookie 时，修改 Cookie 的 SameSite 配置，例如：&nbsp;httponly; secure;SameSite=None</p> <p>2、在登录接口反向代理的 Nginx 的 location 配置中增加配置：proxy_cookie_path / "/; httponly; secure;SameSite=None";</p> <p><strong>注意：将 Cookie 的 SameSite 设置为 None 的前提是，接口访问协议必须是 https 的。</strong></p> <p><span style="font-size: 18pt"><strong>3. 综述</strong></span></p> <p>今天聊了一下 如何解决浏览器跨域的问题，希望可以对大家的工作有所帮助，下一节我们继续讲 Vue 中的高级语法，敬请期待</p> <p>欢迎帮忙点赞、评论、转发、加关注 ：）</p> <p><strong>关注追风人聊Java，这里干货满满，都是实战类技术文章，通俗易懂，轻松上手。</strong></p> <p><span style="font-size: 18pt"><strong>4. 个人公众号</strong></span></p> <p>追风人聊Java，欢迎大家关注</p> 			
+                      				  				  				<div id="content_views" class="htmledit_views"> <h3>maven下载</h3> <p>地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://maven.apache.org/download.cgi"  rel="nofollow">https://maven.apache.org/download.cgi</a></p> <p><img fetchpriority="high" decoding="async" alt="" height="1024" src="http://img.555519.xyz/uploads3/20220603/866879b2b22b773c3a37a11fe2a250df.jpg"></p> <h3><strong>安装Maven</strong></h3> <p>1 下载完是一个压缩包，解压即可，解压出来的文件如下图所示。</p> <p><img decoding="async" alt="" height="580" src="http://img.555519.xyz/uploads3/20220603/780bc7ebc12704a85eb9c037ea9ec351.jpg"></p> <p>2、把解压出来的文件拷贝到任意目录下面。（我这里将maven放在资源库文件夹下）</p> <p><img decoding="async" alt="" height="616" src="http://img.555519.xyz/uploads3/20220603/4cadf1dd08f4831382858f31a973f833.jpg"></p> <p>3&nbsp;配置环境变量</p> <p>打开环境变量配置文件</p> <pre><code>vi ~/.bash_profile</code></pre> <p>&nbsp;配置环境变量</p> <pre><code>export MAVEN_HOME=/Library/apache-maven-3.6.2 export PATH=${MAVEN_HOME}/bin:$PATH</code></pre> <p>保存，然后在终端让命令生效一下</p> <pre><code>source ~/.bash_profile</code></pre> <p>4、测试一下环境变量是否已经配置完成。在终端输入一个 mvn -v。如果出现下图则配置成功，如果没有的话，可以去检查一下 路径是否正确，或者版本号名称之类的。</p> <p><img loading="lazy" decoding="async" alt="" height="380" src="http://img.555519.xyz/uploads3/20220603/c6cfd5f653e9fab5b19985de064c7e67.jpg"></p> <p>5、创建本地仓库，在maven文件夹在创建&nbsp;repository 文件夹。</p> <p>6 &nbsp;修改conf下的settings.xml的本地仓库位置和创建maven阿里云镜像仓库配置</p> <pre><code class="language-XML">&lt;localRepository&gt;/Library/apache-maven-3.6.2/repository&lt;/localRepository&gt;    &lt;mirrors&gt;     &lt;mirror&gt;         &lt;id&gt;alimaven&lt;/id&gt;         &lt;name&gt;aliyun maven&lt;/name&gt;         &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;         &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;                &lt;/mirror&gt;    &lt;/mirrors&gt;</code></pre> <p>6 下载依赖</p> <pre><code>mvn help:system</code></pre> <p>下载成功后，你可以发现<strong>repository</strong>里面会有很多的文件 这些文件就是我们从中央仓库下载到本地仓库的文件</p> <h3><strong>配置IntelliJ IDEA</strong></h3> <p><img loading="lazy" decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/3c7324051a047e97681c4f5daba7637a.jpg"></p> <p>&nbsp;第一个是配置maven的路径</p> <p>&nbsp;第二个是maven配置文件的路径</p> <p>&nbsp;第三个是本地仓库的路径</p> <p></p> </div> 			
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3612.htm">Missing URI template variable</a></p>
-                                                <p>下一个：<a href="/html/category/article-3614.htm">Go_error处理及panic、recover使用的正确姿势</a></p>
+                                                <p>上一个：<a href="/html/category/article-3728.htm">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></p>
+                                                <p>下一个：<a href="/html/category/article-3754.htm">Python3通过字符串访问与修改局部变量</a></p>
                                             </div>
 
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3690.htm">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3633.htm">单链表之按顺序插入元素</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3617.htm">Jenkins 脚本命令行应用总结</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3608.htm">树莓派4B基于OpenCV的C++环境的串口通信</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3601.htm">【SpringBoot】核心依赖和自动配置</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3598.htm">Vue实战：基于Vue-ElementUI的权限管理系统之动态路由和动态按钮显示</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3583.htm">ArrayList集合排序方式总结</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3544.htm">@Valid 参数校验不生效问题解决</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3492.htm">java cron 每100分钟执行一次</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3454.htm">CS基础课自学指南_在线工具</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
                                     </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
@@ -107,16 +126,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
-                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
-                        <li class="py-2"><a href="/html/category/article-3694.htm" title="Vue el-table实现右键菜单功能_vue.js_">Vue el-table实现右键菜单功能_vue.js_</a></li>
-                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-3754.htm" title="Python3通过字符串访问与修改局部变量">Python3通过字符串访问与修改局部变量</a></li>
+                        <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
                         <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3671.htm" title="Eclipse开发Java如何Debug详解">Eclipse开发Java如何Debug详解</a></li>
-                        <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
-                        <li class="py-2"><a href="/html/category/article-3674.htm" title="node.js &#8211; 包、express">node.js &#8211; 包、express</a></li>
-                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                        <li class="py-2"><a href="/html/category/article-3673.htm" title="C语言[关于零表示假，非零表示真]">C语言[关于零表示假，非零表示真]</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
                     </ul>
     </div>
 </div>
