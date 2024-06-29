@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3668.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3779.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>promise和async/await区别 - Bolivia Address</title>
+    <title>js数组删除的方法 - Bolivia Address</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">promise和async/await区别</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">js数组删除的方法</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,12 +93,31 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="htmledit_views"> <p>拓展：js中同步、异步</p> <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js的同步和异步问题通常是指ajax的回调，如果是同步调用，程序在发出ajax调用后就会暂停，直到远程服务器产生回应后才会继续运行。而如果是异步调用，程序发出ajax调用后不会暂停，而是立即执行后面的代码，服务器返回信息后会自动触发回调函数进行处理。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相比较而言，异步调用的性能最佳，程序不会出现卡顿的现象，而同步调用则通常用于需要立即获得结果并实时处理的情况。</p> <p><strong>promise的用法</strong><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Promise,简单来说就是一个容器，里面保存着某个未来才会结束的时间(通常是一个异步操作的结果)</p> <p><strong>基本语法：</strong></p> <pre><code class="language-javascript"> let p = new Promise((resolve,reject) =&gt; {         //...         resolve('success')     });          p.then(result =&gt; {         console.log(result);//success     });</code></pre> <p><strong>promise共有三个状态：</strong><br /> pending（执行中）、success（成功）、rejected（失败）</p> <p><strong>链式调用<br /> 错误捕获</strong><br /> Promise.prototype.catch用于指定Promise状态变为rejected时的回调函数，可以认为是.then的简写形势，返回值跟.then一样</p> <pre><code class="language-javascript">`let p = new Promise((resolve,reject) =&gt; {     reject('error'); });  p.catch(result =&gt; {     console.log(result); })`</code></pre> <p><strong>async、await</strong><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简洁：异步编程的最高境界就是不关心它是否是异步。async、await很好的解决了这一点，将异步强行转换为同步处理。<br /> async/await与promise不存在谁代替谁的说法，因为async/await是寄生于Promise，Generater的语法糖。</p> <p><strong>用法</strong><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;async用于申明一个function是异步的，而await可以认为是async wait的简写，等待一个异步方法执行完成。</p> <p><strong>规则：</strong></p> <ol> <li>async和await是配对使用的，await存在于async的内部。否则会报错</li> <li>await表示在这里等待一个promise返回，再接下来执行</li> <li>await后面跟着的应该是一个promise对象，（也可以不是，如果不是接下来也没什么意义了…）</li> </ol> <p><strong>写法：</strong></p> <pre><code class="language-javascript">async function demo() { let result01 = await sleep(100); //上一个await执行之后才会执行下一句 let result02 = await sleep(result01 + 100); let result03 = await sleep(result02 + 100); // console.log(result03); return result03; }</code></pre> <pre><code class="language-javascript">demo().then(result =&gt; {     console.log(result); });`</code></pre> <h2>错误捕获</h2> <p>如果是reject状态，可以用try-catch捕捉</p> <pre><code class="language-javascript">let p = new Promise((resolve,reject) =&gt; {     setTimeout(() =&gt; {         reject('error');     },1000); });  async function demo(params) {     try {         let result = await p;     }catch(e) {         console.log(e);     } }  demo();</code></pre> <h1>区别：</h1> <p>1 promise是ES6，async/await是ES7<br /> 2 async/await相对于promise来讲，写法更加优雅<br /> 3 reject状态：<br /> &nbsp; &nbsp; 1）promise错误可以通过catch来捕捉，建议尾部捕获错误，<br /> &nbsp; &nbsp; 2）async/await既可以用.then又可以用try-catch捕捉</p> </div> 			
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>js的数组删除，我建议大家使用splice函数，不要使用slice函数，因为slice是返回一个新数组，并不是从原来的数组中删除。</p> <p>比如：</p> <pre><code class="prism language-java">let a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">111</span><span class="token punctuation">,</span><span class="token number">222</span><span class="token punctuation">,</span><span class="token number">333</span><span class="token punctuation">,</span><span class="token number">444</span><span class="token punctuation">]</span><span class="token punctuation">;</span> a<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>上面的代码运行后，a数组的值变成：[111,222,444]</p> <p>假如用slice实现：</p> <pre><code class="prism language-java">let a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">111</span><span class="token punctuation">,</span><span class="token number">222</span><span class="token punctuation">,</span><span class="token number">333</span><span class="token punctuation">,</span><span class="token number">444</span><span class="token punctuation">]</span><span class="token punctuation">;</span> let b<span class="token operator">=</span>a<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>这时a的值不会改变，而b的值变成了[111,222,444]</p> <p>所以splice是比slice用起来简单的</p> </div> 			
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3667.htm">win11系统怎么关闭共享文件夹</a></p>
-                                                <p>下一个：<a href="/html/category/article-3669.htm">react实战系列起步（mockjs、第一个模块、docusaurus）</a></p>
+                                                <p>上一个：<a href="/html/category/article-3754.htm">Python3通过字符串访问与修改局部变量</a></p>
+                                                <p>下一个：<a href="/html/category/article-3780.htm">Vue 列表渲染中的key</a></p>
                                             </div>
 
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3685.htm">ForkJoin详解及应用</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3644.htm">docker离线配置安装</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3641.htm">docker修改默认存储位置</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3610.htm">echarts图表实现自适应缩放(vue用法也一致)</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3607.htm">java8中的Instant有关</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3604.htm">Vue项目中v-bind动态绑定src路径不成功问题及解决_vue.js</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3593.htm">Eureka包含两个组件：Eureka Server 和 Eureka Client</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3513.htm">springboot mysql date时间的处理</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3461.htm">Java中的栈Stack、Deque、ArrayDeque、LinkedList</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3450.htm">C++ 函数模板</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
                                     </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
@@ -107,16 +126,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3678.htm" title="C++引用以及结构体">C++引用以及结构体</a></li>
-                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
                         <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
-                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
-                        <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
-                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
-                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
                         <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
                     </ul>
     </div>
 </div>

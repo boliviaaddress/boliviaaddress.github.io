@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3668.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3780.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>promise和async/await区别 - Bolivia Address</title>
+    <title>Vue 列表渲染中的key - Bolivia Address</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">promise和async/await区别</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Vue 列表渲染中的key</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,12 +93,30 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="htmledit_views"> <p>拓展：js中同步、异步</p> <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js的同步和异步问题通常是指ajax的回调，如果是同步调用，程序在发出ajax调用后就会暂停，直到远程服务器产生回应后才会继续运行。而如果是异步调用，程序发出ajax调用后不会暂停，而是立即执行后面的代码，服务器返回信息后会自动触发回调函数进行处理。</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相比较而言，异步调用的性能最佳，程序不会出现卡顿的现象，而同步调用则通常用于需要立即获得结果并实时处理的情况。</p> <p><strong>promise的用法</strong><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Promise,简单来说就是一个容器，里面保存着某个未来才会结束的时间(通常是一个异步操作的结果)</p> <p><strong>基本语法：</strong></p> <pre><code class="language-javascript"> let p = new Promise((resolve,reject) =&gt; {         //...         resolve('success')     });          p.then(result =&gt; {         console.log(result);//success     });</code></pre> <p><strong>promise共有三个状态：</strong><br /> pending（执行中）、success（成功）、rejected（失败）</p> <p><strong>链式调用<br /> 错误捕获</strong><br /> Promise.prototype.catch用于指定Promise状态变为rejected时的回调函数，可以认为是.then的简写形势，返回值跟.then一样</p> <pre><code class="language-javascript">`let p = new Promise((resolve,reject) =&gt; {     reject('error'); });  p.catch(result =&gt; {     console.log(result); })`</code></pre> <p><strong>async、await</strong><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简洁：异步编程的最高境界就是不关心它是否是异步。async、await很好的解决了这一点，将异步强行转换为同步处理。<br /> async/await与promise不存在谁代替谁的说法，因为async/await是寄生于Promise，Generater的语法糖。</p> <p><strong>用法</strong><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;async用于申明一个function是异步的，而await可以认为是async wait的简写，等待一个异步方法执行完成。</p> <p><strong>规则：</strong></p> <ol> <li>async和await是配对使用的，await存在于async的内部。否则会报错</li> <li>await表示在这里等待一个promise返回，再接下来执行</li> <li>await后面跟着的应该是一个promise对象，（也可以不是，如果不是接下来也没什么意义了…）</li> </ol> <p><strong>写法：</strong></p> <pre><code class="language-javascript">async function demo() { let result01 = await sleep(100); //上一个await执行之后才会执行下一句 let result02 = await sleep(result01 + 100); let result03 = await sleep(result02 + 100); // console.log(result03); return result03; }</code></pre> <pre><code class="language-javascript">demo().then(result =&gt; {     console.log(result); });`</code></pre> <h2>错误捕获</h2> <p>如果是reject状态，可以用try-catch捕捉</p> <pre><code class="language-javascript">let p = new Promise((resolve,reject) =&gt; {     setTimeout(() =&gt; {         reject('error');     },1000); });  async function demo(params) {     try {         let result = await p;     }catch(e) {         console.log(e);     } }  demo();</code></pre> <h1>区别：</h1> <p>1 promise是ES6，async/await是ES7<br /> 2 async/await相对于promise来讲，写法更加优雅<br /> 3 reject状态：<br /> &nbsp; &nbsp; 1）promise错误可以通过catch来捕捉，建议尾部捕获错误，<br /> &nbsp; &nbsp; 2）async/await既可以用.then又可以用try-catch捕捉</p> </div> 			
+                      				  				  				<div id="content_views" class="htmledit_views"> <div id="cnblogs_post_body" class="blogpost-body"> <p>首先看一下官网的论述：</p> <div class="cnblogs_code"> <pre><span style="color:#008080;"> 1</span> 当 Vue.js 用 v-<span style="color:#0000ff;">for</span> 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，<br/>   并且确保它在特定索引下显示已被渲染过的每个元素。这个类似 Vue 1.x 的 track-by="$index"<span style="color:#000000;"> 。 </span><span style="color:#008080;"> 2</span>  <span style="color:#008080;"> 3</span> <span style="color:#000000;">这个默认的模式是高效的，但是只适用于不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出。 </span><span style="color:#008080;"> 4</span>  <span style="color:#008080;"> 5</span> 为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。理想的 key 值是每项都有的且唯一的 id。这个特殊的属性<br/>   相当于 Vue 1.x 的 track-by ，但它的工作方式类似于一个属性，所以你需要用 v-<span style="color:#000000;">bind 来绑定动态值 (在这里使用简写)： </span><span style="color:#008080;"> 6</span>  <span style="color:#008080;"> 7</span> &lt;div v-<span style="color:#0000ff;">for</span>="item in items" :key="item.id"&gt; <span style="color:#008080;"> 8</span>   &lt;!-- 内容 --&gt; <span style="color:#008080;"> 9</span> &lt;/div&gt; <span style="color:#008080;">10</span> 建议尽可能在使用 v-<span style="color:#0000ff;">for</span><span style="color:#000000;"> 时提供 key，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。 </span><span style="color:#008080;">11</span>  <span style="color:#008080;">12</span> 因为它是 Vue 识别节点的一个通用机制，key 并不与 v-<span style="color:#0000ff;">for</span> 特别关联，key 还具有其他用途，我们将在后面的指南中看到其他用途。</pre> </p></div> <p>为了了解为什么需要key我们看下以下内容（标注:以下内容是从知乎上看到的）</p> <div>   </p> <div> <p>要解释key的作用，不得不先介绍一下虚拟DOM的Diff算法了。</p> <p>我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法。</p> <p>vue和react的虚拟DOM的Diff算法大致相同，其核心是基于两个简单的假设：</p> <p><strong>1. 两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构。</strong></p> <p><strong>2. 同一层级的一组节点，他们可以通过唯一的id进行区分。</strong></p> <p>基于以上这两点假设，使得虚拟DOM的Diff算法的复杂度从<strong>O(n^3)</strong>降到了<strong>O(n)</strong>。</p> <p>这里我们借用<a class="wrap external" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://link.zhihu.com/?target=https%3A//calendar.perfplanet.com/2013/diff/"  rel="nofollow">React’s diff algorithm</a>中的一张图来简单说明一下：</p> <p>&amp;amp;lt;img src="https://pic2.zhimg.com/50/v2-73120ff4c30dd81a128cd422e325786a_hd.jpg" alt="Vue 列表渲染中的key" data-rawwidth="377" data-rawheight="199" class="content_image" width="377"&amp;amp;gt;<br />    <img decoding="async" class="content_image lazy" src="http://img.555519.xyz/uploads/20230204/f9f0af0b54debac9315f5fb5395829a9.jpg" alt="Vue 列表渲染中的key"></p> <p>当页面的数据发生变化时，Diff算法只会比较同一层级的节点：</p> <p><strong>如果节点类型不同，直接干掉前面的节点，再创建并插入新的节点，不会再比较这个节点以后的子节点了。</strong></p> <p><strong>如果节点类型相同，则会重新设置该节点的属性，从而实现节点的更新。</strong></p> <p>当某一层有很多相同的节点时，也就是列表节点时，Diff算法的更新过程默认情况下也是遵循以上原则。</p> <p>比如一下这个情况：</p> <p> &amp;amp;lt;img src="https://pic1.zhimg.com/50/v2-6e88cc53a7e427f0ae8340cf930ac30d_hd.jpg" alt="Vue 列表渲染中的key" data-rawwidth="477" data-rawheight="191" class="origin_image zh-lightbox-thumb" width="477" data-original="https://pic1.zhimg.com/v2-6e88cc53a7e427f0ae8340cf930ac30d_r.jpg"&amp;amp;gt;<br />    <img decoding="async" class="origin_image zh-lightbox-thumb lazy" src="http://img.555519.xyz/uploads/20230204/61514f459b8e4225eb4cf129e27b3e99.jpg" alt="Vue 列表渲染中的key"></p> <p>我们希望可以在B和C之间加一个F，Diff算法默认执行起来是这样的：</p> <p> &amp;amp;lt;img src="https://pic3.zhimg.com/50/v2-bf76311258f100b789226ccbb2600071_hd.jpg" alt="Vue 列表渲染中的key" data-rawwidth="572" data-rawheight="215" class="origin_image zh-lightbox-thumb" width="572" data-original="https://pic3.zhimg.com/v2-bf76311258f100b789226ccbb2600071_r.jpg"&amp;amp;gt;<br />    <img decoding="async" class="origin_image zh-lightbox-thumb lazy" src="http://img.555519.xyz/uploads/20230204/044e7806c10e458e9b1a5a1dc2220208.jpg" alt="Vue 列表渲染中的key"></p> <p>即把C更新成F，D更新成C，E更新成D，最后再插入E，是不是很没有效率？</p> <p>所以我们需要使用key来给每个节点做一个唯一标识，Diff算法就可以正确的识别此节点，找到正确的位置区插入新的节点。</p> <p> &amp;amp;lt;img src="https://pic1.zhimg.com/50/v2-bb1147af7c458f0b09d6a3c2f74b0100_hd.jpg" alt="Vue 列表渲染中的key" data-rawwidth="452" data-rawheight="130" class="origin_image zh-lightbox-thumb" width="452" data-original="https://pic1.zhimg.com/v2-bb1147af7c458f0b09d6a3c2f74b0100_r.jpg"&amp;amp;gt;<br />    <img decoding="async" class="origin_image zh-lightbox-thumb lazy" src="http://img.555519.xyz/uploads/20230204/f5432f4e1e0ead94ddf0657ab2200e8f.jpg" alt="Vue 列表渲染中的key"></p> <p>所以一句话，<strong>key的作用主要是为了高效的更新虚拟DOM。</strong>另外vue中在使用<strong>相同标签名元素的过渡切换</strong>时，也会使用到key属性，其目的也是为了让vue可以区分它们，否则vue只会替换其内部属性而不会触发过渡效果。</p> </p></div> </p></div> </div> <p>转载于:https://www.cnblogs.com/qjuly/p/8514513.html</p> </p></div> 			
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3667.htm">win11系统怎么关闭共享文件夹</a></p>
-                                                <p>下一个：<a href="/html/category/article-3669.htm">react实战系列起步（mockjs、第一个模块、docusaurus）</a></p>
+                                                <p>上一个：<a href="/html/category/article-3779.htm">js数组删除的方法</a></p>
                                             </div>
 
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3704.htm">微服务架构-分布式服务中,Feign请求拦截器实现日志链路的跟踪</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3687.htm">Pandas大数据量内存优化</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3678.htm">C++引用以及结构体</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3669.htm">react实战系列起步（mockjs、第一个模块、docusaurus）</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3635.htm">ERROR: Failed to resolve: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.3.41</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3579.htm">Spring的事务管理机制和传播机制</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3571.htm">基于MyBatis的多租户设计方案与实现</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3563.htm">vue的混合mixins学习</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3552.htm">Bootstrap Blazor 模板使用Layout 组件</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3455.htm">@DateTimeFormat 注解 和 @JsonFormat 注解</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
                                     </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
@@ -107,16 +125,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3678.htm" title="C++引用以及结构体">C++引用以及结构体</a></li>
-                        <li class="py-2"><a href="/html/category/article-3675.htm" title="springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class">springBoot项目启动时报错org/springframework/boot/autoconfigure/web/ServerPropertiesAutoConfiguration.class</a></li>
                         <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
                         <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
-                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
                         <li class="py-2"><a href="/html/category/article-3676.htm" title="Uncaught SyntaxError: Unexpected token &lt;">Uncaught SyntaxError: Unexpected token &lt;</a></li>
-                        <li class="py-2"><a href="/html/category/article-3711.htm" title="Java数据结构-栈的实现">Java数据结构-栈的实现</a></li>
-                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3754.htm" title="Python3通过字符串访问与修改局部变量">Python3通过字符串访问与修改局部变量</a></li>
+                        <li class="py-2"><a href="/html/category/article-3708.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
                     </ul>
     </div>
 </div>
