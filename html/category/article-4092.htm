@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3605.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-4092.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>JS Promise用法 - Bolivia Address</title>
+    <title>nginx进程管理 - Bolivia Address</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">JS Promise用法</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">nginx进程管理</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,12 +93,30 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1 id="js-promise用法">JS Promise用法</h1> <hr/> <p><strong><font size="5">Promise概述</font></strong></p> <p>promise对象用于异步计算，相比于回调函数，promise对象除了规定的方法都是不可用的，牺牲了一定自由度的同时，可以将复杂的异步处理模式化。</p> <p><strong><font size="3">句法</font></strong></p> <pre><code>Promise( /* executor */ function(resolve, reject) { ... } ); </code></pre> <p>new一个Promise构造器进行实例化，返回一个promise对象：</p> <pre><code>var promise = new Promise(function(resolve, reject) {     // 异步处理     // 处理结束后、调用resolve 或 reject }); </code></pre> <p><strong><font size="3">Promise 状态</font></strong></p> <p>一个promise实例有一下几个状态（默认是Promises/A+的描述状态）：</p> <ul> <li>pending:初始化阶段，没有fulfilled或者是rejected</li> <li>fulfilled:操作成功完成（promise resolve）</li> <li>rejected：操作失败（promise reject）</li> </ul> <p>如果promise处于pending状态，处理promise的处理模块（handler）就会处于排队状态pending状态可以变成fulfilled或者rejected状态，不过fulfilled状态和rejected状态是不可相互转换的。promise从pending状态到fulfilled或者rejected状态，.then处理只会被调用一次，比如：</p> <pre><code>var promise = new Promise(function(resolve,reject){ var n = 6 if(n&lt;3) resolve(console.log('yes')); //成功了调用回调函数 else reject(new Error(console.log('this is an error'))); //失败调用reject并抛出异常 })  var promise = new Promise(function(resolve,reject){     var i = 2;     if(i&lt;3)     resolve(setTimeout("alert('hello')",5000));     else     reject(new Error(console.log('no'))); }) promise.then(console.log('ok')); </code></pre> <p><strong><font size="3">Promise 链</font></strong></p> <p>Promise.prototype.then()和Promise.prototype.then()方法返回promise对象，就成为promise链，如图：</p> <p><img decoding="async" src="0" alt="chains" title=""/></p> <p><strong><font size="3">方法</font></strong></p> <ul> <li>Promise.all()</li> </ul> <p>返回promise在迭代声明中是fulfilled还是reject，如果是fulfill，就返回一个数组，值是按照在迭代器中的顺序成功了的promises。如果返回不成功（reject）的promise，返回迭代器中第一个失败对象的原因。这个方法可以使用在有多个promise的情况下。</p> <ul> <li>Promise.race()</li> </ul> <p>如有有一个迭代中的promise被fulfilled或者rejected，这个方法立即返回处理值</p> <ul> <li>Promise.reject()</li> </ul> <p>返回被reject的原因</p> <ul> <li>Promise.resolve()</li> </ul> <p>返回处理成功的promise对象</p> <p><strong><font size="3">例子</font></strong></p> <pre><code>'use strict'; var promiseCount = 0;  function testPromise() {     var thisPromiseCount = ++promiseCount;      var log = document.getElementById('log');     log.insertAdjacentHTML('beforeend', thisPromiseCount +         ') Started (&lt;small&gt;Sync code started&lt;/small&gt;)&lt;br/&gt;');      // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s)     var p1 = new Promise(         // The resolver function is called with the ability to resolve or         // reject the promise         function(resolve, reject) {             log.insertAdjacentHTML('beforeend', thisPromiseCount +                 ') Promise started (&lt;small&gt;Async code started&lt;/small&gt;)&lt;br/&gt;');             // This is only an example to create asynchronism             window.setTimeout(                 function() {                     // We fulfill the promise !                     resolve(thisPromiseCount);                 }, Math.random() * 2000 + 1000);         }     );      // We define what to do when the promise is resolved/fulfilled with the then() call,     // and the catch() method defines what to do if the promise is rejected.     p1.then(         // Log the fulfillment value         function(val) {             log.insertAdjacentHTML('beforeend', val +                 ') Promise fulfilled (&lt;small&gt;Async code terminated&lt;/small&gt;)&lt;br/&gt;');         })     .catch(         // Log the rejection reason         function(reason) {             console.log('Handle rejected promise ('+reason+') here.');         });      log.insertAdjacentHTML('beforeend', thisPromiseCount +         ') Promise made (&lt;small&gt;Sync code terminated&lt;/small&gt;)&lt;br/&gt;'); } </code></pre> <p><strong><font size="3">浏览器兼容</font></strong></p> <table> <thead> <tr> <th>Feature</th> <th>Chrome</th> <th>Edge</th> <th>Firefox</th> <th>InternetExplorer</th> <th>Opera</th> <th>Safari</th> <th>Servo</th> </tr> </thead> <tbody> <tr> <td>Promise</td> <td>32.0</td> <td>(Yes)</td> <td>29.0</td> <td>No support</td> <td>19</td> <td>7.1</td> <td>No support</td> </tr> </tbody> </table> <p><strong><font size="3">本文参考</font></strong></p> <p>MDN ： <br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"  target="_blank" rel="nofollow">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p> <p>JS Promise迷你书： <br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.kancloud.cn/kancloud/promises-book/44251"  target="_blank" rel="nofollow">http://www.kancloud.cn/kancloud/promises-book/44251</a></p> </p></div> 			
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <blockquote> <p>nginx进程管理==&gt; master + 多个worker进程<br /> master进程：全局的初始化 和管理 worker进程<br /> worker进程：主要业务逻辑，事件处理<br /> 通信：socketpair ==&gt; 每次fork完一个子进程后都把句柄传给前面已经存在的进程，以达到子进程间通信</p> </blockquote> <p><strong>nginx有多进程启动和单进程启动</strong><br /><img decoding="async" title="" alt="这里写图片描述" src="http://img.555519.xyz/uploads3/20220820/b24b00cf730ad74bb7612ea9cccad4fe.jpg"></p> <pre class="prettyprint"><code class="hljs objectivec">主要分析多进程启动： nginx中的fork在ngx_spawn_process函数中进行 ngx_pid_t ngx_spawn_process(ngx_cycle_t *cycle, ngx_spawn_proc_pt proc,<span class="hljs-keyword">void</span> *data,<span class="hljs-keyword">char</span> *name, ngx_int_t respawn) 第一个参数是全局的配置，第二个参数是子进程需要执行的函数，第三个参数是proc的参数，第四个类型<span class="hljs-comment">/*作用：： 1 有一个ngx_processes全局数组，包含了所有的存货的子进程，这里会fork出来的子进程放入到相应的位置。 并设置这个进程的相关属性。 2 创建socketpair，并设置相关属性。 3 在子进程中执行传递进来的函数。 */</span>  nginx进程结构：<span class="hljs-keyword">typedef</span><span class="hljs-keyword">struct</span>  {     ngx_pid_t            pid;<span class="hljs-comment">//进程的ID</span><span class="hljs-keyword">int</span>                  status;<span class="hljs-comment">//进程的退出状态</span>     ngx_socket_t         channel[<span class="hljs-number">2</span>];<span class="hljs-comment">//用于socketpair通信的一对socket句柄</span>     ngx_spawn_proc_pt    proc;<span class="hljs-comment">//进程的执行函数</span><span class="hljs-keyword">void</span>                 *data;<span class="hljs-comment">//proc的参数</span><span class="hljs-keyword">char</span>                 *name;<span class="hljs-comment">//进程的title标识</span><span class="hljs-keyword">unsigned</span>             respawn:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态:重新创建的</span><span class="hljs-keyword">unsigned</span>             just_spawn:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 第一次创建的</span><span class="hljs-keyword">unsigned</span>             detached:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 分离的，独立的</span><span class="hljs-keyword">unsigned</span>             exiting:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 正在退出的</span><span class="hljs-keyword">unsigned</span>             exited:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 已经退出的</span> } ngx_process_t;(src/os/unix/ngx_process<span class="hljs-variable">.h</span>)  master每创建一个worker都会把一个设置好的ngx_process_t结构变量放入ngx_processes中，新创建的进程存放在ngx_process_slot位置（遍历数组，查看是否空闲<span class="hljs-keyword">id</span> == -<span class="hljs-number">1</span>）   master进程向worker子进程发送命令是通过socketpair创建的一对socket实现的，之间传输的是ngx_channel_t结构变量：<span class="hljs-keyword">typedef</span><span class="hljs-keyword">struct</span>  {      ngx_uint_t  command;<span class="hljs-comment">//发送的命令</span>      ngx_pid_t   pid;<span class="hljs-comment">//发送方进程的进程id</span>      ngx_int_t   slot;<span class="hljs-comment">//发送方进程在进程表中偏移位置</span>      ngx_fd_t    fd;<span class="hljs-comment">//发送给对方的文件句柄</span> } ngx_channel_t;(src/os/unix/ngx_channel<span class="hljs-variable">.h</span>)</code></pre> <p><img decoding="async" title="" alt="这里写图片描述" src="http://img.555519.xyz/uploads3/20220820/d5483c8394045635c0eee346af114a31.jpg"></p> </div> 			
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3604.htm">Vue项目中v-bind动态绑定src路径不成功问题及解决_vue.js</a></p>
-                                                <p>下一个：<a href="/html/category/article-3606.htm">vue3 vue-router的使用</a></p>
+                                                <p>上一个：<a href="/html/category/article-4091.htm">通过传递数字参数返回什么MySQL CONCAT()函数？</a></p>
                                             </div>
 
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3701.htm">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3634.htm">PCIe Tandem PROM 方法</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3615.htm">FreeRTOS进阶之空闲任务示例完全解析_操作系统_</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3596.htm">SpringCloud-2.X 学习笔记01 Eureka Server 搭建</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3564.htm">详解Python的pyyaml模块</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3554.htm">Google kickstart 2022 Round A题解</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3516.htm">Redis 内存满了怎么办？这样设置才正确！</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3510.htm">spring源码之Mybatis扫描器</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3489.htm">HTML中schema.org SiteNavigationElement的正确用法是什么？</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3476.htm">JAVA生成指定位数不重复的随机数，随机数含0-9、A-Z</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
                                     </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
@@ -107,16 +125,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-4092.htm" title="nginx进程管理">nginx进程管理</a></li>
-                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
-                        <li class="py-2"><a href="/html/category/article-3689.htm" title="Spring（六）&#8212;-Spring AOP概述及底层实现原理">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></li>
-                        <li class="py-2"><a href="/html/category/article-3753.htm" title="Mac下配置Maven以及IDEA Maven配置">Mac下配置Maven以及IDEA Maven配置</a></li>
-                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
-                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3716.htm" title="Java和matlab混合编程时Java代码参数不一致的问题">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
+                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
+                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
+                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
                         <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
-                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
-                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
+                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3683.htm" title="C语言实现BMP格式转RGB格式、YUV格式">C语言实现BMP格式转RGB格式、YUV格式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
                     </ul>
     </div>
 </div>

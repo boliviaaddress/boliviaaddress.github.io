@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3605.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-4091.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>JS Promise用法 - Bolivia Address</title>
+    <title>通过传递数字参数返回什么MySQL CONCAT()函数？ - Bolivia Address</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">JS Promise用法</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">通过传递数字参数返回什么MySQL CONCAT()函数？</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,12 +93,31 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1 id="js-promise用法">JS Promise用法</h1> <hr/> <p><strong><font size="5">Promise概述</font></strong></p> <p>promise对象用于异步计算，相比于回调函数，promise对象除了规定的方法都是不可用的，牺牲了一定自由度的同时，可以将复杂的异步处理模式化。</p> <p><strong><font size="3">句法</font></strong></p> <pre><code>Promise( /* executor */ function(resolve, reject) { ... } ); </code></pre> <p>new一个Promise构造器进行实例化，返回一个promise对象：</p> <pre><code>var promise = new Promise(function(resolve, reject) {     // 异步处理     // 处理结束后、调用resolve 或 reject }); </code></pre> <p><strong><font size="3">Promise 状态</font></strong></p> <p>一个promise实例有一下几个状态（默认是Promises/A+的描述状态）：</p> <ul> <li>pending:初始化阶段，没有fulfilled或者是rejected</li> <li>fulfilled:操作成功完成（promise resolve）</li> <li>rejected：操作失败（promise reject）</li> </ul> <p>如果promise处于pending状态，处理promise的处理模块（handler）就会处于排队状态pending状态可以变成fulfilled或者rejected状态，不过fulfilled状态和rejected状态是不可相互转换的。promise从pending状态到fulfilled或者rejected状态，.then处理只会被调用一次，比如：</p> <pre><code>var promise = new Promise(function(resolve,reject){ var n = 6 if(n&lt;3) resolve(console.log('yes')); //成功了调用回调函数 else reject(new Error(console.log('this is an error'))); //失败调用reject并抛出异常 })  var promise = new Promise(function(resolve,reject){     var i = 2;     if(i&lt;3)     resolve(setTimeout("alert('hello')",5000));     else     reject(new Error(console.log('no'))); }) promise.then(console.log('ok')); </code></pre> <p><strong><font size="3">Promise 链</font></strong></p> <p>Promise.prototype.then()和Promise.prototype.then()方法返回promise对象，就成为promise链，如图：</p> <p><img decoding="async" src="0" alt="chains" title=""/></p> <p><strong><font size="3">方法</font></strong></p> <ul> <li>Promise.all()</li> </ul> <p>返回promise在迭代声明中是fulfilled还是reject，如果是fulfill，就返回一个数组，值是按照在迭代器中的顺序成功了的promises。如果返回不成功（reject）的promise，返回迭代器中第一个失败对象的原因。这个方法可以使用在有多个promise的情况下。</p> <ul> <li>Promise.race()</li> </ul> <p>如有有一个迭代中的promise被fulfilled或者rejected，这个方法立即返回处理值</p> <ul> <li>Promise.reject()</li> </ul> <p>返回被reject的原因</p> <ul> <li>Promise.resolve()</li> </ul> <p>返回处理成功的promise对象</p> <p><strong><font size="3">例子</font></strong></p> <pre><code>'use strict'; var promiseCount = 0;  function testPromise() {     var thisPromiseCount = ++promiseCount;      var log = document.getElementById('log');     log.insertAdjacentHTML('beforeend', thisPromiseCount +         ') Started (&lt;small&gt;Sync code started&lt;/small&gt;)&lt;br/&gt;');      // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s)     var p1 = new Promise(         // The resolver function is called with the ability to resolve or         // reject the promise         function(resolve, reject) {             log.insertAdjacentHTML('beforeend', thisPromiseCount +                 ') Promise started (&lt;small&gt;Async code started&lt;/small&gt;)&lt;br/&gt;');             // This is only an example to create asynchronism             window.setTimeout(                 function() {                     // We fulfill the promise !                     resolve(thisPromiseCount);                 }, Math.random() * 2000 + 1000);         }     );      // We define what to do when the promise is resolved/fulfilled with the then() call,     // and the catch() method defines what to do if the promise is rejected.     p1.then(         // Log the fulfillment value         function(val) {             log.insertAdjacentHTML('beforeend', val +                 ') Promise fulfilled (&lt;small&gt;Async code terminated&lt;/small&gt;)&lt;br/&gt;');         })     .catch(         // Log the rejection reason         function(reason) {             console.log('Handle rejected promise ('+reason+') here.');         });      log.insertAdjacentHTML('beforeend', thisPromiseCount +         ') Promise made (&lt;small&gt;Sync code terminated&lt;/small&gt;)&lt;br/&gt;'); } </code></pre> <p><strong><font size="3">浏览器兼容</font></strong></p> <table> <thead> <tr> <th>Feature</th> <th>Chrome</th> <th>Edge</th> <th>Firefox</th> <th>InternetExplorer</th> <th>Opera</th> <th>Safari</th> <th>Servo</th> </tr> </thead> <tbody> <tr> <td>Promise</td> <td>32.0</td> <td>(Yes)</td> <td>29.0</td> <td>No support</td> <td>19</td> <td>7.1</td> <td>No support</td> </tr> </tbody> </table> <p><strong><font size="3">本文参考</font></strong></p> <p>MDN ： <br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise"  target="_blank" rel="nofollow">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></p> <p>JS Promise迷你书： <br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.kancloud.cn/kancloud/promises-book/44251"  target="_blank" rel="nofollow">http://www.kancloud.cn/kancloud/promises-book/44251</a></p> </p></div> 			
+                      				  				  				<p>MySQL允许我们将数字参数传递给<code>CONCAT()</code>函数。可以不使用引号将其传递。</p> <h2>示例</h2> <pre>mysql&gt;&nbsp;Select&nbsp;Concat(10,20);  +---------------+ |&nbsp;Concat(10,20)&nbsp;| +---------------+ |&nbsp;1020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +---------------+  1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <p>甚至我们可以传递一个字符串参数和一个数字参数来实现<code>CONCAT()</code>如下功能：</p> <pre>mysql&gt;&nbsp;Select&nbsp;CONCAT('DELHI&nbsp;',&nbsp;110006)AS&nbsp;'City&nbsp;PIN&nbsp;CODE';  +----------------+ |&nbsp;City&nbsp;PIN&nbsp;CODE&nbsp;&nbsp;| +----------------+ |&nbsp;DELHI&nbsp;110006&nbsp;&nbsp;&nbsp;| +----------------+  1&nbsp;row&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3604.htm">Vue项目中v-bind动态绑定src路径不成功问题及解决_vue.js</a></p>
-                                                <p>下一个：<a href="/html/category/article-3606.htm">vue3 vue-router的使用</a></p>
+                                                <p>上一个：<a href="/html/category/article-3780.htm">Vue 列表渲染中的key</a></p>
+                                                <p>下一个：<a href="/html/category/article-4092.htm">nginx进程管理</a></p>
                                             </div>
 
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3728.htm">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3706.htm">C ++中的最低票价</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3690.htm">springboot集成Elasticsearch实现各种搜索功能</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3678.htm">C++引用以及结构体</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3669.htm">react实战系列起步（mockjs、第一个模块、docusaurus）</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3558.htm">vue 实现弹窗关闭后刷新效果_vue.js</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3549.htm">如何实现省市区的级联搜索</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3481.htm">Spring_boot之自动加载自己的AutoConfiguration</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3478.htm">Java 18 新特性：简单Web服务器 jwebserver</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3475.htm">Vue3+Element plus项目搭建</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
                                     </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
@@ -109,13 +128,13 @@ var _hmt = _hmt || [];
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2"><a href="/html/category/article-4092.htm" title="nginx进程管理">nginx进程管理</a></li>
                         <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
-                        <li class="py-2"><a href="/html/category/article-3689.htm" title="Spring（六）&#8212;-Spring AOP概述及底层实现原理">Spring（六）&#8212;-Spring AOP概述及底层实现原理</a></li>
-                        <li class="py-2"><a href="/html/category/article-3753.htm" title="Mac下配置Maven以及IDEA Maven配置">Mac下配置Maven以及IDEA Maven配置</a></li>
-                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
-                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
-                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
                         <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
-                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
+                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
+                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                        <li class="py-2"><a href="/html/category/article-3698.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
                         <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
                     </ul>
     </div>
