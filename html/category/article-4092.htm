@@ -96,6 +96,7 @@ var _hmt = _hmt || [];
                       				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <blockquote> <p>nginx进程管理==&gt; master + 多个worker进程<br /> master进程：全局的初始化 和管理 worker进程<br /> worker进程：主要业务逻辑，事件处理<br /> 通信：socketpair ==&gt; 每次fork完一个子进程后都把句柄传给前面已经存在的进程，以达到子进程间通信</p> </blockquote> <p><strong>nginx有多进程启动和单进程启动</strong><br /><img decoding="async" title="" alt="这里写图片描述" src="http://img.555519.xyz/uploads3/20220820/b24b00cf730ad74bb7612ea9cccad4fe.jpg"></p> <pre class="prettyprint"><code class="hljs objectivec">主要分析多进程启动： nginx中的fork在ngx_spawn_process函数中进行 ngx_pid_t ngx_spawn_process(ngx_cycle_t *cycle, ngx_spawn_proc_pt proc,<span class="hljs-keyword">void</span> *data,<span class="hljs-keyword">char</span> *name, ngx_int_t respawn) 第一个参数是全局的配置，第二个参数是子进程需要执行的函数，第三个参数是proc的参数，第四个类型<span class="hljs-comment">/*作用：： 1 有一个ngx_processes全局数组，包含了所有的存货的子进程，这里会fork出来的子进程放入到相应的位置。 并设置这个进程的相关属性。 2 创建socketpair，并设置相关属性。 3 在子进程中执行传递进来的函数。 */</span>  nginx进程结构：<span class="hljs-keyword">typedef</span><span class="hljs-keyword">struct</span>  {     ngx_pid_t            pid;<span class="hljs-comment">//进程的ID</span><span class="hljs-keyword">int</span>                  status;<span class="hljs-comment">//进程的退出状态</span>     ngx_socket_t         channel[<span class="hljs-number">2</span>];<span class="hljs-comment">//用于socketpair通信的一对socket句柄</span>     ngx_spawn_proc_pt    proc;<span class="hljs-comment">//进程的执行函数</span><span class="hljs-keyword">void</span>                 *data;<span class="hljs-comment">//proc的参数</span><span class="hljs-keyword">char</span>                 *name;<span class="hljs-comment">//进程的title标识</span><span class="hljs-keyword">unsigned</span>             respawn:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态:重新创建的</span><span class="hljs-keyword">unsigned</span>             just_spawn:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 第一次创建的</span><span class="hljs-keyword">unsigned</span>             detached:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 分离的，独立的</span><span class="hljs-keyword">unsigned</span>             exiting:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 正在退出的</span><span class="hljs-keyword">unsigned</span>             exited:<span class="hljs-number">1</span>;<span class="hljs-comment">//进程的状态: 已经退出的</span> } ngx_process_t;(src/os/unix/ngx_process<span class="hljs-variable">.h</span>)  master每创建一个worker都会把一个设置好的ngx_process_t结构变量放入ngx_processes中，新创建的进程存放在ngx_process_slot位置（遍历数组，查看是否空闲<span class="hljs-keyword">id</span> == -<span class="hljs-number">1</span>）   master进程向worker子进程发送命令是通过socketpair创建的一对socket实现的，之间传输的是ngx_channel_t结构变量：<span class="hljs-keyword">typedef</span><span class="hljs-keyword">struct</span>  {      ngx_uint_t  command;<span class="hljs-comment">//发送的命令</span>      ngx_pid_t   pid;<span class="hljs-comment">//发送方进程的进程id</span>      ngx_int_t   slot;<span class="hljs-comment">//发送方进程在进程表中偏移位置</span>      ngx_fd_t    fd;<span class="hljs-comment">//发送给对方的文件句柄</span> } ngx_channel_t;(src/os/unix/ngx_channel<span class="hljs-variable">.h</span>)</code></pre> <p><img decoding="async" title="" alt="这里写图片描述" src="http://img.555519.xyz/uploads3/20220820/d5483c8394045635c0eee346af114a31.jpg"></p> </div> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-4091.htm">通过传递数字参数返回什么MySQL CONCAT()函数？</a></p>
+                                                <p>下一个：<a href="/html/category/article-4119.htm">超级详细的webpack Plugin讲解_javascript技巧_</a></p>
                                             </div>
 
                                         <div class="panel panel-default mt-5">
@@ -125,16 +126,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
+                        <li class="py-2"><a href="/html/category/article-3712.htm" title="python中基本数据类型&#8212;&#8211;内置数据类型">python中基本数据类型&#8212;&#8211;内置数据类型</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
                         <li class="py-2"><a href="/html/category/article-3716.htm" title="Java和matlab混合编程时Java代码参数不一致的问题">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
-                        <li class="py-2"><a href="/html/category/article-3686.htm" title="Springboot之请求映射">Springboot之请求映射</a></li>
-                        <li class="py-2"><a href="/html/category/article-3677.htm" title="1.23 实例：正则表达式验证IP地址">1.23 实例：正则表达式验证IP地址</a></li>
-                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
-                        <li class="py-2"><a href="/html/category/article-3680.htm" title="springboot常用组件的集成">springboot常用组件的集成</a></li>
-                        <li class="py-2"><a href="/html/category/article-3688.htm" title="设计模式学习笔记装饰器模式及其应用详解">设计模式学习笔记装饰器模式及其应用详解</a></li>
-                        <li class="py-2"><a href="/html/category/article-3683.htm" title="C语言实现BMP格式转RGB格式、YUV格式">C语言实现BMP格式转RGB格式、YUV格式</a></li>
-                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
-                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                        <li class="py-2"><a href="/html/category/article-3721.htm" title="（九）C++对象模型和this指针基础">（九）C++对象模型和this指针基础</a></li>
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
                     </ul>
     </div>
 </div>
@@ -145,6 +146,9 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">2</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
             </li>
