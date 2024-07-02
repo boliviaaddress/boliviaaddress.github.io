@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-4148.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Java基础之浅谈接口 - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                                <a class="navbar-brand d-flex align-items-center" href="/">
+                        Bolivia Address</a>
+                                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Java基础之浅谈接口</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<h1 id="前言">前言</h1> <ul> <li>前几篇文章我们已经把Java的封装、继承、多态学习完了，现在我们开始比较便于我们实际操作的学习，虽然它也是Java基础部分，但是其实入门容易，精通很难。</li> <li>我认真的给大家整理了一下这些必须学会、了解的知识点。<br /> -下面我们正式进入正题吧&lt;(￣︶￣)↗[GO!]</li> </ul> <h1 id="一接口">一、接口</h1> <h2 id="1接口的概念">1.接口的概念</h2> <ul> <li>接口：接口并不是类，而是帮助类去实现功能的一种技术。</li> <li>如果你的类符合某个特定的接口，我就会履行这项服务。</li> <li>定义接口我们可以使用<strong>interface</strong>关键字</li> <li>将类声明为实现某个接口可以用<strong>implements</strong></li> </ul> <h2 id="2什么是实例字段">2.什么是实例字段</h2> <ul> <li>先说字段，什么是字段？</li> <li>字段是属于类的，它是会用public、private等关键字修饰的。而变量就是我们通常定义的int a这样的，它没有访问控制符；</li> <li>所以实例字段就是我们构造器中的，也就可以理解为没用构造方法。</li> </ul> <h2 id="3接口的特点">3.接口的特点</h2> <ul> <li>接口中的所有方法都自动是public的，因此在接口中我们可以省略public关键字</li> <li>Java中接口不会有实例字段，可以将接口看成没用实例字段的抽象类。</li> <li>接口中的字段总是public static final的</li> <li>Java中虽然不能够多继承，但是可以用一个类实现多个接口，从而达到了多继承的效果。(这也是接口和抽象类的概念，虽然接口中在JDK8之前是抽象的，但是抽象类只能被继承一个，而接口可以被实现多个)</li> <li>在接口中现在实现了定义方法内容，但是需要用到default、和static关键字才可以。</li> <li>在我们类重写接口方法时，我们不可以省略public关键字</li> </ul> <h1 id="二接口的实际使用">二、接口的实际使用</h1> <ul> <li>根据上面接口的特点，现在我们来演示一下，接口到底是怎么使用的。</li> </ul> <pre><code>public interface InterfaceTest {     int a = 0;     public static final int b = 0;//public static final可以省略不写     void sum1();     public abstract void sum2();// public abstract可以省略不写     static void test1() {         System.out.println("static可以实现在接口中定义方法内容，此方法不推荐具体用法可自行学习，这也是Java8的新特性");     }     default void test2() {         System.out.println("default可以实现在接口中定义方法内容,并且此方法没必要去类中实现");     } } class Test1 implements InterfaceTest{     @Override     public void sum1() {         System.out.println("此方法必须在类中去实现");     }     @Override     public void sum2() {         System.out.println("此方法必须在类中去实现");     } }</code></pre> <ul> <li>接口的属性：</li> </ul> <ol> <li>接口不是类，所以不可以使用new运算符实例化一个接口。x = new Comparable();❌</li> <li>但是我们可以使用接口去声明一个变量 Comparable x;✔</li> <li>我们可以使用接口变量去引用实现了这个接口的类</li> </ol> <pre><code>public static void main(String[] args) {         InterfaceTest inter = new Test1();//跟多态差不多         if(inter instanceof InterfaceTest) {//同样可以使用instanceof判断，这个肯定为true了             inter.sum1();             inter.sum2();             inter.test2();         }     }</code></pre> <ul> <li>实现多接口的写法：<code>public class Employee extends Person implements Comparable,Collection,...</code></li> </ul> <h1 id="三解决默认方法冲突">三、解决默认方法冲突</h1> <ul> <li>产生原因：一个类继承了另一个类的同时，又实现了一个接口，当此接口于父类都拥有相同的方法时，他就会产生冲突，那么会哪个优先呢？我们来看一下吧</li> </ul> <pre><code>class Father {     public void sum1() {         System.out.println("我是父亲的sum1");     }     public void test2() {         System.out.println("我是父亲的test2");     } } class Son extends Father implements InterfaceTest{     @Override     public void sum1() {//在我们重写方法是不可以省略public         System.out.println("此方法必须在类中去实现，我是儿子sum1");     }     @Override     public void sum2() {         System.out.println("此方法必须在类中去实现");     }      public static void main(String[] args) {         InterfaceTest inter = new Son();         if(inter instanceof InterfaceTest) {             inter.sum1();//经过测试发现，和多态性一样，优先调用子类             inter.sum2();             inter.test2();//经过测试发现，这个default的情况是，父类优先         }     } }</code></pre> <ul> <li>最终就是记住“类优先”原则。</li> </ul> <h1 id="四接口回调">四、接口回调</h1> <ul> <li>如果说父类实现了某个接口，那么子类继承父类时候，自然实现了该接口，没用必要再实现了。</li> <li>在我刚接触这个"<strong>接口回调</strong>"一次时，我觉得非常的高大上。</li> <li>其实就是简单的多态应用</li> <li>假设Com是一个接口，ImpleCom()是该接口的实现类，则<code>Com c = new ImpleCom();</code></li> <li>在调用方法是仍然和多态一样。可以把实现某一接口的类创建的对象的引用赋值给该接口声明的接口变量----&gt;<code>Com c = new ImpleCom();</code>，那么该接口变量 c 就可以调用被类实现的接口方法以及接口提供的default方法或者类重写的default方法。<br /><strong>其实真没啥可说的，就是这个 c 既可以调用从接口那里实现过来的方法，也可以调用自身的方法。</strong></li> </ul> <h1 id="五结尾">五、结尾</h1> <ul> <li>对于接口内容就总结这么多，希望大家可以多多练习。如果有不足之处，希望大家多多包涵，多多支持。如果有不懂的地方可以直接私信问我，欢迎来访！<br /><strong>其实应该还有Lambda表达式，以及内部类的内容，但是这部分在基础中并不常用，我决定在后面补给大家。</strong></li> <li>我将会继续更新关于Java的学习知识，感兴趣的小伙伴可以关注一下。</li> <li>文章写得比较走心，用了很长时间，绝对不是copy过来的！</li> <li>尊重每一位学习知识的人，同时也尊重每一位分享知识的人。</li> </ul> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-4147.htm">MySQL 5.7的Homebrew安装 &#8211; MacOS</a></p>
+                                            </div>
+
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3716.htm">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3651.htm">maven项目关于target目录没有生成xml、properties等文件问题</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3643.htm">CI框架分页类及其实现</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3613.htm">一文解决浏览器跨域问题</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3562.htm">EasyExcel完成excel文件的导入导出</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3555.htm">Vue，在v-for中遍历含有多个对象的数组时，实现单选框</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3539.htm">C语言中sizeof函数踩过的坑总结_C 语言</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3508.htm">@NotNull注解失效原因之一</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3467.htm">Tkinter实现一个窗口的菜单栏</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3453.htm">pom.xml 报错org.apache.maven.plugin.war.WarMojo的解决办法</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3780.htm" title="Vue 列表渲染中的key">Vue 列表渲染中的key</a></li>
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-4091.htm" title="通过传递数字参数返回什么MySQL CONCAT()函数？">通过传递数字参数返回什么MySQL CONCAT()函数？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
+                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-4120.htm" title="项目打包成 jar 后包无法读取src/main/resources下文件">项目打包成 jar 后包无法读取src/main/resources下文件</a></li>
+                        <li class="py-2"><a href="/html/category/article-3754.htm" title="Python3通过字符串访问与修改局部变量">Python3通过字符串访问与修改局部变量</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">4</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-4147.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>MySQL 5.7的Homebrew安装 &#8211; MacOS - Bolivia Address</title>
+    <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="/assets/addons/xcblog/css/boliviaaddress/style-starter.css">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?48ec1baacefae763d2c0b3b6955a6c32";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg stroke">
+                                <a class="navbar-brand d-flex align-items-center" href="/">
+                        Bolivia Address</a>
+                                
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ml-lg-auto">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">首页</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/html/category/">文章分类</a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">关于</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">联系</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+    <!-- inner banner -->
+    <div class="inner-banner">
+        <section class="w3l-breadcrumb">
+            <div class="container">
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">MySQL 5.7的Homebrew安装 &#8211; MacOS</h1>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/">首页</a></li>
+                    <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
+                    <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>正文</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- //inner banner -->
+    <!-- about section -->
+    <section class="video-section py-5">
+        <div class="container py-md-5 py-4">
+            <div class="row">
+                <div class="col-md-9">
+                      				  				  				<div id="content_views" class="markdown_views prism-atelier-sulphurpool-light"> <blockquote> <p>写在前面：博主是一只经过实战开发历练后投身培训事业的“小山猪”，昵称取自动画片《狮子王》中的“彭彭”，总是以乐观、积极的心态对待周边的事物。本人的技术路线从Java全栈工程师一路奔向大数据开发、数据挖掘领域，如今终有小成，愿将昔日所获与大家交流一二，希望对学习路上的你有所助益。同时，博主也想通过此次尝试打造一个完善的技术图书馆，任何与文章技术点有关的异常、错误、注意事项均会在末尾列出，欢迎大家通过各种方式提供素材。</p> </blockquote> <ul> <li>对于文章中出现的任何错误请大家批评指出，一定及时修改。</li> <li>有任何想要讨论和学习的问题可联系我：zhuyc@vip.163.com。</li> <li>发布文章的风格因专栏而异，均自成体系，不足之处请大家指正。</li> </ul> <h1><a id="MySQL_57Homebrew__MacOS_6" rel="nofollow"></a>MySQL 5.7的Homebrew安装 - MacOS</h1> <p><strong>本文关键字：MySQL、数据库、5.7版本、MacOS、Homebrew</strong></p> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#MySQL_57Homebrew__MacOS_6" rel="nofollow">MySQL 5.7的Homebrew安装 - MacOS</a></li> <li> <ul> <li><a href="#MySQL_9" rel="nofollow">一、MySQL简介</a></li> <li><a href="#_13" rel="nofollow">二、版本选择</a></li> <li> <ul> <li><a href="#1__14" rel="nofollow">1. 应用场景</a></li> <li><a href="#2_MySQL_23" rel="nofollow">2. MySQL版本</a></li> </ul> </li> <li><a href="#_28" rel="nofollow">三、安装步骤</a></li> <li> <ul> <li><a href="#1__30" rel="nofollow">1. 查询软件信息</a></li> <li><a href="#2__37" rel="nofollow">2. 执行安装命令</a></li> <li><a href="#3__44" rel="nofollow">3. 检查服务状态</a></li> <li><a href="#4__54" rel="nofollow">4. 初始化配置</a></li> <li><a href="#5__81" rel="nofollow">5. 终端登陆测试</a></li> <li><a href="#6__91" rel="nofollow">6. 连接工具测试</a></li> </ul> </li> </ul> </li> </ul> </div> <h2><a id="MySQL_9" rel="nofollow"></a>一、MySQL简介</h2> <p>MySQL是一个典型的关系数据库，目前是Oracle公司产品之一，也是目前主流使用的关系型数据库之一。使用MySQL可以进行最基本的数据存储、管理、查询等操作，也可以方便的组建数据库集群，配置读写分离。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/4e70dc56bfb5a262218251e7b5ba5e1b.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> MySQL数据库同样使用SQL（结构化查询语言）来进行操作，同时MySQL数据库自身也有很多可以直接使用的内置函数，在部分操作的语法上和其他数据库会存在区别。</p> <h2><a id="_13" rel="nofollow"></a>二、版本选择</h2> <h3><a id="1__14" rel="nofollow"></a>1. 应用场景</h3> <ul> <li>社区版</li> </ul> <p>在学习阶段，可以使用免费的社区版，这也是中小型企业会选用的一个版本，可以在官方网站直接进行下载。在社区版中，除了提供数据库服务端以外，同样提供了社区版相关组件，如官方的可视化工具、MySQL集群、各开发语言数据库驱动等，可以根据需要直接下载。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/ffd7d9db3f701a624e19314de0860f7e.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"></p> <ul> <li>企业版</li> </ul> <p>MySQL企业版是提供了商用的解决方案，相关的产品除了数据库服务外，还包括：MySQL云服务、企业级数据备份、企业级防火墙、企业级数据加密等。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/1f6107b7c435596347eab7b43ae4d649.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"></p> <h3><a id="2_MySQL_23" rel="nofollow"></a>2. MySQL版本</h3> <p>目前MySQL官网主要提供了两个大版本的支持：5.7.x、8.0.x，但是从5.0.x至今的版本依然可以全部下载到。至于说为什么直接从5.x跳到8.x笔者不得而知，但是从官网透露出的信息可以知道8.x版本相较于5.7版本，在性能方面做出了较大的改进和优化：2x Faster than MySQL 5.7!<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/d0833cab126c8fbaf881e9b2b0723750.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 但是笔者要在这里提醒大家的是，在8.0的MySQL数据库中，对某些常用语法的细节部分也做了调整，<strong>如果准备进行升级，一定要注意兼容性的问题</strong>。<br /> 而5.7版本相较于5.6版本而言，主要是进行了性能上的优化，并提供了更丰富的设置。如：新增了优化器、原生JSON支持、GIS扩展等。</p> <h2><a id="_28" rel="nofollow"></a>三、安装步骤</h2> <p>使用Homebrew进行MySQL数据库的安装需要MacOS系统中已经安装了相关环境，这部分可以参考：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sandtower.blog.csdn.net/article/details/123279213"  rel="nofollow">MacOS安装Homebrew与Oh-My-Zsh</a>，完成后打开终端继续以下操作。</p> <h3><a id="1__30" rel="nofollow"></a>1. 查询软件信息</h3> <p>首先使用<strong>search</strong>命令搜索MySQL数据库完整名称：</p> <pre><code class="prism language-shell">brew search mysql</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/7f5a353c38a9630b2812adee84da59b1.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 可以看到5.7版本的MySQL数据库完整名称是<strong>mysql@5.7</strong>。</p> <h3><a id="2__37" rel="nofollow"></a>2. 执行安装命令</h3> <p>使用<strong>install</strong>命令进行软件安装：</p> <pre><code class="prism language-shell">brew<span class="token function">install</span> mysql@5.7</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/65e97eebf29d37be6afeb1e4af9843fe.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 安装过程不需要其它操作，等待安装完成即可。</p> <h3><a id="3__44" rel="nofollow"></a>3. 检查服务状态</h3> <p>第一次安装MySQL，服务是未开启状态，使用<strong>services</strong>命令进行检查：</p> <pre><code class="prism language-shell">brew services list</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/3e16eb9eb3d3c4460258ea5c5b85b48d.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 使用<strong>start</strong>指令开启服务，执行后每次开机都会自动启动该服务：</p> <pre><code class="prism language-shell">brew services start mysql@5.7</code></pre> <h3><a id="4__54" rel="nofollow"></a>4. 初始化配置</h3> <p>安装完成后需要执行一次配置才能够正常使用，执行如下命令：</p> <pre><code class="prism language-shell">mysql_secure_installation</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/9a2371b75d8c6e9e98b057473aa78150.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 如果是个人使用，这里可以<strong>不开启密码校验插件</strong>，这样我们可以使用较为简单的密码组合，方便记忆，因此输入<strong>n</strong>。</p> <ul> <li>设置密码</li> </ul> <p>为数据库的root用户（最高权限用户）设置密码，需要输入两次，输入时没有光标显示，是正常的。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/6f7274e2207de2b3868dfc30d6145ac4.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"></p> <ul> <li>选择是否移除用户</li> </ul> <p>这一步可以将不需要的匿名用户移除，输入<strong>y</strong>回车即可。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/34a82daa216a3dc353f0f50f2dcf0954.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"></p> <ul> <li>开启root用户远程连接</li> </ul> <p>默认给出的选项是不允许通过root用户远程连接，因为root用户拥有最高权限，学习阶段可以开启方便虚拟机或局域网调试（如果开启需要输入<strong>n</strong>）。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/2aa2475e1ab5557072552a8614677813.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"></p> <ul> <li>选择是否保留测试数据集</li> </ul> <p>安装是默认附带一个<strong>test</strong>数据集，这里可以根据需要选择是否保留（如果需要移除则输入<strong>y</strong>）。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/611d1909ab3fe668cdf9d990c6b8b602.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"></p> <ul> <li>立即刷新权限</li> </ul> <p>输入<strong>y</strong>使得密码和权限设置立即生效，否则需要重新启动数据库服务。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/1fee9cc8fa1d40a32c337c6469760d84.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"></p> <h3><a id="5__81" rel="nofollow"></a>5. 终端登陆测试</h3> <p>使用刚刚设置的密码测试登陆：</p> <pre><code class="prism language-shell">mysql -uroot -p</code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/1868656a512a8e1da9d1f79cc5b0f339.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 也可以在命令中使用明文密码直接登陆，如（密码为root）：</p> <pre><code class="prism language-shell">mysql -uroot -proot</code></pre> <h3><a id="6__91" rel="nofollow"></a>6. 连接工具测试</h3> <p>以Navicat为例，首先新建一个连接：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/4de341fb1e7dc0ecfee073fe0dd3744c.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 填写连接名和密码创建一个新的连接：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/3eeeb4485728f4744c9e330e9eafea90.jpg" alt="MySQL 5.7的Homebrew安装 - MacOS"><br /> 对于Navicat的基本功能介绍可以参考：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sandtower.blog.csdn.net/article/details/105821598"  rel="nofollow">MySQL数据库界面化工具 - Navicat的常用功能</a>。</p> </div> 			
+                    <div class="col-md-12 mt-5">
+                                                <p>上一个：<a href="/html/category/article-4120.htm">项目打包成 jar 后包无法读取src/main/resources下文件</a></p>
+                                                <p>下一个：<a href="/html/category/article-4148.htm">Java基础之浅谈接口</a></p>
+                                            </div>
+
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3718.htm">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3672.htm">安卓夜间模式开发【深色主题适配】</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3607.htm">java8中的Instant有关</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3579.htm">Spring的事务管理机制和传播机制</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3563.htm">vue的混合mixins学习</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3530.htm">数据仓库(5)数仓Kimball与Inmon架构的对比</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3506.htm">mysql数据库锁MDL锁的解释_在线工具</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3471.htm">C++之string类字符串连接</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3468.htm">vue实现列表垂直无缝滚动_vue.js</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3457.htm">记一次MySql重置root密码无效</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                                    </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3722.htm" title="MyBatis:SQL语句中的foreach标签的详细介绍">MyBatis:SQL语句中的foreach标签的详细介绍</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-4092.htm" title="nginx进程管理">nginx进程管理</a></li>
+                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-4120.htm" title="项目打包成 jar 后包无法读取src/main/resources下文件">项目打包成 jar 后包无法读取src/main/resources下文件</a></li>
+                        <li class="py-2"><a href="/html/category/article-3780.htm" title="Vue 列表渲染中的key">Vue 列表渲染中的key</a></li>
+                        <li class="py-2"><a href="/html/category/article-3687.htm" title="Pandas大数据量内存优化">Pandas大数据量内存优化</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">4</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">62</span> <a href="/html/date/2024-03/" title="2024-03 归档">2024-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">44</span> <a href="/html/date/2024-02/" title="2024-02 归档">2024-02</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //about section -->
+        <!-- footer -->
+    <footer class="w3l-footer-22 position-relative mt-5 pt-5">
+        
+        <!-- copyright -->
+        <div class="copyright-footer text-center">
+            <div class="container">
+                <div class="columns">
+                    <p>Bolivia Address 版权所有</p>
+                    <p>Powered by WordPress</p>
+                </div>
+            </div>
+        </div>
+        <!-- //copyright -->
+    </footer>
+    <!-- //footer -->
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <!-- //move top -->
+    <!-- common jquery plugin -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+    <!-- banner slider -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.owl-one').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: false,
+            responsiveClass: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplaySpeed: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 1,
+                    nav: false
+                },
+                667: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+    </script>
+    <!-- //banner slider -->
+    <!-- counter for stats -->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/counter.js"></script>
+    <!-- //counter for stats -->
+    <!-- theme switch js (light and dark)-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/theme-change.js"></script>
+    <script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function() {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function(i, char) {
+                    setTimeout(function() {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function() {
+        // Now to start autoTyping just call the autoType function with the 
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.   
+        autoType(".type-js", 200);
+    });
+    </script>
+    <!-- //theme switch js (light and dark)-->
+    <!-- MENU-JS -->
+    <script>
+    $(window).on("scroll", function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function() {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function() {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+    </script>
+    <!-- //MENU-JS -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+    $(function() {
+        $('.navbar-toggler').click(function() {
+            $('body').toggleClass('noscroll');
+        })
+    });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="/assets/addons/xcblog/js/frontend/boliviaaddress/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+    <script>
+    $(function() {
+        $('.js_to').click(function(){
+            var url = $(this).data('url');
+            var code = $(this).data('code');
+            url += code;
+
+            window.open(url);
+        })
+    });
+    </script>
+</body>
+
+</html>
