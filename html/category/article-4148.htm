@@ -96,6 +96,7 @@ var _hmt = _hmt || [];
                       				  				  				<h1 id="前言">前言</h1> <ul> <li>前几篇文章我们已经把Java的封装、继承、多态学习完了，现在我们开始比较便于我们实际操作的学习，虽然它也是Java基础部分，但是其实入门容易，精通很难。</li> <li>我认真的给大家整理了一下这些必须学会、了解的知识点。<br /> -下面我们正式进入正题吧&lt;(￣︶￣)↗[GO!]</li> </ul> <h1 id="一接口">一、接口</h1> <h2 id="1接口的概念">1.接口的概念</h2> <ul> <li>接口：接口并不是类，而是帮助类去实现功能的一种技术。</li> <li>如果你的类符合某个特定的接口，我就会履行这项服务。</li> <li>定义接口我们可以使用<strong>interface</strong>关键字</li> <li>将类声明为实现某个接口可以用<strong>implements</strong></li> </ul> <h2 id="2什么是实例字段">2.什么是实例字段</h2> <ul> <li>先说字段，什么是字段？</li> <li>字段是属于类的，它是会用public、private等关键字修饰的。而变量就是我们通常定义的int a这样的，它没有访问控制符；</li> <li>所以实例字段就是我们构造器中的，也就可以理解为没用构造方法。</li> </ul> <h2 id="3接口的特点">3.接口的特点</h2> <ul> <li>接口中的所有方法都自动是public的，因此在接口中我们可以省略public关键字</li> <li>Java中接口不会有实例字段，可以将接口看成没用实例字段的抽象类。</li> <li>接口中的字段总是public static final的</li> <li>Java中虽然不能够多继承，但是可以用一个类实现多个接口，从而达到了多继承的效果。(这也是接口和抽象类的概念，虽然接口中在JDK8之前是抽象的，但是抽象类只能被继承一个，而接口可以被实现多个)</li> <li>在接口中现在实现了定义方法内容，但是需要用到default、和static关键字才可以。</li> <li>在我们类重写接口方法时，我们不可以省略public关键字</li> </ul> <h1 id="二接口的实际使用">二、接口的实际使用</h1> <ul> <li>根据上面接口的特点，现在我们来演示一下，接口到底是怎么使用的。</li> </ul> <pre><code>public interface InterfaceTest {     int a = 0;     public static final int b = 0;//public static final可以省略不写     void sum1();     public abstract void sum2();// public abstract可以省略不写     static void test1() {         System.out.println("static可以实现在接口中定义方法内容，此方法不推荐具体用法可自行学习，这也是Java8的新特性");     }     default void test2() {         System.out.println("default可以实现在接口中定义方法内容,并且此方法没必要去类中实现");     } } class Test1 implements InterfaceTest{     @Override     public void sum1() {         System.out.println("此方法必须在类中去实现");     }     @Override     public void sum2() {         System.out.println("此方法必须在类中去实现");     } }</code></pre> <ul> <li>接口的属性：</li> </ul> <ol> <li>接口不是类，所以不可以使用new运算符实例化一个接口。x = new Comparable();❌</li> <li>但是我们可以使用接口去声明一个变量 Comparable x;✔</li> <li>我们可以使用接口变量去引用实现了这个接口的类</li> </ol> <pre><code>public static void main(String[] args) {         InterfaceTest inter = new Test1();//跟多态差不多         if(inter instanceof InterfaceTest) {//同样可以使用instanceof判断，这个肯定为true了             inter.sum1();             inter.sum2();             inter.test2();         }     }</code></pre> <ul> <li>实现多接口的写法：<code>public class Employee extends Person implements Comparable,Collection,...</code></li> </ul> <h1 id="三解决默认方法冲突">三、解决默认方法冲突</h1> <ul> <li>产生原因：一个类继承了另一个类的同时，又实现了一个接口，当此接口于父类都拥有相同的方法时，他就会产生冲突，那么会哪个优先呢？我们来看一下吧</li> </ul> <pre><code>class Father {     public void sum1() {         System.out.println("我是父亲的sum1");     }     public void test2() {         System.out.println("我是父亲的test2");     } } class Son extends Father implements InterfaceTest{     @Override     public void sum1() {//在我们重写方法是不可以省略public         System.out.println("此方法必须在类中去实现，我是儿子sum1");     }     @Override     public void sum2() {         System.out.println("此方法必须在类中去实现");     }      public static void main(String[] args) {         InterfaceTest inter = new Son();         if(inter instanceof InterfaceTest) {             inter.sum1();//经过测试发现，和多态性一样，优先调用子类             inter.sum2();             inter.test2();//经过测试发现，这个default的情况是，父类优先         }     } }</code></pre> <ul> <li>最终就是记住“类优先”原则。</li> </ul> <h1 id="四接口回调">四、接口回调</h1> <ul> <li>如果说父类实现了某个接口，那么子类继承父类时候，自然实现了该接口，没用必要再实现了。</li> <li>在我刚接触这个"<strong>接口回调</strong>"一次时，我觉得非常的高大上。</li> <li>其实就是简单的多态应用</li> <li>假设Com是一个接口，ImpleCom()是该接口的实现类，则<code>Com c = new ImpleCom();</code></li> <li>在调用方法是仍然和多态一样。可以把实现某一接口的类创建的对象的引用赋值给该接口声明的接口变量----&gt;<code>Com c = new ImpleCom();</code>，那么该接口变量 c 就可以调用被类实现的接口方法以及接口提供的default方法或者类重写的default方法。<br /><strong>其实真没啥可说的，就是这个 c 既可以调用从接口那里实现过来的方法，也可以调用自身的方法。</strong></li> </ul> <h1 id="五结尾">五、结尾</h1> <ul> <li>对于接口内容就总结这么多，希望大家可以多多练习。如果有不足之处，希望大家多多包涵，多多支持。如果有不懂的地方可以直接私信问我，欢迎来访！<br /><strong>其实应该还有Lambda表达式，以及内部类的内容，但是这部分在基础中并不常用，我决定在后面补给大家。</strong></li> <li>我将会继续更新关于Java的学习知识，感兴趣的小伙伴可以关注一下。</li> <li>文章写得比较走心，用了很长时间，绝对不是copy过来的！</li> <li>尊重每一位学习知识的人，同时也尊重每一位分享知识的人。</li> </ul> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-4147.htm">MySQL 5.7的Homebrew安装 &#8211; MacOS</a></p>
+                                                <p>下一个：<a href="/html/category/article-4316.htm">电动隔膜泵生产厂家(电动隔膜泵品牌进口)</a></p>
                                             </div>
 
                                         <div class="panel panel-default mt-5">
@@ -125,16 +126,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3780.htm" title="Vue 列表渲染中的key">Vue 列表渲染中的key</a></li>
-                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3684.htm" title="Pycharm中pyenv和virtualenv使用详解">Pycharm中pyenv和virtualenv使用详解</a></li>
                         <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
-                        <li class="py-2"><a href="/html/category/article-4091.htm" title="通过传递数字参数返回什么MySQL CONCAT()函数？">通过传递数字参数返回什么MySQL CONCAT()函数？</a></li>
-                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
-                        <li class="py-2"><a href="/html/category/article-3681.htm" title="Spring定时执行@Scheduled从配置文件获取定时">Spring定时执行@Scheduled从配置文件获取定时</a></li>
+                        <li class="py-2"><a href="/html/category/article-3779.htm" title="js数组删除的方法">js数组删除的方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
                         <li class="py-2"><a href="/html/category/article-4120.htm" title="项目打包成 jar 后包无法读取src/main/resources下文件">项目打包成 jar 后包无法读取src/main/resources下文件</a></li>
-                        <li class="py-2"><a href="/html/category/article-3754.htm" title="Python3通过字符串访问与修改局部变量">Python3通过字符串访问与修改局部变量</a></li>
-                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3692.htm" title="创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)">创建TypeScript代码模板(NVS+Yarn+ESLint+Prettier+Husky)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3699.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
                     </ul>
     </div>
 </div>
@@ -146,7 +147,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">4</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
