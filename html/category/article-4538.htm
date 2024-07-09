@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3631.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-4538.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>数组模拟队列进阶版本——环形队列（真正意义上的排队） - Bolivia Address</title>
+    <title>春节指的是除夕还是正月初一(春节是农历的哪一天除夕是哪天) - Bolivia Address</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">数组模拟队列进阶版本——环形队列（真正意义上的排队）</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">春节指的是除夕还是正月初一(春节是农历的哪一天除夕是哪天)</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,12 +93,30 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<h1 id="数组模拟环形队列真正意义上的排队">数组模拟环形队列（真正意义上的排队）</h1> <h4 id="昨天我们做了数组模拟队列的基本情景可以进行排队和取出数据最早的人离开队列但是我们发现取出的地方不能重复利用让我们的队列成为了一次性队列今天我们来看如何将我们的队列改进称数组模拟环形队列实现已释放位置的重复利用">昨天我们做了数组模拟队列的基本情景。可以进行排队和取出数据（最早的人离开队列)，但是我们发现，取出的地方不能重复利用。让我们的队列成为了一次性队列。今天我们来看如何将我们的队列改进称数组模拟环形队列。实现已释放位置的重复利用</h4> <h2 id="基本原理">基本原理：</h2> <p>要知道我们实现队列的基本是头和尾。rear和front。这两个的指向决定了队列的头尾。也就是队列本身。这个具体指向头部本身索引或者前一个后一个不是固定的。是根据具体算法而定的。这次我们规定头和尾默认指向0索引。</p> <p>对前面的数组模拟队列的优化，充分利用数组. 因此将数组看做是一个环形的。(通过取模的方式式来实现即可)</p> <h2 id="分析说明">分析说明：</h2> <h3 id="1尾索引的下一个为头索引时表示队列满即将队列容量空出一个作为约定这个在做判断队列满的时候需要注意-rear--1--maxsize--front-满">1：尾索引的下一个为头索引时表示队列满，即将队列容量空出一个作为约定,这个在做判断队列满的时候需要注意 (rear + 1) % maxSize == front 满]</h3> <h3 id="2rear--front-空">2：rear == front [空]</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c35be991f7600d8ab4b35b8dd740df70.jpg" alt="数组模拟队列进阶版本——环形队列（真正意义上的排队）"></p> <p>代码如下：</p> <pre><code class="language-java">package com.joseph.sparseArray;  import java.util.Map; import java.util.Scanner;  public class CircularQueue {     public static void main(String[] args) {              CQueue cQueue = new CQueue(5);             Scanner sc = new Scanner(System.in);         int i;             while(true) {                 System.out.println("---------------排队系统--------------");                 System.out.println("---------------1：排队咨询--------------");                 System.out.println("---------------2：结束排队(最早成功的人)--------------");                 System.out.println("-------------- 3：查看当前排队详情--------------");                 System.out.println("---------------88:SHOW REAR AND FRONT");                 System.out.println("---------------4：退出--------------");                 i = sc.nextInt();                 switch (i) {                      case 1:                         System.out.println("请输入你的电话");                         int tel = sc.nextInt();                         cQueue.add(tel);                         if(cQueue.rear == 0){                             if(cQueue.arr[cQueue.MaxSize-1] == tel) {                                 System.out.println("排队成功！");                                 System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize - 1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             }                         }else if (cQueue.arr[cQueue.rear - 1] == tel) {                             System.out.println("排队成功！");                             System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize -1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             break;                         } else {                             System.out.println("排队失败！");                             System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize -1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             break;                         }                     case 2:                         int oldFront = cQueue.front;                         cQueue.get();                         if (cQueue.front != oldFront) {                             System.out.println("已结束最早完成排队的人。当前空闲位置为：" + ((cQueue.MaxSize -1) - (cQueue.rear - cQueue.front + cQueue.MaxSize) % cQueue.MaxSize));                             break;                         }                         System.out.println("结束失败");                         break;                     case 3:                         cQueue.List();                         break;                     case 4:                         System.out.println("谢谢使用！");                         break;                     case 88:                         System.out.println("front:" + cQueue.front);                         System.out.println("rear:"+cQueue.rear);                 }             }     } } class CQueue{     int MaxSize ;//数组最大容量，因为我们的REAR(尾部)指向的是最后一个数据索引的后一个。这也就是说我们的真实存储长度要比MaxSize小一个。因为总要空出一个由rear指向。这是一个约定。前面有说到。     int rear ;//尾部。指向队列最后一个数据的后一个位置     int front ;//头部。直接指向第一个数据索引下标     int arr[] ;//数组     public CQueue(int MaxSize){//基本没变。rear和front初始值和上次不一样。不懂得先看上次数组模拟队列基础版         this.MaxSize = MaxSize ;         arr = new int[MaxSize];         this.rear = 0;         this.front = 0;     }     public boolean isFull(){         return (rear+1)%MaxSize == front ;//由于环形队列，其实队列满的状态。是他们两个差"一个"，因为rear指向的是数据的后一个。而front指向的第一个数据。因为是环形，0和4要联系起来只差一个就需要取模。利用rear+1和MaxSize取模。等于front就代表满了。这个需要好好理解。比较有难度     }     public boolean isEmpty(){//判断为空。当他们两个相等。不管在什么位置。就代表没有数据。         return rear == front ;     }      public void add(int key){//添加数据         if(isFull()){             System.out.println("QUEUE IS FULL,CAN'T ADD ANYTHING");             return ;         }         arr[rear] = key ;//直接将rear的下标赋值。         rear = (rear+1)%MaxSize ;//这里不能再自增了。因为是环形的。需要利用+1后取模实现周期性。否则会下标越界     }     public int get(){         if(isEmpty()){             throw new RuntimeException("QUEUE IS EMPTY,NO THINGS BE GETED");         }         int temp = arr[front] ;//这里先把头部数据拿出来。放到temp         front = (front+1)%MaxSize ;//给front移位。当数据取出。就往后+1作为初始第一个数据。但是是环形的。继续利用+1后取模实现周期性+1.不然会下标越界         return temp ;     }     public void List(){         //判断         if(isEmpty()){             System.out.println("QUEUE IS EMPTY!");             return ;         }         for(int i = front ; i &lt; (rear - front + MaxSize)%MaxSize +front ;i++){//这里不能用传统思维去输出了。要从front开始输出。也就是队列的开头             //而i的范围。不再是队列长度。而是队列的有效数据个数+front。前面有算出是（rear-front+MaxSize)%MaxSize,其实rear是最后一个数据的后一个，而front就是第一个。我认为rear-front就是有效数据个数。而由于环形。往往出现负数。所以继续取模达到绝对值的效果。由于我们是环形的。front初始位置会由于用户取出导致变化。所以必须再加上front。因为front才是开始的位置。再加上有效数据个数。就是i的范围             System.out.printf("队伍第[%d]号 ： %d\n",i%MaxSize,arr[i%MaxSize]);//这里输出用printf方法做一个格式化。不能用i，要取模。否则会越界         }     } } /**  * @author JosephWang  * @date 2021/8/10 11:58  */</code></pre> 			
+                      			<div class="orbui orbui-post orbui-post-01"></script>  <ins class="adsbygoogle"       style="display:block; text-align:center;"       data-ad-layout="in-article"       data-ad-format="fluid"       data-ad-client="ca-pub-6016799283272811"       data-ad-slot="9026798696"></ins>  </script></div>						<p>我靠，你太有才了，这种问题你都能问的出来！I服了you！</p> <p>农历正月初一是俗话里说的</a>，</p> <p></a>是正月初一的前一天。</p> <p>除夕是春节的前夜,又叫年三十.有一种传说:是古时候有个凶恶的怪兽叫夕,每到岁末便出来害人,后来,人们知道夕最怕红色和声响,于是年三十晚上,家家户户贴红春联,燃放爆竹,来驱除夕兽.以求新的一年安宁.这种习俗从此流传下来,年三十晚上便称为除夕了.</p> <p>除 夕</p> <p>年三十，也就是&#8221;除夕&#8221;。这天，是人们吃、喝、玩、乐的日子。北方人包饺子，南方人做年糕。水饺形似&#8221;元宝&#8221;，年糕音似&#8221;年高&#8221;，都是吉祥如意的好兆头。</p> <p>除夕之夜，全家人在一起吃&#8221;团年饭&#8221;，有一家人团聚过年的味道。吃团年饭时，桌上的&#8221;鱼&#8221;是不能动的，因为这鱼代表&#8221;富裕&#8221;和&#8221;年年有余&#8221;，象征来年的&#8221;财富与幸运&#8221;，它属于一种装饰，是碰不得的。</p> <p>关于年的由来，还有一个传说。相传在远古时候，我们的祖先曾遭受一种最凶猛的野兽的威胁。这种猛兽叫&#8221;年&#8221;，它捕百兽为食，到了冬天，山中食物缺乏时，还会闯入村庄，猎食人和牲畜，百姓惶惶不可终日。人和&#8221;年&#8221;斗争了很多年，人们发现，年怕三种东西，红颜色、火光、响声。于是在冬天人们在自家门上挂上红颜色的桃木板，门口烧火堆，夜里通宵不睡，敲敲打打。这天夜里，&#8221;年&#8221;闯进村庄，见到家家有红色和火光，听见震天的响声，吓得跑回深山，再也不敢出来。夜过去了，人们互相祝贺道喜，大家张灯结彩，饮酒摆宴，庆祝胜利。</p>  <p>为了纪念这次胜利，以后每到冬天的这个时间，家家户户都贴红纸对联在门上，电灯笼，敲锣打鼓，燃放鞭炮烟花；夜里，通宵守夜；第二天，大清早互相祝贺道喜。这样一代一代流传下来，就成了&#8221;过年&#8221;。</p> <p>除夕的高潮是年饭后长辈发&#8221;压岁钱&#8221;。接着就是张贴春联和门神，并关上大门。到初一的早上才开门&#8221;接财神&#8221;。接下来就是全家人守岁到凌晨。</p> <p>除夕夜的灯火，通宵不熄，俗称&#8221;光年&#8221;。</p> <p>各地的除夕风俗大致相同，但有些地方的风俗很有特点，如苏州、北京、台湾等。苏州的除夕守岁时，都要等待从枫桥寒山寺传来的洪亮钟声。当钟声穿过沉沉夜色，传到千家万户时，就标志着新春的来临。 无论春夏秋冬，每日半夜正交子时，寒山寺中就会传出这口巨钟的洪响，民间称为&#8221;分夜钟&#8221;。这口钟，已成为苏州城乡方圆数十里人民生活的时间信息。寒山寺钟声还出现在诗中，流传最广的就是唐代诗人张继的《枫桥夜泊》：</p> <p>月落乌啼霜满天，江枫渔火对愁眠。</p> <p>姑苏城外寒山寺，夜半钟声到客船。</p> <p>现在，每年除夕，苏州寒山寺仍遵循万古不变的古老习俗，击钟以分岁。姑苏城乡，到了守岁的最后一刻，会从广播中传出宏亮的寒山寺钟声，报导一年的开始。千家万户，听到钟声，爆竹齐鸣，使古老的寒山寺钟声成为了一种时代的象征。</p> <p>北京的除夕这一天更是忙碌，祭祖、接神、接灶。祭神拜祖的仪式一开始，整个北京城便淹没在一片震耳欲聋的爆竹声中。人们还在自己家院子里，铺上芝麻秸，全家人都去踩，叫&#8221;踩岁&#8221;，取长命百岁的意义。通宵灯火齐明，人们辞岁守岁。当新年的钟声敲响时，各家的饺子也下锅了，人们尽情的娱乐。</p> <p>除夕在台湾不叫除夕，而叫&#8221;过年日&#8221;。午后，在厅堂神龛前上供牲体。到了晚上，合家焚香叩拜，然后对长者辞岁。接着是&#8221;围炉&#8221;，也就是丰盛的年夜饭，一家人围坐一桌，桌上摆满菜肴，桌下放置火盆。&#8221;围炉&#8221;为除夕带来高潮，远在他乡的游子，除非万不得已，再远再忙也要赶回家团圆。年夜饭后，便高燃蜡炬来守岁，儿媳妇为长辈们添富寿，不能早睡，坐得越久，长辈得富寿越长，这是表示孝心。</p> <p><!-- .entry-content --></p> 					
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3630.htm">模拟器 教你如何用python制作随机点名器</a></p>
-                                                <p>下一个：<a href="/html/category/article-3632.htm">C语言之分支语句</a></p>
+                                                <p>上一个：<a href="/html/category/article-4537.htm">宠物领养协议模板图片大全（宠物领养协议模板图片大全集）</a></p>
                                             </div>
 
+                                        <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <h3 class="m-0">推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="p-0 x-0">
+                                                                <li class="py-2"><a href="/html/category/article-3726.htm">win11系统如何创建虚拟磁盘</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3705.htm">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3698.htm">实时流处理与分布式存储过程中对文件的操作</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3651.htm">maven项目关于target目录没有生成xml、properties等文件问题</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3589.htm">unity 编辑器扩展简单入门</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3583.htm">ArrayList集合排序方式总结</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3499.htm">什么是JavaSpring框架?</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3497.htm">使用Jenkins实现前端自动化打包部署（Linux版本）</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3480.htm">后端思维之数据库性能优化方案</a></li>
+                                                                <li class="py-2"><a href="/html/category/article-3448.htm">Java 带参数与带返回值的方法的定义和调用_java_</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
                                     </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
@@ -107,16 +125,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-4393.htm" title="2022公务员国考报名流程（国家公务员国考报名）">2022公务员国考报名流程（国家公务员国考报名）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
-                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4317.htm" title="动物疫苗龙头（动物疫苗龙头股一览）">动物疫苗龙头（动物疫苗龙头股一览）</a></li>
                         <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
-                        <li class="py-2"><a href="/html/category/article-3694.htm" title="Vue el-table实现右键菜单功能_vue.js_">Vue el-table实现右键菜单功能_vue.js_</a></li>
-                        <li class="py-2"><a href="/html/category/article-3716.htm" title="Java和matlab混合编程时Java代码参数不一致的问题">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
-                        <li class="py-2"><a href="/html/category/article-4466.htm" title="小型宠物粮食加工设备有哪些厂家（宠物粮食加工厂怎么起步）">小型宠物粮食加工设备有哪些厂家（宠物粮食加工厂怎么起步）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
                         <li class="py-2"><a href="/html/category/article-3754.htm" title="Python3通过字符串访问与修改局部变量">Python3通过字符串访问与修改局部变量</a></li>
+                        <li class="py-2"><a href="/html/category/article-3693.htm" title="@Order的使用与Aop多切面的执行顺序">@Order的使用与Aop多切面的执行顺序</a></li>
+                        <li class="py-2"><a href="/html/category/article-4316.htm" title="电动隔膜泵生产厂家(电动隔膜泵品牌进口)">电动隔膜泵生产厂家(电动隔膜泵品牌进口)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3779.htm" title="js数组删除的方法">js数组删除的方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
+                        <li class="py-2"><a href="/html/category/article-4426.htm" title="排名前十的兽药厂家（排名前十的兽药厂家名单）">排名前十的兽药厂家（排名前十的兽药厂家名单）</a></li>
                     </ul>
     </div>
 </div>
