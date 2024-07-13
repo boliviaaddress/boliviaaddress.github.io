@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="htmledit_views"> <p>springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器 转载地址：</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/guduyishuai/article/details/81364456"  title="springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器_guduyishuai的博客-CSDN博客" rel="nofollow">springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器_guduyishuai的博客-CSDN博客</a></p> <p>我们在开发分布式系统的时候，经常会要排查问题，但是分布式服务比较恶心的就是，服务比较多，请求比较多，日志刷新比较快，如果没有关键字，那么从最原始的请求开始到后续的服务，我们根本无法追踪到一条完整的线路。如何在分布式环境中进行日志的链路追踪呢？</p> <p>下面说一下springcloud中openfeign进行开发的时候，进行链路追踪的设置。</p> <p>1.首先定义interceptor定义一个拦截器，过滤所有请求，并设置logback中的triceId</p> <p><img fetchpriority="high" decoding="async" alt="" height="529" src="http://img.555519.xyz/uploads/20221105/3ee67c9c241ffd781850300fe0753f3c.jpg">2.然后配置拦截器<img decoding="async" alt="" height="601" src="http://img.555519.xyz/uploads/20221105/051399596467ec11986d3afcf1c71bdf.jpg"></p> <p>3. 接着进行openfeign的配置<img decoding="async" alt="" height="449" src="http://img.555519.xyz/uploads/20221105/9d21da9e8fd429be5eeda645543fd184.jpg"></p> <p>&nbsp;然后进行feignInterceptor的bean实例化，以让spring进行管理<img loading="lazy" decoding="async" alt="" height="405" src="http://img.555519.xyz/uploads/20221105/30a567d4e8acc0e3ef2383d53c7983cb.jpg"></p> <p>FeignInterceptor是import feign.RequestInterceptor;引自feign-core包</p> <p>最后在被带调用方获取调用方传过来的triceId<img loading="lazy" decoding="async" alt="" height="546" src="http://img.555519.xyz/uploads/20221105/c2768aa01e62aa015e2a7ac9f9677278.jpg"></p> <p>&nbsp;如图就可以完成分布式服务的日志追踪了！</p> </div> 			
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器 转载地址：</p> <p>springCloud微服务系列——链路跟踪第四篇——hystrix链路跟踪器_guduyishuai的博客-CSDN博客</p> <p>我们在开发分布式系统的时候，经常会要排查问题，但是分布式服务比较恶心的就是，服务比较多，请求比较多，日志刷新比较快，如果没有关键字，那么从最原始的请求开始到后续的服务，我们根本无法追踪到一条完整的线路。如何在分布式环境中进行日志的链路追踪呢？</p> <p>下面说一下springcloud中openfeign进行开发的时候，进行链路追踪的设置。</p> <p>1.首先定义interceptor定义一个拦截器，过滤所有请求，并设置logback中的triceId</p> <p><img fetchpriority="high" decoding="async" alt="" height="529" src="http://img.555519.xyz/uploads/20221105/3ee67c9c241ffd781850300fe0753f3c.jpg">2.然后配置拦截器<img decoding="async" alt="" height="601" src="http://img.555519.xyz/uploads/20221105/051399596467ec11986d3afcf1c71bdf.jpg"></p> <p>3. 接着进行openfeign的配置<img decoding="async" alt="" height="449" src="http://img.555519.xyz/uploads/20221105/9d21da9e8fd429be5eeda645543fd184.jpg"></p> <p>&nbsp;然后进行feignInterceptor的bean实例化，以让spring进行管理<img loading="lazy" decoding="async" alt="" height="405" src="http://img.555519.xyz/uploads/20221105/30a567d4e8acc0e3ef2383d53c7983cb.jpg"></p> <p>FeignInterceptor是import feign.RequestInterceptor;引自feign-core包</p> <p>最后在被带调用方获取调用方传过来的triceId<img loading="lazy" decoding="async" alt="" height="546" src="http://img.555519.xyz/uploads/20221105/c2768aa01e62aa015e2a7ac9f9677278.jpg"></p> <p>&nbsp;如图就可以完成分布式服务的日志追踪了！</p> </div> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3703.htm">Git回退代码到某次commit</a></p>
                                                 <p>下一个：<a href="/html/category/article-3705.htm">Water 2.6.1 发布，一站式服务治理平台</a></p>
@@ -107,16 +107,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-4537.htm" title="宠物领养协议模板图片大全（宠物领养协议模板图片大全集）">宠物领养协议模板图片大全（宠物领养协议模板图片大全集）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3700.htm" title="【nodejs】【mongo】nodejs数据查询【mongo】">【nodejs】【mongo】nodejs数据查询【mongo】</a></li>
-                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
-                        <li class="py-2"><a href="/html/category/article-4574.htm" title="动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全">动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全</a></li>
-                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-4346.htm" title="动物医院诊疗范围猫科犬科牙科内科（动物医院连锁）">动物医院诊疗范围猫科犬科牙科内科（动物医院连锁）</a></li>
+                        <li class="py-2"><a href="/html/category/article-5593.htm" title="吉他牌子哪个好用(吉他牌子哪个好一点)">吉他牌子哪个好用(吉他牌子哪个好一点)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3753.htm" title="Mac下配置Maven以及IDEA Maven配置">Mac下配置Maven以及IDEA Maven配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-4467.htm" title="动物诊疗机构办理动物诊疗许可证需要多久 动物诊疗机构办理动物诊疗许可证需要多久">动物诊疗机构办理动物诊疗许可证需要多久 动物诊疗机构办理动物诊疗许可证需要多久</a></li>
                         <li class="py-2"><a href="/html/category/article-4347.htm" title="怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）">怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）</a></li>
-                        <li class="py-2"><a href="/html/category/article-4393.htm" title="2022公务员国考报名流程（国家公务员国考报名）">2022公务员国考报名流程（国家公务员国考报名）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3727.htm" title="vue 实现excel本地预览">vue 实现excel本地预览</a></li>
-                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
-                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3708.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4466.htm" title="小型宠物粮食加工设备有哪些厂家（宠物粮食加工厂怎么起步）">小型宠物粮食加工设备有哪些厂家（宠物粮食加工厂怎么起步）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3779.htm" title="js数组删除的方法">js数组删除的方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-4092.htm" title="nginx进程管理">nginx进程管理</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

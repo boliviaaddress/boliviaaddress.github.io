@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">使用sass及解决sass-loader版本过高导致编译错误</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">安装依赖包</a></li> <li><a href="#_lab2_0_1" rel="nofollow">使用</a></li> <li><a href="#_lab2_0_2" rel="nofollow">解决编译错误</a></li> </ul> <li><a href="#_label1" rel="nofollow">安装sass（规避因版本过高报错）</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_3" rel="nofollow">安装的两个命令</a></li> <li><a href="#_lab2_1_4" rel="nofollow">配置文件</a></li> <li><a href="#_lab2_1_5" rel="nofollow">样式标签更改</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>使用sass及解决sass-loader版本过高导致编译错误</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>安装依赖包</h3> <p>安装node-sass、sass-loader和style-loader：</p> <div class="ay1code"> <pre class="brush:js;">npm i node-sass sass-loader style-loader -D</pre> </div> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>使用</h3> <div class="ay1code"> <pre class="brush:xhtml;">&lt;style scoped lang="scss"&gt;  &lt;/style&gt;</pre> </div> <p class="maodian"><a name="_lab2_0_2" rel="nofollow"></a></p> <h3>解决编译错误</h3> <p>操作以上步骤后，运行，发现报错。原因是sass-loader版本过高，node-sass和sass-loader不兼容。解决办法：卸载当前版本的sass-loader，安装指定版本：</p> <div class="ay1code"> <pre class="brush:js;">npm uninstall sass-loader  //卸载  npm install sass-loader@7.3.0  //安装指定版本</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>安装sass（规避因版本过高报错）</h2> <p class="maodian"><a name="_lab2_1_3" rel="nofollow"></a></p> <h3>安装的两个命令</h3> <div class="ay1code"> <pre class="brush:js;">npm install sass-loader@7.3.1 --save-dev  npm install --save-dev node-sass</pre> </div> <p class="maodian"><a name="_lab2_1_4" rel="nofollow"></a></p> <h3>配置文件</h3> <p>打开build文件夹下的webpack.base.conf.js</p> <p>找到module.exports里的module，在rules里添加下面的配置：</p> <div class="ay1code"> <pre class="brush:js;">{    test: /\.sass$/,    loaders: ['style', 'css', 'sass']  }</pre> </div> <p class="maodian"><a name="_lab2_1_5" rel="nofollow"></a></p> <h3>样式标签更改</h3> <div class="ay1code"> <pre class="brush:xhtml;">&lt;style lang="scss"&gt;</pre> </div> <p>然后 npm run dev 重启一下</p> 			
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li>使用sass及解决sass-loader版本过高导致编译错误</li> <ul class="second_class_ul"> <li>安装依赖包</li> <li>使用</li> <li>解决编译错误</li> </ul> <li>安装sass（规避因版本过高报错）</li> <ul class="second_class_ul"> <li>安装的两个命令</li> <li>配置文件</li> <li>样式标签更改</li> </ul> </ul> </div> <p class="maodian"></p> <h2>使用sass及解决sass-loader版本过高导致编译错误</h2> <p class="maodian"></p> <h3>安装依赖包</h3> <p>安装node-sass、sass-loader和style-loader：</p> <div class="ay1code"> <pre class="brush:js;">npm i node-sass sass-loader style-loader -D</pre> </div> <p class="maodian"></p> <h3>使用</h3> <div class="ay1code"> <pre class="brush:xhtml;"><style scoped lang="scss">  </style></pre> </div> <p class="maodian"></p> <h3>解决编译错误</h3> <p>操作以上步骤后，运行，发现报错。原因是sass-loader版本过高，node-sass和sass-loader不兼容。解决办法：卸载当前版本的sass-loader，安装指定版本：</p> <div class="ay1code"> <pre class="brush:js;">npm uninstall sass-loader  //卸载  npm install sass-loader@7.3.0  //安装指定版本</pre> </div> <p class="maodian"></p> <h2>安装sass（规避因版本过高报错）</h2> <p class="maodian"></p> <h3>安装的两个命令</h3> <div class="ay1code"> <pre class="brush:js;">npm install sass-loader@7.3.1 --save-dev  npm install --save-dev node-sass</pre> </div> <p class="maodian"></p> <h3>配置文件</h3> <p>打开build文件夹下的webpack.base.conf.js</p> <p>找到module.exports里的module，在rules里添加下面的配置：</p> <div class="ay1code"> <pre class="brush:js;">{    test: /\.sass$/,    loaders: ['style', 'css', 'sass']  }</pre> </div> <p class="maodian"></p> <h3>样式标签更改</h3> <div class="ay1code"> <pre class="brush:xhtml;"><style lang="scss"></pre> </div> <p>然后 npm run dev 重启一下</p> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3569.htm">SpringBoot2.0.4配置多个数据库</a></p>
                                                 <p>下一个：<a href="/html/category/article-3571.htm">基于MyBatis的多租户设计方案与实现</a></p>
@@ -107,16 +107,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3698.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
-                        <li class="py-2"><a href="/html/category/article-4092.htm" title="nginx进程管理">nginx进程管理</a></li>
-                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
-                        <li class="py-2"><a href="/html/category/article-3696.htm" title="UML——顺序图">UML——顺序图</a></li>
+                        <li class="py-2"><a href="/html/category/article-4120.htm" title="项目打包成 jar 后包无法读取src/main/resources下文件">项目打包成 jar 后包无法读取src/main/resources下文件</a></li>
                         <li class="py-2"><a href="/html/category/article-4574.htm" title="动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全">动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全</a></li>
-                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
-                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-4609.htm" title="欢颜剧情介绍,演员表,角色介绍,剧集评价(欢颜剧情介绍,演员表,角色介绍,剧集评价语)">欢颜剧情介绍,演员表,角色介绍,剧集评价(欢颜剧情介绍,演员表,角色介绍,剧集评价语)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
+                        <li class="py-2"><a href="/html/category/article-3708.htm" title="Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）">Windows下如何优雅的管理多个python版本以及简易安装相关库（包括机器学习和PyQt）</a></li>
                         <li class="py-2"><a href="/html/category/article-3779.htm" title="js数组删除的方法">js数组删除的方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3754.htm" title="Python3通过字符串访问与修改局部变量">Python3通过字符串访问与修改局部变量</a></li>
-                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

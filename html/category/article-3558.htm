@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">vue弹窗关闭后刷新效果</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">问题</a></li> <li><a href="#_lab2_0_1" rel="nofollow">解决</a></li> </ul> <li><a href="#_label1" rel="nofollow">关闭或刷新vue文件弹出提示框</a></li> <ul class="second_class_ul"></ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>vue弹窗关闭后刷新效果</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>问题</h3> <p>列表点击进入详情时弹窗内容重新赋值，但是修改后未点击保存再打开同一个弹窗，数据是关闭前的样子。</p> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>解决</h3> <p>在双击时间里定义一个时间戳，每次点击传过去的值，在弹窗watch里接收时间戳再赋值。关闭页面清空对象。</p> <p><strong>列表页：</strong></p> <div class="ay1code"> <pre class="brush:js;">this.timestamp=new Date().getTime();</pre> </div> <p><strong>弹窗详情页：</strong></p> <div class="ay1code"> <pre class="brush:js;">props: {timestamp:Number}  watch: {     timestamp:{       //深度监控的数据获取    }  }</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>关闭或刷新vue文件弹出提示框</h2> <p>在vue文件中加入如下代码：</p> <p>我将如下代码加入到了app.vue中</p> <div class="ay1code"> <pre class="brush:js;">beforeRouteLeave(to, from, next) {  const answer = window.confirm(“当前页面数据未保存，确定要离开？”);  if (answer) {  next();  } else {  next(false);  }  },  mounted() {  var _this=this;  window.onbeforeunload = function(e) {  if (_this.$route.fullPath == ‘/index/uploadImages') {  e = e || window.event;  // 兼容IE8和Firefox 4之前的版本  if (e) {  e.returnValue = “关闭提示”;  }  // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+  return “关闭提示”;  } else {  window.onbeforeunload = null;  }  };  }</pre> </div> <p>编译运行，在浏览器刷新/关闭，弹出以下提示框</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220424/189ef88a42c1952be7ea7495213d267a.jpg"></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220424/787b769ccdca82e707e1ffc4c9e3b246.jpg"></p> <p><strong>注意：</strong>上面的方法生效的前题是，打开该网页后，需要鼠标点击一下网页，让网页获取焦点，然后再关闭或刷新! 若打开后不点击页面直接关闭或刷新不会触发该方法。</p> 			
+                      				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li>vue弹窗关闭后刷新效果</li> <ul class="second_class_ul"> <li>问题</li> <li>解决</li> </ul> <li>关闭或刷新vue文件弹出提示框</li> <ul class="second_class_ul"></ul> </ul> </div> <p class="maodian"></p> <h2>vue弹窗关闭后刷新效果</h2> <p class="maodian"></p> <h3>问题</h3> <p>列表点击进入详情时弹窗内容重新赋值，但是修改后未点击保存再打开同一个弹窗，数据是关闭前的样子。</p> <p class="maodian"></p> <h3>解决</h3> <p>在双击时间里定义一个时间戳，每次点击传过去的值，在弹窗watch里接收时间戳再赋值。关闭页面清空对象。</p> <p><strong>列表页：</strong></p> <div class="ay1code"> <pre class="brush:js;">this.timestamp=new Date().getTime();</pre> </div> <p><strong>弹窗详情页：</strong></p> <div class="ay1code"> <pre class="brush:js;">props: {timestamp:Number}  watch: {     timestamp:{       //深度监控的数据获取    }  }</pre> </div> <p class="maodian"></p> <h2>关闭或刷新vue文件弹出提示框</h2> <p>在vue文件中加入如下代码：</p> <p>我将如下代码加入到了app.vue中</p> <div class="ay1code"> <pre class="brush:js;">beforeRouteLeave(to, from, next) {  const answer = window.confirm(“当前页面数据未保存，确定要离开？”);  if (answer) {  next();  } else {  next(false);  }  },  mounted() {  var _this=this;  window.onbeforeunload = function(e) {  if (_this.$route.fullPath == ‘/index/uploadImages') {  e = e || window.event;  // 兼容IE8和Firefox 4之前的版本  if (e) {  e.returnValue = “关闭提示”;  }  // Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+  return “关闭提示”;  } else {  window.onbeforeunload = null;  }  };  }</pre> </div> <p>编译运行，在浏览器刷新/关闭，弹出以下提示框</p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220424/189ef88a42c1952be7ea7495213d267a.jpg"></p> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220424/787b769ccdca82e707e1ffc4c9e3b246.jpg"></p> <p><strong>注意：</strong>上面的方法生效的前题是，打开该网页后，需要鼠标点击一下网页，让网页获取焦点，然后再关闭或刷新! 若打开后不点击页面直接关闭或刷新不会触发该方法。</p> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3557.htm">跟我一起写jdbc之sql注入</a></p>
                                                 <p>下一个：<a href="/html/category/article-3559.htm">C语言进阶——数据的存储</a></p>
@@ -107,16 +107,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
                         <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-3726.htm" title="win11系统如何创建虚拟磁盘">win11系统如何创建虚拟磁盘</a></li>
                         <li class="py-2"><a href="/html/category/article-4148.htm" title="Java基础之浅谈接口">Java基础之浅谈接口</a></li>
-                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3697.htm" title="int类型数据转为 torch.cuda.FloatTensor类型数据">int类型数据转为 torch.cuda.FloatTensor类型数据</a></li>
-                        <li class="py-2"><a href="/html/category/article-3780.htm" title="Vue 列表渲染中的key">Vue 列表渲染中的key</a></li>
-                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
-                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
-                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
-                        <li class="py-2"><a href="/html/category/article-4392.htm" title="动物医院有公立的吗还是私立医院好呢（动物医院归哪里管）">动物医院有公立的吗还是私立医院好呢（动物医院归哪里管）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-4347.htm" title="怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）">怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4091.htm" title="通过传递数字参数返回什么MySQL CONCAT()函数？">通过传递数字参数返回什么MySQL CONCAT()函数？</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3722.htm" title="MyBatis:SQL语句中的foreach标签的详细介绍">MyBatis:SQL语句中的foreach标签的详细介绍</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

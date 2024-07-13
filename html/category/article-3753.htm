@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="htmledit_views"> <h3>maven下载</h3> <p>地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://maven.apache.org/download.cgi"  rel="nofollow">https://maven.apache.org/download.cgi</a></p> <p><img fetchpriority="high" decoding="async" alt="" height="1024" src="http://img.555519.xyz/uploads3/20220603/866879b2b22b773c3a37a11fe2a250df.jpg"></p> <h3><strong>安装Maven</strong></h3> <p>1 下载完是一个压缩包，解压即可，解压出来的文件如下图所示。</p> <p><img decoding="async" alt="" height="580" src="http://img.555519.xyz/uploads3/20220603/780bc7ebc12704a85eb9c037ea9ec351.jpg"></p> <p>2、把解压出来的文件拷贝到任意目录下面。（我这里将maven放在资源库文件夹下）</p> <p><img decoding="async" alt="" height="616" src="http://img.555519.xyz/uploads3/20220603/4cadf1dd08f4831382858f31a973f833.jpg"></p> <p>3&nbsp;配置环境变量</p> <p>打开环境变量配置文件</p> <pre><code>vi ~/.bash_profile</code></pre> <p>&nbsp;配置环境变量</p> <pre><code>export MAVEN_HOME=/Library/apache-maven-3.6.2 export PATH=${MAVEN_HOME}/bin:$PATH</code></pre> <p>保存，然后在终端让命令生效一下</p> <pre><code>source ~/.bash_profile</code></pre> <p>4、测试一下环境变量是否已经配置完成。在终端输入一个 mvn -v。如果出现下图则配置成功，如果没有的话，可以去检查一下 路径是否正确，或者版本号名称之类的。</p> <p><img loading="lazy" decoding="async" alt="" height="380" src="http://img.555519.xyz/uploads3/20220603/c6cfd5f653e9fab5b19985de064c7e67.jpg"></p> <p>5、创建本地仓库，在maven文件夹在创建&nbsp;repository 文件夹。</p> <p>6 &nbsp;修改conf下的settings.xml的本地仓库位置和创建maven阿里云镜像仓库配置</p> <pre><code class="language-XML">&lt;localRepository&gt;/Library/apache-maven-3.6.2/repository&lt;/localRepository&gt;    &lt;mirrors&gt;     &lt;mirror&gt;         &lt;id&gt;alimaven&lt;/id&gt;         &lt;name&gt;aliyun maven&lt;/name&gt;         &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;         &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;                &lt;/mirror&gt;    &lt;/mirrors&gt;</code></pre> <p>6 下载依赖</p> <pre><code>mvn help:system</code></pre> <p>下载成功后，你可以发现<strong>repository</strong>里面会有很多的文件 这些文件就是我们从中央仓库下载到本地仓库的文件</p> <h3><strong>配置IntelliJ IDEA</strong></h3> <p><img loading="lazy" decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/3c7324051a047e97681c4f5daba7637a.jpg"></p> <p>&nbsp;第一个是配置maven的路径</p> <p>&nbsp;第二个是maven配置文件的路径</p> <p>&nbsp;第三个是本地仓库的路径</p> <p></p> </div> 			
+                      				  				  				<div id="content_views" class="htmledit_views"> <h3>maven下载</h3> <p>地址：https://maven.apache.org/download.cgi</p> <p><img fetchpriority="high" decoding="async" alt="" height="1024" src="http://img.555519.xyz/uploads3/20220603/866879b2b22b773c3a37a11fe2a250df.jpg"></p> <h3><strong>安装Maven</strong></h3> <p>1 下载完是一个压缩包，解压即可，解压出来的文件如下图所示。</p> <p><img decoding="async" alt="" height="580" src="http://img.555519.xyz/uploads3/20220603/780bc7ebc12704a85eb9c037ea9ec351.jpg"></p> <p>2、把解压出来的文件拷贝到任意目录下面。（我这里将maven放在资源库文件夹下）</p> <p><img decoding="async" alt="" height="616" src="http://img.555519.xyz/uploads3/20220603/4cadf1dd08f4831382858f31a973f833.jpg"></p> <p>3&nbsp;配置环境变量</p> <p>打开环境变量配置文件</p> <pre><code>vi ~/.bash_profile</code></pre> <p>&nbsp;配置环境变量</p> <pre><code>export MAVEN_HOME=/Library/apache-maven-3.6.2 export PATH=${MAVEN_HOME}/bin:$PATH</code></pre> <p>保存，然后在终端让命令生效一下</p> <pre><code>source ~/.bash_profile</code></pre> <p>4、测试一下环境变量是否已经配置完成。在终端输入一个 mvn -v。如果出现下图则配置成功，如果没有的话，可以去检查一下 路径是否正确，或者版本号名称之类的。</p> <p><img loading="lazy" decoding="async" alt="" height="380" src="http://img.555519.xyz/uploads3/20220603/c6cfd5f653e9fab5b19985de064c7e67.jpg"></p> <p>5、创建本地仓库，在maven文件夹在创建&nbsp;repository 文件夹。</p> <p>6 &nbsp;修改conf下的settings.xml的本地仓库位置和创建maven阿里云镜像仓库配置</p> <pre><code class="language-XML"><localRepository>/Library/apache-maven-3.6.2/repository</localRepository>    <mirrors>     <mirror>         <id>alimaven</id>         <name>aliyun maven</name>         <url>http://maven.aliyun.com/nexus/content/groups/public/</url>         <mirrorOf>central</mirrorOf>                </mirror>    </mirrors></code></pre> <p>6 下载依赖</p> <pre><code>mvn help:system</code></pre> <p>下载成功后，你可以发现<strong>repository</strong>里面会有很多的文件 这些文件就是我们从中央仓库下载到本地仓库的文件</p> <h3><strong>配置IntelliJ IDEA</strong></h3> <p><img loading="lazy" decoding="async" alt="" height="1200" src="http://img.555519.xyz/uploads3/20220603/3c7324051a047e97681c4f5daba7637a.jpg"></p> <p>&nbsp;第一个是配置maven的路径</p> <p>&nbsp;第二个是maven配置文件的路径</p> <p>&nbsp;第三个是本地仓库的路径</p> <p></p> </div> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3728.htm">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></p>
                                                 <p>下一个：<a href="/html/category/article-3754.htm">Python3通过字符串访问与修改局部变量</a></p>
@@ -126,16 +126,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
-                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
-                        <li class="py-2"><a href="/html/category/article-3695.htm" title="时间与日期——瞬时（Instant）">时间与日期——瞬时（Instant）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
-                        <li class="py-2"><a href="/html/category/article-3698.htm" title="实时流处理与分布式存储过程中对文件的操作">实时流处理与分布式存储过程中对文件的操作</a></li>
-                        <li class="py-2"><a href="/html/category/article-3727.htm" title="vue 实现excel本地预览">vue 实现excel本地预览</a></li>
-                        <li class="py-2"><a href="/html/category/article-4574.htm" title="动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全">动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全</a></li>
-                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
-                        <li class="py-2"><a href="/html/category/article-4393.htm" title="2022公务员国考报名流程（国家公务员国考报名）">2022公务员国考报名流程（国家公务员国考报名）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3720.htm" title="Git回退代码到指定版本方法">Git回退代码到指定版本方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-4120.htm" title="项目打包成 jar 后包无法读取src/main/resources下文件">项目打包成 jar 后包无法读取src/main/resources下文件</a></li>
+                        <li class="py-2"><a href="/html/category/article-4573.htm" title="安安宠物电话（安安宠物医院地址）">安安宠物电话（安安宠物医院地址）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
+                        <li class="py-2"><a href="/html/category/article-5594.htm" title="新手开宠物店需要了解哪些知识点（新手开宠物店需要了解哪些知识点和技能）">新手开宠物店需要了解哪些知识点（新手开宠物店需要了解哪些知识点和技能）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4346.htm" title="动物医院诊疗范围猫科犬科牙科内科（动物医院连锁）">动物医院诊疗范围猫科犬科牙科内科（动物医院连锁）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3714.htm" title="windows配置kubectl访问k8s集群">windows配置kubectl访问k8s集群</a></li>
+                        <li class="py-2"><a href="/html/category/article-3725.htm" title="Linux 搭建NFS文件服务器实现文件共享">Linux 搭建NFS文件服务器实现文件共享</a></li>
+                        <li class="py-2"><a href="/html/category/article-4467.htm" title="动物诊疗机构办理动物诊疗许可证需要多久 动物诊疗机构办理动物诊疗许可证需要多久">动物诊疗机构办理动物诊疗许可证需要多久 动物诊疗机构办理动物诊疗许可证需要多久</a></li>
+                        <li class="py-2"><a href="/html/category/article-4316.htm" title="电动隔膜泵生产厂家(电动隔膜泵品牌进口)">电动隔膜泵生产厂家(电动隔膜泵品牌进口)</a></li>
                     </ul>
     </div>
 </div>
@@ -147,7 +147,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

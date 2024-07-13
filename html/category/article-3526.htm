@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3> <a id="js_0" rel="nofollow"></a>一、通过js原始方法刷新</h3> <pre><code>&lt;template&gt;   &lt;div&gt;       &lt;div class="header"&gt;           &lt;button @click="update()"&gt;刷新页面&lt;/button&gt;       &lt;/div&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default { data(){   return{   } }, methods:{   update(){     location.reload()   } } } &lt;/script&gt; </code></pre> <h3> <a id="Vue_25" rel="nofollow"></a>二、通过Vue自带的路由进行跳转</h3> <pre><code>&lt;template&gt;   &lt;div&gt;       &lt;div class="header"&gt;           &lt;button @click="update()"&gt;刷新页面&lt;/button&gt;       &lt;/div&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default { data(){   return{   } }, methods:{   update(){     this.$router.go(0)   } } } &lt;/script&gt; </code></pre> <h3> <a id="APPdemo_50" rel="nofollow"></a>三、通过在APP页面进行demo进行刷新，不会像前两种那样出现短暂的闪烁效果，提升用户体验，通常可以使用这种方式</h3> <p>（1）、在APP页面中写入下面代码</p> <pre><code>&lt;template&gt;   &lt;div id="app"&gt;     &lt;router-view v-if="isShow"/&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {   name: 'App',   provide(){     return{       reload:this.reload     }   },   data(){     return{       isShow:true     }   },   methods:{     reload(){       this.isShow=false;       this.$nextTick(()=&gt;{         this.isShow=true       })     }   } } &lt;/script&gt; </code></pre> <p>（2）、在需要刷新的页面进行引入并使用</p> <pre><code>&lt;template&gt;   &lt;div&gt;       &lt;div class="header"&gt;           &lt;button @click="update()"&gt;刷新页面&lt;/button&gt;       &lt;/div&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default { data(){   return{    } }, inject:[   'reload' ], methods:{   update(){     this.reload()     console.log('刷新页面')   } } } &lt;/script&gt; </code></pre> <p>如果对您有用的话，别忘了给个三连，多谢多谢</p> </p></div> 			
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3> 一、通过js原始方法刷新</h3> <pre><code><template>   <div>       <div class="header">           <button @click="update()">刷新页面</button>       </div>   </div> </template>  <script> export default { data(){   return{   } }, methods:{   update(){     location.reload()   } } } </script> </code></pre> <h3> 二、通过Vue自带的路由进行跳转</h3> <pre><code><template>   <div>       <div class="header">           <button @click="update()">刷新页面</button>       </div>   </div> </template>  <script> export default { data(){   return{   } }, methods:{   update(){     this.$router.go(0)   } } } </script> </code></pre> <h3> 三、通过在APP页面进行demo进行刷新，不会像前两种那样出现短暂的闪烁效果，提升用户体验，通常可以使用这种方式</h3> <p>（1）、在APP页面中写入下面代码</p> <pre><code><template>   <div id="app">     <router-view v-if="isShow"/>   </div> </template>  <script> export default {   name: 'App',   provide(){     return{       reload:this.reload     }   },   data(){     return{       isShow:true     }   },   methods:{     reload(){       this.isShow=false;       this.$nextTick(()=>{         this.isShow=true       })     }   } } </script> </code></pre> <p>（2）、在需要刷新的页面进行引入并使用</p> <pre><code><template>   <div>       <div class="header">           <button @click="update()">刷新页面</button>       </div>   </div> </template>  <script> export default { data(){   return{    } }, inject:[   'reload' ], methods:{   update(){     this.reload()     console.log('刷新页面')   } } } </script> </code></pre> <p>如果对您有用的话，别忘了给个三连，多谢多谢</p> </p></div> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3525.htm">Android 12 行为变更：适配以Android 12为目标的应用</a></p>
                                                 <p>下一个：<a href="/html/category/article-3527.htm">vue-cli4.0脚手架中路由的配置过程</a></p>
@@ -107,16 +107,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-3722.htm" title="MyBatis:SQL语句中的foreach标签的详细介绍">MyBatis:SQL语句中的foreach标签的详细介绍</a></li>
-                        <li class="py-2"><a href="/html/category/article-4426.htm" title="排名前十的兽药厂家（排名前十的兽药厂家名单）">排名前十的兽药厂家（排名前十的兽药厂家名单）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
-                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
-                        <li class="py-2"><a href="/html/category/article-4466.htm" title="小型宠物粮食加工设备有哪些厂家（宠物粮食加工厂怎么起步）">小型宠物粮食加工设备有哪些厂家（宠物粮食加工厂怎么起步）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3705.htm" title="Water 2.6.1 发布，一站式服务治理平台">Water 2.6.1 发布，一站式服务治理平台</a></li>
+                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
                         <li class="py-2"><a href="/html/category/article-3780.htm" title="Vue 列表渲染中的key">Vue 列表渲染中的key</a></li>
-                        <li class="py-2"><a href="/html/category/article-4147.htm" title="MySQL 5.7的Homebrew安装 &#8211; MacOS">MySQL 5.7的Homebrew安装 &#8211; MacOS</a></li>
-                        <li class="py-2"><a href="/html/category/article-4148.htm" title="Java基础之浅谈接口">Java基础之浅谈接口</a></li>
-                        <li class="py-2"><a href="/html/category/article-4392.htm" title="动物医院有公立的吗还是私立医院好呢（动物医院归哪里管）">动物医院有公立的吗还是私立医院好呢（动物医院归哪里管）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3709.htm" title="MySQL分页查询">MySQL分页查询</a></li>
+                        <li class="py-2"><a href="/html/category/article-3706.htm" title="C ++中的最低票价">C ++中的最低票价</a></li>
+                        <li class="py-2"><a href="/html/category/article-4317.htm" title="动物疫苗龙头（动物疫苗龙头股一览）">动物疫苗龙头（动物疫苗龙头股一览）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-4573.htm" title="安安宠物电话（安安宠物医院地址）">安安宠物电话（安安宠物医院地址）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1> <a id="_0" rel="nofollow"></a>前言</h1> <p>该博客是《第一行代码》第三版第3章关于Kotlin部分的笔记</p> <h1> <a id="Kotlin_2" rel="nofollow"></a>Kotlin标准函数和静态方法</h1> <h2> <a id="withrunapply_4" rel="nofollow"></a>一、标准函数with、run和apply</h2> <h3> <a id="with_6" rel="nofollow"></a>（一）with</h3> <ol> <li>with函数接收2个参数：第一个参数可以是任意的对象，第二个参数是一个Lambda表达式。</li> <li>with函数会在Lambda表达式中提供第一个对象的上下文，并使用Lambda表达式中的最后一行代码作为返回值返回。示例代码如下：</li> </ol> <pre><code>val result = with(obj) { 	// 这里是obj的上下文 	"value" //with函数的返回值 } </code></pre> <ol start="3"> <li>with函数的作用：在连续调用同一个对象的多个方法时，with函数可以让代码变得更加精简，如：</li> </ol> <pre><code>val list = listOf("apple",  "banana",  "orange", "pear") val result = with(StringBuilder()) { 	append("start eating fruits.\n") 	for(fruit in list) { 		append(fruit).append("\n") 	} 	append("Ate all fruits.") 	toString() } println(result) </code></pre> <h3> <a id="run_29" rel="nofollow"></a>（二）run</h3> <p>run函数的用法和使用场景其实和with函数是非常类似的，只是稍微做了一些语法改动而已。</p> <ol> <li>run函数不能直接调用，而是一定要调用某个对象的run函数才行</li> <li>run函数只接收一个Lambda参数，并且会在Lambda表达式中提供调用对象的上下文</li> <li>其他方面和with函数一样</li> </ol> <p>示例代码如下：</p> <pre><code>val result = obj.run { 	// 这里是obj的上下文 	"value" // run函数的返回值 } </code></pre> <h3> <a id="apply_43" rel="nofollow"></a>（三）apply</h3> <p>apply函数和run函数极其类似，但apply函数无法指定返回值，而是会自动返回调用对象本身。</p> <pre><code>val result = obj.apply { 	// 这里是obj的上下文 } // result == obj </code></pre> <h2> <a id="_52" rel="nofollow"></a>二、定义静态方法</h2> <p>在kotlin中编写工具类，建议使用单例类</p> <pre><code>object Util { 	fun doAction() {} } </code></pre> <p>在kotlin中想要定义静态方法，应该使用companion object</p> <pre><code>class Util { 	fun doAction1() {} 	companion object { 		fun doAction2() {} 	} } </code></pre> <p>注意：<em><strong>companion object这个关键字实际上会在Util内部创建一个伴生类，而doAction2()方法就是定义在这个伴生类的实例方法。只是Kotlin会保证Util类始终只存在一个伴生类对象，因此调用Util.doAction2()方法实际上就是调用了Util类中伴生对象的doAction2()方法</strong></em></p> <h3> <a id="JvmStatic_70" rel="nofollow"></a>@JvmStatic</h3> <p>如果我们给单例类或companion object中的方法加上@JvmStatic注解，那么Kotlin会将这些方法编译成真正的静态方法</p> <h3> <a id="_73" rel="nofollow"></a>顶层方法</h3> <p>顶层方法指的是那些没有定义在任何类中的方法，Kotlin编译器会将所有的顶层方法编译成静态方法。</p> <ul> <li>在Kotlin中，直接调用这个顶层方法即可</li> <li>在Java中，会生成一个“文件名Kt的类”，如，Helper.kt中有一个doSomething方法，可以调用HelperKt.doSomething()</li> </ul> </div> 			
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h1> 前言</h1> <p>该博客是《第一行代码》第三版第3章关于Kotlin部分的笔记</p> <h1> Kotlin标准函数和静态方法</h1> <h2> 一、标准函数with、run和apply</h2> <h3> （一）with</h3> <ol> <li>with函数接收2个参数：第一个参数可以是任意的对象，第二个参数是一个Lambda表达式。</li> <li>with函数会在Lambda表达式中提供第一个对象的上下文，并使用Lambda表达式中的最后一行代码作为返回值返回。示例代码如下：</li> </ol> <pre><code>val result = with(obj) { 	// 这里是obj的上下文 	"value" //with函数的返回值 } </code></pre> <ol start="3"> <li>with函数的作用：在连续调用同一个对象的多个方法时，with函数可以让代码变得更加精简，如：</li> </ol> <pre><code>val list = listOf("apple",  "banana",  "orange", "pear") val result = with(StringBuilder()) { 	append("start eating fruits.\n") 	for(fruit in list) { 		append(fruit).append("\n") 	} 	append("Ate all fruits.") 	toString() } println(result) </code></pre> <h3> （二）run</h3> <p>run函数的用法和使用场景其实和with函数是非常类似的，只是稍微做了一些语法改动而已。</p> <ol> <li>run函数不能直接调用，而是一定要调用某个对象的run函数才行</li> <li>run函数只接收一个Lambda参数，并且会在Lambda表达式中提供调用对象的上下文</li> <li>其他方面和with函数一样</li> </ol> <p>示例代码如下：</p> <pre><code>val result = obj.run { 	// 这里是obj的上下文 	"value" // run函数的返回值 } </code></pre> <h3> （三）apply</h3> <p>apply函数和run函数极其类似，但apply函数无法指定返回值，而是会自动返回调用对象本身。</p> <pre><code>val result = obj.apply { 	// 这里是obj的上下文 } // result == obj </code></pre> <h2> 二、定义静态方法</h2> <p>在kotlin中编写工具类，建议使用单例类</p> <pre><code>object Util { 	fun doAction() {} } </code></pre> <p>在kotlin中想要定义静态方法，应该使用companion object</p> <pre><code>class Util { 	fun doAction1() {} 	companion object { 		fun doAction2() {} 	} } </code></pre> <p>注意：<em><strong>companion object这个关键字实际上会在Util内部创建一个伴生类，而doAction2()方法就是定义在这个伴生类的实例方法。只是Kotlin会保证Util类始终只存在一个伴生类对象，因此调用Util.doAction2()方法实际上就是调用了Util类中伴生对象的doAction2()方法</strong></em></p> <h3> @JvmStatic</h3> <p>如果我们给单例类或companion object中的方法加上@JvmStatic注解，那么Kotlin会将这些方法编译成真正的静态方法</p> <h3> 顶层方法</h3> <p>顶层方法指的是那些没有定义在任何类中的方法，Kotlin编译器会将所有的顶层方法编译成静态方法。</p> <ul> <li>在Kotlin中，直接调用这个顶层方法即可</li> <li>在Java中，会生成一个“文件名Kt的类”，如，Helper.kt中有一个doSomething方法，可以调用HelperKt.doSomething()</li> </ul> </div> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3722.htm">MyBatis:SQL语句中的foreach标签的详细介绍</a></p>
                                                 <p>下一个：<a href="/html/category/article-3724.htm">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></p>
@@ -107,16 +107,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-4148.htm" title="Java基础之浅谈接口">Java基础之浅谈接口</a></li>
-                        <li class="py-2"><a href="/html/category/article-3707.htm" title="远程调用Feign">远程调用Feign</a></li>
-                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
-                        <li class="py-2"><a href="/html/category/article-3779.htm" title="js数组删除的方法">js数组删除的方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-4537.htm" title="宠物领养协议模板图片大全（宠物领养协议模板图片大全集）">宠物领养协议模板图片大全（宠物领养协议模板图片大全集）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3715.htm" title="CSS图片上面放文字实现方式">CSS图片上面放文字实现方式</a></li>
-                        <li class="py-2"><a href="/html/category/article-4317.htm" title="动物疫苗龙头（动物疫苗龙头股一览）">动物疫苗龙头（动物疫苗龙头股一览）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3713.htm" title="object中的equals方法">object中的equals方法</a></li>
+                        <li class="py-2"><a href="/html/category/article-3754.htm" title="Python3通过字符串访问与修改局部变量">Python3通过字符串访问与修改局部变量</a></li>
+                        <li class="py-2"><a href="/html/category/article-4574.htm" title="动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全">动物疫苗多少钱打一次针啊图片 动物疫苗多少钱打一次针啊图片大全</a></li>
+                        <li class="py-2"><a href="/html/category/article-4091.htm" title="通过传递数字参数返回什么MySQL CONCAT()函数？">通过传递数字参数返回什么MySQL CONCAT()函数？</a></li>
                         <li class="py-2"><a href="/html/category/article-4426.htm" title="排名前十的兽药厂家（排名前十的兽药厂家名单）">排名前十的兽药厂家（排名前十的兽药厂家名单）</a></li>
-                        <li class="py-2"><a href="/html/category/article-4427.htm" title="家里养狗养猫会传染给人什么病（家里有狗养猫）">家里养狗养猫会传染给人什么病（家里有狗养猫）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3728.htm" title="Linux  C++  实现一个简易版的ping （也就是ICMP协议）">Linux  C++  实现一个简易版的ping （也就是ICMP协议）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4393.htm" title="2022公务员国考报名流程（国家公务员国考报名）">2022公务员国考报名流程（国家公务员国考报名）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3717.htm" title="Python－常用模块有哪些">Python－常用模块有哪些</a></li>
+                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
+                        <li class="py-2"><a href="/html/category/article-4119.htm" title="超级详细的webpack Plugin讲解_javascript技巧_">超级详细的webpack Plugin讲解_javascript技巧_</a></li>
+                        <li class="py-2"><a href="/html/category/article-5953.htm" title="猫驱虫一次要多少钱左右（猫猫驱虫多少钱）">猫驱虫一次要多少钱左右（猫猫驱虫多少钱）</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>

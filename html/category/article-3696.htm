@@ -93,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> <a id="_0" rel="nofollow"></a>概念</h2> <p>顺序图描述按照时间的先后顺序对象之间交互动作过程，顺序图将交互关系表现为一个二维图，纵向是时间轴，时间沿竖线向下延伸。顺序图由对象、消息和生命线（激活）构成。</p> <ol> <li>对象表示为一个矩形，其中对象名称标有下划线；</li> <li>消息是对象之间的通信，是两个对象之间的单路通信，是从发送者到接收者之间的控制信息流；消息又细分为调用消息、返回消息、自身消息、发送消息、创建消息、销毁消息、同步消息和异步消息等；消息使用带有各种箭头的线条表示。</li> <li>生命线用一条纵向虚线表示；激活是过程的执行，包括等待过程执行的时间。在顺序图中激活部分替换生命线，使用长条的矩形表示<br /> 示例图如下所示：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/eb350f7246e7825c6dc903f402f29979.jpg" alt="UML——顺序图"> </li> </ol> <h2> <a id="_8" rel="nofollow"></a>示例</h2> <p>使用登录功能为示例，描述顺序图的含义。包括登录窗口、验证对象和数据库操作对象。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/fb19d814fa5386ab4a0731d8acfee2b9.jpg" alt="UML——顺序图"><br /> 当操作员点击提交按钮，首先调用登录窗口有效性验证，如：用户名不能为空、密码不能为空、连续输入密码三次以上锁定等；通过后，创建验证对象，调用验证对象验证方法，在其验证方法中创建数据库操作对象，完成后，根据用户名调用获取用户结果集的方法，数据库操作对象再调用自己的连接数据库、执行SQL语句，将符合登录名称记录转换成user对象返还给验证对象，验证对象再调用私有的判断返回记录是否为空、密码解密后与存储密码进行比对等，通过后给登录窗口返回消息，由返回窗口执行页面跳转至首页。</p> <h2> <a id="_12" rel="nofollow"></a>作用</h2> <ol> <li>需求阶段是把用例表达的需求，转化为进一步、更深层次的精细表达；</li> <li>架构师和开发者能使用顺序图挖掘出系统对象间的交互，进一步完善整个系统的设计。</li> </ol> </div> 			
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> 概念</h2> <p>顺序图描述按照时间的先后顺序对象之间交互动作过程，顺序图将交互关系表现为一个二维图，纵向是时间轴，时间沿竖线向下延伸。顺序图由对象、消息和生命线（激活）构成。</p> <ol> <li>对象表示为一个矩形，其中对象名称标有下划线；</li> <li>消息是对象之间的通信，是两个对象之间的单路通信，是从发送者到接收者之间的控制信息流；消息又细分为调用消息、返回消息、自身消息、发送消息、创建消息、销毁消息、同步消息和异步消息等；消息使用带有各种箭头的线条表示。</li> <li>生命线用一条纵向虚线表示；激活是过程的执行，包括等待过程执行的时间。在顺序图中激活部分替换生命线，使用长条的矩形表示<br /> 示例图如下所示：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/eb350f7246e7825c6dc903f402f29979.jpg" alt="UML——顺序图"> </li> </ol> <h2> 示例</h2> <p>使用登录功能为示例，描述顺序图的含义。包括登录窗口、验证对象和数据库操作对象。<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230205/fb19d814fa5386ab4a0731d8acfee2b9.jpg" alt="UML——顺序图"><br /> 当操作员点击提交按钮，首先调用登录窗口有效性验证，如：用户名不能为空、密码不能为空、连续输入密码三次以上锁定等；通过后，创建验证对象，调用验证对象验证方法，在其验证方法中创建数据库操作对象，完成后，根据用户名调用获取用户结果集的方法，数据库操作对象再调用自己的连接数据库、执行SQL语句，将符合登录名称记录转换成user对象返还给验证对象，验证对象再调用私有的判断返回记录是否为空、密码解密后与存储密码进行比对等，通过后给登录窗口返回消息，由返回窗口执行页面跳转至首页。</p> <h2> 作用</h2> <ol> <li>需求阶段是把用例表达的需求，转化为进一步、更深层次的精细表达；</li> <li>架构师和开发者能使用顺序图挖掘出系统对象间的交互，进一步完善整个系统的设计。</li> </ol> </div> 			
                     <div class="col-md-12 mt-5">
                                                 <p>上一个：<a href="/html/category/article-3695.htm">时间与日期——瞬时（Instant）</a></p>
                                                 <p>下一个：<a href="/html/category/article-3697.htm">int类型数据转为 torch.cuda.FloatTensor类型数据</a></p>
@@ -107,16 +107,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-4347.htm" title="怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）">怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）</a></li>
-                        <li class="py-2"><a href="/html/category/article-4392.htm" title="动物医院有公立的吗还是私立医院好呢（动物医院归哪里管）">动物医院有公立的吗还是私立医院好呢（动物医院归哪里管）</a></li>
-                        <li class="py-2"><a href="/html/category/article-4346.htm" title="动物医院诊疗范围猫科犬科牙科内科（动物医院连锁）">动物医院诊疗范围猫科犬科牙科内科（动物医院连锁）</a></li>
-                        <li class="py-2"><a href="/html/category/article-3703.htm" title="Git回退代码到某次commit">Git回退代码到某次commit</a></li>
-                        <li class="py-2"><a href="/html/category/article-3723.htm" title="Kotlin杂记之标准函数和静态方法">Kotlin杂记之标准函数和静态方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3779.htm" title="js数组删除的方法">js数组删除的方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-3710.htm" title="FUNCTION XXX does not exist">FUNCTION XXX does not exist</a></li>
-                        <li class="py-2"><a href="/html/category/article-3718.htm" title="Vue3中vuex的基本使用方法实例_vue.js">Vue3中vuex的基本使用方法实例_vue.js</a></li>
+                        <li class="py-2"><a href="/html/category/article-4537.htm" title="宠物领养协议模板图片大全（宠物领养协议模板图片大全集）">宠物领养协议模板图片大全（宠物领养协议模板图片大全集）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4467.htm" title="动物诊疗机构办理动物诊疗许可证需要多久 动物诊疗机构办理动物诊疗许可证需要多久">动物诊疗机构办理动物诊疗许可证需要多久 动物诊疗机构办理动物诊疗许可证需要多久</a></li>
+                        <li class="py-2"><a href="/html/category/article-3716.htm" title="Java和matlab混合编程时Java代码参数不一致的问题">Java和matlab混合编程时Java代码参数不一致的问题</a></li>
+                        <li class="py-2"><a href="/html/category/article-3753.htm" title="Mac下配置Maven以及IDEA Maven配置">Mac下配置Maven以及IDEA Maven配置</a></li>
+                        <li class="py-2"><a href="/html/category/article-4426.htm" title="排名前十的兽药厂家（排名前十的兽药厂家名单）">排名前十的兽药厂家（排名前十的兽药厂家名单）</a></li>
+                        <li class="py-2"><a href="/html/category/article-4538.htm" title="春节指的是除夕还是正月初一(春节是农历的哪一天除夕是哪天)">春节指的是除夕还是正月初一(春节是农历的哪一天除夕是哪天)</a></li>
+                        <li class="py-2"><a href="/html/category/article-3702.htm" title="JS encodeURI和encodeURIComponent()方法的使用">JS encodeURI和encodeURIComponent()方法的使用</a></li>
                         <li class="py-2"><a href="/html/category/article-3724.htm" title="MyBatis &#8211; typeAliases不能正确解析问题的处理方法">MyBatis &#8211; typeAliases不能正确解析问题的处理方法</a></li>
-                        <li class="py-2"><a href="/html/category/article-4393.htm" title="2022公务员国考报名流程（国家公务员国考报名）">2022公务员国考报名流程（国家公务员国考报名）</a></li>
+                        <li class="py-2"><a href="/html/category/article-3719.htm" title="flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应">flex布局之5个div盒子一排，不同屏幕，盒子宽度自适应</a></li>
+                        <li class="py-2"><a href="/html/category/article-3701.htm" title="网络协议之:Domain name service DNS详解_在线工具">网络协议之:Domain name service DNS详解_在线工具</a></li>
                     </ul>
     </div>
 </div>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+                <h4><span class="badge" style="float: right;">25</span> <a href="/html/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">60</span> <a href="/html/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
