@@ -2,12 +2,13 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3457.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-7697.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>记一次MySql重置root密码无效 - Bolivia Address</title>
+    <title>锡耶纳的城市风格是什么(锡耶纳城市规划的特点)</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <meta name="description" content="今天蝶侠小编整理了锡耶纳的相关信息，希望在这方面能够更好帮助到大家。本文目录一览：1、锡耶纳目前最出名球员是谁？2、锡耶纳的城市风格3、锡耶纳好吃的 锡耶纳目前最出名球员是谁？ 洛基祖利亚 (Roqu" />
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- //google-fonts -->
@@ -78,7 +79,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">记一次MySql重置root密码无效</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">锡耶纳的城市风格是什么(锡耶纳城市规划的特点)</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,10 +94,9 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<p>说起这个事情吧也相对来说比较尴尬，对于一个技术来说忘记密码然后找回密码都是相当简单的一个事情，但是在生产环境中没有保存记录只能是自己的失职，尴尬就尴尬在明明重置成功了却没有生效，弄得好几个工程师在哪里挠头！！！也是经过不断得摸索测试方案最后也是解决了这个问题，下面就简单跟大家分享一下：</p> <h1 id="项目场景">项目场景：</h1> <p>这个场景比较简单，因为我们是测试环境嘛，所以也就只有一台MySql数据库，只需要对这个数据库进行密码修改就可以了，而且也不用担心搞坏得问题，再一个最最最最重要得就是它可以随时进行重启，不需要考虑业务情况，当然在生产环境大家一定要考虑时间空档期，不然数据丢失就很麻烦了，而且操作的又是数据库，就相当于在脑袋上开刀一样，废话不多说了下面是环境情况：</p> <pre><code>操作系统：windows server 2019 数据中心版本 MySql：经典安装 MySql 5.6</code></pre> <h2 id=""><img decoding="async" src="https://img-blog.csdnimg.cn/7acffaaa12e74152b007cf6491643da8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/></h2> <h1 id="问题描述">问题描述</h1> <p>问题就是：使用--skip-grant-tables跳过权限，然后使用update修改root密码后，使用 FLUSH PRIVILEGES;刷新，使用新密码连接mysql提示密码错误，无非登录<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/a523d7fa16faef2e50c8dded76918337.jpg" alt="记一次MySql重置root密码无效"><br /> 下面是我重置密码的过程，大家也可以参考下，看看是不是有忽略的地方</p> <ol> <li>停止mysql服务<br /><img decoding="async" src="https://img-blog.csdnimg.cn/204ec01d8c3f4b69a23174f712ac0db5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/></li> <li>使用--skip-grant-tables跳过权限启动<br /><img decoding="async" src="https://img-blog.csdnimg.cn/b363824a4b5a4c9bbaadc738eec61c09.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/></li> <li>登录并修改密码<br /><img decoding="async" src="https://img-blog.csdnimg.cn/8ca19f4f9b034531b89c9cbe755fce1f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/><br /><img decoding="async" src="https://img-blog.csdnimg.cn/0787ea6145854742879e3131cd28bc70.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/></li> <li>关闭mysql进程及命令行窗口，重新启动mysql服务，尝试登陆<br /><img decoding="async" src="https://img-blog.csdnimg.cn/0f6f437d19bd4fab8ea3aded5d8a9f5e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/><br /> 尝试登陆<br /><img decoding="async" src="https://img-blog.csdnimg.cn/84da4e613cde458c802c9b233d81dc7a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/><br /> 明明密码修改成功了，密码也输入成功了，结果却在登陆的时候无发登陆成功</li> </ol> <hr/> <h1 id="原因分析">原因分析：</h1> <p>经我们几个人的不断测试，不断尝试，最终发现由于--skip-grant-tables这个参数造成的，其实说白了这个就是启动时生效了但是没有指定mysql的配置文件，所以这个模式下的所有操作都是无效的，设置成功了也不会修改真正的数据库文件的，也就是你把这个进程关掉了，他自己也就把数据还原回之前的了，这个跟mysql的安装方式也有关的，采用mysql免安装版本用以上操作就可以生效，但是按照版本就无法生效的，我已经尝试多个版本都是这样。<br /> 也可能不是这个原因，有异议的小伙伴欢迎大家留言一起探讨哦<br /> 下面是需要修改的跳过权限启动的命令</p> <pre><code class="language-bash">mysqld.exe --defaults-file="my.ini路径" --skip-grant-tables</code></pre> <hr/> <h1 id="解决方案">解决方案：</h1> <ol> <li>正常关闭mysql服务<br /><img decoding="async" src="https://img-blog.csdnimg.cn/04419149fc3142b2ab7874d0b8711df1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5byR5aSp5YC-5Z-O,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述" loading="lazy"/></li> <li>设置跳过权限启动mysql（这里是和之前操作不一样的地方）</li> </ol> <pre><code class="language-bash">mysqld.exe --defaults-file="C:\ProgramData\MySQL\MySQL Server 5.6\my.ini" --skip-grant-tables</code></pre> <p>--defaults-file="C:\ProgramData\MySQL\MySQL Server 5.6\my.ini"  //这个直接在服务中找到mysql服务，右键属性就可以看到这个路径了<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/389c39172d0c69a444881320db14259e.jpg" alt="记一次MySql重置root密码无效"><br /> 前面是mysqld的启动程序位置，后面是指定mysql的配置文件也就是my.ini文件<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/f1ff3c1cf12bcf0c62f2b41689225095.jpg" alt="记一次MySql重置root密码无效"><br /> 启动成功<br /> 3. 修改密码<br /> 开启新命令行窗口，连接mysql<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e09c710578817c502a6c7fd4cc20ca82.jpg" alt="记一次MySql重置root密码无效"><br /> 连接成功<br /> 修改密码<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/21824495694996b5d661fe454ab502f6.jpg" alt="记一次MySql重置root密码无效"><br /> 修改成功，退出登陆，重启mysql服务<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/160deb2884d7368e81931c9507638af7.jpg" alt="记一次MySql重置root密码无效"><br /> 4. 尝试登陆<br /> 启动成功，尝试使用新密码进行登陆<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/281de7c6ebf1af379aa5c920d1006313.jpg" alt="记一次MySql重置root密码无效"><br /> 发现已经连接成功</p> 			
+                      			<div class="orbui orbui-post orbui-post-01"></script>  <ins class="adsbygoogle"       style="display:block; text-align:center;"       data-ad-layout="in-article"       data-ad-format="fluid"       data-ad-client="ca-pub-6016799283272811"       data-ad-slot="9026798696"></ins>  </script></div>						<p>今天蝶侠小编整理了锡耶纳的</a></a>相关信息，希望在这方面能够更好帮助到大家。本文目录一览：1、锡耶纳目前最出名球员是谁？2、锡耶纳的城市风格3、锡耶纳好吃的</p> <p>锡耶纳目前最出名球员是谁？<br> 洛基祖利亚 (Roque Júnior) 费奥 (Tore André Flo) 马卡朗尼 (Massimo Maccarone) 云杜拿 (Nicola Ventola) 简迪拿 (Vincent Candela) </p> <p> 锡耶纳足球俱乐部(Associazione Calcio Siena)是一家位于意大利中部托斯卡纳大区锡耶纳省首府锡耶纳市的俱乐部，成立于1904年，现在于意大利乙级联赛联赛作赛，主场为阿达美奥法兰基球场（Stadio Artemio Franchi），仅可容纳15,725人。锡耶纳的代表颜色为黑色和白色，会徽也是这两种色，设计上很像另一家俱乐部尤文图斯，加上两家俱乐部之前存在着资本关系，因而又有“尤文二队”之称。 <br> 中文队名锡耶纳足球俱乐部 <br> 外文队名Associazione Calcio Siena <br> 运动项目足球 <br> 角逐赛事意大利足球乙级联赛 <br> 所属地区意大利 <br> 成立时间1904年 <br> 主场馆法兰基球场 <br> 容纳人数15373人 <br> 现任主教练伊亚齐尼 <br> 知名人物卡莱奥，罗·科德雷 <br> 主要荣誉2002/03赛季意大利乙组联赛冠军 <br> 主    席斯特罗纳蒂锡耶纳的城市风格 </p> <p>  如果说佛罗伦萨是文艺复兴的摇篮，那么锡耶纳本身就是一件艺术精品。这座中世纪古城在恬美的托斯卡纳乡村的环抱之中，历经千年的洗礼仍保持着蓬勃的生机，其中自然凝聚了锡耶纳人对家乡的无限热爱。自12世纪以来，锡耶纳人一直固守着一个哥特式梦想，并因此与佛罗伦萨在城市建设方面展开了持久的竞争。古城的规划以田园广场（laPiazzadelCampo）为中心，并与周围环境融合得天衣无缝。因此，从田园广场出发来游览整座城市是最合适不过的了。  <br>  田园广场 祭坛立于城市中心  <br>  田园广场是锡耶纳的灵魂所在。其独特的贝壳造型堪称建筑史上的杰作。从高处俯瞰，广场呈巨大的扇形，共由九个部分组成，分别代表锡耶纳*的九个成员。  <br>  蒙田在1580年曾说过，广场不仅在空间上是全城的中心（所有的街道都通向广场），也是锡耶纳人精神上的重心。“广场的祭坛上每天都有公开弥撒，由于住房和商店都面向广场而建，因此居民和手工艺人不必走出家门或停下手中的活就可以听到弥撒。”锡耶纳人生活中的重要事件都在广场上进行。每年夏天的7月2日和8月16日，著名的Palio赛马节就在广场上举行，届时所有堂区的居民都会聚集到广场来，气氛十分热烈。 </p> <p>锡耶纳好吃的<br> 锡耶纳：沁人心脾的美食之城 <br> 锡耶纳是意大利托斯卡纳地区一个美丽的中世纪小城，也是一个充满诱惑的美食之城。首先，锡耶纳的酒店和餐饮场所提供意式美食，尤其是其特色美食——托斯卡纳饺子，是每位游客必定要品尝的。这种美食使用当地的食材，在经烹饪和调味之后呈现出特有的美味。 <br> 其次，锡耶纳的美食文化也体现在当地的市集上。市集由不同的小摊贩组成，*有机和新鲜的食材，包括蔬菜、水果、面包、肉类等。这种农产品的直接交易方式吸引了许多游客，而且可以感受到锡耶纳的生活方式和文化。 <br> 最后，锡耶纳还有许多美丽的酿酒厂和葡萄园，提供多样化的葡萄酒品种，包括血红葡萄酒和白葡萄酒。这些美食和饮品紧密结合着当地的文化与传统，使锡耶纳成为了一个充满诱惑的美食之城。 <br> 在此，我真诚地向锡耶纳的美食家们推荐这个城市，这里的美食和文化总能给你带来独特的体验和愉悦。</p> <p>以上，就是蝶侠小编给大家带来的锡耶纳的城市风格全部内容，希望对大家有所帮助！</p> 					
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3456.htm">Ubuntu 20.04设置开机自启动</a></p>
-                                                <p>下一个：<a href="/html/category/article-3458.htm">JavaScript找到两个数组之间的差异方法详解</a></p>
+                                                <p>上一个：<a href="/html/category/article-7696.htm">狂犬疫苗一共打几针,多少钱一针被猫咬了（狂犬疫苗多少针?）</a></p>
                                             </div>
 
                                     </div>
@@ -107,16 +107,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-6040.htm" title="赤豆粥（赤豆粥图片）">赤豆粥（赤豆粥图片）</a></li>
-                        <li class="py-2"><a href="/html/category/article-6639.htm" title="宠物粮食哪里批发便宜又好吃（宠物粮食在哪里进货）">宠物粮食哪里批发便宜又好吃（宠物粮食在哪里进货）</a></li>
-                        <li class="py-2"><a href="/html/category/article-6129.htm" title="宠物粮批发平台有哪些公司（宠物粮批发平台有哪些公司招聘）">宠物粮批发平台有哪些公司（宠物粮批发平台有哪些公司招聘）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7558.htm" title="开个宠物粮加工厂怎么样啊视频教学（开个宠物粮加工厂怎么样啊视频教学大全）">开个宠物粮加工厂怎么样啊视频教学（开个宠物粮加工厂怎么样啊视频教学大全）</a></li>
-                        <li class="py-2"><a href="/html/category/article-6730.htm" title="被家猫抓伤轻微出血可以用碘伏吗（被猫抓伤出血可以用碘伏消毒吗）">被家猫抓伤轻微出血可以用碘伏吗（被猫抓伤出血可以用碘伏消毒吗）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7650.htm" title="宠物领养证如何办理手续和流程视频（宠物领养中心领养要钱吗）">宠物领养证如何办理手续和流程视频（宠物领养中心领养要钱吗）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7053.htm" title="猫体外驱虫药多久能杀死跳蚤（做完驱虫三天了还有跳蚤）">猫体外驱虫药多久能杀死跳蚤（做完驱虫三天了还有跳蚤）</a></li>
-                        <li class="py-2"><a href="/html/category/article-6776.htm" title="动物疫苗贵吗多少钱（动物疫苗多少钱一支）">动物疫苗贵吗多少钱（动物疫苗多少钱一支）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7007.htm" title="免费领养宠物正规网站平台下载大全视频（免费领养宠物的网站）">免费领养宠物正规网站平台下载大全视频（免费领养宠物的网站）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7191.htm" title="猫粮狗粮店铺名字（狗粮店名怎么起名）">猫粮狗粮店铺名字（狗粮店名怎么起名）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7604.htm" title="领养宠物的条件和要求（领养宠物的条件和要求）">领养宠物的条件和要求（领养宠物的条件和要求）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7697.htm" title="锡耶纳的城市风格是什么(锡耶纳城市规划的特点)">锡耶纳的城市风格是什么(锡耶纳城市规划的特点)</a></li>
+                        <li class="py-2"><a href="/html/category/article-7696.htm" title="狂犬疫苗一共打几针,多少钱一针被猫咬了（狂犬疫苗多少针?）">狂犬疫苗一共打几针,多少钱一针被猫咬了（狂犬疫苗多少针?）</a></li>
+                        <li class="py-2"><a href="/html/category/article-6822.htm" title="中国知名兽药（中国知名兽药公司排名）">中国知名兽药（中国知名兽药公司排名）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7374.htm" title="济南宠物免费赠送信息在哪里（济南宠物免费赠送信息在哪里查看）">济南宠物免费赠送信息在哪里（济南宠物免费赠送信息在哪里查看）</a></li>
+                        <li class="py-2"><a href="/html/category/article-6216.htm" title="单螺杆泵品牌排名(单螺杆泵企业)">单螺杆泵品牌排名(单螺杆泵企业)</a></li>
+                        <li class="py-2"><a href="/html/category/article-7651.htm" title="高跟鞋哪个牌子好穿不贵(高跟鞋哪个牌子好穿)">高跟鞋哪个牌子好穿不贵(高跟鞋哪个牌子好穿)</a></li>
+                        <li class="py-2"><a href="/html/category/article-7006.htm" title="腊肉的做法大全（腊肉的做法大全家常菜）">腊肉的做法大全（腊肉的做法大全家常菜）</a></li>
+                        <li class="py-2"><a href="/html/category/article-6684.htm" title="动物疫苗防疫站几点上班（动物疫苗防疫站几点上班的）">动物疫苗防疫站几点上班（动物疫苗防疫站几点上班的）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7328.htm" title="宠物用品货源渠道有哪些（宠物用品货源渠道有哪些呢）">宠物用品货源渠道有哪些（宠物用品货源渠道有哪些呢）</a></li>
                     </ul>
     </div>
 </div>
