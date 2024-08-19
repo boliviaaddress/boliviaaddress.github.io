@@ -2,12 +2,13 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-3682.htm" />
+        <link rel="canonical" href="https://boliviaaddress.github.io/html/category/article-7972.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo - Bolivia Address</title>
+    <title>动物防疫计划表（动物防疫年度计划）</title>
     <link rel="icon" href="/assets/addons/xcblog/img/boliviaaddress/favicon.ico" type="image/x-icon"/>
+        <meta name="description" content="摘要：       今天给各位分享动物防疫计划表的知识，其中也会对动物防疫年度计划进行解释，如果能碰巧解决你现在面临的问题，别忘了关注本站，现在开始吧！本文目录一览：1、H7N9禽流感怎样预防?..." />
         <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- //google-fonts -->
@@ -78,7 +79,7 @@ var _hmt = _hmt || [];
     <div class="inner-banner">
         <section class="w3l-breadcrumb">
             <div class="container">
-                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</h1>
+                <h1 class="inner-text-title font-weight-bold text-white mb-sm-3 mb-2" style="line-height: 3rem;word-break: break-all;">动物防疫计划表（动物防疫年度计划）</h1>
                 <ul class="breadcrumbs-custom-path">
                     <li><a href="/">首页</a></li>
                     <li><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span><a href="/html/category/">文章分类</a></li>
@@ -93,10 +94,10 @@ var _hmt = _hmt || [];
         <div class="container py-md-5 py-4">
             <div class="row">
                 <div class="col-md-9">
-                      				  				  				<p>Docker-Compose 是一个可以对 Docker 容器集群的快速编排的工具，能够减轻您心智和手指的负担。</p> <p>简单的来说 Docker-Compose 就是将你运行多个容器的命令编写到了一起，类似于你会为一系列重复操作写一个 doSomething.sh 文件，只不过 Docker-Compose 提供了更简便的语法。</p> <p>当然如果想管理多主机多容器还是推荐使用 k8s。</p> <p>我们的 demo 是一个基于 node.js 的网站服务，当用户访问当前服务器的根目录时，将 redis 中的浏览量计数增加1。</p> <p>先不看具体的业务代码，这其实无关紧要。假设我们已经写好了 node 服务，那么我们下一步就是写一个<code>Dockerfile</code>文件去构建镜像，然后执行<code>docker run</code> 命令，这样整个服务就启动了。</p> <pre><code class="language-dockerfile">FROM node:18-alpine  WORKDIR '/app'  COPY package.json . RUN npm install COPY . . CMD ["npm","start"]</code></pre> <p>这个<code>Dockerfile</code> 做的事情就是</p> <ul> <li>在容器中创建一个 app 目录，并切换到该目录。</li> <li>将宿主机当前目录下的 package.json 文件拷贝到容器中的当前目录(/app)下</li> <li>执行命令<code>npm install</code></li> <li>将宿主机当前目录下的所有文件拷贝到容器中(因为主体程序index.js还没有拷贝到容器中)</li> <li>运行命令<code>npm start</code>启动服务</li> </ul> <p>因为我们的 node 服务用到了 redis，所以我们还需要启动一个 redis 容器。</p> <p>但 docker 的机制使得这两个容器是互相隔离的，所以想要通信的话</p> <ul> <li>将 redis 端口与宿主机端口做映射，通过宿主机的端口访问 redis</li> <li>创建 docker network，将两个容器放在同一个 docker network下</li> <li>编写 docker-compose.yml 文件，让Docker-Compose帮我们创建 docker network 搞定一切</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/237e3c67902add9c2cccbb4034d59d54.jpg" alt="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo"></p> <p><code>docker-compose.yml</code></p> <pre><code class="language-yaml">version: '3' services:   ## 容器名   redis-server:     ## 指定镜像    image: 'redis:6.0.16-alpine'    ## 容器重启策略    restart: 'always'   ## 容器名   node-app:    ## 当前目录执行 docker build    build: .    ## 端口映射    ports:       - "8888:8081"</code></pre> <p>虽然我们在文件中没有写任何有关 network 的代码，但 Docker-Compose会自动帮我们创建一个network</p> <p>运行命令</p> <pre><code class="language-shell">sudo docker-compose up --build ## 会执行yaml文件中的build命令</code></pre> <p>访问 localhost:8888 你应该能看到类似这样的界面</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/46ce7fb120ee188748fe0521b1515e5e.jpg" alt="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo"></p> <p>docker-compose 的命令跟 docker类似</p> <pre><code class="language-shell">docker-compose up -d ## 后台运行 docker-compose down ## 停止</code></pre> <p>最后是文件目录结构和 index.js 以及 package.json的具体代码</p> <pre><code class="language-shell">. ├── docker-compose.yml ├── Dockerfile ├── index.js ├── package.json</code></pre> <p><code>package.json</code></p> <pre><code class="language-json">{     "dependencies": {         "express": "^4.17.3",         "redis": "^4.0.6"     },     "scripts": {         "start": "node index.js"     } }</code></pre> <p><code>index.js</code></p> <pre><code class="language-javascript">const express = require('express');  const redis = require('redis');  const app = express();  const client = redis.createClient({   url : 'redis://redis-server:6379' // redis-server会被docker解析并转发 });  const db = {   async set(key,value){     return fun(async()=&gt;{       return await client.set(key,value)     },key,value)   },   async get(key){     return fun(async()=&gt;{       return await client.get(key)     },key)   } }  async function fun(callback,key,value){   return new Promise(async (res,rej)=&gt;{     await client.connect();     let ok = callback(key,value);     await client.quit();     res(ok);   }) }  db.set("visits",0);  async function cntVisits(){   let cnt = await db.get("visits");   await db.set("visits",parseInt(cnt)+1);   return parseInt(cnt)+1; }  app.get('/', (req, res) =&gt; {      cntVisits().then( result =&gt; {         res.send('Number of visits is ' + result);      }); }); // 8081是容器内部的端口，我们需要访问的是8888,因为在docker-compose.yml文件中已经做过端口映射了 app.listen(8081, () =&gt; { console.log('Listening on port 8081'); });</code></pre> 			
+                        <div class="article-zhaiyao">       <strong><img src="http://www.to3158.cn/zb_users/theme/koilee/style/images/favicon_example.ico" alt="动物防疫计划表（动物防疫年度计划）">摘要：</strong>       今天给各位分享动物防疫计划表的知识，其中也会对动物防疫年度计划进行解释，如果能碰巧解决你现在面临的问题，别忘了关注本站，现在开始吧！本文目录一览：1、H7N9禽流感怎样预防?...    </div>    <p>今天给各位分享动物防疫计划表的知识，其中也会对动物防疫年度计划进行解释，如果能碰巧解决你现在面临的问题，别忘了关注本站，现在开始吧！</p><div style="text-align:center;"><img style="max-width: 100%;" alt="动物防疫计划表（动物防疫年度计划）" src="https://img0.baidu.com/it/u=3170193960,360312630&fm=253&fmt=auto&app=138&f=JPEG?w=1015&h=500"></div><div><div style="color:#999;text-align:center;">（图片来源网络，侵删）</div></div><h2>本文目录一览：</h2><ul><li style='margin-bottom: 3px;list-style: none'> 1、H7N9禽流感怎样预防? </li> <li style='margin-bottom: 3px;list-style: none'> 2、中华人民共和国动物防疫法 </li> <li style='margin-bottom: 3px;list-style: none'> 3、动物防疫工作实施方案 </li> </ul><h2 id='H7N9禽流感怎样预防?'>H7N9禽流感怎样预防?</h2> <p>1、加强身体锻炼，补充营养，保持充足睡眠，以提高免疫力。室内勤通风换气，公共场所出现打喷嚏、咳嗽等呼吸道感染症状时，要用纸巾、手帕掩盖口鼻。不轻信，不恐慌，不传播禽流感谣言。</p><p>2、同居的感染的实验结果表明，高能态臭氧的施用，显著地延迟了发病时间与发病率。经过以上的实验证明，臭氧是可以有效的预防及杀灭禽流感病毒的，所以使用臭氧水洗手、洗衣等是可以预防禽流感病毒的。</p><p>3、有关禽流感h7n9 具体内容如下（100分） 你就读如何预防h7n9禽流感： 勤洗手 禁止接触病死禽畜 流感是一种急性呼吸道感染性疾病，市民需注意个人卫生，不要接触病、死的禽类和畜类，体弱者到医院看病建议戴口罩。</p><p>4、对于禽流感的预防和控制应当做好如下工作：严格兽医防疫，控制禽流感的传入。一定要从非疫区或无禽流感种鸡场引进种雏或种蛋。要防止野禽，尤其是水禽与肉鸡的接触。加强鸡场的隔离和消毒。</p><div style="text-align:center;"><img style="max-width: 100%;" alt="动物防疫计划表（动物防疫年度计划）" src="https://img1.baidu.com/it/u=3072041630,608844447&fm=253&fmt=auto&app=138&f=PNG?w=354&h=500"></div><div><div style="color:#999;text-align:center;">（图片来源网络，侵删）</div></div><h2 id='中华人民共和国动物防疫法'>中华人民共和国动物防疫法</h2> <p>1、第十四条县级以上地方人民政府兽医主管部门组织实施动物疫病强制免疫计划。乡级人民政府、城市街道办事处应当组织本管辖区域内饲养动物的单位和个人做好强制免疫工作。</p><p>2、《中华人民共和国动物防疫法》所称的动物包括养殖、交易、运输、展览、比赛、科学研究等活动中涉及的所有动物，包括野生动物和家畜家禽等。</p><p>3、第一章　总则第一条　为加强动物防疫工作的管理，预防、控制和扑灭动物疫病，促进养殖业稳定发展，保护人体健康，根据《中华人民共和国动物防疫法》，结合自治区实际，制定本办法。</p><h2 id='动物防疫工作实施方案'>动物防疫工作实施方案</h2> <p>各地要迅速组织开展《动物防疫法》宣贯活动，通过组织培训、宣传月、送法下乡、编发宣传画报等形式，加大宣传力度，抓紧研究制订新修订条款的贯彻实施办法，组织开展《江苏省动物防疫条例》修订调研工作，为生产经营单位、监督管理部门提供法律支撑。</p><div style="text-align:center;"><img style="max-width: 100%;" alt="动物防疫计划表（动物防疫年度计划）" src="https://img1.baidu.com/it/u=4048030651,1869359217&fm=253&fmt=auto&app=138&f=PNG?w=338&h=500"></div><div><div style="color:#999;text-align:center;">（图片来源网络，侵删）</div></div><p>为确保人畜健康，保证畜产品质量安全，根据《中华人民共和国动物防疫法》和《动物防疫条例》特制定本预案。</p><p>制定疫点、疫区和受威胁区的处理方案，提出封锁建议并参与组织实施，做好动物防疫监督检查站的设立和管理工作。</p><p>成立领导小组。为了加强对我县乡镇动植物防疫体系建设工作的领导，县里决定抽调精兵强将组成专门的工作班子实施方案，确保秩序不乱，工作不断。</p><p>肉鸡场的日常卫生防疫，围绕疫病的3个控制环节来开展：控制传染源；切断传播途径和保护易感动物。</p><p>动物防疫计划表的介绍就聊到这里吧，感谢你花时间阅读本站内容，更多关于动物防疫年度计划、动物防疫计划表的信息别忘了在本站进行查找喔。</p>  
                     <div class="col-md-12 mt-5">
-                                                <p>上一个：<a href="/html/category/article-3681.htm">Spring定时执行@Scheduled从配置文件获取定时</a></p>
-                                                <p>下一个：<a href="/html/category/article-3683.htm">C语言实现BMP格式转RGB格式、YUV格式</a></p>
+                                                <p>上一个：<a href="/html/category/article-7927.htm">番茄去籽?保留vs去除,你的最佳选择是什么(番茄去籽?保留vs去除,你的最佳选择)</a></p>
+                                                <p>下一个：<a href="/html/category/article-7973.htm">哑巴的眼神,无声却震撼人心(哑巴的眼神,无声却震撼什么意思)</a></p>
                                             </div>
 
                                     </div>
@@ -107,16 +108,16 @@ var _hmt = _hmt || [];
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/html/category/article-7052.htm" title="宠物商品粮什么意思（宠物粮是什么）">宠物商品粮什么意思（宠物粮是什么）</a></li>
-                        <li class="py-2"><a href="/html/category/article-6869.htm" title="被宠物猫抓出血了有事吗（被宠物猫抓出血了有事吗）">被宠物猫抓出血了有事吗（被宠物猫抓出血了有事吗）</a></li>
-                        <li class="py-2"><a href="/html/category/article-6960.htm" title="芭比宠物医院的地址（芭比堂宠物医院营业时间）">芭比宠物医院的地址（芭比堂宠物医院营业时间）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7513.htm" title="动物疫苗的种类（动物疫苗种类有几种）">动物疫苗的种类（动物疫苗种类有几种）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7466.htm" title="动物诊所英语怎么读（动物诊所英语怎么读的）">动物诊所英语怎么读（动物诊所英语怎么读的）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7788.htm" title="被家猫抓出血了要***吗（被家猫抓出血了要打疫苗吗）">被家猫抓出血了要***吗（被家猫抓出血了要打疫苗吗）</a></li>
-                        <li class="py-2"><a href="/html/category/article-6685.htm" title="铣床有哪些牌子好(铣床有哪些牌子的)">铣床有哪些牌子好(铣床有哪些牌子的)</a></li>
-                        <li class="py-2"><a href="/html/category/article-6868.htm" title="猫三联加狂犬疫苗多少钱（猫三联和狂犬疫苗一共多少钱）">猫三联加狂犬疫苗多少钱（猫三联和狂犬疫苗一共多少钱）</a></li>
-                        <li class="py-2"><a href="/html/category/article-7236.htm" title="动物疫苗厂家排名前十有哪些品种图片（动物疫苗行业排名）">动物疫苗厂家排名前十有哪些品种图片（动物疫苗行业排名）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7007.htm" title="免费领养宠物正规网站平台下载大全视频（免费领养宠物的网站）">免费领养宠物正规网站平台下载大全视频（免费领养宠物的网站）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7742.htm" title="太原哪里可以免费领养狗狗（太原哪里可以免费领养狗狗狗）">太原哪里可以免费领养狗狗（太原哪里可以免费领养狗狗狗）</a></li>
                         <li class="py-2"><a href="/html/category/article-7512.htm" title="宠物领养管理系统论文范文大全（宠物领养管理系统论文范文大全）">宠物领养管理系统论文范文大全（宠物领养管理系统论文范文大全）</a></li>
+                        <li class="py-2"><a href="/html/category/article-6639.htm" title="宠物粮食哪里批发便宜又好吃（宠物粮食在哪里进货）">宠物粮食哪里批发便宜又好吃（宠物粮食在哪里进货）</a></li>
+                        <li class="py-2"><a href="/html/category/article-6869.htm" title="被宠物猫抓出血了有事吗（被宠物猫抓出血了有事吗）">被宠物猫抓出血了有事吗（被宠物猫抓出血了有事吗）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7789.htm" title="汉文帝的霸陵原来是这么发现的！网友：原来历史剧都是真的(汉文帝霸陵原址)">汉文帝的霸陵原来是这么发现的！网友：原来历史剧都是真的(汉文帝霸陵原址)</a></li>
+                        <li class="py-2"><a href="/html/category/article-6731.htm" title="适合穷养的猫咪（最适合穷人养的宠物）">适合穷养的猫咪（最适合穷人养的宠物）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7559.htm" title="广州猫领养中心地址查询电话（广州猫领养中心地址查询电话号码）">广州猫领养中心地址查询电话（广州猫领养中心地址查询电话号码）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7328.htm" title="宠物用品货源渠道有哪些（宠物用品货源渠道有哪些呢）">宠物用品货源渠道有哪些（宠物用品货源渠道有哪些呢）</a></li>
+                        <li class="py-2"><a href="/html/category/article-7926.htm" title="猫咪不见了会自己回家吗（猫咪不见了会自己回家吗视频）">猫咪不见了会自己回家吗（猫咪不见了会自己回家吗视频）</a></li>
                     </ul>
     </div>
 </div>
